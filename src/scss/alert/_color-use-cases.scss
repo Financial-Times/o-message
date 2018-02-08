@@ -1,0 +1,33 @@
+
+// Error Styles
+
+@include oColorsSetColor('paper-crimson-90', oColorsMix('paper', 'crimson', 90)); //background
+@include oColorsSetColor('black-crimson-12.5', oColorsMix('black', 'crimson', 12.5)); //text
+
+@include oColorsSetUseCase(o-message-alert-error, text, 'black-crimson-12.5');
+@include oColorsSetUseCase(o-message-alert-error, background, 'paper-crimson-90');
+@include oColorsSetUseCase(o-message-alert-error-warning-icon, text, 'paper-crimson-90');
+@include oColorsSetUseCase(o-message-alert-error-warning-icon, background, 'black-crimson-12.5');
+// @include oColorsSetUseCase(o-message-alert-error-button, background, 'paper-crimson-90');
+// @include oColorsSetUseCase(o-message-alert-error-button, text, 'black-crimson-12.5');
+@include oColorsSetUseCase(o-message-alert-error-link, text, 'black-crimson-12.5');
+
+// Neutral Styles
+@include oColorsSetUseCase(o-message-alert-neutral-warning-icon, text, 'white');
+@include oColorsSetUseCase(o-message-alert-neutral-warning-icon, background, 'white');
+@include oColorsSetUseCase(o-message-alert-neutral-button, background, 'white-60');
+@include oColorsSetUseCase(o-message-alert-neutral-button, text, 'black');
+@include oColorsSetUseCase(o-message-alert-neutral-link, background, 'transparent');
+@include oColorsSetUseCase(o-message-alert-neutral-link, text, 'black');
+
+// Success Styles
+@include oColorsSetColor('paper-jade-80', oColorsMix('paper', 'jade', 80)); //background
+@include oColorsSetColor('black-jade-43', oColorsMix('black', 'jade', 43)); //text
+
+@include oColorsSetUseCase(o-message-alert-success, background, 'paper-jade-80');
+@include oColorsSetUseCase(o-message-alert-success, text, 'black-jade-43');
+@include oColorsSetUseCase(o-message-alert-success-warning-icon, text, 'paper-jade-80');
+@include oColorsSetUseCase(o-message-alert-success-warning-icon, background, 'black-jade-43');
+// @include oColorsSetUseCase(o-message-alert-success-button, background, 'paper-jade-80');
+// @include oColorsSetUseCase(o-message-alert-success-button, text, 'black-jade-43');
+@include oColorsSetUseCase(o-message-alert-success-link, text, 'black-jade-43');
