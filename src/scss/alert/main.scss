@@ -8,12 +8,72 @@
 
 .o-message--alert-error {
 	@include oColorsFor(o-message-alert-error);
+
+	.o-message__link {
+		@include oTypographyLinkCustom(
+			$baseColor: 'black-crimson-12.5',
+			$hoverColor: 'black-crimson-12.5',
+			$backgroundColor: 'paper-crimson-90'
+		);
+
+		&:hover {
+			border-bottom-color: oColorsGetPaletteColor('black-crimson-12.5');
+		}
+
+		&:focus {
+			outline: 3px solid oColorsGetPaletteColor('black-crimson-12.5');
+			border-bottom-color: transparent;
+		}
+	}
 }
 
 .o-message--alert-neutral {
-	@include oColorsFor(o-message-alert-neutral-button);
+	@include oColorsFor(o-message-alert-neutral);
+
+	.o-message__link {
+		@include oTypographyLinkCustom(
+			$baseColor: 'black',
+			$hoverColor: 'black',
+			$backgroundColor: 'white'
+		);
+
+		&:hover {
+			border-bottom-color: oColorsGetPaletteColor('black');
+		}
+
+		&:focus {
+			outline: 3px solid oColorsGetPaletteColor('black');
+			border-bottom-color: transparent;
+		}
+	}
 }
 
 .o-message--alert-success {
 	@include oColorsFor(o-message-alert-success);
+
+	.o-message__link {
+		@include oTypographyLinkCustom(
+			$baseColor: 'black-jade-43',
+			$hoverColor: 'black-jade-43',
+			$backgroundColor: 'transparent'
+		);
+
+		&:hover {
+			border-bottom-color: oColorsGetPaletteColor('black-jade-43');
+		}
+
+		&:focus {
+			outline: 3px solid oColorsGetPaletteColor('black-jade-43');
+			border-bottom-color: transparent;
+		}
+	}
+}
+
+.o-message__content {
+	display: flex;
+	@include oTypographySans($scale: 1)
+
+	&--highlight {
+		@include oTypographySansBold($scale: 1);
+	}
 }

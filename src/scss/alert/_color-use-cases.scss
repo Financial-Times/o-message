@@ -10,9 +10,12 @@
 @include oColorsSetUseCase(o-message-alert-error-warning-icon, background, 'black-crimson-12.5');
 // @include oColorsSetUseCase(o-message-alert-error-button, background, 'paper-crimson-90');
 // @include oColorsSetUseCase(o-message-alert-error-button, text, 'black-crimson-12.5');
-@include oColorsSetUseCase(o-message-alert-error-link, text, 'black-crimson-12.5');
+// @include oColorsSetUseCase(o-message-alert-error-link, text, 'black-crimson-12.5');
 
 // Neutral Styles
+@include oColorsSetUseCase(o-message-alert-neutral, background, 'white-60');
+@include oColorsSetUseCase(o-message-alert-neutral, text, 'black');
+
 @include oColorsSetUseCase(o-message-alert-neutral-warning-icon, text, 'white');
 @include oColorsSetUseCase(o-message-alert-neutral-warning-icon, background, 'white');
 @include oColorsSetUseCase(o-message-alert-neutral-button, background, 'white-60');
@@ -30,4 +33,4 @@
 @include oColorsSetUseCase(o-message-alert-success-warning-icon, background, 'black-jade-43');
 // @include oColorsSetUseCase(o-message-alert-success-button, background, 'paper-jade-80');
 // @include oColorsSetUseCase(o-message-alert-success-button, text, 'black-jade-43');
-@include oColorsSetUseCase(o-message-alert-success-link, text, 'black-jade-43');
+// @include oColorsSetUseCase(o-message-alert-success-link, text, 'black-jade-43');
