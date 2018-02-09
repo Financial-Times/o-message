@@ -2,6 +2,14 @@
 @import 'src/scss/alert/variables';
 @import 'src/scss/alert/mixins';
 
+.o-message__button {
+	@include oButtons();
+}
+
+.o-message__actions {
+	display: flex;
+}
+
 .o-message--alert {
 	height: $_o-message-alert-height;
 }
@@ -25,6 +33,10 @@
 			border-bottom-color: transparent;
 		}
 	}
+
+	.o-message__button {
+		@include oButtonsCustomTheme('paper-crimson-90',  'black-crimson-12.5');
+	}
 }
 
 .o-message--alert-neutral {
@@ -34,7 +46,7 @@
 		@include oTypographyLinkCustom(
 			$baseColor: 'black',
 			$hoverColor: 'black',
-			$backgroundColor: 'white'
+			$backgroundColor: 'white-60'
 		);
 
 		&:hover {
@@ -46,6 +58,10 @@
 			border-bottom-color: transparent;
 		}
 	}
+
+	.o-message__button {
+		@include oButtonsCustomTheme('white-60',  'black');
+	}
 }
 
 .o-message--alert-success {
@@ -55,7 +71,7 @@
 		@include oTypographyLinkCustom(
 			$baseColor: 'black-jade-43',
 			$hoverColor: 'black-jade-43',
-			$backgroundColor: 'transparent'
+			$backgroundColor: 'paper-jade-80'
 		);
 
 		&:hover {
@@ -67,13 +83,24 @@
 			border-bottom-color: transparent;
 		}
 	}
+
+	.o-message__button {
+		@include oButtonsCustomTheme('paper-jade-80', 'black-jade-43');
+	}
 }
 
 .o-message__content {
 	display: flex;
-	@include oTypographySans($scale: 1)
+	align-items: center;
+	height: 100%;
+
+	@include oTypographySans($scale: 0)
+
+	p {
+		@include oTypographyMargin($top: 0, $bottom: 0);
+	}
 
 	&--highlight {
-		@include oTypographySansBold($scale: 1);
+		@include oTypographySansBold($scale: 0);
 	}
 }
