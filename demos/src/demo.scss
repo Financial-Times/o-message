@@ -5,3 +5,7 @@ $o-message-is-silent: false;
 body {
 	background: oColorsGetPaletteColor(paper);
 }
+
+.o-message {
+	margin-top: 20px;
+}

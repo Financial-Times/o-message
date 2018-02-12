@@ -13,15 +13,6 @@
 	white-space: nowrap;
 }
 
-.o-message__actions {
-	display: flex;
-	align-items: center;
-}
-
-.o-message--alert {
-	height: $_o-message-alert-height;
-}
-
 .o-message--alert-error {
 	@include oColorsFor(o-message-alert-error);
 
@@ -164,6 +155,14 @@
 	}
 }
 
-.o-message {
+.o-message--alert,
+.o-message--alert--bleed {
+	height: $_o-message-alert-height;
+}
+.o-message--alert,
+.o-message--alert--bleed .o-message__container {
 	@include oGridContainer();
+	@include oGridRespondTo($from: S) {
+		padding: oGridGutter();
+	}
 }
