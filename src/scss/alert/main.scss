@@ -1,59 +1,10 @@
 @import 'src/scss/alert/color-use-cases';
 @import 'src/scss/alert/variables';
+@import 'src/scss/alert/themes';
 @import 'src/scss/alert/mixins';
 
-.o-message__button {
-	@include oButtons();
-	@include oTypographySans($scale: -1);
-	margin: 0 24px;
-}
+@include oMessageAlertBase();
 
-.o-message__link,
-.o-message__button {
-	white-space: nowrap;
-}
-
-@include oMessageAlert($theme: error);
-@include oMessageAlert($theme: neutral);
-@include oMessageAlert($theme: success);
-
-.o-message__container {
-	display: flex;
-	align-items: center;
-	justify-content: flex-start;
-	height: 100%;
-	white-space: nowrap;
-	// sass-lint:disable no-vendor-prefixes
-	-webkit-font-smoothing: antialiased;
-	// sass-lint:enable no-vendor-prefixes
-
-
-	@include oTypographySans($scale: 0)
-
-	.o-message__content {
-		@include oTypographyMargin($top: 0, $bottom: 0);
-		display: flex;
-		align-items: center;
-
-		&--highlight {
-			@include oTypographySansBold($scale: 0);
-			padding-right: 8px; //spacing unit mixin
-		}
-	}
-
-	.o-message__close {
-		margin-left: auto;
-	}
-}
-
-.o-message--alert,
-.o-message--alert--bleed {
-	height: $_o-message-alert-height;
-}
-.o-message--alert,
-.o-message--alert--bleed .o-message__container {
-	@include oGridContainer();
-	@include oGridRespondTo($from: S) {
-		padding: oGridGutter();
-	}
+@each $theme in $themes {
+	@include oMessageAlert($theme)
 }

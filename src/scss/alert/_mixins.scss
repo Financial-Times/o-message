@@ -1,0 +1,119 @@
+@function _getValue($element, $property) {
+	@return map-get(map-get($theme-styles, $element), $property);
+};
+
+@mixin oMessageAlert($theme, $class: 'o-message') {
+	@if map-has-key($theme-styles, $theme) {
+		.#{$class}--alert-#{$theme} {
+			@include oColorsFor(o-message-alert-#{$theme});
+
+			.#{$class}__link {
+				@include oTypographyLinkCustom(
+					_getValue($theme, custom-link-base),
+					_getValue($theme, custom-link-hover),
+					_getValue($theme, custom-link-background)
+				);
+
+				&:hover {
+					border-bottom-color: _getValue($theme, link-hover);
+				}
+
+				&:focus {
+					outline: 3px solid _getValue($theme, link-focus);
+					border-bottom-color: transparent;
+				}
+			}
+
+			.#{$class}__button {
+				@include oButtonsCustomTheme(_getValue($theme, button-background), _getValue($theme, button-text));
+			}
+
+			.#{$class}__content:before {
+				// hack mchackerson decrees that:
+				// all of these conditionals really need to not be the case with the icons,
+				// and we waiting on new icons from james
+
+				@if $theme == error or $theme == success {
+					@include oIconsGetIcon(
+					_getValue($theme, alert-icon-name),
+					_getValue($theme, alert-icon-text),
+					_getValue($theme, alert-icon-size)
+					);
+					content: '';
+				}
+
+				@if $theme == error or $theme == neutral {
+					padding: 1px;
+					background-color: _getValue($theme, alert-icon-background);
+					border-radius: 50%;
+					margin: 10px;
+				}
+
+
+				@if $theme == neutral {
+					@include oTypographySansBold(0);
+					content: 'i';
+					color: _getValue($theme, alert-icon-text);
+					background-color: _getValue($theme, alert-icon-background);
+					padding: 2px 10px
+				}
+			}
+
+			.#{$class}__close {
+				@include oIconsGetIcon('cross', _getValue($theme, close-icon-text), 20);
+			}
+		}
+
+	} @else {
+		@error '#{$theme} is not a theme. You can try error, success or neutral, instead.';
+	}
+}
+
+@mixin oMessageAlertBase($class: 'o-message') {
+	.#{$class}--alert,
+	.#{$class}--alert--bleed {
+		height: $_o-message-alert-height;
+	}
+
+	.#{$class}--alert,
+	.#{$class}--alert--bleed .#{$class}__container {
+		@include oGridContainer();
+		@include oGridRespondTo($from: S) {
+			padding: oGridGutter();
+		}
+	}
+
+	.#{$class}__container {
+		display: flex;
+		align-items: center;
+		justify-content: flex-start;
+		height: 100%;
+		white-space: nowrap;
+		// sass-lint:disable no-vendor-prefixes
+		-webkit-font-smoothing: antialiased;
+		// sass-lint:enable no-vendor-prefixes
+
+		@include oTypographySans($scale: 0)
+
+		.#{$class}__content {
+			@include oTypographyMargin($top: 0, $bottom: 0);
+			display: flex;
+			align-items: center;
+
+			&--highlight {
+				@include oTypographySansBold($scale: 0);
+				padding-right: oTypographySpacingSize(2);
+			}
+		}
+	}
+
+	.#{$class}__button {
+		@include oButtons();
+		@include oTypographySans($scale: -1);
+		margin: 0 oTypographySpacingSize(6);
+	}
+
+	.#{$class}__close {
+		margin-left: auto;
+	}
+}
