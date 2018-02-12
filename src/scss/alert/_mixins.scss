@@ -2,7 +2,7 @@
 	@return map-get(map-get($theme-styles, $element), $property);
 };
 
-@mixin oMessageAlert($theme, $class: 'o-message') {
+@mixin oMessageAlertFor($theme, $class: 'o-message') {
 	@if map-has-key($theme-styles, $theme) {
 		.#{$class}--alert-#{$theme} {
 			@include oColorsFor(o-message-alert-#{$theme});

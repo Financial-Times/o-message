@@ -3,8 +3,10 @@
 @import 'src/scss/alert/themes';
 @import 'src/scss/alert/mixins';
 
-@include oMessageAlertBase();
+@mixin oMessageAlerts {
+	@include oMessageAlertBase();
 
-@each $theme in $themes {
-	@include oMessageAlert($theme)
+	@each $theme in $themes {
+		@include oMessageAlertFor($theme)
+	}
 }

@@ -1,1 +1,5 @@
 @import 'src/scss/alert/main';
+
+@mixin oMessage {
+	@include oMessageAlerts;
+}
