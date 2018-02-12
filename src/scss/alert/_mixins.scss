@@ -70,6 +70,18 @@
 }
 
 @mixin oMessageAlertBase($class: 'o-message') {
+	@include oGridRespondTo($until: S) {
+		.#{$class}__action--secondary {
+			display: none;
+		}
+	};
+
+	@include oGridRespondTo($until: M) {
+		.#{$class}__content--detail {
+			display: none;
+		}
+	};
+
 	.#{$class}--alert,
 	.#{$class}--alert--bleed {
 		height: $_o-message-alert-height;
