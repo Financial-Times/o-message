@@ -14,6 +14,7 @@ class oMessage {
 		const messageType = options && options.messageType ? options.messageType : 'alert';
 
 		this.opts = Object.assign({}, {
+			autoOpen: true,
 			messageClass,
 			messageType,
 			typeClass: `${messageClass}--${messageType}`,
@@ -32,8 +33,18 @@ class oMessage {
 			close: true
 		}, options || oMessage._getDOMOptions(messageEl));
 
-		this.render()
+		this.render();
+
+		if (this.opts.autoOpen) {
+			this.open();
+		} else {
+			this.close();
+		}
 	}
+
+	/**
+	 * Render the message.
+	 */
 
 	render () {
 		// If the message element is not an HTML Element, build one
@@ -43,9 +54,10 @@ class oMessage {
 		}
 	}
 
-	//type of message: alert / alert--bleed
-	//theme of message: error/success/neutral
-	//content of message: highlight / detail (highlight required)
+	/**
+	* Constructs a type of message based on provided options (alert or alert--bleed, for now)
+	* @returns {HTMLElement} Returns the type specific message element
+	*/
 	constructMessageElement () {
 		if (this.opts.messageType  === 'alert' || this.opts.messageType === 'alert--bleed') {
 			if (!this.opts.content.highlight) {
@@ -57,6 +69,35 @@ class oMessage {
 			oMessage.throwError(`${this.opts.messageType} is not a supported message type.`)
 		}
 	}
+
+	/**
+	 * Open the message.
+	 */
+
+	open () {
+		this.messageEl.classList.remove(`${this.opts.messageClass}--closed`);
+		this.messageEl.dispatchEvent(new CustomEvent('o.messageOpen'));
+		this.setEventListeners();
+	}
+
+	/**
+	 * Close the message.
+	 */
+
+	close () {
+		this.messageEl.classList.add(`${this.opts.messageClass}--closed`);
+		this.messageEl.dispatchEvent(new CustomEvent('o.messageClosed'));
+	}
+
+	// add event listeners
+	setEventListeners () {
+		let closeButton = document.querySelector(`.${this.opts.messageClass}__close`);
+		closeButton.addEventListener('click', event => {
+			this.close();
+			event.preventDefault();
+		});
+	}
+
 
 	/**
 	 * Get the data attributes from the messageEl. If the message is being set up

@@ -128,4 +128,8 @@
 	.#{$class}__close {
 		margin-left: auto;
 	}
+
+	.#{$class}--closed {
+		display: none;
+	}
 }

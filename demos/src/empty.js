@@ -6,13 +6,44 @@ const constructAll = function() {
 	new oMessage(null, {
 			theme: 'success',
 			content: {
-				highlight: 'something big'
+				highlight: 'Something went right.',
+				detail: 'The quick brown fox jumped over the lazy dogs'
 			},
 			link: {
-				text: 'click click'
+				text: 'Relevant Link'
 			},
 			button: {
-				text: 'buttoooon'
+				text: 'Button'
+			}
+		}
+	);
+
+	new oMessage(null, {
+			theme: 'error',
+			content: {
+				highlight: 'Something went wrong.',
+				detail: 'The quick brown fox jumped over the lazy dogs'
+			},
+			link: {
+				text: 'Relevant Link'
+			},
+			button: {
+				text: 'Button'
+			}
+		}
+	);
+	
+	new oMessage(null, {
+			theme: 'neutral',
+			content: {
+				highlight: 'Meh.',
+				detail: 'The quick brown fox jumped over the lazy dogs'
+			},
+			link: {
+				text: 'Relevant Link'
+			},
+			button: {
+				text: 'Button'
 			}
 		}
 	);
