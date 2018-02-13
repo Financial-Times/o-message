@@ -12,6 +12,10 @@ sinon.assert.expose(assert, {
 
 describe("Message", () => {
 	let testElement;
+	let message;
+	let messageElement;
+	let stubs = {};
+	let options = {};
 
 	before(() => {
 		document.body.innerHTML += '<div id="test-element"></div>';
@@ -22,12 +26,7 @@ describe("Message", () => {
 		testElement.innerHTML = '';
 	});
 
-	describe('new Message', () => {
-		let message;
-		let messageElement;
-		let stubs = {};
-		let options;
-
+	describe('new Message initialised declaratively', () => {
 		beforeEach(() => {
 			testElement.innerHTML = mainFixture;
 
@@ -36,7 +35,6 @@ describe("Message", () => {
 			stubs.close = sinon.stub(Message.prototype, 'close');
 
 			messageElement = document.querySelector('[data-o-component=o-message]');
-			options = {};
 			message = new Message(messageElement, options);
 
 			Message.prototype.render.restore();
@@ -77,8 +75,44 @@ describe("Message", () => {
 			assert.calledOnce(stubs.open);
 		});
 
+		it('does not close the message', () => {
+			assert.notCalled(stubs.close);
+		});
+
 		it('renders the message', () => {
 			assert.calledOnce(stubs.render);
+		});
+	});
+
+	describe('new Message initialised imperatively', () => {
+		beforeEach(() => {
+			testElement.innerHTML = mainFixture;
+
+			stubs.render = sinon.stub(Message.prototype, 'render');
+			stubs.open = sinon.stub(Message.prototype, 'open');
+			stubs.close = sinon.stub(Message.prototype, 'close');
+
+			messageElement = document.querySelector('[data-o-component=o-message]');
+
+			Message.prototype.render.restore();
+			Message.prototype.open.restore();
+			Message.prototype.close.restore();
+		});
+
+		describe('when `opts.autoOpen` is false', () =>  {
+			beforeEach(() => {
+				options.autoOpen = false;
+				message = new Message(messageElement, options);
+			});
+
+			it('does not open the message', () => {
+				assert.notCalled(stubs.open);
+			});
+
+			it('closes the message', () => {
+				console.log(stubs);
+				assert.calledOnce(stubs.close);
+			})
 		});
 	});
 });
