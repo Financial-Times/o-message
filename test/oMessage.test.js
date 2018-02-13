@@ -1,9 +1,14 @@
-/* eslint-env mocha */
+/* eslint-env mocha, sinon, proclaim */
 
 import Message from '../src/js/message';
-import proclaim from 'proclaim';
+import * as assert from 'proclaim';
 import sinon from 'sinon/pkg/sinon';
-import mainFixture from './fixture/main';
+import mainFixture from './helpers/fixtures';
+
+sinon.assert.expose(assert, {
+	includeFail: false,
+	prefix: ''
+});
 
 describe("Message", () => {
 	let testElement;
@@ -37,6 +42,43 @@ describe("Message", () => {
 			Message.prototype.render.restore();
 			Message.prototype.open.restore();
 			Message.prototype.close.restore();
+		});
+
+		it('stores `messageElement` in a `messageEl` property', () => {
+			assert.strictEqual(message.messageEl, messageElement);
+		});
+
+		it('has default options, and stores them in an `opts` property', () => {
+			assert.isObject(message.opts);
+			assert.notStrictEqual(message.opts, options);
+			assert.deepEqual(message.opts, {
+				autoOpen: true,
+				messageClass: 'o-message',
+				messageType: 'alert',
+				bleed: false,
+				typeClass: 'o-message--alert',
+				content: {
+					highlight: null,
+					detail: '&hellip;'
+				},
+				button: {
+					text: null,
+					url: '#'
+				},
+				link: {
+					text: null,
+					url: '#'
+				},
+				close: true
+			});
+		});
+
+		it('opens the message by default', () => {
+			assert.calledOnce(stubs.open);
+		});
+
+		it('renders the message', () => {
+			assert.calledOnce(stubs.render);
 		});
 	});
 });

@@ -55,7 +55,7 @@
 					content: 'i';
 					color: _getValue($theme, alert-icon-text);
 					background-color: _getValue($theme, alert-icon-background);
-					padding: 2px 10px
+					padding: 2px 10px;
 				}
 			}
 
@@ -96,6 +96,8 @@
 	}
 
 	.#{$class}__container {
+		@include oTypographySans($scale: 0);
+		
 		display: flex;
 		align-items: center;
 		justify-content: flex-start;
@@ -105,7 +107,6 @@
 		-webkit-font-smoothing: antialiased;
 		// sass-lint:enable no-vendor-prefixes
 
-		@include oTypographySans($scale: 0)
 
 		.#{$class}__content {
 			@include oTypographyMargin($top: 0, $bottom: 0);
