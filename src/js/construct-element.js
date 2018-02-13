@@ -8,7 +8,10 @@ export default {
 	alertMessage: (opts) => {
 		const alertMessageEl = document.createElement('div');
 		alertMessageEl.setAttribute('data-o-component', 'o-message');
-		alertMessageEl.classList.add(opts.messageClass, opts.typeClass, `${opts.messageClass}--closed`);
+		alertMessageEl.classList.add(opts.messageClass, `${opts.messageClass}--closed`)
+
+		// bleed message element
+		alertMessageEl.classList.add(`${opts.bleed ? opts.typeClass + '--bleed' : opts.typeClass}`);
 
 		if (!opts.theme) {
 			throw new Error("Alert type messages require a theme. The options are 'success', 'error', or 'neutral'")

@@ -32,7 +32,7 @@ const constructAll = function() {
 			}
 		}
 	);
-	
+
 	new oMessage(null, {
 			theme: 'neutral',
 			content: {
@@ -47,6 +47,23 @@ const constructAll = function() {
 			}
 		}
 	);
+
+	new oMessage(null, {
+			theme: 'neutral',
+			bleed: 'true',
+			content: {
+				highlight: 'Meh.',
+				detail: 'The quick brown fox jumped over the lazy dogs'
+			},
+			link: {
+				text: 'Relevant Link'
+			},
+			button: {
+				text: 'Button'
+			}
+		}
+	);
+
 	document.removeEventListener('o.DOMContentLoaded', constructAll);
 };
 

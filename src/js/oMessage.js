@@ -17,6 +17,7 @@ class oMessage {
 			autoOpen: true,
 			messageClass,
 			messageType,
+			bleed: false,
 			typeClass: `${messageClass}--${messageType}`,
 			content: {
 				highlight: null,

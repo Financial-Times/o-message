@@ -60,7 +60,7 @@
 			}
 
 			.#{$class}__close {
-				@include oIconsGetIcon('cross', _getValue($theme, close-icon-text), 20);
+				@include oIconsGetIcon('cross', _getValue($theme, close-icon-color), 20);
 			}
 		}
 

@@ -13,7 +13,7 @@ $theme-styles: (
 		alert-icon-text: oColorsGetPaletteColor('paper-crimson-90'),
 		alert-icon-background: oColorsGetPaletteColor('black-crimson-12.5'),
 		alert-icon-size: 20,
-		close-icon-color: oColorsGetPaletteColor('black-crimson-12.5'),
+		close-icon-color: oColorsGetPaletteColor('black-crimson-12.5')
 	),
 	neutral: (
 		custom-link-base: 'black',
@@ -38,6 +38,6 @@ $theme-styles: (
 		alert-icon-name: 'tick',
 		alert-icon-text: oColorsGetPaletteColor('black-jade-43'),
 		alert-icon-size: 40,
-		close-icon-color: oColorsGetPaletteColor('black-jade-43'),
+		close-icon-color: oColorsGetPaletteColor('black-jade-43')
 	),
 );
