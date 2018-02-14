@@ -3,7 +3,7 @@
 import Message from '../src/js/message';
 import * as assert from 'proclaim';
 import sinon from 'sinon/pkg/sinon';
-import mainFixture from './helpers/fixtures';
+import fixtures from './helpers/fixtures';
 
 sinon.assert.expose(assert, {
 	includeFail: false,
@@ -28,7 +28,7 @@ describe("Message", () => {
 
 	describe('new Message initialised declaratively', () => {
 		beforeEach(() => {
-			testArea.innerHTML = mainFixture;
+			testArea.innerHTML = fixtures.main;
 			stubs.render = sinon.stub(Message.prototype, 'render');
 			stubs.open = sinon.stub(Message.prototype, 'open');
 			stubs.close = sinon.stub(Message.prototype, 'close');
@@ -82,10 +82,9 @@ describe("Message", () => {
 
 		describe('.render()', () => {
 			beforeEach(() => {
-				mockMessageElement = document.createElement('div');
 				stubs.open = sinon.stub(Message.prototype, 'open');
 				stubs.close = sinon.stub(Message.prototype, 'close');
-				stubs.constructMessageElement = sinon.stub(Message.prototype, 'constructMessageElement').returns(mockMessageElement);
+				stubs.constructMessageElement = sinon.stub(Message.prototype, 'constructMessageElement');
 
 				Message.prototype.open.restore();
 				Message.prototype.close.restore();
@@ -99,7 +98,7 @@ describe("Message", () => {
 	});
 
 	describe('new Message initialised imperatively', () => {
-		describe('when `opts.autoOpen` is false', () =>  {
+		describe('when `opts.autoOpen` is false', () => {
 			beforeEach(() => {
 				stubs.render = sinon.stub(Message.prototype, 'render');
 				stubs.open = sinon.stub(Message.prototype, 'open');
@@ -147,8 +146,9 @@ describe("Message", () => {
 		});
 
 		describe('.render()', () => {
-			beforeEach(() => {
+			let mockMessageElement;
 
+			beforeEach(() => {
 				mockMessageElement = document.createElement('div');
 				stubs.open = sinon.stub(Message.prototype, 'open');
 				stubs.close = sinon.stub(Message.prototype, 'close');
