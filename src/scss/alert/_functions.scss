@@ -1,7 +1,7 @@
-@function _getValue($element, $property) {
+@function _oMessageGetMapValue($element, $property) {
 	@return map-get(map-get($theme-styles, $element), $property);
 };
 
-@function _error($message) {
+@function _oMessageError($message) {
 	@error '*** oMessage SCSS error: #{$message} ***';
 };

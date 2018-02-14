@@ -39,16 +39,16 @@
 
 			.#{$class}__link {
 				@include oMessageLink(
-					$custom-link-base: _getValue($theme, custom-link-base),
-					$custom-link-hover: _getValue($theme, custom-link-hover),
-					$custom-link-background: _getValue($theme, custom-link-background),
-					$link-hover: _getValue($theme, link-hover),
-					$link-focus: _getValue($theme, link-focus)
+					$custom-link-base: _oMessageGetMapValue($theme, custom-link-base),
+					$custom-link-hover: _oMessageGetMapValue($theme, custom-link-hover),
+					$custom-link-background: _oMessageGetMapValue($theme, custom-link-background),
+					$link-hover: _oMessageGetMapValue($theme, link-hover),
+					$link-focus: _oMessageGetMapValue($theme, link-focus)
 				);
 			}
 
 			.#{$class}__button {
-				@include oMessageButton(_getValue($theme, button-background), _getValue($theme, button-text));
+				@include oMessageButton(_oMessageGetMapValue($theme, button-background), _oMessageGetMapValue($theme, button-text));
 			}
 
 			.#{$class}__content:before {
@@ -58,15 +58,15 @@
 
 				@if $theme == error or $theme == success {
 					@include oMessageAlertIcon(
-						_getValue($theme, alert-icon-name),
-						_getValue($theme, alert-icon-text),
-						_getValue($theme, alert-icon-size)
+						_oMessageGetMapValue($theme, alert-icon-name),
+						_oMessageGetMapValue($theme, alert-icon-text),
+						_oMessageGetMapValue($theme, alert-icon-size)
 					);
 				}
 
 				@if $theme == error or $theme == neutral {
 					padding: 1px;
-					background-color: _getValue($theme, alert-icon-background);
+					background-color: _oMessageGetMapValue($theme, alert-icon-background);
 					border-radius: 50%;
 					margin: 10px;
 				}
@@ -75,19 +75,19 @@
 				@if $theme == neutral {
 					@include oTypographySansBold(0);
 					content: 'i';
-					color: _getValue($theme, alert-icon-text);
-					background-color: _getValue($theme, alert-icon-background);
+					color: _oMessageGetMapValue($theme, alert-icon-text);
+					background-color: _oMessageGetMapValue($theme, alert-icon-background);
 					padding: 2px 10px;
 				}
 			}
 
 			.#{$class}__close {
-				@include oMessageCloseButton(_getValue($theme, close-icon-color));
+				@include oMessageCloseButton(_oMessageGetMapValue($theme, close-icon-color));
 			}
 		}
 
 	} @else {
-		@return _error('#{$theme} is not a theme. You can try error, success or neutral, instead.');
+		@return _oMessageError('#{$theme} is not a theme. You can try error, success or neutral, instead.');
 	}
 }
 
