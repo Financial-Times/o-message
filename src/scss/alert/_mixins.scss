@@ -7,11 +7,17 @@
 	);
 }
 
-@mixin oMessageButton ($background, $text) {
+@mixin oMessageAlertButtonBase () {
+	@include oButtons();
+	@include oTypographySans($scale: -1);
+	margin: 0 oTypographySpacingSize(6);
+}
+
+@mixin oMessageAlertButton ($background, $text) {
 	@include oButtonsCustomTheme($background, $text);
 }
 
-@mixin oMessageLink ($custom-link-base, $custom-link-hover, $custom-link-background, $link-hover, $link-focus) {
+@mixin oMessageAlertLink ($custom-link-base, $custom-link-hover, $custom-link-background, $link-hover, $link-focus) {
 	@include oTypographyLinkCustom(
 		$custom-link-base,
 		$custom-link-hover,
@@ -28,66 +34,38 @@
 	}
 }
 
-@mixin oMessageCloseButton ($icon-color) {
+@mixin oMessageAlertCloseButton ($icon-color) {
 	@include oIconsGetIcon('cross', $icon-color, 20);
 }
 
-@mixin oMessageAlertFor ($theme, $class: 'o-message') {
-	@if map-has-key($theme-styles, $theme) {
-		.#{$class}--alert-#{$theme} {
-			@include oColorsFor(o-message-alert-#{$theme});
+@mixin oMessageAlertGrid () {
+	@include oGridContainer();
+	@include oGridRespondTo($from: S) {
+		padding: oGridGutter();
+	}
+}
 
-			.#{$class}__link {
-				@include oMessageLink(
-					$custom-link-base: _oMessageGetMapValue($theme, custom-link-base),
-					$custom-link-hover: _oMessageGetMapValue($theme, custom-link-hover),
-					$custom-link-background: _oMessageGetMapValue($theme, custom-link-background),
-					$link-hover: _oMessageGetMapValue($theme, link-hover),
-					$link-focus: _oMessageGetMapValue($theme, link-focus)
-				);
-			}
+@mixin oMessageAlertContainer () {
+	@include oTypographySans($scale: 0);
+	
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	height: 100%;
+	white-space: nowrap;
+	// sass-lint:disable no-vendor-prefixes
+	-webkit-font-smoothing: antialiased;
+	// sass-lint:enable no-vendor-prefixes
+}
 
-			.#{$class}__button {
-				@include oMessageButton(_oMessageGetMapValue($theme, button-background), _oMessageGetMapValue($theme, button-text));
-			}
+@mixin oMessageAlertContent () {
+	@include oTypographyMargin($top: 0, $bottom: 0);
+	display: flex;
+	align-items: center;
 
-			.#{$class}__content:before {
-				// hack mchackerson decrees that:
-				// all of these conditionals really need to not be the case with the icons,
-				// and we waiting on new icons from james
-
-				@if $theme == error or $theme == success {
-					@include oMessageAlertIcon(
-						_oMessageGetMapValue($theme, alert-icon-name),
-						_oMessageGetMapValue($theme, alert-icon-text),
-						_oMessageGetMapValue($theme, alert-icon-size)
-					);
-				}
-
-				@if $theme == error or $theme == neutral {
-					padding: 1px;
-					background-color: _oMessageGetMapValue($theme, alert-icon-background);
-					border-radius: 50%;
-					margin: 10px;
-				}
-
-
-				@if $theme == neutral {
-					@include oTypographySansBold(0);
-					content: 'i';
-					color: _oMessageGetMapValue($theme, alert-icon-text);
-					background-color: _oMessageGetMapValue($theme, alert-icon-background);
-					padding: 2px 10px;
-				}
-			}
-
-			.#{$class}__close {
-				@include oMessageCloseButton(_oMessageGetMapValue($theme, close-icon-color));
-			}
-		}
-
-	} @else {
-		@return _oMessageError('#{$theme} is not a theme. You can try error, success or neutral, instead.');
+	&--highlight {
+		@include oTypographySansBold($scale: 0);
+		padding-right: oTypographySpacingSize(2);
 	}
 }
 
@@ -109,43 +87,24 @@
 		height: $_o-message-alert-height;
 	}
 
-	.#{$class}--alert,
-	.#{$class}--alert--bleed .#{$class}__container {
-		@include oGridContainer();
-		@include oGridRespondTo($from: S) {
-			padding: oGridGutter();
-		}
+	.#{$class}--alert {
+		@include oMessageAlertGrid;
 	}
 
 	.#{$class}__container {
-		@include oTypographySans($scale: 0);
+		@include oMessageAlertContainer;
 		
-		display: flex;
-		align-items: center;
-		justify-content: flex-start;
-		height: 100%;
-		white-space: nowrap;
-		// sass-lint:disable no-vendor-prefixes
-		-webkit-font-smoothing: antialiased;
-		// sass-lint:enable no-vendor-prefixes
-
-
+		.#{$class}--alert--bleed & {
+			@include oMessageAlertGrid;
+		}
+		
 		.#{$class}__content {
-			@include oTypographyMargin($top: 0, $bottom: 0);
-			display: flex;
-			align-items: center;
-
-			&--highlight {
-				@include oTypographySansBold($scale: 0);
-				padding-right: oTypographySpacingSize(2);
-			}
+			@include oMessageAlertContent;
 		}
 	}
 
 	.#{$class}__button {
-		@include oButtons();
-		@include oTypographySans($scale: -1);
-		margin: 0 oTypographySpacingSize(6);
+		@include oMessageAlertButtonBase;
 	}
 
 	.#{$class}__close {
@@ -154,5 +113,63 @@
 
 	.#{$class}--closed {
 		display: none;
+	}
+}
+
+@mixin oMessageAlertFor ($theme, $class: 'o-message') {
+	@if map-has-key($theme-styles, $theme) {
+		.#{$class}--alert-#{$theme} {
+			@include oColorsFor(o-message-alert-#{$theme});
+
+			.#{$class}__link {
+				@include oMessageAlertLink(
+					$custom-link-base: _oMessageGetMapValue($theme, custom-link-base),
+					$custom-link-hover: _oMessageGetMapValue($theme, custom-link-hover),
+					$custom-link-background: _oMessageGetMapValue($theme, custom-link-background),
+					$link-hover: _oMessageGetMapValue($theme, link-hover),
+					$link-focus: _oMessageGetMapValue($theme, link-focus)
+				);
+			}
+
+			.#{$class}__button {
+				@include oMessageAlertButton(_oMessageGetMapValue($theme, button-background), _oMessageGetMapValue($theme, button-text));
+			}
+
+			.#{$class}__content:before {
+				// hack mchackerson:
+				// all of these conditionals really need to _not_ be the case with the icons,
+				// so we are waiting on new icons from James
+
+				@if $theme == error or $theme == success {
+					@include oMessageAlertIcon(
+						_oMessageGetMapValue($theme, alert-icon-name),
+						_oMessageGetMapValue($theme, alert-icon-text),
+						_oMessageGetMapValue($theme, alert-icon-size)
+					);
+				}
+
+				@if $theme == error or $theme == neutral {
+					padding: 1px;
+					background-color: _oMessageGetMapValue($theme, alert-icon-background);
+					border-radius: 50%;
+					margin: 10px;
+				}
+
+				@if $theme == neutral {
+					@include oTypographySansBold(0);
+					content: 'i';
+					color: _oMessageGetMapValue($theme, alert-icon-text);
+					background-color: _oMessageGetMapValue($theme, alert-icon-background);
+					padding: 2px 10px;
+				}
+			}
+
+			.#{$class}__close {
+				@include oMessageAlertCloseButton(_oMessageGetMapValue($theme, close-icon-color));
+			}
+		}
+
+	} @else {
+		@return _oMessageError('#{$theme} is not a theme. You can try error, success or neutral, instead.');
 	}
 }
