@@ -1,5 +1,5 @@
 
-import oMessage from './src/js/oMessage';
+import oMessage from './src/js/message';
 
 const constructAll = function() {
 	oMessage.init();

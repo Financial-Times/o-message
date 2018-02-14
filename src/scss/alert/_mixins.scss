@@ -1,31 +1,54 @@
-@function _getValue($element, $property) {
-	@return map-get(map-get($theme-styles, $element), $property);
-};
+@mixin oMessageAlertIcon ($icon-name, $icon-color, $icon-size) {
+	content: '';
+	@include oIconsGetIcon(
+		$icon-name,
+		$icon-color,
+		$icon-size
+	);
+}
 
-@mixin oMessageAlertFor($theme, $class: 'o-message') {
+@mixin oMessageButton ($background, $text) {
+	@include oButtonsCustomTheme($background, $text);
+}
+
+@mixin oMessageLink ($custom-link-base, $custom-link-hover, $custom-link-background, $link-hover, $link-focus) {
+	@include oTypographyLinkCustom(
+		$custom-link-base,
+		$custom-link-hover,
+		$custom-link-background
+	);
+	
+	&:hover {
+		border-bottom-color: $link-hover; // is different to custom link hover by design.
+	}
+	
+	&:focus {
+		outline: 3px solid $link-focus;
+		border-bottom-color: transparent;
+	}
+}
+
+@mixin oMessageCloseButton ($icon-color) {
+	@include oIconsGetIcon('cross', $icon-color, 20);
+}
+
+@mixin oMessageAlertFor ($theme, $class: 'o-message') {
 	@if map-has-key($theme-styles, $theme) {
 		.#{$class}--alert-#{$theme} {
 			@include oColorsFor(o-message-alert-#{$theme});
 
 			.#{$class}__link {
-				@include oTypographyLinkCustom(
-					_getValue($theme, custom-link-base),
-					_getValue($theme, custom-link-hover),
-					_getValue($theme, custom-link-background)
+				@include oMessageLink(
+					$custom-link-base: _getValue($theme, custom-link-base),
+					$custom-link-hover: _getValue($theme, custom-link-hover),
+					$custom-link-background: _getValue($theme, custom-link-background),
+					$link-hover: _getValue($theme, link-hover),
+					$link-focus: _getValue($theme, link-focus)
 				);
-
-				&:hover {
-					border-bottom-color: _getValue($theme, link-hover);
-				}
-
-				&:focus {
-					outline: 3px solid _getValue($theme, link-focus);
-					border-bottom-color: transparent;
-				}
 			}
 
 			.#{$class}__button {
-				@include oButtonsCustomTheme(_getValue($theme, button-background), _getValue($theme, button-text));
+				@include oMessageButton(_getValue($theme, button-background), _getValue($theme, button-text));
 			}
 
 			.#{$class}__content:before {
@@ -34,12 +57,11 @@
 				// and we waiting on new icons from james
 
 				@if $theme == error or $theme == success {
-					@include oIconsGetIcon(
-					_getValue($theme, alert-icon-name),
-					_getValue($theme, alert-icon-text),
-					_getValue($theme, alert-icon-size)
+					@include oMessageAlertIcon(
+						_getValue($theme, alert-icon-name),
+						_getValue($theme, alert-icon-text),
+						_getValue($theme, alert-icon-size)
 					);
-					content: '';
 				}
 
 				@if $theme == error or $theme == neutral {
@@ -60,12 +82,12 @@
 			}
 
 			.#{$class}__close {
-				@include oIconsGetIcon('cross', _getValue($theme, close-icon-color), 20);
+				@include oMessageCloseButton(_getValue($theme, close-icon-color));
 			}
 		}
 
 	} @else {
-		@error '#{$theme} is not a theme. You can try error, success or neutral, instead.';
+		@return _error('#{$theme} is not a theme. You can try error, success or neutral, instead.');
 	}
 }
 
