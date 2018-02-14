@@ -10,7 +10,7 @@ sinon.assert.expose(assert, {
 	prefix: ''
 });
 
-describe.only("constructElement", () => {
+describe("constructElement", () => {
 	let options = {
 		messageClass: 'my-message',
 		typeClass: 'my-message--alert',
@@ -29,10 +29,10 @@ describe.only("constructElement", () => {
 	};
 
 	describe('.alertMessage', () => {
-		it.skip('throws an error if no theme is defined', () => {
-			let error = "Alert type messages require a theme. The options are 'success', 'error', or 'neutral'";
+		it('throws an error if no theme is defined', () => {
+			let error = "***o-message error: Alert type messages require a theme. The options are 'success', 'error', or 'neutral'***";
 			options.theme = null;
-			assert.throws(construct.alertMessage(options), error);
+			assert.throws(() => { construct.alertMessage(options); }, error);
 		});
 
 		it('returns an HTML element', () => {

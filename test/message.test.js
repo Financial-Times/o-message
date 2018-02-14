@@ -1,6 +1,7 @@
 /* eslint-env mocha, sinon, proclaim */
 
 import Message from '../src/js/message';
+import construct from '../src/js/construct-element';
 import * as assert from 'proclaim';
 import sinon from 'sinon/pkg/sinon';
 import fixtures from './helpers/fixtures';
@@ -163,6 +164,51 @@ describe("Message", () => {
 
 			it('calls `constructMessageElement` if messageEl is not an HTML element', () => {
 				assert.calledOnce(stubs.constructMessageElement);
+			});
+		});
+
+		describe('.constructMessageElement()', () => {
+			let mockMessageElement;
+
+			beforeEach(() => {
+				options = {
+					theme: 'success',
+					content: {
+						highlight: 'Good.'
+					}
+				};
+				mockMessageElement = document.createElement('div');
+				stubs.open = sinon.stub(Message.prototype, 'open');
+				stubs.close = sinon.stub(Message.prototype, 'close');
+				sinon.stub(construct, 'alertMessage').returns(mockMessageElement);
+
+				Message.prototype.open.restore();
+				Message.prototype.close.restore();
+			});
+
+			afterEach(() => {
+				construct.alertMessage.restore();
+			});
+
+			it('calls `construct.alertMessage`', () => {
+				message = new Message(null, options);
+				assert.calledOnce(construct.alertMessage);
+			});
+
+			it('throws an error if an incorrect message type is supplied', () => {
+				options = {
+					messageType: 'marketing'
+				};
+
+				let error = "***o-message error: 'marketing' is not a supported message type. The options are 'alert', or 'alert--bleed'.***";
+				assert.throws(() => { new Message(null, options); }, error);
+			});
+
+			it('throws an error if opts.content.highlight is not declared for an alert type message', () => {
+				options.content.highlight = null;
+				let error = "***o-message error: An alert message element requires options.content.highlight.***";
+
+				assert.throws(() => { new Message(null, options); }, error);
 			});
 		});
 	});

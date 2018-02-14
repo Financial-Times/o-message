@@ -1,4 +1,5 @@
 import construct from './construct-element';
+import { throwError } from './helpers';
 
 class Message {
 	/**
@@ -46,7 +47,6 @@ class Message {
 	/**
 	 * Render the message.
 	 */
-
 	render () {
 		// If the message element is not an HTML Element, build one
 		if (!(this.messageEl instanceof HTMLElement)) {
@@ -62,19 +62,18 @@ class Message {
 	constructMessageElement () {
 		if (this.opts.messageType === 'alert' || this.opts.messageType === 'alert--bleed') {
 			if (!this.opts.content.highlight) {
-				Message.throwError(`An ${this.opts.messageType} message element requires highlight content.`);
+				throwError(`An ${this.opts.messageType} message element requires options.content.highlight.`);
 			} else {
 				return construct.alertMessage(this.opts);
 			}
 		} else {
-			Message.throwError(`${this.opts.messageType} is not a supported message type.`);
+			throwError(`'${this.opts.messageType}' is not a supported message type. The options are 'alert', or 'alert--bleed'.`);
 		}
 	}
 
 	/**
 	 * Open the message.
 	 */
-
 	open () {
 		this.messageEl.classList.remove(`${this.opts.messageClass}--closed`);
 		this.messageEl.dispatchEvent(new CustomEvent('o.messageOpen'));
@@ -84,7 +83,6 @@ class Message {
 	/**
 	 * Close the message.
 	 */
-
 	close () {
 		this.messageEl.classList.add(`${this.opts.messageClass}--closed`);
 		this.messageEl.dispatchEvent(new CustomEvent('o.messageClosed'));
@@ -93,14 +91,12 @@ class Message {
 	// add event listeners
 	setEventListeners () {
 		let closeButton = document.querySelector(`.${this.opts.messageClass}__close`);
-		closeButton.addEventListener('click', event => {
-			this.close();
-			event.preventDefault();
-		});
-	}
-
-	static throwError(message) {
-		throw new Error('"o-message error": '+ message);
+		if (closeButton) {
+			closeButton.addEventListener('click', event => {
+				this.close();
+				event.preventDefault();
+			});
+		}
 	}
 
 	static init (rootEl, opts) {

@@ -1,3 +1,4 @@
+import { throwError } from './helpers';
 export default {
 
 	/**
@@ -14,7 +15,7 @@ export default {
 		alertMessageEl.classList.add(`${opts.bleed ? opts.typeClass + '--bleed' : opts.typeClass}`);
 
 		if (!opts.theme) {
-			throw new Error("Alert type messages require a theme. The options are 'success', 'error', or 'neutral'");
+			throwError("Alert type messages require a theme. The options are 'success', 'error', or 'neutral'");
 		} else {
 			alertMessageEl.classList.add(`${opts.typeClass}-${opts.theme}`);
 		}
