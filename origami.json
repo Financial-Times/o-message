@@ -28,6 +28,12 @@
 			"description": ""
 		},
 		{
+			"title": "Inline Message",
+			"name": "inline",
+			"template": "demos/src/inline.mustache",
+			"description": ""
+		},
+		{
 			"title": "Imperative ",
 			"name": "imperative",
 			"js": "demos/src/imperative.js",
