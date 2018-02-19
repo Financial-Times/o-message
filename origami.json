@@ -16,25 +16,27 @@
 	},
 	"demosDefaults": {
 		"sass": "demos/src/demo.scss",
+		"js": "demos/src/demo.js",
 		"documentClasses": "",
 		"dependencies": "o-fonts"
 	},
 	"demos": [
 		{
-			"name": "demo",
-			"js": "demos/src/demo.js",
-			"template": "demos/src/demo.mustache",
+			"title": "Alert Message",
+			"name": "alert",
+			"template": "demos/src/alert.mustache",
 			"description": ""
 		},
 		{
-			"name": "empty",
+			"title": "Imperative ",
+			"name": "imperative",
 			"js": "demos/src/imperative.js",
 			"template": "demos/src/imperative.mustache",
 			"description": ""
 		},
 		{
+			"title": "Pa11y",
 			"name": "pa11y",
-			"js": "demos/src/demo.js",
 			"template": "demos/src/pa11y.mustache",
 			"hidden": true,
 			"description": "Accessibility test will be run against this demo"
