@@ -66,7 +66,7 @@ export default {
 	inlineMessage: (opts) => {
 		const inlineMessage = document.createElement('div');
 		inlineMessage.setAttribute('data-o-component', 'o-message');
-		inlineMessage.classList.add(opts.messageClass, `${opts.messageClass}--inline`);
+		inlineMessage.classList.add(opts.messageClass, `${opts.messageClass}--inline-alert`);
 
 		if (!opts.theme) {
 			throwError("Alert type messages require a theme. The options are 'success', 'error', or 'neutral'");

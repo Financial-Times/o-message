@@ -3,7 +3,7 @@ $o-message-is-silent: true !default;
 // Alert message
 $_o-message-alert-height: 48px;
 
-// Inline message
-$_o-message-inline-width: 380px;
-$_o-message-inline-right-space: 40px;
-$_o-message-inline-content-width: 300px;
+// Inline Alert message
+$_o-message-inline-alert-width: 380px;
+$_o-message-inline-alert-right-space: 40px;
+$_o-message-inline-alert-content-width: 300px;

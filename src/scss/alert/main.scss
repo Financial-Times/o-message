@@ -13,7 +13,7 @@
 }
 
 @mixin oMessageInline {
-	@include oMessageInlineBase();
+	@include oMessageInlineAlertBase();
 
 	@each $theme in $themes {
 		@include oMessageFor($theme)
