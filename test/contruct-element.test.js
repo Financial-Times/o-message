@@ -30,9 +30,9 @@ describe("constructElement", () => {
 
 	describe('.alertMessage', () => {
 		it('throws an error if no theme is defined', () => {
-			let error = "***o-message error: Alert type messages require a theme. The options are 'success', 'error', or 'neutral'***";
+			let error = "*** o-message error: Alert type messages require a theme. The options are 'success', 'error', or 'neutral' ***";
 			options.theme = null;
-			assert.throws(() => { construct.alertMessage(options); }, error);
+			assert.throws(() => construct.alertMessage(options), error);
 		});
 
 		it('returns an HTML element', () => {

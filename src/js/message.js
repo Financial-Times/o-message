@@ -63,18 +63,18 @@ class Message {
 	constructMessageElement () {
 		if (this.opts.messageType === 'alert' || this.opts.messageType === 'alert--bleed') {
 			if (!this.opts.content.highlight) {
-				throwError(`An ${this.opts.messageType} message element requires options.content.highlight.`);
+				throwError(`An ${this.opts.messageType} message element requires options.content.highlight`);
 			} else {
 				return construct.alertMessage(this.opts);
 			}
 		} else if (this.opts.messageType === 'inline') {
 			if (!this.opts.content.highlight) {
-				throwError(`An ${this.opts.messageType} message element requires options.content.highlight.`);
+				throwError(`An ${this.opts.messageType} message element requires options.content.highlight`);
 			} else {
 				return construct.inlineAlertMessage(this.opts);
 			}
 		} else {
-			throwError(`'${this.opts.messageType}' is not a supported message type. The options are 'alert', or 'alert--bleed'.`);
+			throwError(`'${this.opts.messageType}' is not a supported message type. The options are 'alert', or 'alert--bleed'`);
 		}
 	}
 
