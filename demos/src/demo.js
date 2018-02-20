@@ -8,6 +8,7 @@ const initDemos = () => {
 
 		if(document.getElementById('alert-message-success-demo')) {
 			document.getElementById('alert-message-success-demo').addEventListener('click', () => {
+				deleteElementsByClassName('o-message');
 				new Message(null, {
 					theme: 'success',
 					content: {
@@ -26,6 +27,7 @@ const initDemos = () => {
 
 		if(document.getElementById('alert-message-neutral-demo')) {
 			document.getElementById('alert-message-neutral-demo').addEventListener('click', () => {
+				deleteElementsByClassName('o-message');
 				new Message(null, {
 					theme: 'neutral',
 					content: {
@@ -44,6 +46,7 @@ const initDemos = () => {
 
 		if(document.getElementById('alert-message-neutral-bleed-demo')) {
 			document.getElementById('alert-message-neutral-bleed-demo').addEventListener('click', () => {
+				deleteElementsByClassName('o-message');
 				new Message(null, {
 					theme: 'neutral',
 					bleed: 'true',
@@ -63,6 +66,7 @@ const initDemos = () => {
 
 		if(document.getElementById('alert-message-failure-demo')) {
 			document.getElementById('alert-message-failure-demo').addEventListener('click', () => {
+				deleteElementsByClassName('o-message');
 				new Message(null, {
 					theme: 'error',
 					content: {
@@ -81,10 +85,9 @@ const initDemos = () => {
 
 		const inlineMessageSuccess = document.getElementById('inline-message-success-demo');
 
-		// document.getElementById('demo-div-to-put-alert-in')
-
 		if(inlineMessageSuccess) {
 			inlineMessageSuccess.addEventListener('click', () => {
+				deleteElementsByClassName('o-message');
 				new Message(null, {
 					theme: 'success',
 					messageType: 'inline',
@@ -106,3 +109,10 @@ const initDemos = () => {
 }
 
 initDemos();
+
+function deleteElementsByClassName (className) {
+	const elementsWithThisClass = document.getElementsByClassName(className);
+	while (elementsWithThisClass[0]) {
+		elementsWithThisClass[0].remove();
+	}
+}
