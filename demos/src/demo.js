@@ -3,7 +3,7 @@ import './../../main.js';
 import Message from './../../src/js/message';
 
 const initDemos = () => {
-	document.addEventListener('DOMContentLoaded', function() {
+	document.addEventListener('DOMContentLoaded', () => {
 		document.dispatchEvent(new CustomEvent('o.DOMContentLoaded'));
 
 		if(document.getElementById('alert-message-success-demo')) {
@@ -71,6 +71,28 @@ const initDemos = () => {
 					},
 					link: {
 						text: 'Relevant Link'
+					},
+					button: {
+						text: 'Button'
+					}
+				});
+			});
+		}
+
+		const inlineMessageSuccess = document.getElementById('inline-message-success-demo');
+
+		if(inlineMessageSuccess) {
+			inlineMessageSuccess.addEventListener('click', () => {
+				new Message(null, {
+					theme: 'success',
+					messageType: 'inline',
+					content: {
+						highlight: 'Well done!',
+						detail: 'You have successfully completed this task and this is great news.',
+						action: 'Now you should do this, and this, and this, and this.'
+					},
+					link: {
+						text: 'Text link'
 					},
 					button: {
 						text: 'Button'
