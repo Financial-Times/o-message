@@ -81,6 +81,8 @@ const initDemos = () => {
 
 		const inlineMessageSuccess = document.getElementById('inline-message-success-demo');
 
+		// document.getElementById('demo-div-to-put-alert-in')
+
 		if(inlineMessageSuccess) {
 			inlineMessageSuccess.addEventListener('click', () => {
 				new Message(null, {
