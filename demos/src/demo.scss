@@ -1,7 +1,6 @@
 $o-message-is-silent: false;
 @import '../../main';
 
-
 body {
 	background: oColorsGetPaletteColor(paper);
 }
@@ -11,5 +10,11 @@ body {
 }
 
 .list-of-demo-buttons {
-	display: grid;
+	display: inline;
+}
+
+.demo-button {
+	@include oButtons();
+	width: 300px;
+	margin: 10px;
 }
