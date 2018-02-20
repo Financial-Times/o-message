@@ -23,7 +23,7 @@ const initDemos = () => {
 					}
 				});
 			});
-		}
+		};
 
 		if(document.getElementById('alert-message-neutral-demo')) {
 			document.getElementById('alert-message-neutral-demo').addEventListener('click', () => {
@@ -42,7 +42,7 @@ const initDemos = () => {
 					}
 				});
 			});
-		}
+		};
 
 		if(document.getElementById('alert-message-neutral-bleed-demo')) {
 			document.getElementById('alert-message-neutral-bleed-demo').addEventListener('click', () => {
@@ -62,7 +62,7 @@ const initDemos = () => {
 					}
 				});
 			});
-		}
+		};
 
 		if(document.getElementById('alert-message-failure-demo')) {
 			document.getElementById('alert-message-failure-demo').addEventListener('click', () => {
@@ -81,7 +81,7 @@ const initDemos = () => {
 					}
 				});
 			});
-		}
+		};
 
 		const inlineMessageSuccess = document.getElementById('inline-message-success-demo');
 
@@ -95,6 +95,52 @@ const initDemos = () => {
 						highlight: 'Well done!',
 						detail: 'You have successfully completed this task and this is great news.',
 						action: 'Now you should do this, and this, and this, and this.'
+					},
+					link: {
+						text: 'Text link'
+					},
+					button: {
+						text: 'Button'
+					}
+				});
+			});
+		}
+
+		const inlineMessageNeutral = document.getElementById('inline-message-neutral-demo');
+		
+		if(inlineMessageNeutral) {
+			inlineMessageNeutral.addEventListener('click', () => {
+				deleteElementsByClassName('o-message');
+				new Message(null, {
+					theme: 'neutral',
+					messageType: 'inline',
+					content: {
+						highlight: 'Info',
+						detail: 'Everything is well',
+						action: 'Follow this steps and everything is going to be alright'
+					},
+					link: {
+						text: 'Text link'
+					},
+					button: {
+						text: 'Button'
+					}
+				});
+			});
+		}
+		
+		const inlineMessageFailure = document.getElementById('inline-message-failure-demo');
+				
+		if(inlineMessageFailure) {
+			inlineMessageFailure.addEventListener('click', () => {
+				deleteElementsByClassName('o-message');
+				new Message(null, {
+					theme: 'error',
+					messageType: 'inline',
+					content: {
+						highlight: 'Oops...',
+						detail: 'There was an issue submitting this action',
+						action: 'Please try again'
 					},
 					link: {
 						text: 'Text link'
