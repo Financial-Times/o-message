@@ -12,7 +12,7 @@ export default {
 			</div>
 		</div>
 	`,
-	constructed: `
+	constructedForAlert: `
 			<div class="my-message__container">
 				
 				<div class="my-message__content--header">
@@ -22,6 +22,18 @@ export default {
 				<a href="#" class="my-message__button my-message__action--primary">a button</a>
 				<a href="#" class="my-message__link my-message__action--secondary">a link</a>
 				<a href="#void" class="my-message__close" role="button" aria-label="Close" title="Close"></a>
+			</div>
+		`,
+	constructedForInlineAlert: `
+			<div class="my-message__container">
+
+				<div class="my-message__content--header">
+					<p class="my-message__content--detail"><span class="my-message__content--highlight">Important</span></p>
+				</div>
+
+				<p class="my-message__content--action">action</p>
+				<a href="#" class="my-message__button my-message__action--primary">a button</a>
+				<a href="#" class="my-message__link my-message__action--secondary">a link</a>
 			</div>
 		`
 };
