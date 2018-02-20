@@ -61,5 +61,58 @@ export default {
 		`;
 
 		return alertMessageEl;
+	},
+
+	inlineMessage: (opts) => {
+		const inlineMessage = document.createElement('div');
+		inlineMessage.setAttribute('data-o-component', 'o-message');
+		inlineMessage.classList.add(opts.messageClass, `${opts.messageClass}--inline`);
+
+		if (!opts.theme) {
+			throwError("Alert type messages require a theme. The options are 'success', 'error', or 'neutral'");
+		} else {
+			inlineMessage.classList.add(`${opts.typeClass}-${opts.theme}`);
+		}
+
+		let contentHTML;
+		if (opts.content.detail) {
+			contentHTML = `
+			<div class="${opts.messageClass}__content">
+				<p class="${opts.messageClass}__content--detail"><span class="${opts.messageClass}__content--highlight">${opts.content.highlight}</span> ${opts.content.detail}</p>
+			</div>
+			`;
+		} else {
+			contentHTML = `
+			<div class="${opts.messageClass}__content">
+				<p class="${opts.messageClass}__content--detail"><span class="${opts.messageClass}__content--highlight">${opts.content.highlight}</span></p>
+			</div>
+			`;
+		}
+
+		let contentActionHTML;
+		if (opts.content.action) {
+			contentActionHTML = `<p class="${opts.messageClass}__content--action">${opts.content.action}</p>`;
+		}
+
+		let primaryActionHTML;
+		if (opts.button.text) {
+			primaryActionHTML = `<a href="${opts.button.url}" class="${opts.messageClass}__button ${opts.messageClass}__action--primary">${opts.button.text}</a>`;
+		}
+
+		let secondaryActionHTML;
+		if (opts.link.text) {
+			secondaryActionHTML = `<a href="${opts.link.url}" class="${opts.messageClass}__link ${opts.messageClass}__action--secondary">${opts.link.text}</a>`;
+		}
+
+		inlineMessage.innerHTML = `
+			<div class="${opts.messageClass}__container">
+				${contentHTML}
+				${contentActionHTML}
+				${primaryActionHTML}
+				${secondaryActionHTML}
+			</div>
+		`;
+
+		return inlineMessage;
 	}
 };
