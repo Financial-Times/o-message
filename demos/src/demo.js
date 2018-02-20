@@ -21,6 +21,55 @@ const initDemos = () => {
 				}
 			});
 		});
+
+		document.getElementById('alert-message-neutral-demo').addEventListener('click', () => {
+			new Message(null, {
+				theme: 'neutral',
+				content: {
+					highlight: 'Meh.',
+					detail: 'The quick brown fox jumped over the lazy dogs'
+				},
+				link: {
+					text: 'Relevant Link'
+				},
+				button: {
+					text: 'Button'
+				}
+			});
+		});
+
+		document.getElementById('alert-message-neutral-bleed-demo').addEventListener('click', () => {
+			new Message(null, {
+				theme: 'neutral',
+				bleed: 'true',
+				content: {
+					highlight: 'Meh.',
+					detail: 'The quick brown fox jumped over the lazy dogs'
+				},
+				link: {
+					text: 'Relevant Link'
+				},
+				button: {
+					text: 'Button'
+				}
+			});
+		});
+
+		document.getElementById('alert-message-failure-demo').addEventListener('click', () => {
+			new Message(null, {
+				theme: 'error',
+				content: {
+					highlight: 'Something went wrong.',
+					detail: 'The quick brown fox jumped over the lazy dogs'
+				},
+				link: {
+					text: 'Relevant Link'
+				},
+				button: {
+					text: 'Button'
+				}
+			});
+		});
 	});
 }
 
