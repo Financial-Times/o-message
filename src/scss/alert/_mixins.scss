@@ -168,7 +168,7 @@
 
 @mixin oMessageFor ($theme, $class: 'o-message') {
 	@if map-has-key($theme-styles, $theme) {
-		.#{$class}--alert-#{$theme} {
+		.#{$class}--alert-#{$theme}, .#{$class}--inline-#{$theme} {
 			@include oColorsFor(o-message-alert-#{$theme});
 
 			.#{$class}__link {
