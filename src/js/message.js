@@ -22,7 +22,8 @@ class Message {
 			typeClass: `${messageClass}--${messageType}`,
 			content: {
 				highlight: null,
-				detail: '&hellip;'
+				detail: '&hellip;',
+				action: null
 			},
 			button: {
 				text: null,
@@ -65,6 +66,12 @@ class Message {
 				throwError(`An ${this.opts.messageType} message element requires options.content.highlight.`);
 			} else {
 				return construct.alertMessage(this.opts);
+			}
+		} else if (this.opts.messageType === 'inline') {
+			if (!this.opts.content.highlight) {
+				throwError(`An ${this.opts.messageType} message element requires options.content.highlight.`);
+			} else {
+				return construct.inlineMessage(this.opts);
 			}
 		} else {
 			throwError(`'${this.opts.messageType}' is not a supported message type. The options are 'alert', or 'alert--bleed'.`);
