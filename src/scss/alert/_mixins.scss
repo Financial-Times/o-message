@@ -67,7 +67,7 @@
 	// sass-lint:enable no-vendor-prefixes
 }
 
-@mixin oMessageContent () {
+@mixin oMessageContentHeader () {
 	@include oTypographyMargin($top: 0, $bottom: 0);
 	display: flex;
 	align-items: center;
@@ -107,8 +107,8 @@
 			@include oMessageAlertGrid;
 		}
 		
-		.#{$class}__content {
-			@include oMessageContent;
+		.#{$class}__content--header {
+			@include oMessageContentHeader;
 		}
 	}
 
@@ -160,8 +160,8 @@
 			@include oMessageAlertGrid;
 		}
 		
-		.#{$class}__content {
-			@include oMessageContent;
+		.#{$class}__content--header {
+			@include oMessageContentHeader;
 		}
 	}
 }
@@ -185,7 +185,7 @@
 				@include oMessageAlertButton(_oMessageGetMapValue($theme, button-background), _oMessageGetMapValue($theme, button-text));
 			}
 
-			.#{$class}__content:before {
+			.#{$class}__content--header:before {
 				// hack mchackerson:
 				// all of these conditionals really need to _not_ be the case with the icons,
 				// so we are waiting on new icons from James
