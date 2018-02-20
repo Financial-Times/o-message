@@ -1,11 +1,11 @@
 
-import oMessage from './src/js/message';
+import Message from './src/js/message';
 
-const constructAll = function() {
-	oMessage.init();
+const constructAll = () => {
+	Message.init();
 	document.removeEventListener('o.DOMContentLoaded', constructAll);
 };
 
 document.addEventListener('o.DOMContentLoaded', constructAll);
 
-export default oMessage;
+export default Message;
