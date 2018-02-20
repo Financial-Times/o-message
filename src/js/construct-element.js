@@ -23,14 +23,14 @@ export default {
 		let contentHTML;
 		if (opts.content.detail) {
 			contentHTML = `
-				<div class="${opts.messageClass}__content">
+				<div class="${opts.messageClass}__content--header">
 					<span class="${opts.messageClass}__content--highlight">${opts.content.highlight}</span>
 					<p class="${opts.messageClass}__content--detail">${opts.content.detail}</p>
 				</div>
 			`;
 		} else {
 			contentHTML = `
-				<div class="${opts.messageClass}__content">
+				<div class="${opts.messageClass}__content--header">
 					<span class="${opts.messageClass}__content--highlight">${opts.content.highlight}</span>
 				</div>
 			`;
@@ -77,13 +77,13 @@ export default {
 		let contentHTML;
 		if (opts.content.detail) {
 			contentHTML = `
-			<div class="${opts.messageClass}__content">
+			<div class="${opts.messageClass}__content--header">
 				<p class="${opts.messageClass}__content--detail"><span class="${opts.messageClass}__content--highlight">${opts.content.highlight}</span> ${opts.content.detail}</p>
 			</div>
 			`;
 		} else {
 			contentHTML = `
-			<div class="${opts.messageClass}__content">
+			<div class="${opts.messageClass}__content--header">
 				<p class="${opts.messageClass}__content--detail"><span class="${opts.messageClass}__content--highlight">${opts.content.highlight}</span></p>
 			</div>
 			`;
