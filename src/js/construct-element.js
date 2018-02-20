@@ -63,15 +63,15 @@ export default {
 		return alertMessageEl;
 	},
 
-	inlineMessage: (opts) => {
-		const inlineMessage = document.createElement('div');
-		inlineMessage.setAttribute('data-o-component', 'o-message');
-		inlineMessage.classList.add(opts.messageClass, `${opts.messageClass}--inline-alert`);
+	inlineAlertMessage: (opts) => {
+		const inlineAlertMessage = document.createElement('div');
+		inlineAlertMessage.setAttribute('data-o-component', 'o-message');
+		inlineAlertMessage.classList.add(opts.messageClass, `${opts.messageClass}--inline-alert`);
 
 		if (!opts.theme) {
 			throwError("Alert type messages require a theme. The options are 'success', 'error', or 'neutral'");
 		} else {
-			inlineMessage.classList.add(`${opts.typeClass}-${opts.theme}`);
+			inlineAlertMessage.classList.add(`${opts.typeClass}-${opts.theme}`);
 		}
 
 		let contentHTML;
@@ -104,7 +104,7 @@ export default {
 			secondaryActionHTML = `<a href="${opts.link.url}" class="${opts.messageClass}__link ${opts.messageClass}__action--secondary">${opts.link.text}</a>`;
 		}
 
-		inlineMessage.innerHTML = `
+		inlineAlertMessage.innerHTML = `
 			<div class="${opts.messageClass}__container">
 				${contentHTML}
 				${contentActionHTML}
@@ -113,6 +113,6 @@ export default {
 			</div>
 		`;
 
-		return inlineMessage;
+		return inlineAlertMessage;
 	}
 };
