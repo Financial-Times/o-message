@@ -2,7 +2,7 @@ export default {
 	main: `
 		<div class="o-message o-message--alert o-message--alert-error" data-o-component="o-message">
 			<div class="o-message__container">
-			<div class="o-message__content">
+			<div class="o-message__content--header">
 				<span class="o-message__content--highlight">Highlighted content</span>
 				<p class="o-message__content--detail">Content detail</p>
 			</div>
@@ -15,7 +15,7 @@ export default {
 	constructed: `
 			<div class="my-message__container">
 				
-				<div class="my-message__content">
+				<div class="my-message__content--header">
 					<span class="my-message__content--highlight">Important</span>
 				</div>
 			
