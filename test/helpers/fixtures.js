@@ -2,7 +2,7 @@ export default {
 	main: `
 		<div class="o-message o-message--alert o-message--alert-error" data-o-component="o-message">
 			<div class="o-message__container">
-			<div class="o-message__content">
+			<div class="o-message__content--header">
 				<span class="o-message__content--highlight">Highlighted content</span>
 				<p class="o-message__content--detail">Content detail</p>
 			</div>
@@ -12,16 +12,28 @@ export default {
 			</div>
 		</div>
 	`,
-	constructed: `
+	constructedForAlert: `
 			<div class="my-message__container">
 				
-				<div class="my-message__content">
+				<div class="my-message__content--header">
 					<span class="my-message__content--highlight">Important</span>
 				</div>
 			
 				<a href="#" class="my-message__button my-message__action--primary">a button</a>
 				<a href="#" class="my-message__link my-message__action--secondary">a link</a>
 				<a href="#void" class="my-message__close" role="button" aria-label="Close" title="Close"></a>
+			</div>
+		`,
+	constructedForInlineAlert: `
+			<div class="my-message__container">
+
+				<div class="my-message__content--header">
+					<p class="my-message__content--detail"><span class="my-message__content--highlight">Important</span></p>
+				</div>
+
+				<p class="my-message__content--action">action</p>
+				<a href="#" class="my-message__button my-message__action--primary">a button</a>
+				<a href="#" class="my-message__link my-message__action--secondary">a link</a>
 			</div>
 		`
 };

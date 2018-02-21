@@ -59,7 +59,8 @@ describe("Message", () => {
 				typeClass: 'o-message--alert',
 				content: {
 					highlight: null,
-					detail: '&hellip;'
+					detail: '&hellip;',
+					action: null
 				},
 				button: {
 					text: null,
@@ -200,13 +201,13 @@ describe("Message", () => {
 					messageType: 'marketing'
 				};
 
-				let error = "***o-message error: 'marketing' is not a supported message type. The options are 'alert', or 'alert--bleed'.***";
+				let error = "*** o-message error: 'marketing' is not a supported message type. The options are 'alert', or 'alert--bleed' ***";
 				assert.throws(() => { new Message(null, options); }, error);
 			});
 
 			it('throws an error if opts.content.highlight is not declared for an alert type message', () => {
 				options.content.highlight = null;
-				let error = "***o-message error: An alert message element requires options.content.highlight.***";
+				let error = "*** o-message error: An alert message element requires options.content.highlight ***";
 
 				assert.throws(() => { new Message(null, options); }, error);
 			});

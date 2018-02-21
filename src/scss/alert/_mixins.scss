@@ -1,4 +1,4 @@
-@mixin oMessageIcon ($icon-name, $icon-color, $icon-size) {
+@mixin oMessageAlertIcon ($icon-name, $icon-color, $icon-size) {
 	content: '';
 	@include oIconsGetIcon(
 		$icon-name,
@@ -17,16 +17,16 @@
 	margin: oTypographySpacingSize(6);
 }
 
-@mixin oMessageButtonBaseInline () {
+@mixin oMessageButtonBaseInlineAlert () {
 	@include oMessageButtonBase;
 	margin: 0 oTypographySpacingSize(6) oTypographySpacingSize(2) oTypographySpacingSize(10);
 }
 
-@mixin oMessageButton ($background, $text) {
+@mixin oMessageAlertButton ($background, $text) {
 	@include oButtonsCustomTheme($background, $text);
 }
 
-@mixin oMessageLink ($custom-link-base, $custom-link-hover, $custom-link-background, $link-hover, $link-focus) {
+@mixin oMessageAlertLink ($custom-link-base, $custom-link-hover, $custom-link-background, $link-hover, $link-focus) {
 	@include oTypographyLinkCustom(
 		$custom-link-base,
 		$custom-link-hover,
@@ -67,7 +67,7 @@
 	// sass-lint:enable no-vendor-prefixes
 }
 
-@mixin oMessageContent () {
+@mixin oMessageContentHeader () {
 	@include oTypographyMargin($top: 0, $bottom: 0);
 	display: flex;
 	align-items: center;
@@ -107,8 +107,8 @@
 			@include oMessageAlertGrid;
 		}
 		
-		.#{$class}__content {
-			@include oMessageContent;
+		.#{$class}__content--header {
+			@include oMessageContentHeader;
 		}
 	}
 
@@ -125,9 +125,9 @@
 	}
 }
 
-@mixin oMessageInlineBase($class: 'o-message') {
-	.#{$class}--inline {
-		max-width: $_o-message-inline-width;
+@mixin oMessageInlineAlertBase($class: 'o-message') {
+	.#{$class}--inline-alert {
+		max-width: $_o-message-inline-alert-width;
 		margin: auto;
 		height: auto;
 		padding-bottom: oTypographySpacingSize(2);
@@ -137,18 +137,18 @@
 		}
 
 		.#{$class}__content--detail {
-			max-width: $_o-message-inline-content-width;
+			max-width: $_o-message-inline-alert-content-width;
 			white-space: normal;
 		}
 
 		.#{$class}__button {
-			@include oMessageButtonBaseInline;
+			@include oMessageButtonBaseInlineAlert;
 		}
 	}
 
 	.#{$class}__content--action {
 		@include oTypographyMargin($top: 0, $bottom: 4);
-		max-width: $_o-message-inline-content-width;
+		max-width: $_o-message-inline-alert-content-width;
 		white-space: normal;
 		margin-left: oTypographySpacingSize(10);
 	}
@@ -160,19 +160,19 @@
 			@include oMessageAlertGrid;
 		}
 		
-		.#{$class}__content {
-			@include oMessageContent;
+		.#{$class}__content--header {
+			@include oMessageContentHeader;
 		}
 	}
 }
 
 @mixin oMessageFor ($theme, $class: 'o-message') {
 	@if map-has-key($theme-styles, $theme) {
-		.#{$class}--alert-#{$theme} {
+		.#{$class}--alert-#{$theme}, .#{$class}--inline-#{$theme} {
 			@include oColorsFor(o-message-alert-#{$theme});
 
 			.#{$class}__link {
-				@include oMessageLink(
+				@include oMessageAlertLink(
 					$custom-link-base: _oMessageGetMapValue($theme, custom-link-base),
 					$custom-link-hover: _oMessageGetMapValue($theme, custom-link-hover),
 					$custom-link-background: _oMessageGetMapValue($theme, custom-link-background),
@@ -182,16 +182,16 @@
 			}
 
 			.#{$class}__button {
-				@include oMessageButton(_oMessageGetMapValue($theme, button-background), _oMessageGetMapValue($theme, button-text));
+				@include oMessageAlertButton(_oMessageGetMapValue($theme, button-background), _oMessageGetMapValue($theme, button-text));
 			}
 
-			.#{$class}__content:before {
+			.#{$class}__content--header:before {
 				// hack mchackerson:
 				// all of these conditionals really need to _not_ be the case with the icons,
 				// so we are waiting on new icons from James
 
 				@if $theme == error or $theme == success {
-					@include oMessageIcon(
+					@include oMessageAlertIcon(
 						_oMessageGetMapValue($theme, alert-icon-name),
 						_oMessageGetMapValue($theme, alert-icon-text),
 						_oMessageGetMapValue($theme, alert-icon-size)
