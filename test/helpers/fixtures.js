@@ -2,7 +2,7 @@ export default {
 	main: `
 		<div class="o-message o-message--alert o-message--alert-error" data-o-component="o-message">
 			<div class="o-message__container">
-			<div class="o-message__content--header">
+			<div class="o-message__content">
 				<span class="o-message__content--highlight">Highlighted content</span>
 				<p class="o-message__content--detail">Content detail</p>
 			</div>
@@ -15,7 +15,7 @@ export default {
 	constructedForAlert: `
 			<div class="my-message__container">
 				
-				<div class="my-message__content--header">
+				<div class="my-message__content">
 					<span class="my-message__content--highlight">Important</span>
 				</div>
 			
@@ -27,7 +27,7 @@ export default {
 	constructedForInlineAlert: `
 			<div class="my-message__container">
 
-				<div class="my-message__content--header">
+				<div class="my-message__content">
 					<p class="my-message__content--detail"><span class="my-message__content--highlight">Important</span></p>
 				</div>
 

@@ -46,23 +46,4 @@ describe("constructElement", () => {
 			assert.strictEqual(construct.alertMessage(options).innerHTML, fixtures.constructedForAlert);
 		});
 	});
-
-	describe('.inlineAlertMessage', () => {
-		it('throws an error if no theme is defined', () => {
-			let error = "*** o-message error: Alert type messages require a theme. The options are 'success', 'error', or 'neutral' ***";
-			options.theme = null;
-			assert.throws(() => construct.inlineAlertMessage(options), error);
-		});
-
-		it('returns an HTML element', () => {
-			options.theme = 'neutral';
-			assert.instanceOf(construct.inlineAlertMessage(options), HTMLElement);
-		});
-
-		it('builds a message component based on the provided messageClass and theme', () => {
-			options.theme = 'neutral';
-			console.log(construct.inlineAlertMessage(options).innerHTML)
-			assert.strictEqual(construct.inlineAlertMessage(options).innerHTML, fixtures.constructedForInlineAlert);
-		});
-	});
 });

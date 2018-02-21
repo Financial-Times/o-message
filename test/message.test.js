@@ -56,11 +56,12 @@ describe("Message", () => {
 				messageClass: 'o-message',
 				messageType: 'alert',
 				bleed: false,
+				inline: false,
 				typeClass: 'o-message--alert',
 				content: {
 					highlight: null,
 					detail: '&hellip;',
-					action: null
+					additionalInfo: null
 				},
 				button: {
 					text: null,
@@ -201,7 +202,7 @@ describe("Message", () => {
 					messageType: 'marketing'
 				};
 
-				let error = "*** o-message error: 'marketing' is not a supported message type. The options are 'alert', or 'alert--bleed' ***";
+				let error = "*** o-message error: 'marketing' is not a supported message type. The only available option now is 'alert' ***";
 				assert.throws(() => { new Message(null, options); }, error);
 			});
 
