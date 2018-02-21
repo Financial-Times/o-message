@@ -6,14 +6,7 @@
 
 @mixin oMessageAlerts {
 	@include oMessageAlertBase();
-
-	@each $theme in $themes {
-		@include oMessageFor($theme)
-	}
-}
-
-@mixin oMessageInline {
-	@include oMessageInlineAlertBase();
+	@include oMessageAlertInlineBase();
 
 	@each $theme in $themes {
 		@include oMessageFor($theme)
