@@ -19,11 +19,12 @@ class Message {
 			messageClass,
 			messageType,
 			bleed: false,
+			inline: false,
 			typeClass: `${messageClass}--${messageType}`,
 			content: {
 				highlight: null,
 				detail: '&hellip;',
-				action: null
+				additionalInfo: null
 			},
 			button: {
 				text: null,
@@ -57,24 +58,22 @@ class Message {
 	}
 
 	/**
-	* Constructs a type of message based on provided options (alert or alert--bleed, for now)
+	* Constructs a type of message based on provided options (alert for now)
 	* @returns {HTMLElement} Returns the type specific message element
 	*/
 	constructMessageElement () {
-		if (this.opts.messageType === 'alert' || this.opts.messageType === 'alert--bleed') {
-			if (!this.opts.content.highlight) {
-				throwError(`An ${this.opts.messageType} message element requires options.content.highlight`);
-			} else {
-				return construct.alertMessage(this.opts);
-			}
-		} else if (this.opts.messageType === 'inline') {
-			if (!this.opts.content.highlight) {
-				throwError(`An ${this.opts.messageType} message element requires options.content.highlight`);
-			} else {
-				return construct.inlineAlertMessage(this.opts);
-			}
+		if (this.opts.bleed === true && this.opts.inline === true) {
+			throwError(`The message can't bleed and be inline in the same time`);
 		} else {
-			throwError(`'${this.opts.messageType}' is not a supported message type. The options are 'alert', or 'alert--bleed'`);
+			if (this.opts.messageType === 'alert') {
+				if (!this.opts.content.highlight) {
+					throwError(`An ${this.opts.messageType} message element requires options.content.highlight`);
+				} else {
+					return construct.alertMessage(this.opts);
+				}
+			} else {
+				throwError(`'${this.opts.messageType}' is not a supported message type. The only available option now is 'alert'`);
+			}	
 		}
 	}
 
