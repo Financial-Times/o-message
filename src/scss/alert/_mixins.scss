@@ -1,3 +1,25 @@
+@mixin oMessageContainer () {
+	@include oTypographySans($scale: 0);
+	
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	height: 100%;
+	white-space: nowrap;
+	// sass-lint:disable no-vendor-prefixes
+	-webkit-font-smoothing: antialiased;
+	// sass-lint:enable no-vendor-prefixes
+}
+
+@mixin oMessageButtonBase () {
+	@include oButtons();
+	@include oTypographySans($scale: -1);
+}
+
+@mixin oMessageCloseButton ($icon-color) {
+	@include oIconsGetIcon('cross', $icon-color, 20);
+}
+
 @mixin oMessageAlertIcon ($icon-name, $icon-color, $icon-size) {
 	content: '';
 	@include oIconsGetIcon(
@@ -7,23 +29,24 @@
 	);
 }
 
-@mixin oMessageButtonBase () {
-	@include oButtons();
-	@include oTypographySans($scale: -1);
+@mixin oMessageAlertContent () {
+	@include oTypographyMargin($top: 0, $bottom: 0);
+	display: flex;
+	align-items: center;
+
+	&--highlight {
+		@include oTypographySansBold($scale: 0);
+		padding-right: oTypographySpacingSize(2);
+	}
 }
 
-@mixin oMessageButtonBaseAlert () {
+@mixin oMessageAlertButtonTheme ($background, $text) {
+	@include oButtonsCustomTheme($background, $text);
+}
+
+@mixin oMessageAlertButtonBase () {
 	@include oMessageButtonBase;
 	margin: oTypographySpacingSize(6);
-}
-
-@mixin oMessageButtonBaseInlineAlert () {
-	@include oMessageButtonBase;
-	margin: 0 oTypographySpacingSize(6) oTypographySpacingSize(2) oTypographySpacingSize(10);
-}
-
-@mixin oMessageAlertButton ($background, $text) {
-	@include oButtonsCustomTheme($background, $text);
 }
 
 @mixin oMessageAlertLink ($custom-link-base, $custom-link-hover, $custom-link-background, $link-hover, $link-focus) {
@@ -43,38 +66,10 @@
 	}
 }
 
-@mixin oMessageCloseButton ($icon-color) {
-	@include oIconsGetIcon('cross', $icon-color, 20);
-}
-
 @mixin oMessageAlertGrid () {
 	@include oGridContainer();
 	@include oGridRespondTo($from: S) {
 		padding: oGridGutter();
-	}
-}
-
-@mixin oMessageContainer () {
-	@include oTypographySans($scale: 0);
-	
-	display: flex;
-	align-items: center;
-	justify-content: flex-start;
-	height: 100%;
-	white-space: nowrap;
-	// sass-lint:disable no-vendor-prefixes
-	-webkit-font-smoothing: antialiased;
-	// sass-lint:enable no-vendor-prefixes
-}
-
-@mixin oMessageContentHeader () {
-	@include oTypographyMargin($top: 0, $bottom: 0);
-	display: flex;
-	align-items: center;
-
-	&--highlight {
-		@include oTypographySansBold($scale: 0);
-		padding-right: oTypographySpacingSize(2);
 	}
 }
 
@@ -83,7 +78,31 @@
 	.#{$class}--alert--bleed {
 		height: $_o-message-alert-height;
 	}
-
+	
+	.#{$class}__container {
+		@include oMessageContainer;
+		
+		.#{$class}--alert--bleed & {
+			@include oMessageAlertGrid;
+		}
+		
+		.#{$class}__content {
+			@include oMessageAlertContent;
+		}
+	}
+	
+	.#{$class}__button {
+		@include oMessageAlertButtonBase;
+	}
+	
+	.#{$class}__close {
+		margin-left: auto;
+	}
+	
+	.#{$class}--closed {
+		display: none;
+	}
+	
 	.#{$class}--alert {
 		@include oMessageAlertGrid;
 
@@ -99,34 +118,12 @@
 			}
 		};
 	}
-
-	.#{$class}__container {
-		@include oMessageContainer;
-		
-		.#{$class}--alert--bleed & {
-			@include oMessageAlertGrid;
-		}
-		
-		.#{$class}__content--header {
-			@include oMessageContentHeader;
-		}
-	}
-
-	.#{$class}__button {
-		@include oMessageButtonBaseAlert;
-	}
-
-	.#{$class}__close {
-		margin-left: auto;
-	}
-
-	.#{$class}--closed {
-		display: none;
-	}
 }
 
-@mixin oMessageInlineAlertBase($class: 'o-message') {
-	.#{$class}--inline-alert {
+@mixin oMessageAlertInlineBase($class: 'o-message') {
+	@include oMessageAlertBase($class);
+
+	.#{$class}--alert--inline {
 		max-width: $_o-message-inline-alert-width;
 		margin: auto;
 		height: auto;
@@ -136,39 +133,32 @@
 			display: inline-block;
 		}
 
-		.#{$class}__content--detail {
+		.#{$class}__content {
 			max-width: $_o-message-inline-alert-content-width;
 			white-space: normal;
+			flex-flow: wrap;
+
+			.#{$class}__content--detail {
+				max-width: $_o-message-inline-alert-content-text-width;
+			}
+
+			.#{$class}__content--additional-info {
+				margin-left: oTypographySpacingSize(10);
+				max-width: $_o-message-inline-alert-content-text-width;
+				margin-top: oTypographySpacingSize(0);
+			}
 		}
 
 		.#{$class}__button {
-			@include oMessageButtonBaseInlineAlert;
-		}
-	}
-
-	.#{$class}__content--action {
-		@include oTypographyMargin($top: 0, $bottom: 4);
-		max-width: $_o-message-inline-alert-content-width;
-		white-space: normal;
-		margin-left: oTypographySpacingSize(10);
-	}
-
-	.#{$class}__container {
-		@include oMessageContainer;
-		
-		.#{$class}--alert--bleed & {
-			@include oMessageAlertGrid;
-		}
-		
-		.#{$class}__content--header {
-			@include oMessageContentHeader;
+			@include oMessageButtonBase;
+			margin: 0 oTypographySpacingSize(6) oTypographySpacingSize(2) oTypographySpacingSize(10);
 		}
 	}
 }
 
 @mixin oMessageFor ($theme, $class: 'o-message') {
 	@if map-has-key($theme-styles, $theme) {
-		.#{$class}--alert-#{$theme}, .#{$class}--inline-#{$theme} {
+		.#{$class}--alert-#{$theme} {
 			@include oColorsFor(o-message-alert-#{$theme});
 
 			.#{$class}__link {
@@ -182,10 +172,10 @@
 			}
 
 			.#{$class}__button {
-				@include oMessageAlertButton(_oMessageGetMapValue($theme, button-background), _oMessageGetMapValue($theme, button-text));
+				@include oMessageAlertButtonTheme(_oMessageGetMapValue($theme, button-background), _oMessageGetMapValue($theme, button-text));
 			}
 
-			.#{$class}__content--header:before {
+			.#{$class}__content:before {
 				// hack mchackerson:
 				// all of these conditionals really need to _not_ be the case with the icons,
 				// so we are waiting on new icons from James
