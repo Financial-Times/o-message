@@ -90,11 +90,11 @@ const initDemos = () => {
 				deleteElementsByClassName('o-message');
 				new Message(null, {
 					theme: 'success',
-					messageType: 'inline',
+					inline: 'inline',
 					content: {
 						highlight: 'Well done!',
 						detail: 'You have successfully completed this task and this is great news.',
-						action: 'Now you should do this, and this, and this, and this.'
+						additionalInfo: 'Now you should do this, and this, and this, and this.'
 					},
 					link: {
 						text: 'Text link'
@@ -113,11 +113,11 @@ const initDemos = () => {
 				deleteElementsByClassName('o-message');
 				new Message(null, {
 					theme: 'neutral',
-					messageType: 'inline',
+					inline: true,
 					content: {
 						highlight: 'Info',
 						detail: 'Everything is well',
-						action: 'Follow this steps and everything is going to be alright'
+						additionalInfo: 'Follow this steps and everything is going to be alright'
 					},
 					link: {
 						text: 'Text link'
@@ -136,11 +136,11 @@ const initDemos = () => {
 				deleteElementsByClassName('o-message');
 				new Message(null, {
 					theme: 'error',
-					messageType: 'inline',
+					inline: true,
 					content: {
 						highlight: 'Oops...',
 						detail: 'There was an issue submitting this action',
-						action: 'Please try again'
+						additionalInfo: 'Please try again'
 					},
 					link: {
 						text: 'Text link'
