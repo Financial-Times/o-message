@@ -14,9 +14,8 @@ export default {
 	`,
 	constructedForAlert: `
 			<div class="my-message__container">
-				
 				<div class="my-message__content">
-					<span class="my-message__content--highlight">Important</span>
+					<p class="my-message__content--detail"><span class="my-message__content--highlight">Important</span></p>
 				</div>
 			
 				<a href="#" class="my-message__button my-message__action--primary">a button</a>
@@ -26,7 +25,6 @@ export default {
 		`,
 	constructedForInlineAlert: `
 			<div class="my-message__container">
-
 				<div class="my-message__content">
 					<p class="my-message__content--detail"><span class="my-message__content--highlight">Important</span></p>
 				</div>
