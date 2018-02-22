@@ -1,6 +1,21 @@
+/**
+* TBD
+*
+* @access private
+* @param {element} $element
+* @param {property} $property
+**/
+
 @function _oMessageGetMapValue($element, $property) {
 	@return map-get(map-get($theme-styles, $element), $property);
 };
+
+/**
+* TBD
+*
+* @access private
+* @param {string} $message
+**/
 
 @function _oMessageError($message) {
 	@error '*** oMessage SCSS error: #{$message} ***';
