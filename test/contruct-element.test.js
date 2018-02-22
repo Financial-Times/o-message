@@ -11,7 +11,7 @@ sinon.assert.expose(assert, {
 });
 
 describe("constructElement", () => {
-	let options = {
+	const options = {
 		messageClass: 'my-message',
 		typeClass: 'my-message--alert',
 		content: {
