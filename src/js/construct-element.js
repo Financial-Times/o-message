@@ -26,22 +26,19 @@ export default {
 		}
 
 		let contentHTML;
-		if (opts.content.detail) {
-			contentHTML = `
-				<div class="${opts.messageClass}__content">
-					<p class="${opts.messageClass}__content--detail"><span class="${opts.messageClass}__content--highlight">${opts.content.highlight}</span>${opts.content.detail}</p>`;
-		} else {
-			contentHTML = `
-				<div class="${opts.messageClass}__content">
-					<span class="${opts.messageClass}__content--highlight">${opts.content.highlight}</span>`;
+		if (!opts.content.detail) {
+			opts.content.detail = '';
 		}
 
 		if (opts.inline && opts.content.additionalInfo) {
-			contentHTML += `<p class="${opts.messageClass}__content--additional-info">${opts.content.additionalInfo}</p>
+			contentHTML = `<div class="${opts.messageClass}__content">
+					<p class="${opts.messageClass}__content--detail"><span class="${opts.messageClass}__content--highlight">${opts.content.highlight}</span>${opts.content.detail}</p>
+					<p class="${opts.messageClass}__content--additional-info">${opts.content.additionalInfo}</p>
 				</div>
 			`;
 		} else {
-			contentHTML += `
+			contentHTML = `<div class="${opts.messageClass}__content">
+					<p class="${opts.messageClass}__content--detail"><span class="${opts.messageClass}__content--highlight">${opts.content.highlight}</span>${opts.content.detail}</p>
 				</div>
 			`;
 		}
