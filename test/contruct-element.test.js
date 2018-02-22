@@ -16,7 +16,8 @@ describe("constructElement", () => {
 		typeClass: 'my-message--alert',
 		content: {
 			highlight: 'Important',
-			action: 'action'
+			action: 'action',
+			additionalInfo: 'Additional info'
 		},
 		link: {
 			text: 'a link',
@@ -44,6 +45,19 @@ describe("constructElement", () => {
 		it('builds a message component based on the provided messageClass and theme', () => {
 			options.theme = 'neutral';
 			assert.strictEqual(construct.alertMessage(options).innerHTML, fixtures.constructedForAlert);
+		});
+
+		describe('builds an inline version of component if an inline option is true', () => {
+			it('in case of additional info is provided', () => {
+				options.inline = true;
+				assert.strictEqual(construct.alertMessage(options).innerHTML, fixtures.constructedForInlineAlert);
+			});
+			
+			it('and in case if it is not provided', () => {
+				options.inline = true;
+				options.content.additionalInfo = null;
+				assert.strictEqual(construct.alertMessage(options).innerHTML, fixtures.constructedForInlineAlertNoAdditionalInfo);
+			});
 		});
 	});
 });

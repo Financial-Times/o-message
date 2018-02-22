@@ -27,11 +27,23 @@ export default {
 			<div class="my-message__container">
 				<div class="my-message__content">
 					<p class="my-message__content--detail"><span class="my-message__content--highlight">Important</span></p>
+					<p class="my-message__content--additional-info">Additional info</p>
 				</div>
-
-				<p class="my-message__content--action">action</p>
+			
 				<a href="#" class="my-message__button my-message__action--primary">a button</a>
 				<a href="#" class="my-message__link my-message__action--secondary">a link</a>
+				
+			</div>
+		`,
+	constructedForInlineAlertNoAdditionalInfo: `
+			<div class="my-message__container">
+				<div class="my-message__content">
+					<p class="my-message__content--detail"><span class="my-message__content--highlight">Important</span></p>
+				</div>
+			
+				<a href="#" class="my-message__button my-message__action--primary">a button</a>
+				<a href="#" class="my-message__link my-message__action--secondary">a link</a>
+				
 			</div>
 		`
 };
