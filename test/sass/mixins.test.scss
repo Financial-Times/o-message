@@ -1,0 +1,7 @@
+@import 'true';
+
+@include describe('oMessageContainer') {
+	@include it('dummy test') {
+		@include assert-equal(true, true);
+	}
+}

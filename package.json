@@ -1,0 +1,26 @@
+{
+  "name": "o-message",
+  "version": "0.0.0",
+  "description": "Component used for product messaging and alerts",
+  "main": "main.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "mocha test/sass/test_sass"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Financial-Times/o-message.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Financial-Times/o-message/issues"
+  },
+  "homepage": "https://github.com/Financial-Times/o-message#readme",
+  "devDependencies": {
+    "mocha": "^5.0.1",
+    "sass-true": "^3.0.2"
+  }
+}
