@@ -212,6 +212,13 @@ describe("Message", () => {
 
 				assert.throws(() => { new Message(null, options); }, error);
 			});
+
+			it('throws an error if opts.inline and opts.bleed are true in the same time', () => {
+				options.inline = true;
+				options.bleed = true;
+				let error = "*** o-message error: The message can't bleed and be inline in the same time ***";
+				assert.throws(() => { new Message(null, options); }, error);
+			});
 		});
 	});
 });
