@@ -1,10 +1,9 @@
 $o-message-is-silent: true !default;
 
 // Alert message
-$_o-message-alert-height: 48px;
+$_o-message-alert-height: 48px; // Height of o-message with type 'alert' that is not 'inline'
 
 // Inline Alert message
-$_o-message-inline-alert-width: 380px;
-$_o-message-inline-alert-right-space: 40px;
-$_o-message-inline-alert-content-width: 360px;
-$_o-message-inline-alert-content-text-width: 300px;
+$_o-message-inline-alert-width: 380px; // The width of 'alert--inline' o-message
+$_o-message-inline-alert-content-width: 360px; // The width of content in 'alert--inline' o-message
+$_o-message-inline-alert-content-text-width: 300px; // The width of text in 'alert--inline' o-message
