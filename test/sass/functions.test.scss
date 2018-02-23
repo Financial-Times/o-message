@@ -1,0 +1,5 @@
+@include describe('_oMessageGetMapValue') {
+	@include it('does what is need to do') {
+        	@include assert-equal(true, true);
+	}
+}

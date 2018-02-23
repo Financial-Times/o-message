@@ -1,0 +1,41 @@
+// ----> DO WE NEED THESE TESTS ???
+
+@include describe('_oMessageCloseButton') {
+	@include it('creates a cross icon of specific color') {
+		$color: #000;
+		@include assert {
+			@include output {
+				@include _oMessageCloseButton ($color);
+			} 
+			@include expect {
+				@include oIconsGetIcon('cross', #000, 20);
+			}
+		}
+	}
+}
+
+@include describe('_oMessageAlertIcon') {
+	@include it('creates a icon with specific parametrs') {
+		$icon-name: 'icon';
+		$icon-color: #000;
+		$icon-size: 6;
+		@include assert {
+			@include output {
+				@include _oMessageAlertIcon ($icon-name, $icon-color, $icon-size);
+			} 
+			@include expect {
+				content: '';
+				@include oIconsGetIcon(
+					'icon',
+					#000,
+					6
+				);
+			}
+		}
+	}
+}
+
+// <---- DO WE NEED THESE TESTS ???
+
+
+

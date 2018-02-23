@@ -3,6 +3,7 @@ export default {
 
 	/**
 	* Build a full alert message element. Used when there is no message element in the DOM.
+	* @param {Object} [options={}] - An options object for configuring the message
 	* @returns {HTMLElement} Returns the new alert type message element
 	*/
 
