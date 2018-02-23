@@ -13,8 +13,6 @@
     "type": "git",
     "url": "git+https://github.com/Financial-Times/o-message.git"
   },
-  "author": "",
-  "license": "ISC",
   "bugs": {
     "url": "https://github.com/Financial-Times/o-message/issues"
   },
