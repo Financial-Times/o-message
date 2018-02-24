@@ -1,3 +1,9 @@
+/**
+* Define container configuration for o-message
+*
+* @access public
+**/
+
 @mixin oMessageContainer () {
 	@include oTypographySans($scale: 0);
 	
@@ -11,16 +17,38 @@
 	// sass-lint:enable no-vendor-prefixes
 }
 
-@mixin oMessageButtonBase () {
+/**
+* Define button configuration for o-message
+*
+* @access private
+**/
+
+@mixin _oMessageButtonBase () {
 	@include oButtons();
 	@include oTypographySans($scale: -1);
 }
 
-@mixin oMessageCloseButton ($icon-color) {
-	@include oIconsGetIcon('cross', $icon-color, 20);
+/**
+* Gets 'close' icon of specific color
+*
+* @access private
+* @param {color} $color
+**/
+
+@mixin _oMessageCloseButton ($color) {
+	@include oIconsGetIcon('cross', $color, 20);
 }
 
-@mixin oMessageAlertIcon ($icon-name, $icon-color, $icon-size) {
+/**
+* Creates an icon with specific parametrs
+*
+* @access private
+* @param {string} $icon-name
+* @param {string} $icon-color
+* @param {number} $icon-size
+**/
+
+@mixin _oMessageAlertIcon ($icon-name, $icon-color, $icon-size) {
 	content: '';
 	@include oIconsGetIcon(
 		$icon-name,
@@ -28,6 +56,12 @@
 		$icon-size
 	);
 }
+
+/**
+* Sets up content of o-message alert
+*
+* @access public
+**/
 
 @mixin oMessageAlertContent () {
 	@include oTypographyMargin($top: 0, $bottom: 0);
@@ -40,14 +74,41 @@
 	}
 }
 
-@mixin oMessageAlertButtonTheme ($background, $text) {
+/**
+* Sets up theme for o-message alert button
+*
+* @access public
+* @param {background} $background
+* @param {string} $text
+**/
+
+@mixin _oMessageAlertButtonTheme ($background, $text) {
 	@include oButtonsCustomTheme($background, $text);
 }
 
+/**
+* Sets up base for o-message alert button
+*
+* @access public
+**/
+
 @mixin oMessageAlertButtonBase () {
-	@include oMessageButtonBase;
+	@include _oMessageButtonBase;
 	margin: oTypographySpacingSize(6);
 }
+
+/**
+* Sets up style for o-message alert link
+*
+* @access public
+* @param {link} $custom-link-base
+* @param {string} $text
+* @param {link} $custom-link-base
+* @param {link} $custom-link-hover
+* @param {background} $custom-link-background
+* @param {link} $link-hover
+* @param {link} $link-focus
+**/
 
 @mixin oMessageAlertLink ($custom-link-base, $custom-link-hover, $custom-link-background, $link-hover, $link-focus) {
 	@include oTypographyLinkCustom(
@@ -66,12 +127,25 @@
 	}
 }
 
+/**
+* Sets up grid for o-message alert
+*
+* @access public
+**/
+
 @mixin oMessageAlertGrid () {
 	@include oGridContainer();
 	@include oGridRespondTo($from: S) {
 		padding: oGridGutter();
 	}
 }
+
+/**
+* Sets up base for o-message alert
+*
+* @access public
+* @param {string = 'o-message'} $class
+**/
 
 @mixin oMessageAlertBase($class: 'o-message') {
 	.#{$class}--alert,
@@ -120,6 +194,13 @@
 	}
 }
 
+/**
+* Sets up base for o-message alert--inline
+*
+* @access public
+* @param {string = 'o-message'} $class
+**/
+
 @mixin oMessageAlertInlineBase($class: 'o-message') {
 	@include oMessageAlertBase($class);
 
@@ -150,11 +231,23 @@
 		}
 
 		.#{$class}__button {
-			@include oMessageButtonBase;
+			@include _oMessageButtonBase;
 			margin: 0 oTypographySpacingSize(6) oTypographySpacingSize(2) oTypographySpacingSize(10);
+		}
+
+		.#{$class}__link {
+			vertical-align: text-bottom;
 		}
 	}
 }
+
+/**
+* Sets up styles for different themese of o-message alert
+*
+* @access public
+* @param {string} $theme
+* @param {string = 'o-message'} $class
+**/
 
 @mixin oMessageFor ($theme, $class: 'o-message') {
 	@if map-has-key($theme-styles, $theme) {
@@ -172,7 +265,7 @@
 			}
 
 			.#{$class}__button {
-				@include oMessageAlertButtonTheme(_oMessageGetMapValue($theme, button-background), _oMessageGetMapValue($theme, button-text));
+				@include _oMessageAlertButtonTheme(_oMessageGetMapValue($theme, button-background), _oMessageGetMapValue($theme, button-text));
 			}
 
 			.#{$class}__content:before {
@@ -181,7 +274,7 @@
 				// so we are waiting on new icons from James
 
 				@if $theme == error or $theme == success {
-					@include oMessageAlertIcon(
+					@include _oMessageAlertIcon(
 						_oMessageGetMapValue($theme, alert-icon-name),
 						_oMessageGetMapValue($theme, alert-icon-text),
 						_oMessageGetMapValue($theme, alert-icon-size)
@@ -205,7 +298,7 @@
 			}
 
 			.#{$class}__close {
-				@include oMessageCloseButton(_oMessageGetMapValue($theme, close-icon-color));
+				@include _oMessageCloseButton(_oMessageGetMapValue($theme, close-icon-color));
 			}
 		}
 

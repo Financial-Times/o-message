@@ -1,6 +1,21 @@
+/**
+* Associates element and property to the theme
+*
+* @access private
+* @param {element} $element
+* @param {property} $property
+**/
+
 @function _oMessageGetMapValue($element, $property) {
 	@return map-get(map-get($theme-styles, $element), $property);
 };
+
+/**
+* Frames an error in origami-styled message mentioning oMessage
+*
+* @access private
+* @param {string} $message
+**/
 
 @function _oMessageError($message) {
 	@error '*** oMessage SCSS error: #{$message} ***';
