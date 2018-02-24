@@ -16,7 +16,6 @@ describe("constructElement", () => {
 		typeClass: 'my-message--alert',
 		content: {
 			highlight: 'Important',
-			action: 'action',
 			additionalInfo: 'Additional info'
 		},
 		link: {
