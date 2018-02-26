@@ -72,7 +72,7 @@ class Message {
 					return construct.alertMessage(this.opts);
 				}
 			} else {
-				throwError(`'${this.opts.messageType}' is not a supported message type. The only available option now is 'alert'`);
+				throwError(`'${this.opts.messageType}' is not a supported message type. The only currently available option is 'alert'`);
 			}	
 		}
 	}

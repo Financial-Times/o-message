@@ -9,10 +9,9 @@ $theme-styles: (
 		link-focus: oColorsGetPaletteColor('black-crimson-12.5'),
 		button-text: 'black-crimson-12.5',
 		button-background: 'paper-crimson-90',
-		alert-icon-name: 'warning',
-		alert-icon-text: oColorsGetPaletteColor('paper-crimson-90'),
-		alert-icon-background: oColorsGetPaletteColor('black-crimson-12.5'),
-		alert-icon-size: 20,
+		alert-icon-name: 'warning-alt',
+		alert-icon-color: oColorsGetPaletteColor('paper-crimson-90'),
+		alert-icon-size: 40,
 		close-icon-color: oColorsGetPaletteColor('black-crimson-12.5')
 	),
 	neutral: (
@@ -23,8 +22,9 @@ $theme-styles: (
 		link-focus: oColorsGetPaletteColor('black'),
 		button-text: 'black',
 		button-background: 'white-60',
-		alert-icon-text: oColorsGetPaletteColor('white'),
-		alert-icon-background: oColorsGetPaletteColor('black'),
+		alert-icon-name: 'info',
+		alert-icon-color: oColorsGetPaletteColor('black'),
+		alert-icon-size: 40,
 		close-icon-background: oColorsGetPaletteColor('black'),
 	),
 	success: (
@@ -36,7 +36,7 @@ $theme-styles: (
 		button-text: 'black-jade-43',
 		button-background: 'paper-jade-80',
 		alert-icon-name: 'tick',
-		alert-icon-text: oColorsGetPaletteColor('black-jade-43'),
+		alert-icon-color: oColorsGetPaletteColor('black-jade-43'),
 		alert-icon-size: 40,
 		close-icon-color: oColorsGetPaletteColor('black-jade-43')
 	),

@@ -32,13 +32,19 @@ export default {
 
 		if (opts.inline && opts.content.additionalInfo) {
 			contentHTML = `<div class="${opts.messageClass}__content">
-					<p class="${opts.messageClass}__content--detail"><span class="${opts.messageClass}__content--highlight">${opts.content.highlight}</span>${opts.content.detail}</p>
+					<p class="${opts.messageClass}__content--detail">
+						<span class="${opts.messageClass}__content--highlight">${opts.content.highlight}</span>
+						${opts.content.detail}
+					</p>
 					<p class="${opts.messageClass}__content--additional-info">${opts.content.additionalInfo}</p>
 				</div>
 			`;
 		} else {
 			contentHTML = `<div class="${opts.messageClass}__content">
-					<p class="${opts.messageClass}__content--detail"><span class="${opts.messageClass}__content--highlight">${opts.content.highlight}</span>${opts.content.detail}</p>
+					<p class="${opts.messageClass}__content--detail">
+						<span class="${opts.messageClass}__content--highlight">${opts.content.highlight}</span>
+						${opts.content.detail}
+					</p>
 				</div>
 			`;
 		}
