@@ -12,16 +12,38 @@ export default {
 			</div>
 		</div>
 	`,
-	constructed: `
+	constructedForAlert: `
 			<div class="my-message__container">
-				
 				<div class="my-message__content">
-					<span class="my-message__content--highlight">Important</span>
+					<p class="my-message__content--detail"><span class="my-message__content--highlight">Important</span></p>
 				</div>
 			
 				<a href="#" class="my-message__button my-message__action--primary">a button</a>
 				<a href="#" class="my-message__link my-message__action--secondary">a link</a>
 				<a href="#void" class="my-message__close" role="button" aria-label="Close" title="Close"></a>
+			</div>
+		`,
+	constructedForInlineAlert: `
+			<div class="my-message__container">
+				<div class="my-message__content">
+					<p class="my-message__content--detail"><span class="my-message__content--highlight">Important</span></p>
+					<p class="my-message__content--additional-info">Additional info</p>
+				</div>
+			
+				<a href="#" class="my-message__button my-message__action--primary">a button</a>
+				<a href="#" class="my-message__link my-message__action--secondary">a link</a>
+				
+			</div>
+		`,
+	constructedForInlineAlertNoAdditionalInfo: `
+			<div class="my-message__container">
+				<div class="my-message__content">
+					<p class="my-message__content--detail"><span class="my-message__content--highlight">Important</span></p>
+				</div>
+			
+				<a href="#" class="my-message__button my-message__action--primary">a button</a>
+				<a href="#" class="my-message__link my-message__action--secondary">a link</a>
+				
 			</div>
 		`
 };

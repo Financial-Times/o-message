@@ -11,11 +11,12 @@ sinon.assert.expose(assert, {
 });
 
 describe("constructElement", () => {
-	let options = {
+	const options = {
 		messageClass: 'my-message',
 		typeClass: 'my-message--alert',
 		content: {
-			highlight: 'Important'
+			highlight: 'Important',
+			additionalInfo: 'Additional info'
 		},
 		link: {
 			text: 'a link',
@@ -30,9 +31,9 @@ describe("constructElement", () => {
 
 	describe('.alertMessage', () => {
 		it('throws an error if no theme is defined', () => {
-			let error = "***o-message error: Alert type messages require a theme. The options are 'success', 'error', or 'neutral'***";
+			let error = "*** o-message error: Alert type messages require a theme. The options are 'success', 'error', or 'neutral' ***";
 			options.theme = null;
-			assert.throws(() => { construct.alertMessage(options); }, error);
+			assert.throws(() => construct.alertMessage(options), error);
 		});
 
 		it('returns an HTML element', () => {
@@ -42,7 +43,20 @@ describe("constructElement", () => {
 
 		it('builds a message component based on the provided messageClass and theme', () => {
 			options.theme = 'neutral';
-			assert.strictEqual(construct.alertMessage(options).innerHTML, fixtures.constructed);
+			assert.strictEqual(construct.alertMessage(options).innerHTML, fixtures.constructedForAlert);
+		});
+
+		describe('builds an inline version of component if an inline option is true', () => {
+			it('in case of additional info is provided', () => {
+				options.inline = true;
+				assert.strictEqual(construct.alertMessage(options).innerHTML, fixtures.constructedForInlineAlert);
+			});
+			
+			it('and in case if it is not provided', () => {
+				options.inline = true;
+				options.content.additionalInfo = null;
+				assert.strictEqual(construct.alertMessage(options).innerHTML, fixtures.constructedForInlineAlertNoAdditionalInfo);
+			});
 		});
 	});
 });

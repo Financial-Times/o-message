@@ -1,11 +1,20 @@
 $o-message-is-silent: false;
 @import '../../main';
 
-
 body {
 	background: oColorsGetPaletteColor(paper);
 }
 
 .o-message {
 	margin-top: 20px;
+}
+
+.list-of-demo-buttons {
+	display: inline-block;
+}
+
+.demo-button {
+	@include oButtons();
+	width: 300px;
+	margin: 10px;
 }

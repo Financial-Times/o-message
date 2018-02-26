@@ -56,10 +56,12 @@ describe("Message", () => {
 				messageClass: 'o-message',
 				messageType: 'alert',
 				bleed: false,
+				inline: false,
 				typeClass: 'o-message--alert',
 				content: {
 					highlight: null,
-					detail: '&hellip;'
+					detail: '&hellip;',
+					additionalInfo: null
 				},
 				button: {
 					text: null,
@@ -200,14 +202,21 @@ describe("Message", () => {
 					messageType: 'marketing'
 				};
 
-				let error = "***o-message error: 'marketing' is not a supported message type. The options are 'alert', or 'alert--bleed'.***";
+				const error = "*** o-message error: 'marketing' is not a supported message type. The only available option now is 'alert' ***";
 				assert.throws(() => { new Message(null, options); }, error);
 			});
 
 			it('throws an error if opts.content.highlight is not declared for an alert type message', () => {
 				options.content.highlight = null;
-				let error = "***o-message error: An alert message element requires options.content.highlight.***";
+				const error = "*** o-message error: An alert message element requires options.content.highlight ***";
 
+				assert.throws(() => { new Message(null, options); }, error);
+			});
+
+			it('throws an error if opts.inline and opts.bleed are true in the same time', () => {
+				options.inline = true;
+				options.bleed = true;
+				const error = "*** o-message error: The message can't bleed and be inline in the same time ***";
 				assert.throws(() => { new Message(null, options); }, error);
 			});
 		});

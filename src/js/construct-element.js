@@ -11,8 +11,13 @@ export default {
 		alertMessageEl.setAttribute('data-o-component', 'o-message');
 		alertMessageEl.classList.add(opts.messageClass, `${opts.messageClass}--closed`);
 
-		// bleed message element
-		alertMessageEl.classList.add(`${opts.bleed ? opts.typeClass + '--bleed' : opts.typeClass}`);
+		if (opts.bleed) {
+			alertMessageEl.classList.add(`${opts.typeClass}--bleed`);
+		} else if (opts.inline) {
+			alertMessageEl.classList.add(`${opts.typeClass}--inline`);
+		} else {
+			alertMessageEl.classList.add(`${opts.typeClass}`);
+		}
 
 		if (!opts.theme) {
 			throwError("Alert type messages require a theme. The options are 'success', 'error', or 'neutral'");
@@ -21,19 +26,25 @@ export default {
 		}
 
 		let contentHTML;
-		if (opts.content.detail) {
-			contentHTML = `
-				<div class="${opts.messageClass}__content">
-					<span class="${opts.messageClass}__content--highlight">${opts.content.highlight}</span>
-					<p class="${opts.messageClass}__content--detail">${opts.content.detail}</p>
+		if (!opts.content.detail) {
+			opts.content.detail = '';
+		}
+
+		if (opts.inline && opts.content.additionalInfo) {
+			contentHTML = `<div class="${opts.messageClass}__content">
+					<p class="${opts.messageClass}__content--detail"><span class="${opts.messageClass}__content--highlight">${opts.content.highlight}</span>${opts.content.detail}</p>
+					<p class="${opts.messageClass}__content--additional-info">${opts.content.additionalInfo}</p>
 				</div>
 			`;
 		} else {
-			contentHTML = `
-				<div class="${opts.messageClass}__content">
-					<span class="${opts.messageClass}__content--highlight">${opts.content.highlight}</span>
+			contentHTML = `<div class="${opts.messageClass}__content">
+					<p class="${opts.messageClass}__content--detail"><span class="${opts.messageClass}__content--highlight">${opts.content.highlight}</span>${opts.content.detail}</p>
 				</div>
 			`;
+		}
+
+		if (opts.inline) {
+			opts.close = false;
 		}
 
 		let primaryActionHTML;
@@ -49,6 +60,8 @@ export default {
 		let closeButton;
 		if (opts.close) {
 			closeButton = `<a href="#void" class="${opts.messageClass}__close" role="button" aria-label='Close' title='Close'></a>`;
+		} else {
+			closeButton = '';
 		}
 
 		alertMessageEl.innerHTML = `

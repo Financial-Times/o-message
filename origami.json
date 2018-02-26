@@ -25,14 +25,19 @@
 			"title": "Alert Message",
 			"name": "alert",
 			"template": "demos/src/alert.mustache",
-			"description": ""
+			"description": "Alert messages (success, error and neutural)"
 		},
 		{
-			"title": "Imperative ",
+			"title": "Inline Message",
+			"name": "inline",
+			"template": "demos/src/inline.mustache",
+			"description": "Inline messages (success, error and neutural)"
+		},
+		{
+			"title": "Imperative",
 			"name": "imperative",
-			"js": "demos/src/imperative.js",
 			"template": "demos/src/imperative.mustache",
-			"description": ""
+			"description": "Imperative messages (both inline and alerting)"
 		},
 		{
 			"title": "Pa11y",
