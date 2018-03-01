@@ -1,35 +1,32 @@
+@mixin oMessageInlineContainer () {
+	@include oMessageContainer();
+	align-items: flex-start;
+	padding: oTypographySpacingSize(2) oTypographySpacingSize(4) oTypographySpacingSize(5) oTypographySpacingSize(4);
+};
+
+
+@mixin oMessageInlineContent () {
+	@include oTypographyMargin($top: 3, $bottom: 0);
+	display: flex;
+	flex-flow: column nowrap;
+	align-items: flex-start;
+
+	&--highlight,
+	&--additional-info {
+		@include oTypographyMargin($top: 0);
+	}
+}
+
 @mixin oMessageAlertInlineBase($class: 'o-message') {
 	@include oMessageAlertBase($class);
 
 	.#{$class}--alert--inline {
-		max-width: $_o-message-inline-alert-width;
-		margin: auto;
-		height: auto;
-		padding-bottom: oTypographySpacingSize(2);
-
 		.#{$class}__container {
-			display: inline-block;
+			@include oMessageInlineContainer();
 		}
 
 		.#{$class}__content {
-			max-width: $_o-message-inline-alert-content-width;
-			white-space: normal;
-			flex-flow: wrap;
-
-			.#{$class}__content--detail {
-				max-width: $_o-message-inline-alert-content-text-width;
-			}
-
-			.#{$class}__content--additional-info {
-				margin-left: oTypographySpacingSize(10);
-				max-width: $_o-message-inline-alert-content-text-width;
-				margin-top: oTypographySpacingSize(0);
-			}
-		}
-
-		.#{$class}__button {
-			@include oMessageButtonBase;
-			margin: 0 oTypographySpacingSize(6) oTypographySpacingSize(2) oTypographySpacingSize(10);
+			@include oMessageInlineContent();
 		}
 	}
 }
