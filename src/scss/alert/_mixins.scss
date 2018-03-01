@@ -21,10 +21,6 @@
 	&--detail {
 		padding-left: oTypographySpacingSize(2);
 		font-weight: 400;
-
-		@include oGridRespondTo($until: M) {
-			display: none;
-		};
 	}
 }
 
@@ -62,6 +58,18 @@
 	.#{$class}--alert,
 	.#{$class}--alert--bleed {
 		height: $_o-message-alert-height;
+
+		.#{$class}__content--detail {
+			@include oGridRespondTo($until: M) {
+				display: none;
+			};
+		}
+
+		.#{$class}__action--secondary {
+			@include oGridRespondTo($until: S) {
+				display: none;
+			};
+		}
 	}
 
 	.#{$class}--alert,
@@ -79,12 +87,6 @@
 
 	.#{$class}--closed {
 		display: none;
-	}
-
-	.#{$class}__action--secondary {
-		@include oGridRespondTo($until: S) {
-			display: none;
-		};
 	}
 }
 

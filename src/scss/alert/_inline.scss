@@ -1,7 +1,7 @@
 @mixin oMessageInlineContainer () {
 	@include oMessageContainer();
 	align-items: flex-start;
-	padding: oTypographySpacingSize(2) oTypographySpacingSize(4) oTypographySpacingSize(5) oTypographySpacingSize(4);
+	padding: oTypographySpacingSize(2) oTypographySpacingSize(4) oTypographySpacingSize(5) oTypographySpacingSize(5);
 };
 
 
