@@ -18,10 +18,10 @@ class Message {
 			autoOpen: true,
 			messageClass,
 			messageType,
+			typeClass: `${messageClass}--${messageType}`,
 			bleed: false,
 			inline: false,
-			parentElement: false,
-			typeClass: `${messageClass}--${messageType}`,
+			parentElement: null,
 			content: {
 				highlight: null,
 				detail: '&hellip;',
@@ -98,13 +98,15 @@ class Message {
 		this.messageElement.dispatchEvent(new CustomEvent('o.messageClosed'));
 	}
 
-	// add event listeners
+	/**
+	 * Add event listeners.
+	 */
 	setEventListeners () {
 		let closeButton = document.querySelector(`.${this.opts.messageClass}__close`);
 		if (closeButton) {
-			closeButton.addEventListener('click', event => {
+			closeButton.addEventListener('click', e => {
+				e.preventDefault();
 				this.close();
-				event.preventDefault();
 			});
 		}
 	}

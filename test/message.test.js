@@ -57,7 +57,7 @@ describe("Message", () => {
 				messageType: 'alert',
 				bleed: false,
 				inline: false,
-				parentElement: false,
+				parentElement: null,
 				typeClass: 'o-message--alert',
 				content: {
 					highlight: null,

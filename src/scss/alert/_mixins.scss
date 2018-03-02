@@ -15,6 +15,7 @@
 
 	&--highlight {
 		@include oTypographySansBold($scale: 0);
+		line-height: 1;
 		margin-right: oTypographySpacingSize(6);
 	}
 
