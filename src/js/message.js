@@ -4,11 +4,11 @@ import { throwError } from './helpers';
 class Message {
 	/**
  * Class constructor.
- * @param {HTMLElement} [messageEl] - The message element in the DOM
+ * @param {HTMLElement} [messageElement] - The message element in the DOM
  * @param {Object} [options={}] - An options object for configuring the message
  */
-	constructor(messageEl, options) {
-		this.messageEl = messageEl;
+	constructor(messageElement, options) {
+		this.messageElement = messageElement;
 
 		//Default options
 		const messageClass = options && options.messageClass ? options.messageClass : 'o-message';
@@ -20,6 +20,7 @@ class Message {
 			messageType,
 			bleed: false,
 			inline: false,
+			parentElement: false,
 			typeClass: `${messageClass}--${messageType}`,
 			content: {
 				highlight: null,
@@ -51,10 +52,13 @@ class Message {
 	 */
 	render () {
 		// If the message element is not an HTML Element, build one
-		if (!(this.messageEl instanceof HTMLElement)) {
-			this.messageEl = this.constructMessageElement();
-			document.body.appendChild(this.messageEl);
+		if (!(this.messageElement instanceof HTMLElement)) {
+			this.messageElement = this.constructMessageElement();
 		}
+
+		// attach oMessage to specified parentElement or default to document body
+		let element = this.opts.parentElement ? document.querySelector(this.opts.parentElement) : document.body;
+		element.appendChild(this.messageElement);
 	}
 
 	/**
@@ -81,8 +85,8 @@ class Message {
 	 * Open the message.
 	 */
 	open () {
-		this.messageEl.classList.remove(`${this.opts.messageClass}--closed`);
-		this.messageEl.dispatchEvent(new CustomEvent('o.messageOpen'));
+		this.messageElement.classList.remove(`${this.opts.messageClass}--closed`);
+		this.messageElement.dispatchEvent(new CustomEvent('o.messageOpen'));
 		this.setEventListeners();
 	}
 
@@ -90,8 +94,8 @@ class Message {
 	 * Close the message.
 	 */
 	close () {
-		this.messageEl.classList.add(`${this.opts.messageClass}--closed`);
-		this.messageEl.dispatchEvent(new CustomEvent('o.messageClosed'));
+		this.messageElement.classList.add(`${this.opts.messageClass}--closed`);
+		this.messageElement.dispatchEvent(new CustomEvent('o.messageClosed'));
 	}
 
 	// add event listeners
