@@ -51,8 +51,8 @@ class Message {
 	 * Render the message.
 	 */
 	render () {
-		// If the message element is not an HTML Element, build one
-		if (!(this.messageElement instanceof HTMLElement)) {
+		// If the message element is not an HTML Element, or if a parent element has been specified, build a new message element
+		if (!(this.messageElement instanceof HTMLElement) || this.opts.parentElement) {
 			this.messageElement = this.constructMessageElement();
 		}
 
@@ -109,18 +109,25 @@ class Message {
 		}
 	}
 
+	/**
+	 * Initialise message component.
+	 * @param {(HTMLElement|String)} rootElement - The root element to intialise a message in, or a CSS selector for the root element
+	 * @param {Object} [options={}] - An options object for configuring the banners
+	 */
 	static init (rootEl, opts) {
-		console.log(rootEl);
 		if (!rootEl) {
 			rootEl = document.body;
 		}
+
 		if (!(rootEl instanceof HTMLElement)) {
 			rootEl = document.querySelector(rootEl);
 		}
+
 		if (rootEl instanceof HTMLElement && rootEl.matches('[data-o-component=o-message]')) {
+			console.log('matches');
 			return new Message(rootEl, opts);
 		}
-		console.log(rootEl);
+
 		return Array.from(rootEl.querySelectorAll('[data-o-component="o-message"]'), rootEl => new Message(rootEl, opts));
 	}
 }

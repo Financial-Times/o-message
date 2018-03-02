@@ -168,6 +168,11 @@ describe("Message", () => {
 			it('calls `constructMessageElement` if messageEl is not an HTML element', () => {
 				assert.calledOnce(stubs.constructMessageElement);
 			});
+
+			it('calls `constructMessageElement` if opts.parentElement is present', () => {
+				options.parentElement = '.some-class';
+				assert.calledOnce(stubs.constructMessageElement);
+			});
 		});
 
 		describe('.constructMessageElement()', () => {
