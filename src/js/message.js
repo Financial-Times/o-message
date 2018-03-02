@@ -73,7 +73,7 @@ class Message {
 				}
 			} else {
 				throwError(`'${this.opts.messageType}' is not a supported message type. The only currently available option is 'alert'`);
-			}	
+			}
 		}
 	}
 
@@ -106,6 +106,7 @@ class Message {
 	}
 
 	static init (rootEl, opts) {
+		console.log(rootEl);
 		if (!rootEl) {
 			rootEl = document.body;
 		}
@@ -115,6 +116,7 @@ class Message {
 		if (rootEl instanceof HTMLElement && rootEl.matches('[data-o-component=o-message]')) {
 			return new Message(rootEl, opts);
 		}
+		console.log(rootEl);
 		return Array.from(rootEl.querySelectorAll('[data-o-component="o-message"]'), rootEl => new Message(rootEl, opts));
 	}
 }

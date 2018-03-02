@@ -5,6 +5,11 @@ body {
 	background: oColorsGetPaletteColor(paper);
 }
 
+h6 {
+	@include oTypographyProductHeadingLevel6();
+	margin-top: 20px;
+}
+
 .o-message {
 	margin-top: 20px;
 }
@@ -15,7 +20,7 @@ body {
 
 .demo-button {
 	@include oButtons();
-	width: 300px;
+	// width: 300px;
 	margin: 10px;
 }
 
