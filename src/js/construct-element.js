@@ -39,7 +39,7 @@ export default {
 			${primaryActionHTML}
 			${secondaryActionHTML}
 			</div>
-		`
+		`;
 
 		let contentHTML;
 		if (!opts.content.detail) {
@@ -47,21 +47,17 @@ export default {
 		}
 
 		if (opts.inline && opts.content.additionalInfo) {
-			contentHTML = `<div class="${opts.messageClass}__content">
-					<p class="${opts.messageClass}__content--highlight">
-						${opts.content.highlight}
-						<span class="${opts.messageClass}__content--detail">${opts.content.detail}</span>
-					</p>
+			contentHTML = `
+				<div class="${opts.messageClass}__content">
+					<p class="${opts.messageClass}__content--highlight">${opts.content.highlight}<span class="${opts.messageClass}__content--detail">${opts.content.detail}</span></p>
 					<p class="${opts.messageClass}__content--additional-info">${opts.content.additionalInfo}</p>
 					${actions}
 				</div>
 			`;
 		} else {
-			contentHTML = `<div class="${opts.messageClass}__content">
-					<p class="${opts.messageClass}__content--highlight">
-						${opts.content.highlight}
-						<span class="${opts.messageClass}__content--detail">${opts.content.detail}</span>
-					</p>
+			contentHTML = `
+				<div class="${opts.messageClass}__content">
+					<p class="${opts.messageClass}__content--highlight">${opts.content.highlight}<span class="${opts.messageClass}__content--detail">${opts.content.detail}</span></p>
 					${actions}
 				</div>
 			`;

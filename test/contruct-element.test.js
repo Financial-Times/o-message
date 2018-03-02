@@ -10,52 +10,59 @@ sinon.assert.expose(assert, {
 	prefix: ''
 });
 
+const flatten = string => string.replace(/\s/g, '');
+
 describe("constructElement", () => {
-	const options = {
-		messageClass: 'my-message',
-		typeClass: 'my-message--alert',
-		content: {
-			highlight: 'Important',
-			additionalInfo: 'Additional info'
-		},
-		link: {
-			text: 'a link',
-			url: '#'
-		},
-		button: {
-			text: 'a button',
-			url: '#'
-		},
-		close: true
-	};
+	let options;
+	beforeEach(() =>  {
+		options = {
+			messageClass: 'my-message',
+			typeClass: 'my-message--alert',
+			theme: 'success',
+			content: {
+				highlight: 'Important'
+			},
+			link: {
+				text: 'a link',
+				url: '#'
+			},
+			button: {
+				text: 'a button',
+				url: '#'
+			},
+			close: true
+		};
+	})
 
 	describe('.alertMessage', () => {
-		it('throws an error if no theme is defined', () => {
-			let error = "*** o-message error: Alert type messages require a theme. The options are 'success', 'error', or 'neutral' ***";
-			options.theme = null;
-			assert.throws(() => construct.alertMessage(options), error);
-		});
-
 		it('returns an HTML element', () => {
-			options.theme = 'neutral';
 			assert.instanceOf(construct.alertMessage(options), HTMLElement);
 		});
 
 		it('builds a message component based on the provided messageClass and theme', () => {
-			options.theme = 'neutral';
-			assert.strictEqual(construct.alertMessage(options).innerHTML, fixtures.constructedForAlert);
+			assert.strictEqual(flatten(construct.alertMessage(options).innerHTML), flatten(fixtures.constructedForAlert));
+		});
+
+		it('throws an error if no theme is defined', () => {
+			options.theme = null;
+
+			let error = "*** o-message error: Alert type messages require a theme. The options are 'success', 'error', or 'neutral' ***";
+			assert.throws(() => construct.alertMessage(options), error);
 		});
 
 		describe('builds an inline version of component if an inline option is true', () => {
-			it('in case of additional info is provided', () => {
+			beforeEach(() => {
 				options.inline = true;
-				assert.strictEqual(construct.alertMessage(options).innerHTML, fixtures.constructedForInlineAlert);
+			})
+
+			it.only('if additional info is provided', () => {
+				options.content.additionalInfo = 'Additional info'
+				assert.strictEqual(flatten(construct.alertMessage(options).innerHTML), flatten(fixtures.constructedForInlineAlert));
 			});
-			
-			it('and in case if it is not provided', () => {
-				options.inline = true;
-				options.content.additionalInfo = null;
-				assert.strictEqual(construct.alertMessage(options).innerHTML, fixtures.constructedForInlineAlertNoAdditionalInfo);
+
+			it('if additional info is not provided', () => {
+				options.content.additionalInfo = false;
+				assert.strictEqual(flatten(construct.alertMessage(options).innerHTML), flatten(fixtures.constructedForInlineAlertNoAdditionalInfo));
 			});
 		});
 	});

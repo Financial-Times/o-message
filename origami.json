@@ -38,13 +38,6 @@
 			"name": "imperative",
 			"template": "demos/src/imperative.mustache",
 			"description": "Imperative messages (both inline and alerting)"
-		},
-		{
-			"title": "Pa11y",
-			"name": "pa11y",
-			"template": "demos/src/pa11y.mustache",
-			"hidden": true,
-			"description": "Accessibility test will be run against this demo"
 		}
 	]
 }

@@ -25,7 +25,7 @@ class Message {
 			content: {
 				highlight: null,
 				detail: '&hellip;',
-				additionalInfo: null
+				additionalInfo: false
 			},
 			button: {
 				text: null,
