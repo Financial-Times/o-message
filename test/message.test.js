@@ -44,8 +44,8 @@ describe("Message", () => {
 			Message.prototype.close.restore();
 		});
 
-		it('stores `messageElement` in a `messageEl` property', () => {
-			assert.strictEqual(message.messageEl, messageElement);
+		it('stores `messageElement` in a `messageElement` property', () => {
+			assert.strictEqual(message.messageElement, messageElement);
 		});
 
 		it('has default options, and stores them in an `opts` property', () => {
@@ -62,7 +62,7 @@ describe("Message", () => {
 				content: {
 					highlight: null,
 					detail: '&hellip;',
-					additionalInfo: null
+					additionalInfo: false
 				},
 				button: {
 					text: null,
@@ -199,11 +199,9 @@ describe("Message", () => {
 			});
 
 			it('throws an error if an incorrect message type is supplied', () => {
-				options = {
-					messageType: 'marketing'
-				};
+				options.messageType = 'marketing'
+				const error = "*** o-message error: 'marketing' is not a supported message type. The only currently available option is 'alert' ***";
 
-				const error = "*** o-message error: 'marketing' is not a supported message type. The only available option now is 'alert' ***";
 				assert.throws(() => { new Message(null, options); }, error);
 			});
 
@@ -218,6 +216,7 @@ describe("Message", () => {
 				options.inline = true;
 				options.bleed = true;
 				const error = "*** o-message error: The message can't bleed and be inline in the same time ***";
+
 				assert.throws(() => { new Message(null, options); }, error);
 			});
 		});

@@ -55,7 +55,7 @@ describe("constructElement", () => {
 				options.inline = true;
 			})
 
-			it.only('if additional info is provided', () => {
+			it('if additional info is provided', () => {
 				options.content.additionalInfo = 'Additional info'
 				assert.strictEqual(flatten(construct.alertMessage(options).innerHTML), flatten(fixtures.constructedForInlineAlert));
 			});
