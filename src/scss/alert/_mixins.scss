@@ -55,7 +55,7 @@
 	}
 }
 
-@mixin oMessageAlertBase($class: 'o-message') {
+@mixin oMessageAlertBase($class) {
 	.#{$class}--alert,
 	.#{$class}--alert--bleed {
 		height: $_o-message-alert-height;
@@ -91,7 +91,7 @@
 	}
 }
 
-@mixin oMessageFor ($theme, $class: 'o-message') {
+@mixin oMessageFor ($theme, $class) {
 	@if map-has-key($theme-styles, $theme) {
 		.#{$class}--alert-#{$theme} {
 			@include oColorsFor(o-message-alert-#{$theme});

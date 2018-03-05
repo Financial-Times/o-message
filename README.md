@@ -6,6 +6,8 @@ o-message is a messaging component used for alerting and informing. It can inclu
 - [Usage](#usage)
 	- [Markup](#markup)
 	- [JavaScript](#javascript)
+		- [Construction](#constructing-an-o-message)
+		- [Options](#options)
 	- [Sass](#sass)
 - [Troubleshooting](#troubleshooting)
 - [Contributing](#contributing)
@@ -67,7 +69,7 @@ A variation of the alert message is an **inline** alert message, which has almos
 No code will run automatically unless you are using the Build Service. You must either construct an `o-message` object or fire an o.DOMContentLoaded event, which `o-message` listens for.
 
 
-#### Constructing an o-component-boilerplate
+#### Constructing an o-message
 
 If you have set up your message declaratively, and are using default o-message classes, use the following:
 ```js
@@ -90,61 +92,42 @@ const importantMessage = new oMessage(null, {
 });
 ```
 
-###### Options
+#### Options
 `o-message` allows for several configuration options that will change the type of message and its visual styling.
 
-The only required options are listed in the example above.
+The only required options are listed in the example _above_. These are:
+- `theme`: String. The theme to apply to the message. The available themes are 'success', 'error' and 'neutral', which are designed to be used with corresponding messages.
+- `content`: Object. Holds the following values for text properties:
+	- `highlight`: String. The highlighted text in a message. Defaults to `null`
+	-	`detail`: String. The detail about the nature of a message.
+
+The following options are not required, and all have a default value:
 
 - `autoOpen`: Boolean. Whether to open the message automatically, defaults to `true`.
 - `messageClass`: String. The base class name for the component's elements, defaults to `o-message`.
+- `messageType`: String. The type of message that you want to initialise (e.g. alert, cookie, marketing.) Currently, the only available choice is `'alert'`, which is also the default value.
 - `bleed`: Boolean. Whether the message bleeds across the viewport, defaults to `false`,
 - `inline`: Boolean. Whether the message exists within another element, defaults to `false`,
 - `parentElement`: String. This determines the element that the message will be appended to. If none is declared, it will automatically append to the body, or an element with the data attribute `data-o-component=o-message`, defaults to `null`.
-- `content`: Object. Has different value for text properties of the message:
-	- `highlight`: String. The highlighted text in a message. Defaults to `null`
-	-	`detail`: String. The detail about the nature of a message.
+- `content`: Object. Holds the following values for text properties:
 	-	`additionalInfo`: String. More information about the message –  only applies to an `inline` message. Defaults to `null`
-- `button`: Object. Holds values for button properties.
+- `button`: Object. Holds the following values for button properties:
 	- `text`: String. text value of the button.
 	- `url`: String. The URL the button links to.
-- `link`: Object. Holds values for link properties.
+- `link`: Object. Holds the following values for link properties:
 	- `text`: String. text value of the link.
 	- `url`: String. The URL the link links to.
 - `close`: Boolean. Whether or not to display the close button. Defaults to `true` for regular messages, to `false` for inline messages.
 
 
 ### Sass
-_Remember to start your codeblocks with three backticks and "sass" so your markup is syntax highlighted correctly._
+As with all Origami components, o-message has a [silent mode](http://origami.ft.com/docs/syntax/scss/#silent-styles). To use its compiled CSS (rather than using its mixins with your own Sass) set `$o-message-is-silent: false;` in your Sass before you import the o-component-boilerplate Sass.
 
-_Though it's not practical to repeat every aspect of Origami modules convention for every component, **A LOT** of people get tripped up by silent mode, so this line (remember to change the o-component-boilerplate to your component name) is useful if you have Sass:_
+o-message includes mixins that you can use if you'd rather _not_ have origami classnames in your page. These are only available if you're not using the Build Service:
 
-As with all Origami components, o-component-boilerplate has a [silent mode](http://origami.ft.com/docs/syntax/scss/#silent-styles). To use its compiled CSS (rather than using its mixins with your own Sass) set `$o-component-boilerplate-is-silent : false;` in your Sass before you import the o-component-boilerplate Sass.
-
-## Troubleshooting
-_This is a good place to put problems that come up repeatedly_
-
-### The thing with the thing isn't working
-Fix it by turning it off and on again
-
-## Contributing
-If your component is particularly complicated (image sets fall into this category) then a contributing section or even a contributing.md might be useful.
-
-
-## Migration guide
-_Migration guides are very important! Always include one for major releases. To create a codeblock that has diff highligting, use three backticks followed by the word diff_
-
-### Migrating from 1.X.X to 2.X.X
-
-The 2.0.0 release changes the default behaviour of o-component-boilerplate.
-
-```diff
-<div class="o-component-boilerplate__container">
-- remove this line
-+ add this line
-</div>
+```sass
+@include oMessage($class: 'my-banner', $theme: 'success');
 ```
-
----
 
 ## Contact
 

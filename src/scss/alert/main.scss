@@ -2,11 +2,11 @@
 @import 'src/scss/alert/mixins';
 @import 'src/scss/alert/inline';
 
-@mixin oMessageAlerts {
-	@include oMessageAlertBase();
-	@include oMessageAlertInlineBase();
+@mixin oMessageAlerts($class, $theme) {
+	@include oMessageAlertBase($class);
+	@include oMessageAlertInlineBase($class);
 
 	@each $theme in $themes {
-		@include oMessageFor($theme)
+		@include oMessageFor($theme, $class)
 	}
 }

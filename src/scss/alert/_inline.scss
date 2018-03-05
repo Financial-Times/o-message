@@ -17,7 +17,7 @@
 	}
 }
 
-@mixin oMessageAlertInlineBase($class: 'o-message') {
+@mixin oMessageAlertInlineBase($class) {
 	@include oMessageAlertBase($class);
 
 	.#{$class}--alert--inline {

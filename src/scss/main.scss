@@ -4,6 +4,6 @@
 @import 'src/scss/mixins';
 @import 'src/scss/alert/main';
 
-@mixin oMessage {
-	@include oMessageAlerts;
+@mixin oMessage($class: 'o-message', $theme) {
+	@include oMessageAlerts($class, $theme);
 }
