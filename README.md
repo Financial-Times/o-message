@@ -38,7 +38,6 @@ This is an example of the declarative way of instantiating an error message that
 				<a href="#" class="o-message__action--secondary">Text link</a>
 			</div>
 		</div>
-		<a href="#void" class="o-message__close" role="button" aria-label='Close' title='Close'></a>
 	</div>
 </div>
 ```
@@ -76,13 +75,7 @@ If you have set up your message declaratively, and are using default o-message c
 ```js
 const oMessage = require('o-message');
 const messageElement = document.getElementById('my-message');
-const importantMessage = new oMessage(messageElement, {
-	type: 'alert',
-	status: 'success',
-	content: {
-		highlight: 'Hooray!'
-	}
-});
+const importantMessage = new oMessage(messageElement);
 ```
 The second argument that `oMessage` accepts is an [options object](#options), which can be used to change a message's style and functionality.
 

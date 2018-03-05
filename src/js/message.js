@@ -50,6 +50,8 @@ class Message {
 	 * Render the message.
 	 */
 	render () {
+		//check for message variant 'inner' if set declaratively
+
 		// If the message element is not an HTML Element, or if a parent element has been specified, build a new message element
 		if (!(this.messageElement instanceof HTMLElement) || this.opts.parentElement) {
 			this.messageElement = this.constructMessageElement();
@@ -57,6 +59,23 @@ class Message {
 			// attach oMessage to specified parentElement or default to document body
 			let element = this.opts.parentElement ? document.querySelector(this.opts.parentElement) : document.body;
 			element.appendChild(this.messageElement);
+		}
+
+		if (this.messageElement.matches("[class*='-inner']")) {
+			this.opts.close = false;
+		};
+
+		if (this.opts.close) {
+			let closeButton = construct.closeButton(this);
+
+			// Add event listeners
+			closeButton.addEventListener('click', event => {
+				console.log(this.close());
+				this.close();
+				event.preventDefault();
+			});
+
+			this.messageElement.lastElementChild.appendChild(closeButton);
 		}
 	}
 
@@ -82,7 +101,6 @@ class Message {
 	open () {
 		this.messageElement.classList.remove(`${this.opts.messageClass}--closed`);
 		this.messageElement.dispatchEvent(new CustomEvent('o.messageOpen'));
-		this.setEventListeners();
 	}
 
 	/**
@@ -91,19 +109,6 @@ class Message {
 	close () {
 		this.messageElement.classList.add(`${this.opts.messageClass}--closed`);
 		this.messageElement.dispatchEvent(new CustomEvent('o.messageClosed'));
-	}
-
-	/**
-	 * Add event listeners.
-	 */
-	setEventListeners () {
-		let closeButton = document.querySelector(`.${this.opts.messageClass}__close`);
-		if (closeButton) {
-			closeButton.addEventListener('click', e => {
-				e.preventDefault();
-				this.close();
-			});
-		}
 	}
 
 	/**

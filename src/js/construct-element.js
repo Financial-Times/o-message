@@ -59,21 +59,22 @@ export default {
 			opts.close = false;
 		}
 
-
-		let closeButton;
-		if (opts.close) {
-			closeButton = `<a href="#void" class="${opts.messageClass}__close" role="button" aria-label='Close' title='Close'></a>`;
-		} else {
-			closeButton = '';
-		}
-
 		alertMessageEl.innerHTML = `
 			<div class="${opts.messageClass}__container">
 				${contentHTML}
-				${closeButton}
 			</div>
 		`;
 
 		return alertMessageEl;
+	},
+	closeButton: (message) => {
+		const closeButton = document.createElement('a');
+		closeButton.classList.add(`${message.opts.messageClass}__close`);
+		closeButton.setAttribute('role', 'button');
+		closeButton.setAttribute('href', '#void');
+		closeButton.setAttribute('aria-label', 'close');
+		closeButton.setAttribute('title', 'Close');
+
+		return closeButton;
 	}
 };
