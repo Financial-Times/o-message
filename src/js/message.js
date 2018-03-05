@@ -19,8 +19,9 @@ class Message {
 			messageClass,
 			messageType,
 			typeClass: `${messageClass}--${messageType}`,
-			bleed: false,
-			inline: false,
+			variant: null,
+			// bleed: false,
+			// inline: false,
 			parentElement: null,
 			content: {
 				highlight: null,
@@ -66,18 +67,14 @@ class Message {
 	* @returns {HTMLElement} Returns the type specific message element
 	*/
 	constructMessageElement () {
-		if (this.opts.bleed === true && this.opts.inline === true) {
-			throwError(`The message can't bleed and be inline in the same time`);
-		} else {
-			if (this.opts.messageType === 'alert') {
-				if (!this.opts.content.highlight) {
-					throwError(`An ${this.opts.messageType} message element requires options.content.highlight`);
-				} else {
-					return construct.alertMessage(this.opts);
-				}
+		if (this.opts.messageType === 'alert') {
+			if (!this.opts.content.highlight) {
+				throwError(`An ${this.opts.messageType} message element requires options.content.highlight`);
 			} else {
-				throwError(`'${this.opts.messageType}' is not a supported message type. The only currently available option is 'alert'`);
+				return construct.alertMessage(this.opts);
 			}
+		} else {
+			throwError(`'${this.opts.messageType}' is not a supported message type. The only currently available option is 'alert'`);
 		}
 	}
 

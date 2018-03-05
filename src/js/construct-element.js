@@ -11,10 +11,8 @@ export default {
 		alertMessageEl.setAttribute('data-o-component', 'o-message');
 		alertMessageEl.classList.add(opts.messageClass, `${opts.messageClass}--closed`);
 
-		if (opts.bleed) {
-			alertMessageEl.classList.add(`${opts.typeClass}--bleed`);
-		} else if (opts.inline) {
-			alertMessageEl.classList.add(`${opts.typeClass}--inline`);
+		if (opts.variant) {
+			alertMessageEl.classList.add(`${opts.typeClass}--${opts.variant}`);
 		} else {
 			alertMessageEl.classList.add(`${opts.typeClass}`);
 		}
@@ -46,7 +44,7 @@ export default {
 			opts.content.detail = '';
 		}
 
-		if (opts.inline && opts.content.additionalInfo) {
+		if (opts.variant === 'inline' && opts.content.additionalInfo) {
 			contentHTML = `
 				<div class="${opts.messageClass}__content">
 					<p class="${opts.messageClass}__content--highlight">${opts.content.highlight}<span class="${opts.messageClass}__content--detail">${opts.content.detail}</span></p>
@@ -63,7 +61,7 @@ export default {
 			`;
 		}
 
-		if (opts.inline) {
+		if (opts.variant === 'inline') {
 			opts.close = false;
 		}
 

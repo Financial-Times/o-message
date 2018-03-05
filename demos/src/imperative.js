@@ -15,7 +15,7 @@ let options = {
 }
 
 let inlineOptions = Object.assign({}, options, {
-	inline: true,
+	variant: 'inline',
 	parentElement: '.demo-inline',
 	content: {
 		highlight: 'Highlight!',
@@ -42,7 +42,7 @@ const initDemos = () => {
 	setUpDemo('alert-success', options, {theme: 'success'});
 	setUpDemo('alert-neutral', options, {theme: 'neutral'});
 	setUpDemo('alert-error', options, {theme: 'error'});
-	setUpDemo('alert-error-bleed', options, {theme: 'error', bleed: true});
+	setUpDemo('alert-error-bleed', options, {theme: 'error', variant: 'bleed'});
 
 	setUpDemo('inline-success', inlineOptions, {theme: 'success'});
 	setUpDemo('inline-neutral', inlineOptions, {theme: 'neutral'});

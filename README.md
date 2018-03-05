@@ -77,7 +77,7 @@ const oMessage = require('o-message');
 const messageElement = document.getElementById('my-message');
 const importantMessage = new oMessage(messageElement, { content: { highlight: 'Success' } });
 ```
-The second argument that `oMessage` accepts is an (options object)[#options], which can be used to change some behaviour and some markup of a message.
+The second argument that `oMessage` accepts is an (options object)[#options], which can be used to change some a message's markup, variant and style.
 
 If you're setting up a message without existing DOM elements, oMessage will construct an element for you when it is set up like this:
 
@@ -106,8 +106,7 @@ The following options are not required, and all have a default value:
 - `autoOpen`: Boolean. Whether to open the message automatically, defaults to `true`.
 - `messageClass`: String. The base class name for the component's elements, defaults to `o-message`.
 - `messageType`: String. The type of message that you want to initialise (e.g. alert, cookie, marketing.) Currently, the only available choice is `'alert'`, which is also the default value.
-- `bleed`: Boolean. Whether the message bleeds across the viewport, defaults to `false`,
-- `inline`: Boolean. Whether the message exists within another element, defaults to `false`,
+- `variant`: String. The message variant which allows a message to be a bleed message or an inline message. Defaults to `null`.
 - `parentElement`: String. This determines the element that the message will be appended to. If none is declared, it will automatically append to the body, or an element with the data attribute `data-o-component=o-message`, defaults to `null`.
 - `content`: Object. Holds the following values for text properties:
 	-	`additionalInfo`: String. More information about the message –  only applies to an `inline` message. Defaults to `null`
