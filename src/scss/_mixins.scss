@@ -20,3 +20,19 @@
 	@include oIconsGetIcon('cross', $icon-color, 20);
 	margin-left: auto;
 }
+
+@mixin oMessageBase($class) {
+	.#{$class} {
+		.#{$class}__container {
+			@include oMessageContainer;
+
+			.#{$class}__content {
+				@include oMessageAlertContent;
+			}
+		}
+
+		.#{$class}--closed {
+			display: none;
+		}
+	}
+};

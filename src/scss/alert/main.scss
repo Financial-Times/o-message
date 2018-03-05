@@ -1,16 +1,27 @@
-@import 'src/scss/alert/themes';
 @import 'src/scss/alert/mixins';
-@import 'src/scss/alert/inline';
+@import 'src/scss/alert/status';
+@import 'src/scss/alert/inner';
 
-@mixin oMessageAlerts($class, $theme) {
-	@include oMessageAlertBase($class);
-	@include oMessageAlertInlineBase($class);
+@mixin oMessageAlerts($class, $variant, $status) {
 
-	@if $theme == 'all' {
-		@each $theme in $o-message-themes {
-			@include oMessageFor($theme, $class)
+	@if $variant == 'all' {
+		@include oMessageAlertBase($class);
+		@include oMessageAlertInnerBase($class);
+	} @else if $variant == 'alert' or $variant == 'alert-bleed' {
+			@include oMessageAlertBase($class);
+	} @else if $variant == 'alert-inner' {
+			@include oMessageAlertInner($class);
+	} @else {
+		@include _oMessageError("#{$variant} is not a variant, the options are 'alert', 'alert-bleed' or 'alert-inner'");
+	}
+
+	@if $status == 'all' {
+		@each $status in $o-message-status {
+			@include oMessageStatus($status, $class)
 		}
-	} @else if index($o-message-themes, $theme) != null {
-			@include oMessageFor($theme);
+	} @else if index($o-message-status, $status) != null {
+			@include oMessageStatus($status, $class);
+	} @else {
+		@include _oMessageError("#{$status} is not a status, the options are 'success', 'neutral' or 'error'");
 	}
 }

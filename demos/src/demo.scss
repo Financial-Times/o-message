@@ -20,12 +20,11 @@ h6 {
 
 .demo-button {
 	@include oButtons();
-	// width: 300px;
 	margin: 10px;
 }
 
-.demo-inline,
-.demo-inline-message {
+.demo-inner,
+.demo-inner-message {
 	margin: auto;
 	max-width: 400px;
 }

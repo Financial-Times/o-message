@@ -1,4 +1,5 @@
 $o-message-is-silent: true !default;
 
 // Alert message
+$o-message-variants: ('alert', 'alert-bleed', 'alert-inner');
 $_o-message-alert-height: 48px;

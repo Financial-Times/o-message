@@ -7,6 +7,7 @@
 
 @if ($o-message-is-silent == false) {
 	@include oMessage;
+	
 	// Set to silent again to avoid being output twice
 	$o-message-is-silent: true !global;
 }

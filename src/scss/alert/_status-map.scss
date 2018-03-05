@@ -1,6 +1,6 @@
-$o-message-themes: (error, neutral, success);
+$o-message-status: (error, neutral, success);
 
-$_o-message-theme-styles: (
+$_o-message-status-styles: (
 	error: (
 		custom-link-base: 'black-crimson-12.5',
 		custom-link-hover: 'black-crimson-12.5',

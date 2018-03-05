@@ -55,7 +55,7 @@ export default {
 			`;
 		}
 
-		if (opts.variant === 'inline') {
+		if (opts.type === 'alert-inner') {
 			opts.close = false;
 		}
 

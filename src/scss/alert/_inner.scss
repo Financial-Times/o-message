@@ -1,11 +1,26 @@
-@mixin oMessageInlineContainer () {
+
+@mixin oMessageAlertInnerBase($class) {
+	@include oMessageAlertBase($class);
+
+	.#{$class}--alert-inner {
+		.#{$class}__container {
+			@include oMessageInnerContainer();
+
+			.#{$class}__content {
+				@include oMessageInnerContent();
+			}
+		}
+	}
+}
+
+@mixin oMessageInnerContainer () {
 	@include oMessageContainer();
 	align-items: flex-start;
 	padding: oTypographySpacingSize(2) oTypographySpacingSize(5) oTypographySpacingSize(5) oTypographySpacingSize(4);
 };
 
 
-@mixin oMessageInlineContent () {
+@mixin oMessageInnerContent () {
 	@include oTypographyMargin($top: 3, $bottom: 0);
 	display: flex;
 	flex-flow: column nowrap;
@@ -14,19 +29,5 @@
 	&--highlight,
 	&--additional-info {
 		@include oTypographyMargin($top: 0);
-	}
-}
-
-@mixin oMessageAlertInlineBase($class) {
-	@include oMessageAlertBase($class);
-
-	.#{$class}--alert--inline {
-		.#{$class}__container {
-			@include oMessageInlineContainer();
-		}
-
-		.#{$class}__content {
-			@include oMessageInlineContent();
-		}
 	}
 }
