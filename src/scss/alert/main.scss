@@ -6,7 +6,11 @@
 	@include oMessageAlertBase($class);
 	@include oMessageAlertInlineBase($class);
 
-	@each $theme in $themes {
-		@include oMessageFor($theme, $class)
+	@if $theme == 'all' {
+		@each $theme in $o-message-themes {
+			@include oMessageFor($theme, $class)
+		}
+	} @else if index($o-message-themes, $theme) != null {
+			@include oMessageFor($theme);
 	}
 }
