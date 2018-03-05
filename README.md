@@ -6,7 +6,7 @@ o-message is a messaging component used for alerting and informing. It can inclu
 - [Usage](#usage)
 	- [Markup](#markup)
 	- [JavaScript](#javascript)
-		- [Construction](#constructing-an-o-message)
+		- [Construction](#construction)
 		- [Options](#options)
 	- [Sass](#sass)
 - [Troubleshooting](#troubleshooting)
@@ -26,15 +26,15 @@ By default, `o-message` initialises an alert message, which provides information
 This is an example of the declarative way of instantiating an error message that spans **across a viewport**.
 
 ```html
-<div class="o-message o-message--alert o-message--alert-error" data-o-component="o-message">
+<div class="o-message o-message--alert o-message--error" data-o-component="o-message">
 	<div class="o-message__container">
 		<div class="o-message__content">
 			<p class="o-message__content--highlight">Something went wrong!
 				<span class="o-message__content--detail">The quick brown fox did not jump over the lazy dogs.</span>
 			</p>
 			<div class="o-message__actions">
-				<a href="#" class="o-message__button o-message__action--primary">Button</a>
-				<a href="#" class="o-message__link o-message__action--secondary">Text link</a>
+				<a href="#" class="o-message__action--primary">Button</a>
+				<a href="#" class="o-message__action--secondary">Text link</a>
 			</div>
 		</div>
 		<a href="#void" class="o-message__close" role="button" aria-label='Close' title='Close'></a>
@@ -43,12 +43,12 @@ This is an example of the declarative way of instantiating an error message that
 ```
 _Note: at different viewport sizes, the message element hides the following elements:_
 - `<span class="o-message__content--detail">`
-- `<a class="o-message__link o-message__action--secondary">`
+- `<a class="o-message__action--secondary">`
 
-A variation of the alert message is an **inline** alert message, which has almost exactly the same markup, with an optional addition of information, and does not have the option to close the message.
+A variation of the alert message is an **inner** alert message, which has almost exactly the same markup, with an optional addition of information, and does not have the option to close the message.
 
 ```html
-<div class="o-message o-message--alert--inline o-message--alert-success" data-o-component="o-message">
+<div class="o-message o-message--alert-inner o-message--success" data-o-component="o-message">
 	<div class="o-message__container">
 		<div class="o-message__content">
 			<p class="o-message__content--highlight">Hooray!
@@ -57,8 +57,8 @@ A variation of the alert message is an **inline** alert message, which has almos
 			<p class="o-message__content--additional-info">Did you know that that sentence uses all of the letters in the alphabet at least once?</p>
 
 			<div class="o-message__actions">
-				<a href="#" class="o-message__button o-message__action--primary">Button</a>
-				<a href="#" class="o-message__link o-message__action--secondary">Text link</a>
+				<a href="#" class="o-message__action--primary">Button</a>
+				<a href="#" class="o-message__action--secondary">Text link</a>
 			</div>
 		</div>
 	</div>
@@ -66,25 +66,32 @@ A variation of the alert message is an **inline** alert message, which has almos
 ```
 
 ### JavaScript
-No code will run automatically unless you are using the Build Service. You must either construct an `o-message` object or fire an o.DOMContentLoaded event, which `o-message` listens for.
+No code will run automatically unless you are using the Build Service. You must either construct an `o-message` object or fire an o.DOMContentLoaded event, which `o-message` listens for. There are currently three variants of `o-message` that you can use: `alert`, `alert-bleed` and `alert-inner`. All of these variants require a status of either `success`, `error` or `neutral`.
 
 
-#### Constructing an o-message
+#### Construction
 
 If you have set up your message declaratively, and are using default o-message classes, use the following:
 ```js
 const oMessage = require('o-message');
 const messageElement = document.getElementById('my-message');
-const importantMessage = new oMessage(messageElement, { content: { highlight: 'Success' } });
+const importantMessage = new oMessage(messageElement, {
+	type: 'alert',
+	status: 'success',
+	content: {
+		highlight: 'Hooray!'
+	}
+});
 ```
-The second argument that `oMessage` accepts is an (options object)[#options], which can be used to change some a message's markup, variant and style.
+The second argument that `oMessage` accepts is an [options object](#options), which can be used to change a message's markup, variant and style.
 
 If you're setting up a message without existing DOM elements, oMessage will construct an element for you when it is set up like this:
 
 ```js
 const oMessage = require('o-message');
 const importantMessage = new oMessage(null, {
-	theme: 'error',
+	type: 'alert-bleed',
+	status: 'error',
 	content: {
 		highlight: 'Something has gone wrong.'
 		detail: 'The quick brown fox did not jump over the lazy dogs.'
@@ -96,7 +103,8 @@ const importantMessage = new oMessage(null, {
 `o-message` allows for several configuration options that will change the type of message and its visual styling.
 
 The only required options are listed in the example _above_. These are:
-- `theme`: String. The theme to apply to the message. The available themes are 'success', 'error' and 'neutral', which are designed to be used with corresponding messages.
+- `type`: String. The o-message variant. The available variants are 'alert', 'alert-bleed' and 'alert-inner'.
+- `status`: String. Alert variants require a status, and the options are 'success', 'neutral' and 'error'.
 - `content`: Object. Holds the following values for text properties:
 	- `highlight`: String. The highlighted text in a message. Defaults to `null`
 	-	`detail`: String. The detail about the nature of a message.
@@ -105,11 +113,10 @@ The following options are not required, and all have a default value:
 
 - `autoOpen`: Boolean. Whether to open the message automatically, defaults to `true`.
 - `messageClass`: String. The base class name for the component's elements, defaults to `o-message`.
-- `messageType`: String. The type of message that you want to initialise (e.g. alert, cookie, marketing.) Currently, the only available choice is `'alert'`, which is also the default value.
 - `variant`: String. The message variant which allows a message to be a bleed message or an inline message. Defaults to `null`.
 - `parentElement`: String. This determines the element that the message will be appended to. If none is declared, it will automatically append to the body, or an element with the data attribute `data-o-component=o-message`, defaults to `null`.
 - `content`: Object. Holds the following values for text properties:
-	-	`additionalInfo`: String. More information about the message –  only applies to an `inline` message. Defaults to `null`
+	-	`additionalInfo`: String. More information about the message –  only applies to an `alert-inner` message. Defaults to `null`
 - `button`: Object. Holds the following values for button properties:
 	- `text`: String. text value of the button.
 	- `url`: String. The URL the button links to.
@@ -125,7 +132,7 @@ As with all Origami components, o-message has a [silent mode](http://origami.ft.
 o-message includes mixins that you can use if you'd rather _not_ have origami classnames in your page. These are only available if you're not using the Build Service:
 
 ```sass
-@include oMessage($class: 'my-banner', $theme: 'success');
+@include oMessage($class: 'my-banner', $variant: 'alert-inner', $status: 'success');
 ```
 
 ## Contact

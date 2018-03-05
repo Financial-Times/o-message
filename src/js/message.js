@@ -53,11 +53,11 @@ class Message {
 		// If the message element is not an HTML Element, or if a parent element has been specified, build a new message element
 		if (!(this.messageElement instanceof HTMLElement) || this.opts.parentElement) {
 			this.messageElement = this.constructMessageElement();
-		}
 
-		// attach oMessage to specified parentElement or default to document body
-		let element = this.opts.parentElement ? document.querySelector(this.opts.parentElement) : document.body;
-		element.appendChild(this.messageElement);
+			// attach oMessage to specified parentElement or default to document body
+			let element = this.opts.parentElement ? document.querySelector(this.opts.parentElement) : document.body;
+			element.appendChild(this.messageElement);
+		}
 	}
 
 	/**
