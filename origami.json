@@ -36,6 +36,7 @@
 		{
 			"title": "Imperative",
 			"name": "imperative",
+			"js": "demos/src/imperative.js",
 			"template": "demos/src/imperative.mustache",
 			"description": "Imperative messages (both inline and alerting)"
 		}
