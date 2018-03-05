@@ -12,16 +12,14 @@ class Message {
 
 		//Default options
 		const messageClass = options && options.messageClass ? options.messageClass : 'o-message';
-		const messageType = options && options.messageType ? options.messageType : 'alert';
+		const type = options && options.type ? options.type : 'alert';
 
 		this.opts = Object.assign({}, {
 			autoOpen: true,
 			messageClass,
-			messageType,
-			typeClass: `${messageClass}--${messageType}`,
-			variant: null,
-			// bleed: false,
-			// inline: false,
+			type,
+			typeVariant: `${messageClass}--${type}`,
+			statusVariant: options && options.status ? `${messageClass}--${options.status}` : null,
 			parentElement: null,
 			content: {
 				highlight: null,
@@ -67,14 +65,14 @@ class Message {
 	* @returns {HTMLElement} Returns the type specific message element
 	*/
 	constructMessageElement () {
-		if (this.opts.messageType === 'alert') {
+		if (this.opts.type === 'alert' || this.opts.type === 'alert-bleed' || this.opts.type === 'alert-inner') {
 			if (!this.opts.content.highlight) {
-				throwError(`An ${this.opts.messageType} message element requires options.content.highlight`);
+				throwError(`An ${this.opts.type} message element requires options.content.highlight`);
 			} else {
 				return construct.alertMessage(this.opts);
 			}
 		} else {
-			throwError(`'${this.opts.messageType}' is not a supported message type. The only currently available option is 'alert'`);
+			throwError(`'${this.opts.type}' is not a supported message type. The only available options are 'alert', 'alert-bleed' or 'alert-inner'`);
 		}
 	}
 
@@ -123,7 +121,6 @@ class Message {
 		}
 
 		if (rootEl instanceof HTMLElement && rootEl.matches('[data-o-component=o-message]')) {
-			console.log('matches');
 			return new Message(rootEl, opts);
 		}
 

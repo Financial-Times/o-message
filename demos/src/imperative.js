@@ -2,6 +2,7 @@
 import Message from './../../main.js';
 
 let options = {
+	type: 'alert',
 	content: {
 		highlight: 'Highlight!',
 		detail: 'Details about the message go here.'
@@ -14,9 +15,9 @@ let options = {
 	}
 }
 
-let inlineOptions = Object.assign({}, options, {
-	variant: 'inline',
-	parentElement: '.demo-inline',
+let innerOptions = Object.assign({}, options, {
+	type: 'alert-inner',
+	parentElement: '.demo-inner',
 	content: {
 		highlight: 'Highlight!',
 		detail: 'Details about the message go here.',
@@ -39,14 +40,14 @@ const setUpDemo = (id, opts, variants) => {
 }
 
 const initDemos = () => {
-	setUpDemo('alert-success', options, {theme: 'success'});
-	setUpDemo('alert-neutral', options, {theme: 'neutral'});
-	setUpDemo('alert-error', options, {theme: 'error'});
-	setUpDemo('alert-error-bleed', options, {theme: 'error', variant: 'bleed'});
+	setUpDemo('alert-success', options, {status: 'success'});
+	setUpDemo('alert-neutral', options, {status: 'neutral'});
+	setUpDemo('alert-error', options, {status: 'error'});
+	setUpDemo('alert-error-bleed', options, {status: 'error', type: 'alert-bleed'});
 
-	setUpDemo('inline-success', inlineOptions, {theme: 'success'});
-	setUpDemo('inline-neutral', inlineOptions, {theme: 'neutral'});
-	setUpDemo('inline-error', inlineOptions, {theme: 'error'});
+	setUpDemo('inner-success', innerOptions, {status: 'success'});
+	setUpDemo('inner-neutral', innerOptions, {status: 'neutral'});
+	setUpDemo('inner-error', innerOptions, {status: 'error'});
 }
 
 document.addEventListener('DOMContentLoaded', () => {

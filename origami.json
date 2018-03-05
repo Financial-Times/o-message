@@ -25,20 +25,20 @@
 			"title": "Alert Message",
 			"name": "alert",
 			"template": "demos/src/alert.mustache",
-			"description": "Alert messages (success, error and neutural)"
+			"description": "Alert messages (success, error and neutral)"
 		},
 		{
-			"title": "Inline Message",
-			"name": "inline",
-			"template": "demos/src/inline.mustache",
-			"description": "Inline messages (success, error and neutural)"
+			"title": "Inner Message",
+			"name": "inner",
+			"template": "demos/src/inner.mustache",
+			"description": "Inner alert messages (success, error and neutral)"
 		},
 		{
 			"title": "Imperative",
 			"name": "imperative",
 			"js": "demos/src/imperative.js",
 			"template": "demos/src/imperative.mustache",
-			"description": "Imperative messages (both inline and alerting)"
+			"description": "Imperative alert messages regular, inner and bleed)"
 		}
 	]
 }

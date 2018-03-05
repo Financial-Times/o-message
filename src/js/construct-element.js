@@ -9,18 +9,12 @@ export default {
 	alertMessage: (opts) => {
 		const alertMessageEl = document.createElement('div');
 		alertMessageEl.setAttribute('data-o-component', 'o-message');
-		alertMessageEl.classList.add(opts.messageClass, `${opts.messageClass}--closed`);
+		alertMessageEl.classList.add(opts.messageClass, opts.typeVariant, `${opts.messageClass}--closed`);
 
-		if (opts.variant) {
-			alertMessageEl.classList.add(`${opts.typeClass}--${opts.variant}`);
+		if (!opts.status) {
+			throwError("Alert messages require a status. The options are 'success', 'error', or 'neutral'");
 		} else {
-			alertMessageEl.classList.add(`${opts.typeClass}`);
-		}
-
-		if (!opts.theme) {
-			throwError("Alert type messages require a theme. The options are 'success', 'error', or 'neutral'");
-		} else {
-			alertMessageEl.classList.add(`${opts.typeClass}-${opts.theme}`);
+			alertMessageEl.classList.add(`${opts.statusVariant}`);
 		}
 
 		let primaryActionHTML;
@@ -44,7 +38,7 @@ export default {
 			opts.content.detail = '';
 		}
 
-		if (opts.variant === 'inline' && opts.content.additionalInfo) {
+		if (opts.type === 'alert-inner' && opts.content.additionalInfo) {
 			contentHTML = `
 				<div class="${opts.messageClass}__content">
 					<p class="${opts.messageClass}__content--highlight">${opts.content.highlight}<span class="${opts.messageClass}__content--detail">${opts.content.detail}</span></p>
