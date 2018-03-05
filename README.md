@@ -121,7 +121,7 @@ The following options are not required, and all have a default value:
 
 
 ### Sass
-As with all Origami components, o-message has a [silent mode](http://origami.ft.com/docs/syntax/scss/#silent-styles). To use its compiled CSS (rather than using its mixins with your own Sass) set `$o-message-is-silent: false;` in your Sass before you import the o-component-boilerplate Sass.
+As with all Origami components, o-message has a [silent mode](http://origami.ft.com/docs/syntax/scss/#silent-styles). To use its compiled CSS (rather than using its mixins with your own Sass) set `$o-message-is-silent: false;` in your Sass before you import the o-message Sass.
 
 o-message includes mixins that you can use if you'd rather _not_ have origami classnames in your page. These are only available if you're not using the Build Service:
 

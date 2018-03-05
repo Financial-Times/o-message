@@ -1,5 +1,5 @@
 @function _oMessageGetMapValue($element, $property) {
-	@return map-get(map-get($theme-styles, $element), $property);
+	@return map-get(map-get($_o-message-theme-styles, $element), $property);
 };
 
 @function _oMessageError($message) {

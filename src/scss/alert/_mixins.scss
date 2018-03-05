@@ -92,7 +92,7 @@
 }
 
 @mixin oMessageFor ($theme, $class) {
-	@if map-has-key($theme-styles, $theme) {
+	@if map-has-key($_o-message-theme-styles, $theme) {
 		.#{$class}--alert-#{$theme} {
 			@include oColorsFor(o-message-alert-#{$theme});
 
