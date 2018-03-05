@@ -3,7 +3,11 @@
 	.#{$class}--alert-bleed {
 		height: $_o-message-alert-height;
 
-		.#{$class}__content--detail {
+		.#{$class}__highlight {
+			@include oTypographyMargin($top: 0, $bottom: 0);
+		}
+
+		.#{$class}__detail {
 			@include oGridRespondTo($until: M) {
 				display: none;
 			};
@@ -36,17 +40,6 @@
 	width: 100%;
 	display: flex;
 	align-items: center;
-
-	&--highlight {
-		@include oTypographySansBold($scale: 0);
-		line-height: 1;
-		margin-right: oTypographySpacingSize(6);
-	}
-
-	&--detail {
-		padding-left: oTypographySpacingSize(2);
-		font-weight: 400;
-	}
 }
 
 @mixin oMessageAlertButtonTheme ($background, $text) {

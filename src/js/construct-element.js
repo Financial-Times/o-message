@@ -41,15 +41,15 @@ export default {
 		if (opts.type === 'alert-inner' && opts.content.additionalInfo) {
 			contentHTML = `
 				<div class="${opts.messageClass}__content">
-					<p class="${opts.messageClass}__content--highlight">${opts.content.highlight}<span class="${opts.messageClass}__content--detail">${opts.content.detail}</span></p>
-					<p class="${opts.messageClass}__content--additional-info">${opts.content.additionalInfo}</p>
+					<p class="${opts.messageClass}__highlight">${opts.content.highlight}<span class="${opts.messageClass}__detail">${opts.content.detail}</span></p>
+					<p class="${opts.messageClass}__additional-info">${opts.content.additionalInfo}</p>
 					${actions}
 				</div>
 			`;
 		} else {
 			contentHTML = `
 				<div class="${opts.messageClass}__content">
-					<p class="${opts.messageClass}__content--highlight">${opts.content.highlight}<span class="${opts.messageClass}__content--detail">${opts.content.detail}</span></p>
+					<p class="${opts.messageClass}__highlight">${opts.content.highlight}<span class="${opts.messageClass}__detail">${opts.content.detail}</span></p>
 					${actions}
 				</div>
 			`;

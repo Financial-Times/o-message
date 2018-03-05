@@ -9,6 +9,11 @@
 			.#{$class}__content {
 				@include oMessageInnerContent();
 			}
+
+			.#{$class}__highlight,
+			.#{$class}__additional-info {
+				@include oTypographyMargin($top: 0);
+			}
 		}
 	}
 }
@@ -25,9 +30,4 @@
 	display: flex;
 	flex-flow: column nowrap;
 	align-items: flex-start;
-
-	&--highlight,
-	&--additional-info {
-		@include oTypographyMargin($top: 0);
-	}
 }

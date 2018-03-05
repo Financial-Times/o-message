@@ -11,6 +11,17 @@
 	// sass-lint:enable no-vendor-prefixes
 }
 
+@mixin oMessageHighlight {
+	@include oTypographySansBold($scale: 0);
+	line-height: 1;
+	margin-right: oTypographySpacingSize(6);
+}
+
+@mixin oMessageDetail {
+	padding-left: oTypographySpacingSize(2);
+	font-weight: 400;
+}
+
 @mixin oMessageButtonBase () {
 	@include oButtons();
 	@include oTypographySans($scale: -1);
@@ -28,6 +39,14 @@
 
 			.#{$class}__content {
 				@include oMessageAlertContent;
+			}
+
+			.#{$class}__highlight {
+				@include oMessageHighlight;
+			}
+
+			.#{$class}__detail {
+				@include oMessageDetail;
 			}
 		}
 

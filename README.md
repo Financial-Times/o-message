@@ -19,7 +19,8 @@ o-message is a messaging component used for alerting and informing. It can inclu
 `o-message` uses Sass and Javascript to show and hide a message component.  
 It can be initialised declaratively if markup is provided on the page, or it can be initialised imperatively when using the [manual build process](http://origami.ft.com/docs/developer-guide/modules/building-modules/).
 
-By default, `o-message` initialises an alert message, which provides information in response to a user action. It currently has three themes, 'success', 'neutral' and 'error', and relies on the markup (or configuration) to determine certain aspects of each theme's styles.
+By default, `o-message` initialises an alert message, which provides information in response to a user action. It currently has three states, 'success', 'neutral' and 'error', and relies on the markup (or configuration) to determine  other variants of behaviour and style.
+
 
 ### Markup
 
