@@ -96,20 +96,20 @@
 		.#{$class}--alert-#{$theme} {
 			@include oColorsFor(o-message-alert-#{$theme});
 
-			.#{$class}__link {
+			.#{$class}__action--primary {
+				@include oMessageAlertButtonTheme(
+				_oMessageGetMapValue($theme, button-background),
+				_oMessageGetMapValue($theme, button-text)
+				);
+			}
+
+			.#{$class}__action--secondary {
 				@include oMessageAlertLink(
 					$custom-link-base: _oMessageGetMapValue($theme, custom-link-base),
 					$custom-link-hover: _oMessageGetMapValue($theme, custom-link-hover),
 					$custom-link-background: _oMessageGetMapValue($theme, custom-link-background),
 					$link-hover: _oMessageGetMapValue($theme, link-hover),
 					$link-focus: _oMessageGetMapValue($theme, link-focus)
-				);
-			}
-
-			.#{$class}__button {
-				@include oMessageAlertButtonTheme(
-					_oMessageGetMapValue($theme, button-background),
-					_oMessageGetMapValue($theme, button-text)
 				);
 			}
 

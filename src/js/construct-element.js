@@ -27,12 +27,12 @@ export default {
 
 		let primaryActionHTML;
 		if (opts.button.text) {
-			primaryActionHTML = `<a href="${opts.button.url}" class="${opts.messageClass}__button ${opts.messageClass}__action--primary">${opts.button.text}</a>`;
+			primaryActionHTML = `<a href="${opts.button.url}" class="${opts.messageClass}__action--primary">${opts.button.text}</a>`;
 		}
 
 		let secondaryActionHTML;
 		if (opts.link.text) {
-			secondaryActionHTML = `<a href="${opts.link.url}" class="${opts.messageClass}__link ${opts.messageClass}__action--secondary">${opts.link.text}</a>`;
+			secondaryActionHTML = `<a href="${opts.link.url}" class="${opts.messageClass}__action--secondary">${opts.link.text}</a>`;
 		}
 
 		let actions = `<div class="${opts.messageClass}__actions">
