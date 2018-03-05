@@ -18,8 +18,8 @@ class Message {
 			autoOpen: true,
 			messageClass,
 			type,
-			typeVariant: `${messageClass}--${type}`,
-			statusVariant: options && options.status ? `${messageClass}--${options.status}` : null,
+			typeClass: `${messageClass}--${type}`,
+			statusClass: options && options.status ? `${messageClass}--${options.status}` : null,
 			parentElement: null,
 			content: {
 				highlight: null,

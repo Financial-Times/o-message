@@ -30,8 +30,8 @@ This is an example of the declarative way of instantiating an error message that
 <div class="o-message o-message--alert o-message--error" data-o-component="o-message">
 	<div class="o-message__container">
 		<div class="o-message__content">
-			<p class="o-message__content--highlight">Something went wrong!
-				<span class="o-message__content--detail">The quick brown fox did not jump over the lazy dogs.</span>
+			<p class="o-message__highlight">Something went wrong!
+				<span class="o-message__detail">The quick brown fox did not jump over the lazy dogs.</span>
 			</p>
 			<div class="o-message__actions">
 				<a href="#" class="o-message__action--primary">Button</a>
@@ -43,7 +43,7 @@ This is an example of the declarative way of instantiating an error message that
 </div>
 ```
 _Note: at different viewport sizes, the message element hides the following elements:_
-- `<span class="o-message__content--detail">`
+- `<span class="o-message__detail">`
 - `<a class="o-message__action--secondary">`
 
 A variation of the alert message is an **inner** alert message, which has almost exactly the same markup, with an optional addition of information, and does not have the option to close the message.
@@ -52,10 +52,10 @@ A variation of the alert message is an **inner** alert message, which has almost
 <div class="o-message o-message--alert-inner o-message--success" data-o-component="o-message">
 	<div class="o-message__container">
 		<div class="o-message__content">
-			<p class="o-message__content--highlight">Hooray!
-				<span class="o-message__content--detail">The quick brown fox jumped over the lazy dogs!</span>
+			<p class="o-message__highlight">Hooray!
+				<span class="o-message__detail">The quick brown fox jumped over the lazy dogs!</span>
 			</p>
-			<p class="o-message__content--additional-info">Did you know that that sentence uses all of the letters in the alphabet at least once?</p>
+			<p class="o-message__additional-info">Did you know that that sentence uses all of the letters in the alphabet at least once?</p>
 
 			<div class="o-message__actions">
 				<a href="#" class="o-message__action--primary">Button</a>
@@ -84,7 +84,7 @@ const importantMessage = new oMessage(messageElement, {
 	}
 });
 ```
-The second argument that `oMessage` accepts is an [options object](#options), which can be used to change a message's markup, variant and style.
+The second argument that `oMessage` accepts is an [options object](#options), which can be used to change a message's style and functionality.
 
 If you're setting up a message without existing DOM elements, oMessage will construct an element for you when it is set up like this:
 

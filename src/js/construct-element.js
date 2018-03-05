@@ -9,12 +9,12 @@ export default {
 	alertMessage: (opts) => {
 		const alertMessageEl = document.createElement('div');
 		alertMessageEl.setAttribute('data-o-component', 'o-message');
-		alertMessageEl.classList.add(opts.messageClass, opts.typeVariant, `${opts.messageClass}--closed`);
+		alertMessageEl.classList.add(opts.messageClass, opts.typeClass, `${opts.messageClass}--closed`);
 
 		if (!opts.status) {
 			throwError("Alert messages require a status. The options are 'success', 'error', or 'neutral'");
 		} else {
-			alertMessageEl.classList.add(`${opts.statusVariant}`);
+			alertMessageEl.classList.add(`${opts.statusClass}`);
 		}
 
 		let primaryActionHTML;
