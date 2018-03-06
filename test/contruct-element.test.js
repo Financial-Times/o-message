@@ -17,52 +17,56 @@ describe("constructElement", () => {
 	beforeEach(() =>  {
 		options = {
 			messageClass: 'my-message',
+			type: 'alert',
 			typeClass: 'my-message--alert',
-			theme: 'success',
+			status: 'success',
+			statusClass: 'my-message--success',
 			content: {
 				highlight: 'Important'
 			},
-			link: {
-				text: 'a link',
-				url: '#'
-			},
-			button: {
-				text: 'a button',
-				url: '#'
+			actions: {
+				primary: {
+					text: 'a button',
+					url: '#'
+				},
+				secondary: {
+					text: 'a link',
+					url: '#'
+				}
 			},
 			close: true
 		};
 	})
 
-	describe('.alertMessage', () => {
+	describe.only('.alertMessage', () => {
 		it('returns an HTML element', () => {
 			assert.instanceOf(construct.alertMessage(options), HTMLElement);
 		});
 
 		it('builds a message component based on the provided messageClass and theme', () => {
-			assert.strictEqual(flatten(construct.alertMessage(options).innerHTML), flatten(fixtures.constructedForAlert));
+			assert.strictEqual(flatten(construct.alertMessage(options).innerHTML), flatten(fixtures.alert));
 		});
 
-		it('throws an error if no theme is defined', () => {
-			options.theme = null;
+		it('throws an error if no status is defined', () => {
+			options.status = null;
 
-			let error = "*** o-message error: Alert type messages require a theme. The options are 'success', 'error', or 'neutral' ***";
+			let error = "*** o-message error: Alert messages require a status. The options are 'success', 'error', or 'neutral' ***";
 			assert.throws(() => construct.alertMessage(options), error);
 		});
 
 		describe('builds an inline version of component if an inline option is true', () => {
 			beforeEach(() => {
-				options.inline = true;
+				options.type = 'alert-inner';
 			})
 
 			it('if additional info is provided', () => {
 				options.content.additionalInfo = 'Additional info'
-				assert.strictEqual(flatten(construct.alertMessage(options).innerHTML), flatten(fixtures.constructedForInlineAlert));
+				assert.strictEqual(flatten(construct.alertMessage(options).innerHTML), flatten(fixtures.innerAlert));
 			});
 
 			it('if additional info is not provided', () => {
 				options.content.additionalInfo = false;
-				assert.strictEqual(flatten(construct.alertMessage(options).innerHTML), flatten(fixtures.constructedForInlineAlertNoAdditionalInfo));
+				assert.strictEqual(flatten(construct.alertMessage(options).innerHTML), flatten(fixtures.innerAlertWithOutAdditionalInfo));
 			});
 		});
 	});
