@@ -3,7 +3,7 @@
 /// Outputs base layout for a message container
 @mixin oMessageContainer () {
 	@include oTypographySans($scale: 0);
-
+	display: table;
 	display: flex;
 	align-items: center;
 	justify-content: flex-start;
@@ -21,6 +21,7 @@
 	@include oTypographySansBold($scale: 0);
 	line-height: 1;
 	margin-right: oTypographySpacingSize(6);
+	display: inline-block;
 }
 
 /// Message highlight
@@ -65,6 +66,10 @@
 
 			.#{$class}__detail {
 				@include oMessageDetail;
+			}
+
+			.#{$class}__actions {
+				display: inline;
 			}
 		}
 	}

@@ -39,6 +39,7 @@
 					_oMessageGetMapValue($status, alert-icon-color),
 					_oMessageGetMapValue($status, alert-icon-size)
 				);
+				vertical-align: middle;
 			}
 
 			.#{$class}__close {
