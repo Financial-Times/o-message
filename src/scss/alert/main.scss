@@ -2,6 +2,16 @@
 @import 'src/scss/alert/status';
 @import 'src/scss/alert/inner';
 
+/// Alert Messages
+///
+/// Outputs styling for all alert type messages
+/// @example
+/// @include oMessageAlerts('my-class');
+///
+/// @param {String} $class - base class name
+/// @param {String} $type - message type ('all', 'alert', 'alert-bleed' or 'alert-inner')
+/// @param {String} $status - message status ('all', 'success', 'neutral', 'error')
+
 @mixin oMessageAlerts($class, $type, $status) {
 	@if $type == 'all' {
 		@include oMessageAlert($class);

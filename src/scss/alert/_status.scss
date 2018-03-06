@@ -1,12 +1,23 @@
 @import 'src/scss/alert/status-map';
 
+
+/// Alert message status
+///
+/// Outputs status specific styles for an alert message
+/// @example
+/// @include oMessageStatus('success', 'my-class');
+///
+/// @param {String} $status - the name of the status for the message ('success', 'neutral', 'error')
+/// @param {String} $class - base class for status
+
+
 @mixin oMessageStatus ($status, $class) {
 	@if map-has-key($_o-message-status-styles, $status) {
 		.#{$class}--#{$status} {
 			@include oColorsFor(o-message-alert-#{$status});
 
 			.#{$class}__action--primary {
-				@include oMessageAlertButtonTheme(
+				@include oMessageAlertButtonState(
 				_oMessageGetMapValue($status, button-background),
 				_oMessageGetMapValue($status, button-text)
 				);

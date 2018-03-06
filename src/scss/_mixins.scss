@@ -1,3 +1,6 @@
+/// Message container
+///
+/// Outputs base layout for a message container
 @mixin oMessageContainer () {
 	@include oTypographySans($scale: 0);
 
@@ -11,26 +14,45 @@
 	// sass-lint:enable no-vendor-prefixes
 }
 
+/// Message highlight
+///
+/// Outputs styles for highligted message content
 @mixin oMessageHighlight {
 	@include oTypographySansBold($scale: 0);
 	line-height: 1;
 	margin-right: oTypographySpacingSize(6);
 }
 
+/// Message highlight
+///
+/// Outputs styles for message content detail
 @mixin oMessageDetail {
 	padding-left: oTypographySpacingSize(2);
 	font-weight: 400;
 }
 
+/// Message button
+///
+/// Outputs base styles for message buttons
 @mixin oMessageButtonBase () {
 	@include oButtons();
 	@include oTypographySans($scale: -1);
 }
 
+/// Message button
+///
+/// Outputs base styles for message close buttons
+// @param {String} $icon-color - name of the icon color (accepts any color from o-colors)
+
 @mixin oMessageCloseButton ($icon-color) {
 	@include oIconsGetIcon('cross', $icon-color, 20);
 	margin-left: auto;
 }
+
+/// Message base
+///
+/// Outputs base styles for a Message
+/// @param {String} $class  - base class for message
 
 @mixin oMessageBase($class) {
 	.#{$class} {

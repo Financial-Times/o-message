@@ -1,3 +1,11 @@
+/// Alert Inner Message
+///
+/// Outputs styling for an alert-inner type message
+/// @example
+/// @include oMessageAlertInner('my-class');
+///
+/// @param {String} $class - base class name
+
 @mixin oMessageAlertInner($class) {
 	.#{$class}--alert-inner {
 		.#{$class}__container {
@@ -15,12 +23,18 @@
 	}
 }
 
+// Alert Inner message container styles
+// Outputs container layout
+
 @mixin oMessageAlertInnerContainer () {
 	@include oMessageContainer();
 	align-items: flex-start;
 	padding: oTypographySpacingSize(2) oTypographySpacingSize(5) oTypographySpacingSize(5) oTypographySpacingSize(4);
 };
 
+
+// Alert Inner message content styles
+// Outputs content layout
 
 @mixin oMessageAlertInnerContent () {
 	@include oTypographyMargin($top: 3, $bottom: 0);
