@@ -24,7 +24,7 @@ By default, `o-message` initialises an alert message, which provides information
 
 ### Markup
 
-This is an example of the declarative way of instantiating an error message that spans **across a viewport**.
+This is an example of the declarative way of instantiating an error message that spans **across a viewport**. The 'alert' and 'alert-bleed' message types have been designed to sit below a header.
 
 ```html
 <div class="o-message o-message--alert o-message--error" data-o-component="o-message">
@@ -41,11 +41,12 @@ This is an example of the declarative way of instantiating an error message that
 	</div>
 </div>
 ```
-_Note: at different viewport sizes, the message element hides the following elements:_
+_Note: these message types are responsive. At different viewport sizes the message element hides the following elements:_
 - `<span class="o-message__detail">`
 - `<a class="o-message__action--secondary">`
 
-A variation of the alert message is an **inner** alert message, which has almost exactly the same markup, with an optional addition of information, and does not have the option to close the message.
+The 'alert-inner' message type has almost exactly the same markup, with an optional addition of information, and does not have the option to close the message.
+This message type has been designed to fit within another element on the page. It does not hide elements at any viewport.
 
 ```html
 <div class="o-message o-message--alert-inner o-message--success" data-o-component="o-message">
@@ -68,18 +69,24 @@ A variation of the alert message is an **inner** alert message, which has almost
 ### JavaScript
 No code will run automatically unless you are using the Build Service. You must either construct an `o-message` object or fire an o.DOMContentLoaded event, which `o-message` listens for. There are currently three variants of `o-message` that you can use: `alert`, `alert-bleed` and `alert-inner`. All of these variants require a status of either `success`, `error` or `neutral`.
 
-
 #### Construction
+In the case your message has been set up declaratively:
 
-If you have set up your message declaratively, and are using default o-message classes, use the following:
+If you are using default o-message classes, use the following to initialise your message.
+```js
+const oMessage = require('o-message');
+oMessage.init();
+```
+
+If you are applying your own classes to your message, you can use the following:
 ```js
 const oMessage = require('o-message');
 const messageElement = document.getElementById('my-message');
-const importantMessage = new oMessage(messageElement);
+const importantMessage = new oMessage(messageElement));
 ```
 The second argument that `oMessage` accepts is an [options object](#options), which can be used to change a message's style and functionality.
 
-If you're setting up a message without existing DOM elements, oMessage will construct an element for you when it is set up like this:
+If you're setting up a message without existing DOM elements, `oMessage` will construct an element for you when it is set up like this:
 
 ```js
 const oMessage = require('o-message');
@@ -119,6 +126,7 @@ The following options are not required, and all have a default value:
 		- `url`: String. The URL the link links to. Defaults to `#`
 - `close`: Boolean. Whether or not to display the close button. Defaults to `true` for regular messages, to `false` for inline messages.
 
+_Note: `o-message` constructs a close button for 'alert' and 'alert-bleed' by default, and will not build one for 'alert-inner', as this specific message type shouldn't be dismissible'
 
 ### Sass
 As with all Origami components, o-message has a [silent mode](http://origami.ft.com/docs/syntax/scss/#silent-styles). To use its compiled CSS (rather than using its mixins with your own Sass) set `$o-message-is-silent: false;` in your Sass before you import the o-message Sass.
