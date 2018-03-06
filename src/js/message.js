@@ -69,7 +69,7 @@ class Message {
 		};
 
 		if (this.opts.close) {
-			let closeButton = construct.closeButton(this);
+			let closeButton = construct.closeButton(this.opts);
 
 			// Add event listeners
 			closeButton.addEventListener('click', event => {

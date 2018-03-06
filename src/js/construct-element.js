@@ -71,9 +71,9 @@ export default {
 	* Build a close button
 	* @returns {HTMLElement} Returns a new element to close the message
 	*/
-	closeButton: (message) => {
+	closeButton: (opts) => {
 		const closeButton = document.createElement('a');
-		closeButton.classList.add(`${message.opts.messageClass}__close`);
+		closeButton.classList.add(`${opts.messageClass}__close`);
 		closeButton.setAttribute('role', 'button');
 		closeButton.setAttribute('href', '#void');
 		closeButton.setAttribute('aria-label', 'close');

@@ -151,8 +151,9 @@ describe("Message", () => {
 			});
 		});
 
-		describe.only('.render()', () => {
+		describe('.render()', () => {
 			let mockMessageElement;
+			let mockCloseButton;
 
 			beforeEach(() => {
 				const mockContainerElement = document.createElement('div');
@@ -182,6 +183,7 @@ describe("Message", () => {
 
 		describe('.constructMessageElement()', () => {
 			let mockMessageElement;
+			let mockCloseButton;
 
 			beforeEach(() => {
 				options = {
@@ -195,10 +197,12 @@ describe("Message", () => {
 				const mockContainerElement = document.createElement('div');
 				mockMessageElement = document.createElement('div');
 				mockMessageElement.appendChild(mockContainerElement);
+				mockCloseButton = document.createElement('a');
 
 				stubs.open = sinon.stub(Message.prototype, 'open');
 				stubs.close = sinon.stub(Message.prototype, 'close');
 				sinon.stub(construct, 'alertMessage').returns(mockMessageElement);
+				sinon.stub(construct, 'closeButton').returns(mockCloseButton);
 
 				Message.prototype.open.restore();
 				Message.prototype.close.restore();
@@ -206,6 +210,7 @@ describe("Message", () => {
 
 			afterEach(() => {
 				construct.alertMessage.restore();
+				construct.closeButton.restore();
 			});
 
 			it('calls `construct.alertMessage`', () => {
@@ -225,6 +230,17 @@ describe("Message", () => {
 				const error = "*** o-message error: An alert message element requires options.content.highlight ***";
 
 				assert.throws(() => { new Message(null, options); }, error);
+			});
+
+			it('calls `construct.closeButton` if opts.close is true', () => {
+				message = new Message(null, options);
+				assert.calledOnce(construct.closeButton);
+			});
+
+			it('does not call `construct.closeButton` if opts.close is false', () => {
+				options.close = false
+				message = new Message(null, options);
+				assert.notCalled(construct.closeButton);
 			});
 		});
 	});

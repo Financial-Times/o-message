@@ -45,5 +45,6 @@ export default {
 					</div>
 				</div>
 			</div>
-		`
+		`,
+	closeButton: `<a class="my-message__close" role="button" href="#void" aria-label="close" title="Close"></a>`
 };

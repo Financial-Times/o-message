@@ -70,4 +70,14 @@ describe("constructElement", () => {
 			});
 		});
 	});
+
+	describe('.closeButton', () => {
+		it('returns an HTML element', () => {
+			assert.instanceOf(construct.closeButton(options), HTMLElement);
+		});
+
+		it('builds a close button component', () => {
+			assert.strictEqual(flatten(construct.closeButton(options).outerHTML), flatten(fixtures.closeButton));
+		});
+	});
 });
