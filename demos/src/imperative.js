@@ -7,11 +7,13 @@ let options = {
 		highlight: 'Highlight!',
 		detail: 'Details about the message go here.'
 	},
-	link: {
-		text: 'Relevant Link'
-	},
-	button: {
-		text: 'Button'
+	actions: {
+		primary: {
+			text: 'Button'
+		},
+		secondary: {
+			text: 'Relevant Link'
+		},
 	}
 }
 

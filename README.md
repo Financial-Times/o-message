@@ -111,22 +111,23 @@ The following options are not required, and all have a default value:
 - `parentElement`: String. This determines the element that the message will be appended to. If none is declared, it will automatically append to the body, or an element with the data attribute `data-o-component=o-message`, defaults to `null`.
 - `content`: Object. Holds the following values for text properties:
 	-	`additionalInfo`: String. More information about the message –  only applies to an `alert-inner` message. Defaults to `null`
-- `button`: Object. Holds the following values for button properties:
-	- `text`: String. text value of the button.
-	- `url`: String. The URL the button links to.
-- `link`: Object. Holds the following values for link properties:
-	- `text`: String. text value of the link.
-	- `url`: String. The URL the link links to.
+- `actions`: Object. Holds the following values for text properties:
+	-	`primary`:  Object. Holds the following values for button properties:
+		- `text`: String. text value of the button.
+		- `url`: String. The URL the button links to.
+	- `secondary`: Object. Holds the following values for link properties:
+		- `text`: String. text value of the link.
+		- `url`: String. The URL the link links to.
 - `close`: Boolean. Whether or not to display the close button. Defaults to `true` for regular messages, to `false` for inline messages.
 
 
 ### Sass
 As with all Origami components, o-message has a [silent mode](http://origami.ft.com/docs/syntax/scss/#silent-styles). To use its compiled CSS (rather than using its mixins with your own Sass) set `$o-message-is-silent: false;` in your Sass before you import the o-message Sass.
 
-o-message includes mixins that you can use if you'd rather _not_ have origami classnames in your page. These are only available if you're not using the Build Service:
+o-message includes mixins that you can use if you'd rather _not_ have origami classnames in your page. These are only available if you're _not_ using the Build Service:
 
 ```sass
-@include oMessage($class: 'my-banner', $variant: 'alert-inner', $status: 'success');
+@include oMessage($class: 'my-banner', $type: 'alert-inner', $status: 'success');
 ```
 
 ## Contact

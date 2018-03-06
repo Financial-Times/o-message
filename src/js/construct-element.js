@@ -17,13 +17,13 @@ export default {
 		}
 
 		let primaryActionHTML;
-		if (opts.button.text) {
-			primaryActionHTML = `<a href="${opts.button.url}" class="${opts.messageClass}__action--primary">${opts.button.text}</a>`;
+		if (opts.actions.primary.text) {
+			primaryActionHTML = `<a href="${opts.actions.primary.url}" class="${opts.messageClass}__action--primary">${opts.actions.primary.text}</a>`;
 		}
 
 		let secondaryActionHTML;
-		if (opts.link.text) {
-			secondaryActionHTML = `<a href="${opts.link.url}" class="${opts.messageClass}__action--secondary">${opts.link.text}</a>`;
+		if (opts.actions.secondary.text) {
+			secondaryActionHTML = `<a href="${opts.actions.secondary.url}" class="${opts.messageClass}__action--secondary">${opts.actions.secondary.text}</a>`;
 		}
 
 		let actions = `<div class="${opts.messageClass}__actions">

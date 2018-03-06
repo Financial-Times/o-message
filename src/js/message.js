@@ -26,13 +26,15 @@ class Message {
 				detail: '&hellip;',
 				additionalInfo: false
 			},
-			button: {
-				text: null,
-				url: '#'
-			},
-			link: {
-				text: null,
-				url: '#'
+			actions: {
+				primary: {
+					text: null,
+					url: '#'
+				},
+				secondary: {
+					text: null,
+					url: '#'
+				}
 			},
 			close: true
 		}, options);
