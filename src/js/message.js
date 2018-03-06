@@ -70,7 +70,6 @@ class Message {
 
 			// Add event listeners
 			closeButton.addEventListener('click', event => {
-				console.log(this.close());
 				this.close();
 				event.preventDefault();
 			});

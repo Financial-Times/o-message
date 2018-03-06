@@ -49,9 +49,9 @@
 				@include oMessageDetail;
 			}
 		}
-
-		.#{$class}--closed {
-			display: none;
-		}
+	}
+	
+	.#{$class}--closed {
+		display: none;
 	}
 };
