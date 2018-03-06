@@ -64,10 +64,10 @@
 @mixin oMessageAlertContent () {
 	@include oTypographyMargin($top: 0, $bottom: 0);
 	width: 100%;
-	height: 100%;
 	display: table-cell;
 	display: flex;
 	align-items: center;
+	vertical-align: middle;
 }
 
 // Alert message button style
@@ -116,6 +116,6 @@
 @mixin oMessageAlertGrid () {
 	@include oGridContainer();
 	@include oGridRespondTo($from: S) {
-		padding: oGridGutter();
+		padding: 0 oGridGutter();
 	}
 }
