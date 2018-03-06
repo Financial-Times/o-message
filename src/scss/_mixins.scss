@@ -38,6 +38,7 @@
 @mixin oMessageButtonBase () {
 	@include oButtons();
 	@include oTypographySans($scale: -1);
+	margin-right: oTypographySpacingSize(6);
 }
 
 /// Message button
