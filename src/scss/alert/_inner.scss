@@ -1,13 +1,10 @@
-
-@mixin oMessageAlertInnerBase($class) {
-	@include oMessageAlertBase($class);
-
+@mixin oMessageAlertInner($class) {
 	.#{$class}--alert-inner {
 		.#{$class}__container {
-			@include oMessageInnerContainer();
+			@include oMessageAlertInnerContainer();
 
 			.#{$class}__content {
-				@include oMessageInnerContent();
+				@include oMessageAlertInnerContent();
 			}
 
 			.#{$class}__highlight,
@@ -18,14 +15,14 @@
 	}
 }
 
-@mixin oMessageInnerContainer () {
+@mixin oMessageAlertInnerContainer () {
 	@include oMessageContainer();
 	align-items: flex-start;
 	padding: oTypographySpacingSize(2) oTypographySpacingSize(5) oTypographySpacingSize(5) oTypographySpacingSize(4);
 };
 
 
-@mixin oMessageInnerContent () {
+@mixin oMessageAlertInnerContent () {
 	@include oTypographyMargin($top: 3, $bottom: 0);
 	display: flex;
 	flex-flow: column nowrap;

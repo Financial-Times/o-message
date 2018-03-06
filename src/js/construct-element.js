@@ -5,7 +5,6 @@ export default {
 	* Build a full alert message element. Used when there is no message element in the DOM.
 	* @returns {HTMLElement} Returns the new alert type message element
 	*/
-
 	alertMessage: (opts) => {
 		const alertMessageEl = document.createElement('div');
 		alertMessageEl.setAttribute('data-o-component', 'o-message');
@@ -67,6 +66,11 @@ export default {
 
 		return alertMessageEl;
 	},
+
+	/**
+	* Build a close button
+	* @returns {HTMLElement} Returns a new element to close the message
+	*/
 	closeButton: (message) => {
 		const closeButton = document.createElement('a');
 		closeButton.classList.add(`${message.opts.messageClass}__close`);

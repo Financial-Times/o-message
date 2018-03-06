@@ -2,17 +2,16 @@
 @import 'src/scss/alert/status';
 @import 'src/scss/alert/inner';
 
-@mixin oMessageAlerts($class, $variant, $status) {
-
-	@if $variant == 'all' {
-		@include oMessageAlertBase($class);
-		@include oMessageAlertInnerBase($class);
-	} @else if $variant == 'alert' or $variant == 'alert-bleed' {
-			@include oMessageAlertBase($class);
-	} @else if $variant == 'alert-inner' {
+@mixin oMessageAlerts($class, $type, $status) {
+	@if $type == 'all' {
+		@include oMessageAlert($class);
+		@include oMessageAlertInner($class);
+	} @else if $type == 'alert' or $type == 'alert-bleed' {
+			@include oMessageAlert($class);
+	} @else if $type == 'alert-inner' {
 			@include oMessageAlertInner($class);
 	} @else {
-		@include _oMessageError("#{$variant} is not a variant, the options are 'alert', 'alert-bleed' or 'alert-inner'");
+		@include _oMessageError("#{$type} is not a type, the options are 'alert', 'alert-bleed' or 'alert-inner'");
 	}
 
 	@if $status == 'all' {

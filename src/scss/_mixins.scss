@@ -37,10 +37,6 @@
 		.#{$class}__container {
 			@include oMessageContainer;
 
-			.#{$class}__content {
-				@include oMessageAlertContent;
-			}
-
 			.#{$class}__highlight {
 				@include oMessageHighlight;
 			}
@@ -50,7 +46,7 @@
 			}
 		}
 	}
-	
+
 	.#{$class}--closed {
 		display: none;
 	}

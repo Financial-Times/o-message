@@ -61,6 +61,7 @@ class Message {
 			element.appendChild(this.messageElement);
 		}
 
+		// if the message is 'alert-inner' it shouldn't be close-able
 		if (this.messageElement.matches("[class*='-inner']")) {
 			this.opts.close = false;
 		};
@@ -70,8 +71,8 @@ class Message {
 
 			// Add event listeners
 			closeButton.addEventListener('click', event => {
-				this.close();
 				event.preventDefault();
+				this.close();
 			});
 
 			this.messageElement.lastElementChild.appendChild(closeButton);
