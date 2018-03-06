@@ -13,12 +13,14 @@ class Message {
 		//Default options
 		const messageClass = options && options.messageClass ? options.messageClass : 'o-message';
 		const type = options && options.type ? options.type : 'alert';
+		const status = options && options.status ? options.status : null;
 
 		this.opts = Object.assign({}, {
 			autoOpen: true,
 			messageClass,
 			type,
 			typeClass: `${messageClass}--${type}`,
+			status,
 			statusClass: options && options.status ? `${messageClass}--${options.status}` : null,
 			parentElement: null,
 			content: {

@@ -107,17 +107,16 @@ The following options are not required, and all have a default value:
 
 - `autoOpen`: Boolean. Whether to open the message automatically, defaults to `true`.
 - `messageClass`: String. The base class name for the component's elements, defaults to `o-message`.
-- `variant`: String. The message variant which allows a message to be a bleed message or an inline message. Defaults to `null`.
 - `parentElement`: String. This determines the element that the message will be appended to. If none is declared, it will automatically append to the body, or an element with the data attribute `data-o-component=o-message`, defaults to `null`.
 - `content`: Object. Holds the following values for text properties:
 	-	`additionalInfo`: String. More information about the message –  only applies to an `alert-inner` message. Defaults to `null`
 - `actions`: Object. Holds the following values for text properties:
 	-	`primary`:  Object. Holds the following values for button properties:
-		- `text`: String. text value of the button.
-		- `url`: String. The URL the button links to.
+		- `text`: String. text value of the button. Defaults to `null`
+		- `url`: String. The URL the button links to. Defaults to `#`
 	- `secondary`: Object. Holds the following values for link properties:
-		- `text`: String. text value of the link.
-		- `url`: String. The URL the link links to.
+		- `text`: String. text value of the link. Defaults to `null`
+		- `url`: String. The URL the link links to. Defaults to `#`
 - `close`: Boolean. Whether or not to display the close button. Defaults to `true` for regular messages, to `false` for inline messages.
 
 
