@@ -54,23 +54,25 @@ describe("Message", () => {
 			assert.deepEqual(message.opts, {
 				autoOpen: true,
 				messageClass: 'o-message',
-				messageType: 'alert',
-				bleed: false,
-				inline: false,
-				parentElement: null,
+				type: 'alert',
 				typeClass: 'o-message--alert',
+				status: null,
+				statusClass: null,
+				parentElement: null,
 				content: {
 					highlight: null,
 					detail: '&hellip;',
 					additionalInfo: false
 				},
-				button: {
-					text: null,
-					url: '#'
-				},
-				link: {
-					text: null,
-					url: '#'
+				actions: {
+					primary: {
+						text: null,
+						url: '#'
+					},
+					secondary: {
+						text: null,
+						url: '#'
+					}
 				},
 				close: true
 			});
@@ -149,11 +151,14 @@ describe("Message", () => {
 			});
 		});
 
-		describe('.render()', () => {
+		describe.only('.render()', () => {
 			let mockMessageElement;
 
 			beforeEach(() => {
+				const mockContainerElement = document.createElement('div');
 				mockMessageElement = document.createElement('div');
+				mockMessageElement.appendChild(mockContainerElement);
+
 				stubs.open = sinon.stub(Message.prototype, 'open');
 				stubs.close = sinon.stub(Message.prototype, 'close');
 				stubs.constructMessageElement = sinon.stub(Message.prototype, 'constructMessageElement').returns(mockMessageElement);
@@ -180,12 +185,17 @@ describe("Message", () => {
 
 			beforeEach(() => {
 				options = {
-					theme: 'success',
+					status: 'success',
+					type: 'alert',
 					content: {
 						highlight: 'Good.'
 					}
 				};
+
+				const mockContainerElement = document.createElement('div');
 				mockMessageElement = document.createElement('div');
+				mockMessageElement.appendChild(mockContainerElement);
+
 				stubs.open = sinon.stub(Message.prototype, 'open');
 				stubs.close = sinon.stub(Message.prototype, 'close');
 				sinon.stub(construct, 'alertMessage').returns(mockMessageElement);
@@ -204,8 +214,8 @@ describe("Message", () => {
 			});
 
 			it('throws an error if an incorrect message type is supplied', () => {
-				options.messageType = 'marketing'
-				const error = "*** o-message error: 'marketing' is not a supported message type. The only currently available option is 'alert' ***";
+				options.type = 'marketing'
+				const error = "*** o-message error: 'marketing' is not a supported message type. The available options are 'alert', 'alert-bleed' or 'alert-inner' ***";
 
 				assert.throws(() => { new Message(null, options); }, error);
 			});
@@ -213,14 +223,6 @@ describe("Message", () => {
 			it('throws an error if opts.content.highlight is not declared for an alert type message', () => {
 				options.content.highlight = null;
 				const error = "*** o-message error: An alert message element requires options.content.highlight ***";
-
-				assert.throws(() => { new Message(null, options); }, error);
-			});
-
-			it('throws an error if opts.inline and opts.bleed are true in the same time', () => {
-				options.inline = true;
-				options.bleed = true;
-				const error = "*** o-message error: The message can't bleed and be inline in the same time ***";
 
 				assert.throws(() => { new Message(null, options); }, error);
 			});

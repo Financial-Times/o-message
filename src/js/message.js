@@ -54,8 +54,6 @@ class Message {
 	 * Render the message.
 	 */
 	render () {
-		//check for message variant 'inner' if set declaratively
-
 		// If the message element is not an HTML Element, or if a parent element has been specified, build a new message element
 		if (!(this.messageElement instanceof HTMLElement) || this.opts.parentElement) {
 			this.messageElement = this.constructMessageElement();
@@ -95,7 +93,7 @@ class Message {
 				return construct.alertMessage(this.opts);
 			}
 		} else {
-			throwError(`'${this.opts.type}' is not a supported message type. The only available options are 'alert', 'alert-bleed' or 'alert-inner'`);
+			throwError(`'${this.opts.type}' is not a supported message type. The available options are 'alert', 'alert-bleed' or 'alert-inner'`);
 		}
 	}
 

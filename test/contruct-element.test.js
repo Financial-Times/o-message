@@ -38,7 +38,7 @@ describe("constructElement", () => {
 		};
 	})
 
-	describe.only('.alertMessage', () => {
+	describe('.alertMessage', () => {
 		it('returns an HTML element', () => {
 			assert.instanceOf(construct.alertMessage(options), HTMLElement);
 		});
