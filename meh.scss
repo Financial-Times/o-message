@@ -1,0 +1,29 @@
+//OHEADER
+oBrandDefine('o-header', 'master', (variable: (background: hotpink)));
+
+$_o-brand (
+	o-header: (
+		master: (
+			variable: (
+				background: hotpink;
+			)
+		)
+	)
+)
+
+.o-header {
+	background: oBrandGet('background') // hotpink
+}
+
+
+
+//// ft.com
+
+import ('o-header/main');
+
+oHeaderOverride('background', red)
+
+
+.o-header {
+	// background: oBrandGet('background') // red
+}
