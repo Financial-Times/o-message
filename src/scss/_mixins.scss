@@ -9,6 +9,7 @@
 /// Outputs base layout for a message container
 @mixin oMessageContainer () {
 	@include oTypographySans($o-message-typography-scale);
+	position: relative;
 	// sass-lint:disable no-vendor-prefixes
 	-webkit-font-smoothing: antialiased;
 	// sass-lint:enable no-vendor-prefixes

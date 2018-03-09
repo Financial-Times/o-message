@@ -32,7 +32,6 @@
 
 @mixin oMessageAlertInnerContainer () {
 	@include oMessageContainer();
-	// align-items: flex-start;
 	padding: oTypographySpacingSize(2) oTypographySpacingSize(5) oTypographySpacingSize(2) oTypographySpacingSize(4);
 };
 
