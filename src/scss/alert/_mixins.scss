@@ -63,6 +63,10 @@
 			};
 		}
 
+		.#{$class}__actions {
+			display: inline;
+		}
+
 		.#{$class}__action--secondary {
 			@include oGridRespondTo($until: S) {
 				display: none;
@@ -96,13 +100,8 @@
 
 @mixin oMessageAlertContent () {
 	@include oTypographyMargin($top: 0, $bottom: 0);
-	width: 100%;
-	display: table-cell;
-	// sass-lint:disable no-duplicate-properties
-	display: flex;
-	// sass-lint:enable no-duplicate-properties
-	align-items: center;
-	vertical-align: middle;
+	padding-left: oTypographySpacingSize(10);
+	display: inline-block;
 }
 
 // Alert message button style
