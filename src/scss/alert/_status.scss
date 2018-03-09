@@ -38,7 +38,7 @@
 					_oMessageGetMapValue($status, alert-icon-color),
 					$_o-message-alert-icon-size
 				);
-				min-width: 40px;
+				min-width: $_o-message-alert-icon-size * 1px;
 				position: absolute;
 			}
 

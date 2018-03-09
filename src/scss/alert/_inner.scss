@@ -41,5 +41,5 @@
 
 @mixin oMessageAlertInnerContent () {
 	@include oTypographyMargin($top: 3, $bottom: 0);
-	padding-left: oTypographySpacingSize(10);
+	padding-left: $_o-message-alert-icon-size * 1px;
 }
