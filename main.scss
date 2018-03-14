@@ -4,10 +4,10 @@
 @import 'o-typography/main';
 
 // Import shared sass.
-@import './src/scss/variables';
 @import './src/scss/color-use-cases';
-@import './src/scss/functions';
+@import './src/scss/helpers';
 @import './src/scss/mixins';
+@import './src/scss/variables';
 
 // Import alert sass.
 @import './src/scss/alert/mixins';

@@ -10,10 +10,10 @@
 
 @mixin oMessageStatus ($status, $class) {
 	@if not map-has-key($_o-message-status-styles, $status) {
-		@return _oMessageError("#{$status} is not a status. You can try 'error', 'success' or 'neutral', instead.");
+		@include _oMessageError("#{$status} is not a status. You can try 'error', 'success' or 'neutral', instead.");
 	} @else {
 		.#{$class}--#{$status} {
-			@include oColorsFor(o-message-alert-#{$status});
+			@include oColorsFor(o-message-#{$status});
 
 			.#{$class}__action--primary {
 				@include oMessageAlertButtonState(
