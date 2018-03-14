@@ -4,6 +4,34 @@
 	@include oMessageAlerts($class, $type, $status);
 }
 
+
+/// Message base
+///
+/// Outputs base styles for a Message
+/// @param {String} $class  - base class for message
+
+@mixin oMessageBase($class) {
+	.#{$class} {
+		.#{$class}__container {
+			@include oMessageContainer;
+
+			.#{$class}__content {
+				&--main {
+					@include oMessageContentMain;
+				}
+
+				&--highlight {
+					@include oMessageContentHighlight
+				}
+			}
+		}
+	}
+
+	.#{$class}--closed {
+		display: none;
+	}
+};
+
 /// Message container
 ///
 /// Outputs base layout for a message container
@@ -15,22 +43,21 @@
 	// sass-lint:enable no-vendor-prefixes
 }
 
-/// Message highlight
+/// Message content structure
 ///
-/// Outputs styles for highligted message content
-@mixin oMessageHighlight {
-	@include oTypographySansBold($o-message-typography-scale);
+/// Outputs base layout for content
+@mixin oMessageContentMain () {
 	line-height: 1;
-	margin-right: oTypographySpacingSize(6);
+	margin: 0 oTypographySpacingSize(6) 0 0;
 	display: inline-block;
 }
 
-/// Message highlight
+/// Message content highlight
 ///
-/// Outputs styles for message content detail
-@mixin oMessageDetail {
-	padding-left: oTypographySpacingSize(1);
-	font-weight: 400;
+/// Outputs styles for highligted message content
+@mixin oMessageContentHighlight {
+	@include oTypographyBold('sans');
+	padding-right: oTypographySpacingSize(1);
 }
 
 /// Message button
@@ -53,28 +80,3 @@
 	top: ($_o-message-alert-height - $_o-message-close-icon-size) / 2;
 	right: oTypographySpacingSize(2);
 }
-
-/// Message base
-///
-/// Outputs base styles for a Message
-/// @param {String} $class  - base class for message
-
-@mixin oMessageBase($class) {
-	.#{$class} {
-		.#{$class}__container {
-			@include oMessageContainer;
-
-			.#{$class}__highlight {
-				@include oMessageHighlight;
-			}
-
-			.#{$class}__detail {
-				@include oMessageDetail;
-			}
-		}
-	}
-
-	.#{$class}--closed {
-		display: none;
-	}
-};

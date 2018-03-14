@@ -3,17 +3,16 @@
 @import 'o-icons/main';
 @import 'o-typography/main';
 
-// Import shared sass.
 @import './src/scss/color-use-cases';
 @import './src/scss/helpers';
 @import './src/scss/mixins';
 @import './src/scss/variables';
 
-// Import alert sass.
+@import './src/scss/alert/inner';
 @import './src/scss/alert/mixins';
 @import './src/scss/alert/status-map';
 @import './src/scss/alert/status';
-@import './src/scss/alert/inner';
+@import './src/scss/alert/main';
 
 @if ($o-message-is-silent == false) {
 	@include oMessage;
