@@ -9,7 +9,7 @@
 @mixin oMessageAlert ($class) {
 	.#{$class}--alert,
 	.#{$class}--alert-bleed .#{$class}__container {
-		@include oMessageAlertGrid;
+		@extend %o-message-alert-notice-grid;
 	}
 
 	.#{$class}--alert,
@@ -21,10 +21,11 @@
 		}
 
 		.#{$class}__content {
-			@include oMessageAlertContent;
+			@extend %o-message-alert-notice-content;
+			padding-left: oTypographySpacingSize(10);
 
 			&--highlight {
-				@include oTypographyMargin($top: 0, $bottom: 0);
+				@include oMessageContentHighlight;
 			}
 
 			&--detail {
@@ -46,23 +47,15 @@
 	}
 }
 
-// Alert message grid
-// Outputs grid layout for alert message
-@mixin oMessageAlertGrid () {
-	@include oGridContainer();
-	@include oGridRespondTo($from: S) {
-		padding: 0 oGridGutter();
-	}
+
+/// Alert message content highlight
+///
+/// Outputs styles for highligted message content
+@mixin oMessageContentHighlight {
+	@include oTypographyBold('sans');
+	padding-right: oTypographySpacingSize(1);
 }
 
-// Alert message content styles
-// Outputs content layout
-@mixin oMessageAlertContent () {
-	@include oTypographyMargin($top: 0, $bottom: 0);
-	padding-left: oTypographySpacingSize(10);
-	position: relative;
-	top: ($_o-message-alert-height - $_o-message-action-height) / 2;
-}
 
 // Customised Icon for Alert messages
 //

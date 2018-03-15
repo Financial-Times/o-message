@@ -17,6 +17,10 @@
 	@if $type == 'all' {
 		@include oMessageAlert($class);
 		@include oMessageAlertInner($class);
+
+		@include oMessageNotice($class);
+		@include oMessageNoticeInner($class);
+
 	} @else if $type == 'alert' or $type == 'alert-bleed' {
 			@include oMessageAlert($class);
 	} @else if $type == 'alert-inner' {

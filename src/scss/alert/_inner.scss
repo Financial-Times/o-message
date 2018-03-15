@@ -12,16 +12,16 @@
 			@include oMessageAlertInnerContainer();
 
 			.#{$class}__content {
-				@include oMessageAlertInnerContent();
+				@extend %o-message-inner-alert-notice-content;
+				padding-left: $_o-message-alert-icon-size * 1px;
+
+				&--highlight {
+					@include oMessageContentHighlight;
+				}
 			}
 
 			.#{$class}__actions {
 				@include oTypographyPadding($bottom: 3);
-			}
-
-			.#{$class}__highlight,
-			.#{$class}__additional-info {
-				@include oTypographyMargin($top: 0);
 			}
 		}
 	}
@@ -34,13 +34,3 @@
 	@include oMessageContainer();
 	padding: oTypographySpacingSize(2) oTypographySpacingSize(5) oTypographySpacingSize(2) oTypographySpacingSize(4);
 };
-
-
-// Alert Inner message content styles
-// Outputs content layout
-
-@mixin oMessageAlertInnerContent () {
-	@include oTypographyMargin($top: 3, $bottom: 0);
-	padding-left: $_o-message-alert-icon-size * 1px;
-	max-width: oTypographyMaxLineWidth($o-message-typography-scale);
-}

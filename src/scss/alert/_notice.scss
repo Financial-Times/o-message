@@ -1,0 +1,67 @@
+/// Notice Message
+///
+/// Outputs styling for an alert or alert-bleed type message
+/// @example
+/// @include oMessageNotice('my-class');
+///
+/// @param {String} $class - base class name
+
+@mixin oMessageNotice ($class) {
+	.#{$class}--notice,
+	.#{$class}--notice-bleed .#{$class}__container {
+		@extend %o-message-alert-notice-grid;
+	}
+
+	.#{$class}--notice,
+	.#{$class}--notice-bleed {
+		height: $_o-message-alert-height;
+
+		.#{$class}__container:before {
+			top: ($_o-message-alert-height - $_o-message-alert-icon-size) / 2;
+		}
+
+		.#{$class}__content {
+			@extend %o-message-alert-notice-content;
+			padding-left: oTypographySpacingSize(5);
+		}
+
+		.#{$class}__actions {
+			display: inline-block;
+		}
+
+		.#{$class}__action--secondary {
+			@include oGridRespondTo($until: S) {
+				display: none;
+			};
+		}
+	}
+}
+
+/// Alert Inner Message
+///
+/// Outputs styling for an alert-inner type message
+/// @example
+/// @include oMessageAlertInner('my-class');
+///
+/// @param {String} $class - base class name
+
+@mixin oMessageNoticeInner($class) {
+	.#{$class}--notice-inner {
+		.#{$class}__container {
+			@include oMessageAlertInnerContainer();
+
+			.#{$class}__content {
+				@extend %o-message-inner-alert-notice-content;
+				padding-left: 20px;
+
+				&--main {
+					@include oTypographyMargin($bottom: 3);
+				}
+			}
+
+			.#{$class}__actions {
+				@include oTypographyPadding($bottom: 3);
+			}
+		}
+	}
+}

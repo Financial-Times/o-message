@@ -10,8 +10,10 @@
 
 @import './src/scss/alert/inner';
 @import './src/scss/alert/mixins';
+@import './src/scss/alert/notice';
 @import './src/scss/alert/status-map';
 @import './src/scss/alert/status';
+@import './src/scss/alert/placeholders';
 @import './src/scss/alert/main';
 
 @if ($o-message-is-silent == false) {
@@ -20,3 +22,5 @@
 	// Set to silent again to avoid being output twice
 	$o-message-is-silent: true !global;
 }
+
+@debug $_o-message-placeholders;

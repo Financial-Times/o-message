@@ -1,0 +1,41 @@
+@mixin _oMessageDefinePlaceholder($label) {
+	@if not map-has-key($_o-message-placeholders, $label) {
+		@content;
+
+		$_o-message-placeholders: map-merge($_o-message-placeholders, (
+			$label: true
+		)) !global;
+	}
+}
+
+// Alert message grid
+// Outputs grid layout for alert message
+@include _oMessageDefinePlaceholder(grid) {
+	%o-message-alert-notice-grid {
+		@include oGridContainer();
+		@include oGridRespondTo($from: S) {
+			padding: 0 oGridGutter();
+		}
+	}
+};
+
+// Alert message content styles
+// Outputs content layout
+@include _oMessageDefinePlaceholder(content) {
+	%o-message-alert-notice-content {
+		@include oTypographyMargin($top: 0, $bottom: 0);
+		position: relative;
+		top: ($_o-message-alert-height - $_o-message-action-height) / 2;
+	}
+};
+
+
+// Inner alert message content styles
+// Outputs content layout
+@include _oMessageDefinePlaceholder(inner-content) {
+	%o-message-inner-alert-notice-content {
+		@include oTypographyMargin($top: 3, $bottom: 0);
+		padding-left: $_o-message-alert-icon-size * 1px;
+		max-width: oTypographyMaxLineWidth($o-message-typography-scale);
+	}
+}
