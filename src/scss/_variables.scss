@@ -25,6 +25,7 @@ $_o-message-close-icon-size: 20;
 
 //Typography
 $o-message-typography-scale: 0 !default;
+$_o-message-line-height: nth(oTypographyGetScale($o-message-typography-scale), 2);
 
 //Placeholder map
 $_o-message-placeholders: () !default;
