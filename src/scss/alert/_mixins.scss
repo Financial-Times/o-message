@@ -24,6 +24,11 @@
 			@extend %o-message-alert-notice-content;
 			padding-left: oTypographySpacingSize(10);
 
+			&--main {
+				margin-top: (($_o-message-alert-height - $_o-message-line-height) / 2);
+				margin-bottom: (($_o-message-alert-height - $_o-message-line-height) / 2);
+			}
+
 			&--highlight {
 				@include oMessageContentHighlight;
 			}

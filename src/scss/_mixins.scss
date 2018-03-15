@@ -43,7 +43,6 @@
 ///
 /// Outputs base layout for content
 @mixin oMessageContentMain () {
-	margin: (($_o-message-alert-height - $_o-message-line-height) / 2) 0;
 	margin-right: oTypographySpacingSize(6);
 	display: inline-block;
 }

@@ -23,6 +23,11 @@
 		.#{$class}__content {
 			@extend %o-message-alert-notice-content;
 			padding-left: oTypographySpacingSize(5);
+
+			&--main {
+				margin-top: (($_o-message-alert-height - $_o-message-line-height) / 2);
+				margin-bottom: (($_o-message-alert-height - $_o-message-line-height) / 2);
+			}
 		}
 
 		.#{$class}__actions {
@@ -55,7 +60,7 @@
 				padding-left: 20px;
 
 				&--main {
-					@include oTypographyMargin($bottom: 3);
+					@include oTypographyMargin($top: 0, $bottom: 3);
 				}
 			}
 

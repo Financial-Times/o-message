@@ -15,6 +15,10 @@
 				@extend %o-message-inner-alert-notice-content;
 				padding-left: $_o-message-alert-icon-size * 1px;
 
+				&--main {
+					@include oTypographyMargin($top: 0, $bottom: 3);
+				}
+
 				&--highlight {
 					@include oMessageContentHighlight;
 				}
