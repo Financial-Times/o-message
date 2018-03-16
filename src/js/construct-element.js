@@ -11,30 +11,12 @@ export default {
 		alertMessageEl.classList.add(opts.messageClass, opts.typeClass, `${opts.messageClass}--closed`);
 
 		if (!opts.status) {
-			if (opts.typeNucleus === 'alert') {
-				throwError("Alert messages require a status. The options are 'success', 'error', or 'neutral'");
-			} else {
-				throwError("Notice messages require a status. The options are 'inform', 'warning' or 'warning-light'");
-			}
+			throwError("Alert messages require a status. The options are 'success', 'error', or 'neutral'");
 		} else {
 			alertMessageEl.classList.add(`${opts.statusClass}`);
 		}
 
-		let primaryActionHTML;
-		if (opts.actions.primary.text) {
-			primaryActionHTML = `<a href="${opts.actions.primary.url}" class="${opts.messageClass}__action--primary">${opts.actions.primary.text}</a>`;
-		}
-
-		let secondaryActionHTML;
-		if (opts.actions.secondary.text) {
-			secondaryActionHTML = `<a href="${opts.actions.secondary.url}" class="${opts.messageClass}__action--secondary">${opts.actions.secondary.text}</a>`;
-		}
-
-		let actions = `<div class="${opts.messageClass}__actions">
-			${primaryActionHTML}
-			${secondaryActionHTML}
-			</div>
-		`;
+		let actions = module.exports.actions(opts);
 
 		let contentHTML;
 		if (!opts.content.detail) {
@@ -77,6 +59,68 @@ export default {
 		return alertMessageEl;
 	},
 
+	/**
+	* Build a full notice message element. Used when there is no message element in the DOM.
+	* @returns {HTMLElement} Returns the new notice type message element
+	*/
+	noticeMessage: (opts) => {
+		const noticeMessage = document.createElement('div');
+		noticeMessage.setAttribute('data-o-component', 'o-message');
+		noticeMessage.classList.add(opts.messageClass, opts.typeClass, `${opts.messageClass}--closed`);
+
+		if (!opts.status) {
+			throwError("Notice messages require a status. The options are 'inform', 'warning' or 'warning-light'");
+		} else {
+			noticeMessage.classList.add(`${opts.statusClass}`);
+		}
+
+		let actions = module.exports.actions(opts);
+
+		const contentHTML = `
+			<div class="${opts.messageClass}__content">
+			<p class="${opts.messageClass}__content--main">
+				${opts.content.detail}
+			</p>
+			${actions}
+			</div>
+		`;
+
+		if (opts.type === 'notice-inner') {
+			opts.close = false;
+		}
+
+		noticeMessage.innerHTML = `
+			<div class="${opts.messageClass}__container">
+				${contentHTML}
+			</div>
+		`;
+
+		return noticeMessage;
+	},
+
+	/**
+	* Build an actions  element. Used within alertMessage and noticeMessage
+	* @returns {HTMLElement} Returns the new actions message element
+	*/
+	actions: (opts)  => {
+		let primaryActionHTML;
+		if (opts.actions.primary.text) {
+			primaryActionHTML = `<a href="${opts.actions.primary.url}" class="${opts.messageClass}__action--primary">${opts.actions.primary.text}</a>`;
+		}
+
+		let secondaryActionHTML;
+		if (opts.actions.secondary.text) {
+			secondaryActionHTML = `<a href="${opts.actions.secondary.url}" class="${opts.messageClass}__action--secondary">${opts.actions.secondary.text}</a>`;
+		}
+
+		let actions = `<div class="${opts.messageClass}__actions">
+			${primaryActionHTML}
+			${secondaryActionHTML}
+			</div>
+		`;
+
+		return actions;
+	},
 	/**
 	* Build a close button
 	* @returns {HTMLElement} Returns a new element to close the message

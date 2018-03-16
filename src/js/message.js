@@ -18,7 +18,7 @@ class Message {
 
 		if (type === 'alert' || type === 'alert-bleed' || type === 'alert-inner') {
 			typeNucleus = 'alert';
-		} else if (type === 'notice' || type === 'alert-bleed' || type === 'alert-inner') {
+		} else if (type === 'notice' || type === 'notice-bleed' || type === 'notice-inner') {
 			typeNucleus = 'notice';
 		} else {
 			typeNucleus = null;
@@ -96,10 +96,14 @@ class Message {
 	* @returns {HTMLElement} Returns the type specific message element
 	*/
 	constructMessageElement () {
-		if (this.opts.typeNucleus === 'alert' && !this.opts.content.highlight) {
-			throwError(`An ${this.opts.typeNucleus} message element requires options.content.highlight`);
-		} else if (this.opts.typeNucleus === 'alert' || this.opts.typeNucleus === 'notice') {
-			return construct.alertMessage(this.opts);
+		if (this.opts.typeNucleus === 'alert') {
+		 	if (!this.opts.content.highlight) {
+				throwError(`An ${this.opts.typeNucleus} message element requires options.content.highlight`);
+			} else {
+				return construct.alertMessage(this.opts);
+			}
+		} else if (this.opts.typeNucleus === 'notice') {
+			return construct.noticeMessage(this.opts)
 		} else {
 			throwError(`'${this.opts.type}' is not a supported message type. The available options are 'alert', 'alert-bleed', 'alert-inner', 'notice', 'notice-bleed', 'notice-inner'`);
 		}
