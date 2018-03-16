@@ -9,9 +9,7 @@ o-message is a messaging component used for alerting and informing. It can inclu
 		- [Construction](#construction)
 		- [Options](#options)
 	- [Sass](#sass)
-- [Troubleshooting](#troubleshooting)
-- [Contributing](#contributing)
-- [Migration guide](#migration-guide)
+- [Migration Guide](#migration-guide)
 - [Contact](#contact)
 - [Licence](#licence)
 
@@ -30,8 +28,9 @@ This is an example of the declarative way of instantiating an error message that
 <div class="o-message o-message--alert o-message--error" data-o-component="o-message">
 	<div class="o-message__container">
 		<div class="o-message__content">
-			<p class="o-message__highlight">Something went wrong!
-				<span class="o-message__detail">The quick brown fox did not jump over the lazy dogs.</span>
+			<p class="o-message__content--main">
+				<span class="o-message__content-highlight">Something went wrong!</span>
+				<span class="o-message__content--detail">The quick brown fox did not jump over the lazy dogs.</span>
 			</p>
 			<div class="o-message__actions">
 				<a href="#" class="o-message__action--primary">Button</a>
@@ -52,10 +51,11 @@ This message type has been designed to fit within another element on the page. I
 <div class="o-message o-message--alert-inner o-message--success" data-o-component="o-message">
 	<div class="o-message__container">
 		<div class="o-message__content">
-			<p class="o-message__highlight">Hooray!
-				<span class="o-message__detail">The quick brown fox jumped over the lazy dogs!</span>
+			<p class="o-message__content--main">
+				<span class="o-message__content-highlight">Hooray!</span>
+				<span class="o-message__content--detail">The quick brown fox jumped over the lazy dogs!</span>
 			</p>
-			<p class="o-message__additional-info">Did you know that that sentence uses all of the letters in the alphabet at least once?</p>
+			<p class="o-message__content--additional">Did you know that that sentence uses all of the letters in the alphabet at least once?</p>
 
 			<div class="o-message__actions">
 				<a href="#" class="o-message__action--primary">Button</a>
@@ -65,6 +65,28 @@ This message type has been designed to fit within another element on the page. I
 	</div>
 </div>
 ```
+
+Notice message types are styled similarly to the alert type messages (both for a fit under a header, or inside another element).
+The differences are that they do not have an icon, they don't require highlighted content, and don't support additional content.
+
+```html
+<div class="o-message o-message--alert-inner o-message--success" data-o-component="o-message">
+	<div class="o-message__container">
+		<div class="o-message__content">
+			<p class="o-message__content--main">
+				<span class="o-message__content--detail">The quick brown fox jumped over the lazy dogs!</span>
+			</p>
+
+			<div class="o-message__actions">
+				<a href="#" class="o-message__action--primary">Button</a>
+				<a href="#" class="o-message__action--secondary">Text link</a>
+			</div>
+		</div>
+	</div>
+</div>
+```
+
+All message types can be presented without actions (e.g. without buttons or links).
 
 ### JavaScript
 No code will run automatically unless you are using the Build Service. You must either construct an `o-message` object or fire an o.DOMContentLoaded event, which `o-message` listens for. There are currently three variants of `o-message` that you can use: `alert`, `alert-bleed` and `alert-inner`. All of these variants require a status of either `success`, `error` or `neutral`.
@@ -126,7 +148,7 @@ The following options are not required, and all have a default value:
 		- `url`: String. The URL the link links to. Defaults to `#`
 - `close`: Boolean. Whether or not to display the close button. Defaults to `true` for regular messages, to `false` for inline messages.
 
-_Note: `o-message` constructs a close button for 'alert' and 'alert-bleed' by default, and will not build one for 'alert-inner', as this specific message type shouldn't be dismissible'
+_Note: `o-message` constructs a close button for 'alert' and 'alert-bleed' by default, and will not build one for 'alert-inner', as this specific message type shouldn't be dismissible'_
 
 ### Sass
 As with all Origami components, o-message has a [silent mode](http://origami.ft.com/docs/syntax/scss/#silent-styles). To use its compiled CSS (rather than using its mixins with your own Sass) set `$o-message-is-silent: false;` in your Sass before you import the o-message Sass.
@@ -135,6 +157,34 @@ o-message includes mixins that you can use if you'd rather _not_ have origami cl
 
 ```sass
 @include oMessage($class: 'my-banner', $type: 'alert-inner', $status: 'success');
+```
+
+## Migration Guide
+
+#### Migrating from v1 to v2
+
+This major includes a change in markup and a new type of message, namely the 'notice' message.
+The following changes have been made to the markup:
+```diff
+<div class="o-message o-message--alert o-message--error" data-o-component="o-message">
+	<div class="o-message__container">
+		<div class="o-message__content">
+-			<p class="o-message__highlight">Something went wrong!
++			<p class="o-message__content--main">
++				<span class="o-message__content--highlight">Something went wrong!</span>
+-				<span class="o-message__detail">The quick brown fox did not jump over the lazy dogs.</span>
+-				<span class="o-message__content-detail">The quick brown fox did not jump over the lazy dogs.</span>
+			</p>
++			<p class="o-message__additional-info">Did you know that that sentence uses all of the letters in the alphabet at least once?</p>
+-			<p class="o-message__content--additional">Did you know that that sentence uses all of the letters in the alphabet at least once?</p>
+
+			<div class="o-message__actions">
+				<a href="#" class="o-message__action--primary">Button</a>
+				<a href="#" class="o-message__action--secondary">Text link</a>
+			</div>
+		</div>
+	</div>
+</div>
 ```
 
 ## Contact
