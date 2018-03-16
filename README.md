@@ -73,9 +73,7 @@ The differences are that they do not have an icon, they don't require highlighte
 <div class="o-message o-message--alert-inner o-message--success" data-o-component="o-message">
 	<div class="o-message__container">
 		<div class="o-message__content">
-			<p class="o-message__content--main">
-				<span class="o-message__content--detail">The quick brown fox jumped over the lazy dogs!</span>
-			</p>
+			<p class="o-message__content--main">The quick brown fox jumped over the lazy dogs!</p>
 
 			<div class="o-message__actions">
 				<a href="#" class="o-message__action--primary">Button</a>
@@ -155,7 +153,7 @@ The following options are not required, and all have a default value:
 		- `url`: String. The URL the link links to. Defaults to `#`
 - `close`: Boolean. Whether or not to display the close button. Defaults to `true` for regular messages, to `false` for inline messages.
 
-_Note: `o-message` constructs a close button for 'alert' and 'alert-bleed' by default, and will not build one for 'alert-inner', as this specific message type shouldn't be dismissible'_
+_Note: `o-message` constructs a close button for 'alert' and 'alert-bleed' by default, and will not build one for 'alert-inner', as this specific message type shouldn't be dismissible'
 
 ### Sass
 As with all Origami components, o-message has a [silent mode](http://origami.ft.com/docs/syntax/scss/#silent-styles). To use its compiled CSS (rather than using its mixins with your own Sass) set `$o-message-is-silent: false;` in your Sass before you import the o-message Sass.
@@ -180,7 +178,7 @@ The following changes have been made to the markup:
 +			<p class="o-message__content--main">
 +				<span class="o-message__content--highlight">Something went wrong!</span>
 -				<span class="o-message__detail">The quick brown fox did not jump over the lazy dogs.</span>
--				<span class="o-message__content-detail">The quick brown fox did not jump over the lazy dogs.</span>
++				<span class="o-message__content--detail">The quick brown fox did not jump over the lazy dogs.</span>
 			</p>
 +			<p class="o-message__additional-info">Did you know that that sentence uses all of the letters in the alphabet at least once?</p>
 -			<p class="o-message__content--additional">Did you know that that sentence uses all of the letters in the alphabet at least once?</p>
