@@ -11,7 +11,11 @@ export default {
 		alertMessageEl.classList.add(opts.messageClass, opts.typeClass, `${opts.messageClass}--closed`);
 
 		if (!opts.status) {
-			throwError("Alert messages require a status. The options are 'success', 'error', or 'neutral'");
+			if (opts.typeNucleus === 'alert') {
+				throwError("Alert messages require a status. The options are 'success', 'error', or 'neutral'");
+			} else {
+				throwError("Notice messages require a status. The options are 'inform', 'warning' or 'warning-light'");
+			}
 		} else {
 			alertMessageEl.classList.add(`${opts.statusClass}`);
 		}
@@ -40,16 +44,22 @@ export default {
 		if (opts.type === 'alert-inner' && opts.content.additionalInfo) {
 			contentHTML = `
 				<div class="${opts.messageClass}__content">
-					<p class="${opts.messageClass}__highlight">${opts.content.highlight}<span class="${opts.messageClass}__detail">${opts.content.detail}</span></p>
-					<p class="${opts.messageClass}__additional-info">${opts.content.additionalInfo}</p>
+					<p class="${opts.messageClass}__content--main">
+						<span class="${opts.messageClass}__content--highlight"">${opts.content.highlight}</span>
+						<span class="${opts.messageClass}__content--detail">${opts.content.detail}</span>
+					</p>
+					<p class="${opts.messageClass}__content--additional">${opts.content.additionalInfo}</p>
 					${actions}
 				</div>
 			`;
 		} else {
 			contentHTML = `
 				<div class="${opts.messageClass}__content">
-					<p class="${opts.messageClass}__highlight">${opts.content.highlight}<span class="${opts.messageClass}__detail">${opts.content.detail}</span></p>
-					${actions}
+				<p class="${opts.messageClass}__content--main">
+					<span class="${opts.messageClass}__content--highlight"">${opts.content.highlight}</span>
+					<span class="${opts.messageClass}__content--detail">${opts.content.detail}</span>
+				</p>
+				${actions}
 				</div>
 			`;
 		}

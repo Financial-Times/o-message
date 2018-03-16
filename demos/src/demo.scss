@@ -7,7 +7,11 @@ body {
 
 h6 {
 	@include oTypographyProductHeadingLevel6();
-	margin-top: 20px;
+	margin: 20px;
+
+	&.center {
+		text-align: center;
+	}
 }
 
 .o-message {
@@ -26,5 +30,6 @@ h6 {
 .demo-inner,
 .demo-inner-message {
 	margin: auto;
+	margin-bottom: 20px;
 	max-width: 400px;
 }
