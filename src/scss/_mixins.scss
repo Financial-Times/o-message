@@ -2,6 +2,7 @@
 @mixin oMessage($class: $o-message-class, $type: 'all', $status: 'all') {
 	@include oMessageBase($class);
 	@include oMessageAlerts($class, $type, $status);
+	@include oMessageNotices($class, $type, $status);
 }
 
 
@@ -14,12 +15,6 @@
 	.#{$class} {
 		.#{$class}__container {
 			@include oMessageContainer;
-
-			.#{$class}__content {
-				&--main {
-					@include oMessageContentMain;
-				}
-			}
 		}
 	}
 

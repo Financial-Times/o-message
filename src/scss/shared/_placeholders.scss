@@ -28,6 +28,26 @@
 	}
 };
 
+// Alert message main content style
+// Outputs content layout
+@include _oMessageDefinePlaceholder(content-main) {
+	%o-message-alert-notice-content-main {
+		margin-top: (($_o-message-alert-height - $_o-message-line-height) / 2);
+		margin-bottom: (($_o-message-alert-height - $_o-message-line-height) / 2);
+		margin-right: oTypographySpacingSize(6);
+		display: inline-block;
+	}
+};
+
+
+// Inner alert message content styles
+// Outputs content layout
+@include _oMessageDefinePlaceholder(inner-container) {
+	%o-message-inner-alert-notice-container {
+		@include oMessageContainer();
+		padding: oTypographySpacingSize(2) oTypographySpacingSize(5) oTypographySpacingSize(2) oTypographySpacingSize(4);
+	}
+}
 
 // Inner alert message content styles
 // Outputs content layout
@@ -38,3 +58,13 @@
 		max-width: oTypographyMaxLineWidth($o-message-typography-scale);
 	}
 }
+
+// Inner alert message main content style
+// Outputs content layout
+@include _oMessageDefinePlaceholder(inner-inner-content-main) {
+	%o-message-inner-alert-notice-content-main {
+		@include oTypographyMargin($top: 0, $bottom: 3);
+		margin-right: oTypographySpacingSize(6);
+		display: inline-block;
+	}
+};

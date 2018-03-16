@@ -1,3 +1,6 @@
+@import './src/scss/alert/inner';
+@import './src/scss/alert/regular';
+
 ////
 /// @group o-message
 /// @link http://registry.origami.ft.com/components/o-message
@@ -26,16 +29,16 @@
 	} @else if $type == 'alert-inner' {
 			@include oMessageAlertInner($class);
 	} @else {
-		@include _oMessageError("#{$type} is not a type, the options are 'alert', 'alert-bleed' or 'alert-inner'");
+		@include _oMessageError("#{$type} is not an alert type, the options are 'alert', 'alert-bleed' or 'alert-inner'");
 	}
 
 	@if $status == 'all' {
-		@each $status in $o-message-status {
+		@each $status in $o-message-alert-status {
 			@include oMessageStatus($status, $class)
 		}
 	} @else if index($o-message-status, $status) != null {
 			@include oMessageStatus($status, $class);
 	} @else {
-		@include _oMessageError("#{$status} is not a status, the options are 'success', 'neutral' or 'error'");
+		@include _oMessageError("#{$status} is not an alert status, the options are 'success', 'neutral' or 'error'");
 	}
 }
