@@ -45,7 +45,7 @@ export default {
 			contentHTML = `
 				<div class="${opts.messageClass}__content">
 					<p class="${opts.messageClass}__content--main">
-						<span class="${opts.messageClass}__content--highlight"">${opts.content.highlight}</span>
+						<span class="${opts.messageClass}__content--highlight">${opts.content.highlight}</span>
 						<span class="${opts.messageClass}__content--detail">${opts.content.detail}</span>
 					</p>
 					<p class="${opts.messageClass}__content--additional">${opts.content.additionalInfo}</p>
@@ -56,7 +56,7 @@ export default {
 			contentHTML = `
 				<div class="${opts.messageClass}__content">
 				<p class="${opts.messageClass}__content--main">
-					<span class="${opts.messageClass}__content--highlight"">${opts.content.highlight}</span>
+					<span class="${opts.messageClass}__content--highlight">${opts.content.highlight}</span>
 					<span class="${opts.messageClass}__content--detail">${opts.content.detail}</span>
 				</p>
 				${actions}

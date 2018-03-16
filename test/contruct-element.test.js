@@ -19,6 +19,7 @@ describe("constructElement", () => {
 			messageClass: 'my-message',
 			type: 'alert',
 			typeClass: 'my-message--alert',
+			typeNucleus: 'alert',
 			status: 'success',
 			statusClass: 'my-message--success',
 			content: {

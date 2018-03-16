@@ -14,7 +14,15 @@ class Message {
 		const messageClass = options && options.messageClass ? options.messageClass : 'o-message';
 		const type = options && options.type ? options.type : 'alert';
 		const status = options && options.status ? options.status : null;
-		const typeNucleus = (type === 'alert' || type === 'alert-bleed' || type === 'alert-inner') ? 'alert' : 'notice';
+		let typeNucleus;
+
+		if (type === 'alert' || type === 'alert-bleed' || type === 'alert-inner') {
+			typeNucleus = 'alert';
+		} else if (type === 'notice' || type === 'alert-bleed' || type === 'alert-inner') {
+			typeNucleus = 'notice';
+		} else {
+			typeNucleus = null;
+		}
 
 		this.opts = Object.assign({}, {
 			autoOpen: true,
