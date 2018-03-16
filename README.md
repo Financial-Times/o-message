@@ -29,7 +29,7 @@ This is an example of the declarative way of instantiating an error message that
 	<div class="o-message__container">
 		<div class="o-message__content">
 			<p class="o-message__content--main">
-				<span class="o-message__content-highlight">Something went wrong!</span>
+				<span class="o-message__content--highlight">Something went wrong!</span>
 				<span class="o-message__content--detail">The quick brown fox did not jump over the lazy dogs.</span>
 			</p>
 			<div class="o-message__actions">
@@ -52,7 +52,7 @@ This message type has been designed to fit within another element on the page. I
 	<div class="o-message__container">
 		<div class="o-message__content">
 			<p class="o-message__content--main">
-				<span class="o-message__content-highlight">Hooray!</span>
+				<span class="o-message__content--highlight">Hooray!</span>
 				<span class="o-message__content--detail">The quick brown fox jumped over the lazy dogs!</span>
 			</p>
 			<p class="o-message__content--additional">Did you know that that sentence uses all of the letters in the alphabet at least once?</p>
