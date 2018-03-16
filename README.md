@@ -89,7 +89,14 @@ The differences are that they do not have an icon, they don't require highlighte
 All message types can be presented without actions (e.g. without buttons or links).
 
 ### JavaScript
-No code will run automatically unless you are using the Build Service. You must either construct an `o-message` object or fire an o.DOMContentLoaded event, which `o-message` listens for. There are currently three variants of `o-message` that you can use: `alert`, `alert-bleed` and `alert-inner`. All of these variants require a status of either `success`, `error` or `neutral`.
+No code will run automatically unless you are using the Build Service. You must either construct an `o-message` object or fire an o.DOMContentLoaded event, which `o-message` listens for.
+
+`oMessage` can build two types of messages:  an alert message and a notice message.
+Both message types have three variants, namely `alert`, `alert-bleed`, `alert-inner`, `notice`, `notice-bleed` and `notice-inner`.
+
+All variants require a status.
+The available options for `alert` are `success`, `error` or `neutral`.
+The available options for `notice` are `inform`, `warning` or `warning-light`.
 
 #### Construction
 In the case your message has been set up declaratively:
