@@ -102,7 +102,7 @@ export default {
 	* Build an actions  element. Used within alertMessage and noticeMessage
 	* @returns {HTMLElement} Returns the new actions message element
 	*/
-	actions: (opts)  => {
+	actions: (opts) => {
 		let primaryActionHTML;
 		if (opts.actions.primary.text) {
 			primaryActionHTML = `<a href="${opts.actions.primary.url}" class="${opts.messageClass}__action--primary">${opts.actions.primary.text}</a>`;

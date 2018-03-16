@@ -103,7 +103,11 @@ class Message {
 				return construct.alertMessage(this.opts);
 			}
 		} else if (this.opts.typeNucleus === 'notice') {
-			return construct.noticeMessage(this.opts)
+			if (!this.opts.content.detail) {
+				throwError(`An ${this.opts.typeNucleus} message element requires options.content.detail`);
+			} else {
+				return construct.noticeMessage(this.opts);
+			}
 		} else {
 			throwError(`'${this.opts.type}' is not a supported message type. The available options are 'alert', 'alert-bleed', 'alert-inner', 'notice', 'notice-bleed', 'notice-inner'`);
 		}

@@ -153,7 +153,7 @@ The following options are not required, and all have a default value:
 		- `url`: String. The URL the link links to. Defaults to `#`
 - `close`: Boolean. Whether or not to display the close button. Defaults to `true` for regular messages, to `false` for inline messages.
 
-_Note: `o-message` constructs a close button for 'alert' and 'alert-bleed' by default, and will not build one for 'alert-inner', as this specific message type shouldn't be dismissible'
+_Note: `o-message` constructs a close button for 'alert' and 'alert-bleed' by default, and will not build one for 'alert-inner', as this specific message type shouldn't be dismissible'_
 
 ### Sass
 As with all Origami components, o-message has a [silent mode](http://origami.ft.com/docs/syntax/scss/#silent-styles). To use its compiled CSS (rather than using its mixins with your own Sass) set `$o-message-is-silent: false;` in your Sass before you import the o-message Sass.
