@@ -29,6 +29,17 @@ export default {
 				</div>
 			</div>
 		`,
+	notice: `
+			<div class="my-message__container">
+				<div class="my-message__content">
+					<p class="my-message__content--main">Many things are here to be said about this message</p>
+					<div class="my-message__actions">
+						<a href="#" class="my-message__action--primary">a button</a>
+						<a href="#" class="my-message__action--secondary">a link</a>
+					</div>
+				</div>
+			</div>
+		`,
 	innerAlert: `
 	<div class="my-message__container">
 		<div class="my-message__content">
@@ -58,5 +69,10 @@ export default {
 				</div>
 			</div>
 		`,
-	closeButton: `<a class="my-message__close" role="button" href="#void" aria-label="close" title="Close"></a>`
+	closeButton: `<a class="my-message__close" role="button" href="#void" aria-label="close" title="Close"></a>`,
+	actions: `<div class="my-message__actions">
+			<a href="#" class="my-message__action--primary">a button</a>
+			<a href="#" class="my-message__action--secondary">a link</a>
+			</div>
+		`
 };

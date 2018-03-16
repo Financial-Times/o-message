@@ -18,10 +18,7 @@ describe("constructElement", () => {
 		options = {
 			messageClass: 'my-message',
 			type: 'alert',
-			typeClass: 'my-message--alert',
-			typeNucleus: 'alert',
 			status: 'success',
-			statusClass: 'my-message--success',
 			content: {
 				highlight: 'Important'
 			},
@@ -72,6 +69,45 @@ describe("constructElement", () => {
 		});
 	});
 
+	describe('.noticeMessage', () => {
+		beforeEach(() => {
+			options = {
+				messageClass: 'my-message',
+				type: 'notice',
+				status: 'inform',
+				content: {
+					detail: 'Many things are here to be said about this message'
+				},
+				actions: {
+					primary: {
+						text: 'a button',
+						url: '#'
+					},
+					secondary: {
+						text: 'a link',
+						url: '#'
+					}
+				},
+				close: true
+			};
+		});
+
+		it('returns an HTML element', () => {
+			assert.instanceOf(construct.noticeMessage(options), HTMLElement);
+		});
+
+		it('builds a message component based on the provided messageClass and theme', () => {
+			assert.strictEqual(flatten(construct.noticeMessage(options).innerHTML), flatten(fixtures.notice));
+		});
+
+		it('throws an error if no status is defined', () => {
+			options.status = null;
+
+			let error = "*** o-message error: Notice messages require a status. The options are 'inform', 'warning' or 'warning-light' ***";
+			assert.throws(() => construct.noticeMessage(options), error);
+		});
+	});
+
 	describe('.closeButton', () => {
 		it('returns an HTML element', () => {
 			assert.instanceOf(construct.closeButton(options), HTMLElement);
@@ -79,6 +115,28 @@ describe("constructElement", () => {
 
 		it('builds a close button component', () => {
 			assert.strictEqual(flatten(construct.closeButton(options).outerHTML), flatten(fixtures.closeButton));
+		});
+	});
+
+	describe('.actions()', () => {
+		beforeEach(() => {
+			options = {
+				messageClass: 'my-message',
+				actions: {
+					primary: {
+						text: 'a button',
+						url: '#'
+					},
+					secondary: {
+						text: 'a link',
+						url: '#'
+					}
+				}
+			};
+		});
+
+		it('builds an actions element', () => {
+			assert.strictEqual(flatten(construct.actions(options)), flatten(fixtures.actions));
 		});
 	});
 });
