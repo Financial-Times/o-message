@@ -1,6 +1,30 @@
 import { throwError } from './helpers';
-export default {
 
+/**
+* Build an actions  element. Used within alertMessage and noticeMessage
+* @returns {HTMLElement} Returns the new actions message element
+*/
+const actions = (opts) => {
+	let primaryActionHTML;
+	if (opts.actions.primary.text) {
+		primaryActionHTML = `<a href="${opts.actions.primary.url}" class="${opts.messageClass}__actions__primary">${opts.actions.primary.text}</a>`;
+	}
+
+	let secondaryActionHTML;
+	if (opts.actions.secondary.text) {
+		secondaryActionHTML = `<a href="${opts.actions.secondary.url}" class="${opts.messageClass}__actions__secondary">${opts.actions.secondary.text}</a>`;
+	}
+
+	let actions = `<div class="${opts.messageClass}__actions">
+		${primaryActionHTML}
+		${secondaryActionHTML}
+		</div>
+	`;
+
+	return actions;
+}
+
+export default {
 	/**
 	* Build a full alert message element. Used when there is no message element in the DOM.
 	* @returns {HTMLElement} Returns the new alert type message element
@@ -16,7 +40,7 @@ export default {
 			alertMessageEl.classList.add(`${opts.statusClass}`);
 		}
 
-		let actions = module.exports.actions(opts);
+		let actions = actions(opts);
 
 		let contentHTML;
 		if (!opts.content.detail) {
@@ -26,22 +50,22 @@ export default {
 		if (opts.type === 'alert-inner' && opts.content.additionalInfo) {
 			contentHTML = `
 				<div class="${opts.messageClass}__content">
-					<p class="${opts.messageClass}__content--main">
-						<span class="${opts.messageClass}__content--highlight">${opts.content.highlight}</span>
-						<span class="${opts.messageClass}__content--detail">${opts.content.detail}</span>
+					<p class="${opts.messageClass}__content-main">
+						<span class="${opts.messageClass}__content-highlight">${opts.content.highlight}</span>
+						<span class="${opts.messageClass}__content-detail">${opts.content.detail}</span>
 					</p>
-					<p class="${opts.messageClass}__content--additional">${opts.content.additionalInfo}</p>
+					<p class="${opts.messageClass}__content-additional">${opts.content.additionalInfo}</p>
 					${actions}
 				</div>
 			`;
 		} else {
 			contentHTML = `
 				<div class="${opts.messageClass}__content">
-				<p class="${opts.messageClass}__content--main">
-					<span class="${opts.messageClass}__content--highlight">${opts.content.highlight}</span>
-					<span class="${opts.messageClass}__content--detail">${opts.content.detail}</span>
-				</p>
-				${actions}
+					<p class="${opts.messageClass}__content-main">
+						<span class="${opts.messageClass}__content-highlight">${opts.content.highlight}</span>
+						<span class="${opts.messageClass}__content-detail">${opts.content.detail}</span>
+					</p>
+					${actions}
 				</div>
 			`;
 		}
@@ -74,14 +98,14 @@ export default {
 			noticeMessage.classList.add(`${opts.statusClass}`);
 		}
 
-		let actions = module.exports.actions(opts);
+		let actions = actions(opts);
 
 		const contentHTML = `
 			<div class="${opts.messageClass}__content">
-			<p class="${opts.messageClass}__content--main">
-				${opts.content.detail}
-			</p>
-			${actions}
+				<p class="${opts.messageClass}__content-main">
+					${opts.content.detail}
+				</p>
+				${actions}
 			</div>
 		`;
 
@@ -96,30 +120,6 @@ export default {
 		`;
 
 		return noticeMessage;
-	},
-
-	/**
-	* Build an actions  element. Used within alertMessage and noticeMessage
-	* @returns {HTMLElement} Returns the new actions message element
-	*/
-	actions: (opts) => {
-		let primaryActionHTML;
-		if (opts.actions.primary.text) {
-			primaryActionHTML = `<a href="${opts.actions.primary.url}" class="${opts.messageClass}__action--primary">${opts.actions.primary.text}</a>`;
-		}
-
-		let secondaryActionHTML;
-		if (opts.actions.secondary.text) {
-			secondaryActionHTML = `<a href="${opts.actions.secondary.url}" class="${opts.messageClass}__action--secondary">${opts.actions.secondary.text}</a>`;
-		}
-
-		let actions = `<div class="${opts.messageClass}__actions">
-			${primaryActionHTML}
-			${secondaryActionHTML}
-			</div>
-		`;
-
-		return actions;
 	},
 	/**
 	* Build a close button

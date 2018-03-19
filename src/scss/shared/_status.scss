@@ -15,14 +15,14 @@
 		.#{$class}--#{$status} {
 			@include oColorsFor(o-message-#{$status});
 
-			.#{$class}__action--primary {
+			.#{$class}__actions__primary {
 				@include oMessageAlertButtonState(
 				_oMessageGetMapValue($status, button-background),
 				_oMessageGetMapValue($status, button-text)
 				);
 			}
 
-			.#{$class}__action--secondary {
+			.#{$class}__actions__secondary {
 				@include oMessageAlertLink(
 					$custom-link-base: _oMessageGetMapValue($status, custom-link-base),
 					$custom-link-hover: _oMessageGetMapValue($status, custom-link-hover),

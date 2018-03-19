@@ -18,7 +18,7 @@
 			@extend %o-message-alert-notice-content;
 			padding-left: oTypographySpacingSize(5);
 
-			&--main {
+			&-main {
 				@extend %o-message-alert-notice-content-main;
 			}
 		}

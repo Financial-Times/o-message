@@ -16,7 +16,7 @@
 			@extend %o-message-inner-alert-notice-content;
 			padding-left: 20px;
 
-			&--main {
+			&-main {
 				@extend %o-message-inner-alert-notice-content-main ;
 			}
 		}

@@ -24,15 +24,15 @@
 			@extend %o-message-alert-notice-content;
 			padding-left: oTypographySpacingSize(10);
 
-			&--main {
+			&-main {
 				@extend %o-message-alert-notice-content-main;
 			}
 
-			&--highlight {
+			&-highlight {
 				@include oMessageContentHighlight;
 			}
 
-			&--detail {
+			&-detail {
 				@include oGridRespondTo($until: M) {
 					display: none;
 				};
@@ -41,12 +41,12 @@
 
 		.#{$class}__actions {
 			display: inline-block;
-		}
-
-		.#{$class}__action--secondary {
-			@include oGridRespondTo($until: S) {
-				display: none;
-			};
+			
+			&__secondary {
+				@include oGridRespondTo($until: S) {
+					display: none;
+				};
+			}
 		}
 	}
 }
