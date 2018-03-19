@@ -117,26 +117,4 @@ describe("constructElement", () => {
 			assert.strictEqual(flatten(construct.closeButton(options).outerHTML), flatten(fixtures.closeButton));
 		});
 	});
-
-	describe('.actions()', () => {
-		beforeEach(() => {
-			options = {
-				messageClass: 'my-message',
-				actions: {
-					primary: {
-						text: 'a button',
-						url: '#'
-					},
-					secondary: {
-						text: 'a link',
-						url: '#'
-					}
-				}
-			};
-		});
-
-		it('builds an actions element', () => {
-			assert.strictEqual(flatten(construct.actions(options)), flatten(fixtures.actions));
-		});
-	});
 });
