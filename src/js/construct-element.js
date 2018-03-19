@@ -1,10 +1,6 @@
 import { throwError } from './helpers';
 
-/**
-* Build an actions  element. Used within alertMessage and noticeMessage
-* @returns {HTMLElement} Returns the new actions message element
-*/
-const actions = (opts) => {
+const buildActions = (opts) => {
 	let primaryActionHTML;
 	if (opts.actions.primary.text) {
 		primaryActionHTML = `<a href="${opts.actions.primary.url}" class="${opts.messageClass}__actions__primary">${opts.actions.primary.text}</a>`;
@@ -40,7 +36,7 @@ export default {
 			alertMessageEl.classList.add(`${opts.statusClass}`);
 		}
 
-		let actions = actions(opts);
+		let actions = buildActions(opts);
 
 		let contentHTML;
 		if (!opts.content.detail) {
@@ -98,7 +94,7 @@ export default {
 			noticeMessage.classList.add(`${opts.statusClass}`);
 		}
 
-		let actions = actions(opts);
+		let actions = buildActions(opts);
 
 		const contentHTML = `
 			<div class="${opts.messageClass}__content">
