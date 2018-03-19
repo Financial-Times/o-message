@@ -28,21 +28,21 @@ This is an example of the declarative way of instantiating an error message that
 <div class="o-message o-message--alert o-message--error" data-o-component="o-message">
 	<div class="o-message__container">
 		<div class="o-message__content">
-			<p class="o-message__content--main">
-				<span class="o-message__content--highlight">Something went wrong!</span>
-				<span class="o-message__content--detail">The quick brown fox did not jump over the lazy dogs.</span>
+			<p class="o-message__content-main">
+				<span class="o-message__content-highlight">Something went wrong!</span>
+				<span class="o-message__content-detail">The quick brown fox did not jump over the lazy dogs.</span>
 			</p>
 			<div class="o-message__actions">
-				<a href="#" class="o-message__action--primary">Button</a>
-				<a href="#" class="o-message__action--secondary">Text link</a>
+				<a href="#" class="o-message__actions__primary">Button</a>
+				<a href="#" class="o-message__actions__secondary">Text link</a>
 			</div>
 		</div>
 	</div>
 </div>
 ```
 _Note: these message types are responsive. At different viewport sizes the message element hides the following elements:_
-- `<span class="o-message__detail">`
-- `<a class="o-message__action--secondary">`
+- `<span class="o-message__content-detail">`
+- `<a class="o-message__actions__secondary">`
 
 The 'alert-inner' message type has almost exactly the same markup, with an optional addition of information, and does not have the option to close the message.
 This message type has been designed to fit within another element on the page. It does not hide elements at any viewport.
@@ -51,15 +51,15 @@ This message type has been designed to fit within another element on the page. I
 <div class="o-message o-message--alert-inner o-message--success" data-o-component="o-message">
 	<div class="o-message__container">
 		<div class="o-message__content">
-			<p class="o-message__content--main">
-				<span class="o-message__content--highlight">Hooray!</span>
-				<span class="o-message__content--detail">The quick brown fox jumped over the lazy dogs!</span>
+			<p class="o-message__content-main">
+				<span class="o-message__content-highlight">Hooray!</span>
+				<span class="o-message__content-detail">The quick brown fox jumped over the lazy dogs!</span>
 			</p>
-			<p class="o-message__content--additional">Did you know that that sentence uses all of the letters in the alphabet at least once?</p>
+			<p class="o-message__content-additional">Did you know that that sentence uses all of the letters in the alphabet at least once?</p>
 
 			<div class="o-message__actions">
-				<a href="#" class="o-message__action--primary">Button</a>
-				<a href="#" class="o-message__action--secondary">Text link</a>
+				<a href="#" class="o-message__actions__primary">Button</a>
+				<a href="#" class="o-message__actions__secondary">Text link</a>
 			</div>
 		</div>
 	</div>
@@ -70,14 +70,14 @@ Notice message types are styled similarly to the alert type messages (both for a
 The differences are that they do not have an icon, they don't require highlighted content, and don't support additional content.
 
 ```html
-<div class="o-message o-message--alert-inner o-message--success" data-o-component="o-message">
+<div class="o-message o-message--notice-inner o-message--success" data-o-component="o-message">
 	<div class="o-message__container">
 		<div class="o-message__content">
-			<p class="o-message__content--main">The quick brown fox jumped over the lazy dogs!</p>
+			<p class="o-message__content-main">The quick brown fox jumped over the lazy dogs!</p>
 
 			<div class="o-message__actions">
-				<a href="#" class="o-message__action--primary">Button</a>
-				<a href="#" class="o-message__action--secondary">Text link</a>
+				<a href="#" class="o-message__actions__primary">Button</a>
+				<a href="#" class="o-message__actions__secondary">Text link</a>
 			</div>
 		</div>
 	</div>
@@ -175,17 +175,17 @@ The following changes have been made to the markup:
 	<div class="o-message__container">
 		<div class="o-message__content">
 -			<p class="o-message__highlight">Something went wrong!
-+			<p class="o-message__content--main">
-+				<span class="o-message__content--highlight">Something went wrong!</span>
++			<p class="o-message__content-main">
++				<span class="o-message__content-highlight">Something went wrong!</span>
 -				<span class="o-message__detail">The quick brown fox did not jump over the lazy dogs.</span>
-+				<span class="o-message__content--detail">The quick brown fox did not jump over the lazy dogs.</span>
++				<span class="o-message__content-detail">The quick brown fox did not jump over the lazy dogs.</span>
 			</p>
 +			<p class="o-message__additional-info">Did you know that that sentence uses all of the letters in the alphabet at least once?</p>
--			<p class="o-message__content--additional">Did you know that that sentence uses all of the letters in the alphabet at least once?</p>
+-			<p class="o-message__content-additional">Did you know that that sentence uses all of the letters in the alphabet at least once?</p>
 
 			<div class="o-message__actions">
-				<a href="#" class="o-message__action--primary">Button</a>
-				<a href="#" class="o-message__action--secondary">Text link</a>
+				<a href="#" class="o-message__actions__primary">Button</a>
+				<a href="#" class="o-message__actions__secondary">Text link</a>
 			</div>
 		</div>
 	</div>
