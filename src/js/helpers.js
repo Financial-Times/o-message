@@ -20,6 +20,6 @@ const buildActions = (opts) => {
 	`;
 
 	return actions;
-}
+};
 
 module.exports = { buildActions, throwError };
