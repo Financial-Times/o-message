@@ -26,17 +26,17 @@
 	}
 
 	@if $type == 'alert' or $type == 'alert-bleed' or $type == 'all' {
-			@include oMessageAlert($class);
+		@include oMessageAlert($class);
 	}
 
 
 	@if $status != 'all' and not index($o-message-alert-status, $status) {
 		@include _oMessageError("#{$status} is not an alert status, the options are 'success', 'neutral' or 'error'");
 	} @else if $status == 'all' {
-		@each $status in $o-message-notice-status {
+		@each $status in $o-message-alert-status {
 			@include oMessageStatus($status, $class)
 		}
-	} @else if index($o-message-status, $status) != null {
+	} @else if index($o-message-alert-status, $status) != null {
 		@include oMessageStatus($status, $class);
 	}
 }

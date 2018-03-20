@@ -34,7 +34,7 @@
 		@each $status in $o-message-notice-status {
 			@include oMessageStatus($status, $class)
 		}
-	} @else if index($o-message-status, $status) != null {
+	} @else if index($o-message-notice-status, $status) != null {
 		@include oMessageStatus($status, $class);
 	}
 }
