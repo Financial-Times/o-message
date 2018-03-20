@@ -184,12 +184,27 @@ The following changes have been made to the markup:
 -			<p class="o-message__content-additional">Did you know that that sentence uses all of the letters in the alphabet at least once?</p>
 
 			<div class="o-message__actions">
-				<a href="#" class="o-message__actions__primary">Button</a>
-				<a href="#" class="o-message__actions__secondary">Text link</a>
+-				<a href="#" class="o-message__action--primary">Button</a>
++				<a href="#" class="o-message__actions__primary">Button</a>
+-				<a href="#" class="o-message__action--secondary">Text link</a>
++				<a href="#" class="o-message__actions__secondary">Text link</a>
 			</div>
 		</div>
 	</div>
 </div>
+```
+
+And these mixins have been replaced with placeholders:
+
+```diff
+- oMessageAlertContentMain
++ %o-message-alert-notice-content-main
+
+- oMessageAlertInnerContainer
++ %o-message-inner-alert-notice-container
+
+- oMessageAlertInnerContent
++ %o-message-alert-notice-content-main
 ```
 
 ## Contact

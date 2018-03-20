@@ -16,7 +16,7 @@
 	.#{$class}--notice-bleed {
 		.#{$class}__content {
 			@extend %o-message-alert-notice-content;
-			padding-left: oTypographySpacingSize(5);
+			padding: 0 oTypographySpacingSize(5);
 
 			&-main {
 				@extend %o-message-alert-notice-content-main;
@@ -24,10 +24,10 @@
 		}
 
 		.#{$class}__actions {
-			display: inline-block;
+			@extend %o-message-alert-notice-actions;
 
-			@include oGridRespondTo($until: S) {
-				@include oTypographyPadding($bottom: 3);
+			@include oGridRespondTo($until: M) {
+				display: none;
 			};
 		}
 	}

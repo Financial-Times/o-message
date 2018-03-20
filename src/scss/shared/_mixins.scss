@@ -38,7 +38,7 @@
 // @param {String} $custom-link-hover - name of the link hover color (required by oTypographyLinkCustom,accepts any color from o-colors)
 // @param {String} $custom-link-background - name of the link background color (required by oTypographyLinkCustom, accepts any color from o-colors)
 // @param {String} $link-hover - name of the link hover color (overrides default states from oTypographyLinkCustom, accepts any color from o-colors)
-// @param {String} $link-background - name of the link background color (overrides default states from oTypographyLinkCustom, accepts any color from o-colors)
+// @param {String} $link-focus - name of the link focus color (overrides default states from oTypographyLinkCustom, accepts any color from o-colors)
 @mixin oMessageAlertLink ($custom-link-base, $custom-link-hover, $custom-link-background, $link-hover, $link-focus) {
 	@include oTypographyLinkCustom(
 		$custom-link-base,

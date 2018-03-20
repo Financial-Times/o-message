@@ -34,15 +34,6 @@
 	// sass-lint:enable no-vendor-prefixes
 }
 
-/// Message content structure
-///
-/// Outputs base layout for content
-@mixin oMessageContentMain () {
-	margin-right: oTypographySpacingSize(6);
-	display: inline-block;
-}
-
-
 /// Message button
 ///
 /// Outputs base styles for message buttons

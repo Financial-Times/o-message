@@ -10,35 +10,33 @@
 ///
 /// Outputs styling for all alert type messages
 /// @example
-/// @include oMessageAlerts('my-class');
+/// @include oMessageAlerts('my-class', 'alert', 'success');
 ///
 /// @param {String} $class - base class name
 /// @param {String} $type - message type ('all', 'alert', 'alert-bleed' or 'alert-inner')
 /// @param {String} $status - message status ('all', 'success', 'neutral', 'error')
 
 @mixin oMessageAlerts($class, $type, $status) {
-	@if $type == 'all' {
-		@include oMessageAlert($class);
-		@include oMessageAlertInner($class);
-
-		@include oMessageNotice($class);
-		@include oMessageNoticeInner($class);
-
-	} @else if $type == 'alert' or $type == 'alert-bleed' {
-			@include oMessageAlert($class);
-	} @else if $type == 'alert-inner' {
-			@include oMessageAlertInner($class);
-	} @else {
+	@if $type != 'all' and not index($o-message-alert-types, $type) {
 		@include _oMessageError("#{$type} is not an alert type, the options are 'alert', 'alert-bleed' or 'alert-inner'");
 	}
 
-	@if $status == 'all' {
-		@each $status in $o-message-alert-status {
+	@if $type == 'alert-inner' or $type == 'all' {
+		@include oMessageAlertInner($class);
+	}
+
+	@if $type == 'alert' or $type == 'alert-bleed' or $type == 'all' {
+			@include oMessageAlert($class);
+	}
+
+
+	@if $status != 'all' and not index($o-message-alert-status, $status) {
+		@include _oMessageError("#{$status} is not an alert status, the options are 'success', 'neutral' or 'error'");
+	} @else if $status == 'all' {
+		@each $status in $o-message-notice-status {
 			@include oMessageStatus($status, $class)
 		}
 	} @else if index($o-message-status, $status) != null {
-			@include oMessageStatus($status, $class);
-	} @else {
-		@include _oMessageError("#{$status} is not an alert status, the options are 'success', 'neutral' or 'error'");
+		@include oMessageStatus($status, $class);
 	}
 }

@@ -22,7 +22,7 @@
 
 		.#{$class}__content {
 			@extend %o-message-alert-notice-content;
-			padding-left: oTypographySpacingSize(10);
+			padding: 0 oTypographySpacingSize(10);
 
 			&-main {
 				@extend %o-message-alert-notice-content-main;
@@ -40,8 +40,8 @@
 		}
 
 		.#{$class}__actions {
-			display: inline-block;
-			
+			@extend %o-message-alert-notice-actions;
+
 			&__secondary {
 				@include oGridRespondTo($until: S) {
 					display: none;
