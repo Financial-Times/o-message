@@ -11,7 +11,7 @@ export default {
 		alertMessageEl.classList.add(opts.messageClass, opts.typeClass, `${opts.messageClass}--closed`);
 
 		if (!opts.status) {
-			throwError("Alert messages require a status. The options are 'success', 'error', or 'neutral'");
+			throwError("\nAlert messages require a status. The options are:\n- success\n- error\n- neutral\n");
 		} else {
 			alertMessageEl.classList.add(`${opts.statusClass}`);
 		}
@@ -69,7 +69,7 @@ export default {
 		noticeMessage.classList.add(opts.messageClass, opts.typeClass, `${opts.messageClass}--closed`);
 
 		if (!opts.status) {
-			throwError("Notice messages require a status. The options are 'inform', 'warning' or 'warning-light'");
+			throwError("\nNotice messages require a status. The options are:\n- inform\n- warning\n- warning-light\n");
 		} else {
 			noticeMessage.classList.add(`${opts.statusClass}`);
 		}
