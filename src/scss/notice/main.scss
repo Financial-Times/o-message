@@ -1,5 +1,6 @@
 @import 'inner';
 @import 'regular';
+
 ////
 /// @group o-message
 /// @link http://registry.origami.ft.com/components/o-message
@@ -15,12 +16,12 @@
 /// @param {String} $type - message type ('all', 'notice', 'notice-bleed' or 'notice-inner')
 /// @param {String} $status - message status ('all', 'inform', 'warning', 'warning-light')
 
-@mixin oMessageNotices($class, $type, $status) {
+@mixin oMessageNotices($class, $types, $status) {
 	@include oMessageBase($class);
 	@include oMessageStatusApply($status, $class);
 
 	@each $type in $types {
-		@if $type != 'all' or not index($o-message-notice-types, $type) {
+		@if $type != 'all' and not index($o-message-notice-types, $type) {
 			@include _oMessageError("o-message notice messages don't support #{$type}.
 			The available types are:
 			- notice

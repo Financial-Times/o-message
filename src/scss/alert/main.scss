@@ -21,7 +21,7 @@
 	@include oMessageStatusApply($status, $class);
 
 	@each $type in $types {
-		@if $type != 'all' or not index($o-message-alert-types, $type) {
+		@if $type != 'all' and not index($o-message-alert-types, $type) {
 			@include _oMessageError("o-message alert messages don't support #{$type}.
 			The available types are:
 			- alert
