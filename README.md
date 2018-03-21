@@ -161,7 +161,13 @@ As with all Origami components, o-message has a [silent mode](http://origami.ft.
 o-message includes mixins that you can use if you'd rather _not_ have origami classnames in your page. These are only available if you're _not_ using the Build Service:
 
 ```sass
-@include oMessage($class: 'my-banner', $type: 'alert-inner', $status: 'success');
+@include oMessage($class: 'my-banner', $types: 'alert-inner', $status: 'success');
+```
+
+You can also initialise multiple types and states of message by providing a list of types and a list of states:
+
+```sass
+@include oMessage($types: 'alert-inner', 'notice-bleed', $status: 'success', 'inform')
 ```
 
 ## Migration Guide
