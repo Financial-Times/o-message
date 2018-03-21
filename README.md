@@ -17,26 +17,20 @@ o-message is a messaging component used for alerting and informing. It can inclu
 `o-message` uses Sass and Javascript to show and hide a message component.
 It can be initialised declaratively if markup is provided on the page, or it can be initialised imperatively when using the [manual build process](http://origami.ft.com/docs/developer-guide/modules/building-modules/).
 
-`o-message` can initialise two types of messages: alert and notice.
-Alert message types are:
-- `alert`
-- `alert-bleed`
-- `alert-inner`
-Alert message states are:
-- `error`
-- `neutral`
-- `success`
+`o-message` can initialise two types of messages: alert and notice.  
 
-Alert message types are:
-- `notice`
-- `notice-bleed`
-- `notice-inner`
-Alert message states are:
-- `inform`
-- `warning`
-- `warning-light`
+Messages are styled correctly using any combination of types and states that have a  ✓ in the table below:
 
-By default, `o-message` initialises an alert message.
+types ↓ / states  →|`success` | `neutral` | `error` | `inform` | `warning` | `warning-light`
+---|--- |---|---
+`alert`| ✓ | ✓ | ✓ | x | x | x
+`alert-bleed`| ✓ | ✓ | ✓ | x | x | x
+`alert-inner`| ✓ | ✓ | ✓ | x | x | x
+`notice`| x | x | x | ✓ | ✓ | ✓
+`notice-bleed`| x | x | x | ✓ | ✓ | ✓
+`notice-inner`| x | x | x | ✓ | ✓ | ✓
+
+By default, `o-message` initialises with the markup for an `alert` type.
 
 ### Markup
 
