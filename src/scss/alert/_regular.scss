@@ -47,7 +47,7 @@
 			@extend %o-message-alert-notice-actions;
 
 			@include oGridRespondTo($until: S) {
-				margin: 0 0 8px 0 ;
+				margin: 0 0 8px;
 
 				&__secondary {
 					display: none;
