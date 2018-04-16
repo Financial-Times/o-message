@@ -1,7 +1,7 @@
 o-message [![Circle CI](https://circleci.com/gh/Financial-Times/o-message/tree/master.svg?style=svg)](https://circleci.com/gh/Financial-Times/o-message/tree/master)
 =================
 
-o-message is a messaging component used for alerting and informing. It can include variants on the type of message it delivers, but currently only covers 'alert' type messages.
+o-message is a messaging component used for alerting and informing. It can include variants on the type of message it delivers.
 
 - [Usage](#usage)
 	- [Markup](#markup)
