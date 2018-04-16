@@ -32,6 +32,7 @@
 // Outputs content layout
 @include _oMessageDefinePlaceholder(content-main) {
 	%o-message-alert-notice-content-main {
+		@include oTypographyMargin($top: 4, $bottom: 4);
 		margin-right: oTypographySpacingSize(6);
 		display: inline-block;
 	}

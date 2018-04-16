@@ -28,7 +28,7 @@
 		}
 
 		.#{$class}__actions {
-			@include oTypographyPadding($bottom: 2);
+			padding-bottom: $_o-message-text-spacing;
 			display: inline-block;
 		}
 	}
