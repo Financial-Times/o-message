@@ -29,7 +29,7 @@
 			}
 
 			&-highlight {
-				@include oTypographyBold('sans');
+				@extend %o-message-content-highlight;
 			}
 		}
 
