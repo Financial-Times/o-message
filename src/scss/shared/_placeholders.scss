@@ -71,6 +71,6 @@
 // Outputs emboldened text
 @include _oMessageDefinePlaceholder(content-highlight) {
 	%o-message-content-highlight {
-		@include oTypographBold('sans');
+		@include oMessageContentHighlight();
 	}
 };

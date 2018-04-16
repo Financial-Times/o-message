@@ -1,3 +1,10 @@
+/// Alert message content highlight
+///
+/// Outputs styles for highligted message content
+@mixin oMessageContentHighlight {
+	@include oTypographyBold('sans');
+}
+
 // Customised Icon for Alert messages
 //
 // @param {String} $icon-name - name of the icon (accepts any icon name from fticons)
