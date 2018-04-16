@@ -29,25 +29,13 @@
 			}
 
 			&-highlight {
-				@include oMessageContentHighlight;
-			}
-
-			&-detail {
-				@include oGridRespondTo($until: M) {
-					display: none;
-				};
+				@include oTypographyBold('sans');
 			}
 		}
 
 		.#{$class}__actions {
-			@include oTypographyPadding($bottom: 1);
+			@include oTypographyPadding($bottom: 2);
 			display: inline-block;
-
-			@include oGridRespondTo($until: S) {
-				&__secondary {
-					display: none;
-				}
-			}
 		}
 	}
 }
