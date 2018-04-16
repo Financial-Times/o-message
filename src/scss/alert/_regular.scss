@@ -17,7 +17,7 @@
 		height: 100%;
 
 		.#{$class}__container:before {
-			top: ($_o-message-alert-height - $_o-message-alert-icon-size) / 2;
+			top: ($_o-message-text-spacing / 2) * 1px;
 		}
 
 		.#{$class}__content {
@@ -34,7 +34,7 @@
 		}
 
 		.#{$class}__actions {
-			@include oTypographyPadding($bottom: 2);
+			padding-bottom: $_o-message-text-spacing * 1px;
 			display: inline-block;
 		}
 	}

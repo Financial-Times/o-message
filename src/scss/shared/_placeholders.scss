@@ -32,8 +32,8 @@
 // Outputs content layout
 @include _oMessageDefinePlaceholder(content-main) {
 	%o-message-alert-notice-content-main {
-		margin-top: (($_o-message-alert-height - $_o-message-line-height) / 2);
-		margin-bottom: (($_o-message-alert-height - $_o-message-line-height) / 2);
+		margin-top: $_o-message-text-spacing;
+		margin-bottom: $_o-message-text-spacing;
 		margin-right: oTypographySpacingSize(6);
 		display: inline-block;
 	}
