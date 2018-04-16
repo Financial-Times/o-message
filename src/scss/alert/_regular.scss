@@ -17,7 +17,7 @@
 		height: 100%;
 
 		.#{$class}__container:before {
-			top: ($_o-message-text-spacing / 2) * 1px;
+			top: $_o-message-text-spacing / 2;
 		}
 
 		.#{$class}__content {
@@ -34,7 +34,7 @@
 		}
 
 		.#{$class}__actions {
-			padding-bottom: $_o-message-text-spacing * 1px;
+			padding-bottom: $_o-message-text-spacing;
 			display: inline-block;
 		}
 	}

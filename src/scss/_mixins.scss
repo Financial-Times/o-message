@@ -72,6 +72,6 @@
 @mixin oMessageCloseButton ($icon-color) {
 	@include oIconsGetIcon('cross', $icon-color, $_o-message-close-icon-size);
 	position: absolute;
-	top: $_o-message-text-spacing * 1px;
+	top: $_o-message-text-spacing;
 	right: oTypographySpacingSize(2);
 }
