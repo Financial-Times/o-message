@@ -22,6 +22,13 @@
 	"demos": [
 		{
 			"title": "Alert Message",
+			"name": "gdpr",
+			"js": "demos/src/gdpr.js",
+			"template": "demos/src/gdpr.mustache",
+			"description": "Alert messages (success, error and neutral)"
+		},
+		{
+			"title": "Alert Message",
 			"name": "alert",
 			"template": "demos/src/alert.mustache",
 			"description": "Alert messages (success, error and neutral)"
