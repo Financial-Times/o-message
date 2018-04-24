@@ -191,7 +191,7 @@ o-message includes mixins that you can use if you'd rather _not_ have origami cl
 You can also initialise multiple types and states of message by providing a list of types and a list of states:
 
 ```sass
-@include oMessage($types: 'alert-inner', 'notice-bleed', $status: 'success', 'inform')
+@include oMessage($types: ('alert-inner', 'notice-bleed'), $status: ('success', 'inform'))
 ```
 
 ## Migration Guide
