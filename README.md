@@ -168,10 +168,10 @@ The following options are not required, and all have a default value:
 - `parentElement`: String. This determines the element that the message will be appended to. If none is declared, it will automatically append to the body, or an element with the data attribute `data-o-component=o-message`, defaults to `null`.
 - `content`: Object. Holds the following values for text properties:
 	- `highlight`: String. The highlighted text in a message. Defaults to `null`
-	-	`detail`: String. The detail about the nature of a message.
-	-	`additionalInfo`: String. More information about the message –  only applies to an `alert-inner` message. Defaults to `null`
+	- `detail`: String. The detail about the nature of a message.
+	- `additionalInfo`: String. More information about the message –  only applies to an `alert-inner` message. Defaults to `null`
 - `actions`: Object. Holds the following values for text properties:
-	-	`primary`:  Object. Holds the following values for button properties:
+	- `primary`:  Object. Holds the following values for button properties:
 		- `text`: String. text value of the button. Defaults to `null`
 		- `url`: String. The URL the button links to. Defaults to `#`
 	- `secondary`: Object. Holds the following values for link properties:

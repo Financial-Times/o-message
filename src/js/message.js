@@ -73,7 +73,7 @@ class Message {
 			element.appendChild(this.messageElement);
 		}
 
-		let closeButtonExists = this.messageElement.querySelector("[class*='__close']");
+		const closeButtonExists = this.messageElement.querySelector("[class*='__close']");
 
 		if (this.opts.close && !closeButtonExists) {
 			this.closeButton = construct.closeButton(this.opts);
