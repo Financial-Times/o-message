@@ -48,9 +48,9 @@ class Message {
 					url: '#'
 				}
 			},
-			close: true
+			close: options && options.close ? options.close : true
 		}, options);
-		debugger;
+
 		this.render();
 
 		if (this.opts.autoOpen) {
