@@ -49,7 +49,7 @@ class Message {
 				}
 			},
 			close: options && options.close ? options.close : true
-		}, options  || Message.getDataAttributes(messageElement));
+		}, options || Message.getDataAttributes(messageElement));
 
 		this.render();
 
