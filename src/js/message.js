@@ -49,7 +49,7 @@ class Message {
 				}
 			},
 			close: options && options.close ? options.close : true
-		}, options  || Message.getDatatAttributes(messageElement));
+		}, options  || Message.getDataAttributes(messageElement));
 
 		this.render();
 
@@ -124,7 +124,7 @@ class Message {
 	 * declaratively, this method is used to extract the data attributes from the DOM.
 	 * @param {HTMLElement} messageElement - The message element in the DOM
 	 */
-	static getDatatAttributes (messageElement) {
+	static getDataAttributes (messageElement) {
 		if (!(messageElement instanceof HTMLElement)) {
 			return {};
 		}
