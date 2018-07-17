@@ -72,3 +72,26 @@
 		}
 	}
 }
+
+/// Message button
+///
+/// Outputs base styles for message buttons
+@mixin oMessageButtonBase () {
+	@include oButtons();
+	@include oTypographySans($scale: -1);
+	margin-right: oTypographySpacingSize(6);
+}
+
+
+/// Message button
+///
+/// Outputs base styles for message close buttons
+// @param {String} $icon-color - name of the icon color (accepts any color from o-colors)
+
+@mixin oMessageCloseButton ($icon-color) {
+	@include oIconsGetIcon('cross', $icon-color, $_o-message-close-icon-size);
+	position: absolute;
+	top: ($_o-message-close-icon-size / 2) * 1px;
+	right: oTypographySpacingSize(2);
+}
+
