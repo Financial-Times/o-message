@@ -15,7 +15,7 @@
 			@if not $o-message-all-states-output {
 				@each $state in $o-message-states {
 					@if _oMessageSupports($state) {
-						@include oMessageStatus($state, $class)
+						@include oMessageStatus($state, $class);
 					}
 				}
 				$o-message-all-states-output: true !global;
