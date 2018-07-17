@@ -1,0 +1,41 @@
+@mixin oMessageActions($class, $types, $status) {
+	@include oMessageBase($class);
+	@include oMessageStatusApply($status, $class);
+
+	@each $type in $types {
+		@if $type != 'all' and not index($o-message-action-types, $type) {
+			@include _oMessageError("o-message action messages don't support #{$type}.
+			The available types are:
+			- action
+			- action-bleed");
+		}
+
+		.#{$class}--action,
+		.#{$class}--action-bleed .#{$class}__container, {
+			@include oGridContainer();
+		}
+
+		.#{$class}--action,
+		.#{$class}--action-bleed {
+			.#{$class}__content {
+				padding: oTypographySpacingSize(5);
+                @include oGridRespondTo($from: S) {
+				    text-align: center;
+                }
+
+				&-main {
+					display: inline-block;
+					margin-right: oTypographySpacingSize(6);
+				}
+
+				&-highlight {
+					@extend %o-message-content-highlight;
+				}
+			}
+
+			.#{$class}__actions {
+				display: inline-block;
+			}
+		}
+	}
+}

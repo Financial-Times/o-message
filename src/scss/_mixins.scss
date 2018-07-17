@@ -4,16 +4,20 @@
 		@if $type == 'all' {
 			@include oMessageAlerts($class, $type, $status);
 			@include oMessageNotices($class, $type, $status);
+			@include oMessageActions($class, $type, $status);
 
 		} @else if index($o-message-alert-types, $type) {
 			@include oMessageAlerts($class, $type, $status);
 
 		} @else if index($o-message-notice-types, $type) {
 			@include oMessageNotices($class, $type, $status);
+		} @else if index($o-message-action-types, $type) {
+			@include oMessageActions($class, $type, $status);
 
 		} @else {
 			@include _oMessageError("o-message types don't support #{$type}.
 			The available types are:
+			- action
 			- alert
 			- alert-bleed
 			- alert-inner

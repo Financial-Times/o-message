@@ -18,12 +18,21 @@
 
 			The available notice states are:
 			- inform
+			- inform-inverse
 			- warning
-			- warning-light");
+			- warning-light
+
+			The available action states are:
+			- inform
+			- inform-inverse
+			");
 
 		} @else if $state == 'all' {
-			@each $state in $o-message-states {
-				@include oMessageStatus($state, $class)
+			@if not $o-message-all-states-output {
+				@each $state in $o-message-states {
+					@include oMessageStatus($state, $class)
+				}
+				$o-message-all-states-output: true !global;
 			}
 
 		} @else if index($o-message-states, $state) != null {

@@ -52,6 +52,12 @@
 			"description": "Imperative alert messages regular, inner and bleed)"
 		},
 		{
+			"title": "Action",
+			"name": "action",
+			"template": "demos/src/action.mustache",
+			"description": "An action message."
+		},
+		{
 			"title": "Pa11y",
 			"name": "pa11y",
 			"template": "demos/src/pa11y.mustache",

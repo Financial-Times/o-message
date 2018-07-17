@@ -27,6 +27,10 @@
 @include oColorsSetUseCase(o-message-inform, text, 'black');
 @include oColorsSetUseCase(o-message-inform, background, 'wheat');
 
+/// Inform inverse status styles
+@include oColorsSetUseCase(o-message-inform-inverse, text, 'white');
+@include oColorsSetUseCase(o-message-inform-inverse, background, 'slate');
+
 /// Strong warning status styles
 @include oColorsSetUseCase(o-message-warning, text, 'black');
 @include oColorsSetUseCase(o-message-warning, background, 'lemon');
