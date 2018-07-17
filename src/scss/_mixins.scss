@@ -56,3 +56,10 @@
 	-webkit-font-smoothing: antialiased;
 	// sass-lint:enable no-vendor-prefixes
 }
+
+/// Provide a component specific error message
+///
+/// @param {String} $message - The message to insert in the error.
+@mixin _oMessageError($message) {
+	@error '*** oMessage SCSS error: #{$message} ***';
+};
