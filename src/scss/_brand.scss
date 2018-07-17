@@ -82,3 +82,23 @@ $_shared-brand-variables: (
         'warning-light'
     )
 ));
+
+@include oBrandDefine('o-message', 'whitelabel', (
+    'variables': map-merge($_shared-brand-variables, (
+        'neutral': (
+            'foreground-color': 'black',
+            'background-color': 'white',
+            'icon': 'info'
+        ),
+        'inform': (
+            'foreground-color': 'black',
+            'background-color': 'white',
+        ),
+    )),
+    'supports-variants': (
+        'success',
+        'neutral',
+        'error',
+        'inform'
+    )
+));
