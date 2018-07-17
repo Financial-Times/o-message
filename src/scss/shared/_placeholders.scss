@@ -28,6 +28,14 @@
 	}
 };
 
+// Alert action styles
+@include _oMessageDefinePlaceholder(actions) {
+	%o-message-actions {
+		@include oTypographyMargin($top: 0, $bottom: 4);
+		display: inline-block;
+	}
+};
+
 // Alert message main content style
 // Outputs content layout
 @include _oMessageDefinePlaceholder(content-main) {

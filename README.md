@@ -115,10 +115,10 @@ The differences are that they do not have an icon and don't support additional c
 
 Both notices and alerts may be presented without actions (e.g. without buttons or links).
 
-Action message types are like notice messages but designed to sit within a page's content rather than above it. They should have one CTA to a prefered action and is not dismissible.
+Action message types are like notice messages but designed to sit within a page's content rather than above it. They should have one CTA to a prefered action and should not be dismissible.
 
 ```html
-<div class="o-message o-message--action o-message--inform" data-o-component="o-message">
+<div class="o-message o-message--action o-message--inform" data-o-component="o-message" data-close="false">
 	<div class="o-message__container">
 		<div class="o-message__content">
 			<p class="o-message__content-main">The quick brown fox jumped over the lazy dogs!</p>

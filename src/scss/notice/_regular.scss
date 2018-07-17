@@ -28,8 +28,7 @@
 		}
 
 		.#{$class}__actions {
-			padding-bottom: $_o-message-text-spacing;
-			display: inline-block;
+			@extend %o-message-actions;
 		}
 	}
 }
