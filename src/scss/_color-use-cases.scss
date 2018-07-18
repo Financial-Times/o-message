@@ -9,7 +9,7 @@
 
 /// Set success status colors
 @include oColorsSetColor('black-jade-43', oColorsMix('black', 'jade', 43)); //text
-@include oColorsSetColor('paper-jade-80', oColorsMix('jade', $percentage: 10)); //background
+@include oColorsSetColor('paper-jade-80', oColorsMix('jade', $percentage: 20)); //background
 
 /// Set light warning status colors
 @include oColorsSetColor('lemon-white-60', oColorsMix('lemon', 'white', 60)); //background
