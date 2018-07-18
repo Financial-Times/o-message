@@ -18,14 +18,17 @@
 		.#{$class}--action,
 		.#{$class}--action-bleed {
 			.#{$class}__content {
-				padding: oTypographySpacingSize(5);
+				padding: oTypographySpacingSize(4) 0;
                 @include oGridRespondTo($from: S) {
+					padding: oTypographySpacingSize(10) 0;
 				    text-align: center;
-                }
+				}
 
 				&-main {
 					display: inline-block;
 					margin-right: oTypographySpacingSize(6);
+					margin-top: oTypographySpacingSize(2);
+					margin-bottom: oTypographySpacingSize(2);
 				}
 
 				&-highlight {
@@ -35,6 +38,8 @@
 
 			.#{$class}__actions {
 				display: inline-block;
+				margin-top: oTypographySpacingSize(2);
+				margin-bottom: oTypographySpacingSize(2);
 			}
 		}
 	}

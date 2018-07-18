@@ -115,7 +115,7 @@ The differences are that they do not have an icon and don't support additional c
 
 Both notices and alerts may be presented without actions (e.g. without buttons or links).
 
-Action message types are like notice messages but designed to sit within a page's content rather than above it. They should have one CTA to a prefered action and is not dismissible.
+Action message types are like notice messages but designed to sit within a page's content rather than above it. They should have one prefered action.
 
 ```html
 <div class="o-message o-message--action o-message--inform" data-o-component="o-message">
@@ -198,7 +198,7 @@ The following options are not required, and all have a default value:
 	- `secondary`: Object. Holds the following values for link properties:
 		- `text`: String. text value of the link. Defaults to `null`
 		- `url`: String. The URL the link links to. Defaults to `#`
-- `close`: Boolean. Whether or not to display the close button on notice and alert messages. Does not apply to action messages. Defaults to `true`.
+- `close`: Boolean. Whether or not to display the close button. Defaults to `true`.
 
 ### Sass
 As with all Origami components, o-message has a [silent mode](http://origami.ft.com/docs/syntax/scss/#silent-styles). To use its compiled CSS (rather than using its mixins with your own Sass) set `$o-message-is-silent: false;` in your Sass before you import the o-message Sass.
