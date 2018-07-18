@@ -30,7 +30,8 @@
 		}
 
 		.#{$class}__actions {
-			@extend %o-message-actions;
+			@include oTypographyPadding($bottom: 3);
+			display: inline-block;
 		}
 
 	}

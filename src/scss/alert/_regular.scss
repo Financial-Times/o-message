@@ -34,7 +34,8 @@
 		}
 
 		.#{$class}__actions {
-			@extend %o-message-actions;
+			padding-bottom: $_o-message-text-spacing;
+			display: inline-block;
 		}
 	}
 }
