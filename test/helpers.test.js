@@ -25,11 +25,13 @@ describe("constructElement", () => {
 			actions: {
 				primary: {
 					text: 'a button',
-					url: '#'
+					url: '#',
+					openInNewWindow: true
 				},
 				secondary: {
 					text: 'a link',
-					url: '#'
+					url: '#',
+					openInNewWindow: false
 				}
 			},
 			close: true
