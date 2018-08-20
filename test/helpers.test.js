@@ -26,7 +26,7 @@ describe("constructElement", () => {
 				primary: {
 					text: 'a button',
 					url: '#',
-					openInNewWindow: true
+					openInNewWindow: false
 				},
 				secondary: {
 					text: 'a link',
@@ -38,7 +38,20 @@ describe("constructElement", () => {
 		};
 	});
 
-	it('builds an actions element', () => {
-		assert.strictEqual(flatten(buildActions(options)), flatten(fixtures.actions));
+	context('with `openInNewWindow` as false', () => {
+		it('builds an actions element', () => {
+			assert.strictEqual(flatten(buildActions(options)), flatten(fixtures.actions));
+		});
+	});
+
+	context('with `openInNewWindow` as true', () => {
+		beforeEach(() => {
+			options.actions.primary.openInNewWindow = true;
+			options.actions.secondary.openInNewWindow = true;
+		});
+
+		it('builds an actions element', () => {
+			assert.strictEqual(flatten(buildActions(options)), flatten(fixtures.actionsNewWindow));
+		});
 	});
 });
