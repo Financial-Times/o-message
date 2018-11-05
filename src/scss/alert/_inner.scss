@@ -4,19 +4,18 @@
 /// @example
 /// @include oMessageAlertInner('my-class');
 ///
-/// @param {String} $class - base class name
 
-@mixin oMessageAlertInner($class) {
-	.#{$class}--alert-inner {
-		.#{$class}__container {
+@mixin oMessageAlertInner() {
+	.o-message--alert-inner {
+		.o-message__container {
 			@extend %o-message-inner-alert-notice-container;
 
-			.#{$class}__close {
+			.o-message__close {
 				right: oTypographySpacingSize(4);
 			}
 		}
 
-		.#{$class}__content {
+		.o-message__content {
 			@extend %o-message-inner-alert-notice-content;
 			padding-left: $_o-message-alert-icon-size * 1px;
 
@@ -29,7 +28,7 @@
 			}
 		}
 
-		.#{$class}__actions {
+		.o-message__actions {
 			@include oTypographyPadding($bottom: 3);
 			display: inline-block;
 		}

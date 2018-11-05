@@ -12,13 +12,12 @@
 /// @example
 /// @include oMessageAlerts('my-class', 'alert', 'success');
 ///
-/// @param {String} $class - base class name
 /// @param {String} $type - message type ('all', 'alert', 'alert-bleed' or 'alert-inner')
 /// @param {String} $status - message status ('all', 'success', 'neutral', 'error')
 
-@mixin oMessageAlerts($class, $types, $status) {
-	@include oMessageBase($class);
-	@include oMessageStatusApply($status, $class);
+@mixin oMessageAlerts($types, $status) {
+	@include oMessageBase();
+	@include oMessageStatusApply($status);
 
 	@each $type in $types {
 		@if $type != 'all' and not index($o-message-alert-types, $type) {
@@ -30,11 +29,11 @@
 		}
 
 		@if $type == 'alert-inner' or $type == 'all' {
-			@include oMessageAlertInner($class);
+			@include oMessageAlertInner();
 		}
 
 		@if $type == 'alert' or $type == 'alert-bleed' or $type == 'all' {
-			@include oMessageAlert($class);
+			@include oMessageAlert();
 		}
 	}
 }

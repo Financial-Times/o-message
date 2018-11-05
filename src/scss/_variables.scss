@@ -14,11 +14,6 @@ $o-message-is-silent: true !default;
 /// @type Boolean
 $o-message-all-states-output: false !default;
 
-/// Default button class used when $o-buttons-is-silent is true
-///
-/// @type String
-$o-message-class: o-message !default;
-
 //Accepted message types
 $o-message-action-types: (action, action-bleed);
 $o-message-alert-types: (alert, alert-bleed, alert-inner);

@@ -10,14 +10,14 @@
 			- action-bleed");
 		}
 
-		.#{$class}--action,
-		.#{$class}--action-bleed .#{$class}__container, {
+		.o-message--action,
+		.o-message--action-bleed .o-message__container, {
 			@include oGridContainer();
 		}
 
-		.#{$class}--action,
-		.#{$class}--action-bleed {
-			.#{$class}__content {
+		.o-message--action,
+		.o-message--action-bleed {
+			.o-message__content {
 				padding: oTypographySpacingSize(4) 0;
                 @include oGridRespondTo($from: S) {
 					padding: oTypographySpacingSize(10) 0;
@@ -36,7 +36,7 @@
 				}
 			}
 
-			.#{$class}__actions {
+			.o-message__actions {
 				display: inline-block;
 				margin-top: oTypographySpacingSize(2);
 				margin-bottom: oTypographySpacingSize(2);

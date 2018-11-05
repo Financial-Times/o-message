@@ -6,21 +6,21 @@
 ///
 /// @param {String} $class - base class name
 
-@mixin oMessageAlert ($class) {
-	.#{$class}--alert,
-	.#{$class}--alert-bleed .#{$class}__container, {
+@mixin oMessageAlert() {
+	.o-message--alert,
+	.o-message--alert-bleed .o-message__container, {
 		@extend %o-message-alert-notice-grid;
 	}
 
-	.#{$class}--alert,
-	.#{$class}--alert-bleed {
+	.o-message--alert,
+	.o-message--alert-bleed {
 		height: 100%;
 
-		.#{$class}__container:before {
+		.o-message__container:before {
 			top: $_o-message-text-spacing / 2;
 		}
 
-		.#{$class}__content {
+		.o-message__content {
 			@extend %o-message-alert-notice-content;
 			padding: 0 oTypographySpacingSize(10);
 
@@ -33,7 +33,7 @@
 			}
 		}
 
-		.#{$class}__actions {
+		.o-message__actions {
 			padding-bottom: $_o-message-text-spacing;
 			display: inline-block;
 		}

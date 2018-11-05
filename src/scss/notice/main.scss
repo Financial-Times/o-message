@@ -12,13 +12,12 @@
 /// @example
 /// @include oMessageNotices('my-class', 'notice-inner', 'inform');
 ///
-/// @param {String} $class - base class name
 /// @param {String} $type - message type ('all', 'notice', 'notice-bleed' or 'notice-inner')
 /// @param {String} $status - message status ('all', 'inform', 'warning', 'warning-light')
 
-@mixin oMessageNotices($class, $types, $status) {
-	@include oMessageBase($class);
-	@include oMessageStatusApply($status, $class);
+@mixin oMessageNotices($types, $status) {
+	@include oMessageBase();
+	@include oMessageStatusApply($status);
 
 	@each $type in $types {
 		@if $type != 'all' and not index($o-message-notice-types, $type) {
@@ -30,11 +29,11 @@
 		}
 
 		@if $type == 'notice-inner' or $type == 'all' {
-			@include oMessageNoticeInner($class);
+			@include oMessageNoticeInner();
 		}
 
 		@if $type == 'notice' or $type == 'notice-bleed' or $type == 'all' {
-				@include oMessageNotice($class);
+				@include oMessageNotice();
 		}
 	}
 }

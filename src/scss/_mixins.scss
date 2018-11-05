@@ -1,18 +1,18 @@
 /// Output All oMessage Features
-@mixin oMessage($class: $o-message-class, $types: 'all', $status: 'all') {
+@mixin oMessage($types: 'all', $status: 'all') {
 	@each $type in $types {
 		@if $type == 'all' {
-			@include oMessageAlerts($class, $type, $status);
-			@include oMessageNotices($class, $type, $status);
-			@include oMessageActions($class, $type, $status);
+			@include oMessageAlerts($type, $status);
+			@include oMessageNotices($type, $status);
+			@include oMessageActions($type, $status);
 
 		} @else if index($o-message-alert-types, $type) {
-			@include oMessageAlerts($class, $type, $status);
+			@include oMessageAlerts($type, $status);
 
 		} @else if index($o-message-notice-types, $type) {
-			@include oMessageNotices($class, $type, $status);
+			@include oMessageNotices($type, $status);
 		} @else if index($o-message-action-types, $type) {
-			@include oMessageActions($class, $type, $status);
+			@include oMessageActions($type, $status);
 
 		} @else {
 			@include _oMessageError("o-message types don't support #{$type}.
@@ -32,16 +32,14 @@
 /// Message base
 ///
 /// Outputs base styles for a Message
-/// @param {String} $class  - base class for message
-
-@mixin oMessageBase($class) {
-	.#{$class} {
-		.#{$class}__container {
+@mixin oMessageBase() {
+	.o-message {
+		.o-message__container {
 			@include oMessageContainer;
 		}
 	}
 
-	.#{$class}--closed {
+	.o-message--closed {
 		display: none;
 	}
 };
