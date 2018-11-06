@@ -1,6 +1,6 @@
-@mixin oMessageActions($class, $types, $status) {
-	@include oMessageBase($class);
-	@include oMessageStatusApply($status, $class);
+@mixin oMessageActions($types, $status) {
+	@include oMessageBase();
+	@include oMessageStatusApply($status);
 
 	@each $type in $types {
 		@if $type != 'all' and not index($o-message-action-types, $type) {
@@ -19,9 +19,10 @@
 		.o-message--action-bleed {
 			.o-message__content {
 				padding: oTypographySpacingSize(4) 0;
-                @include oGridRespondTo($from: S) {
+
+				@include oGridRespondTo($from: S) {
 					padding: oTypographySpacingSize(10) 0;
-				    text-align: center;
+					text-align: center;
 				}
 
 				&-main {

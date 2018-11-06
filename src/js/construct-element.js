@@ -5,40 +5,40 @@ export default {
 	* Build a full alert message element. Used when there is no message element in the DOM.
 	* @returns {HTMLElement} Returns the new alert type message element
 	*/
-	alertMessage: (opts) => {
+	alertMessage: (el) => {
 		const alertMessageEl = document.createElement('div');
-		alertMessageEl.classList.add(opts.messageClass, opts.typeClass, `${opts.messageClass}--closed`);
+		alertMessageEl.classList.add(el.messageClass, el.opts.typeClass, `${el.opts.messageClass}--closed`);
 
-		if (!opts.status) {
+		if (!el.opts.status) {
 			throwError("Alert messages require a status. The options are:\n- success\n- error\n- neutral");
 		} else {
-			alertMessageEl.classList.add(`${opts.statusClass}`);
+			alertMessageEl.classList.add(`${el.opts.statusClass}`);
 		}
 
-		let actions = buildActions(opts);
+		let actions = buildActions(el);
 
 		let contentHTML;
-		if (!opts.content.detail) {
-			opts.content.detail = '';
+		if (!el.opts.content.detail) {
+			el.opts.content.detail = '';
 		}
 
-		if (opts.type === 'alert-inner' && opts.content.additionalInfo) {
+		if (el.opts.type === 'alert-inner' && el.opts.content.additionalInfo) {
 			contentHTML = `
-				<div class="${opts.messageClass}__content">
-					<p class="${opts.messageClass}__content-main">
-						<span class="${opts.messageClass}__content-highlight">${opts.content.highlight}</span>
-						<span class="${opts.messageClass}__content-detail">${opts.content.detail}</span>
+				<div class="${el.messageClass}__content">
+					<p class="${el.messageClass}__content-main">
+						<span class="${el.messageClass}__content-highlight">${el.opts.content.highlight}</span>
+						<span class="${el.messageClass}__content-detail">${el.opts.content.detail}</span>
 					</p>
-					<p class="${opts.messageClass}__content-additional">${opts.content.additionalInfo}</p>
+					<p class="${el.messageClass}__content-additional">${el.opts.content.additionalInfo}</p>
 					${actions}
 				</div>
 			`;
 		} else {
 			contentHTML = `
-				<div class="${opts.messageClass}__content">
-					<p class="${opts.messageClass}__content-main">
-						<span class="${opts.messageClass}__content-highlight">${opts.content.highlight}</span>
-						<span class="${opts.messageClass}__content-detail">${opts.content.detail}</span>
+				<div class="${el.messageClass}__content">
+					<p class="${el.messageClass}__content-main">
+						<span class="${el.messageClass}__content-highlight">${el.opts.content.highlight}</span>
+						<span class="${el.messageClass}__content-detail">${el.opts.content.detail}</span>
 					</p>
 					${actions}
 				</div>
@@ -46,7 +46,7 @@ export default {
 		}
 
 		alertMessageEl.innerHTML = `
-			<div class="${opts.messageClass}__container">
+			<div class="${el.messageClass}__container">
 				${contentHTML}
 			</div>
 		`;
@@ -58,29 +58,29 @@ export default {
 	* Build a full notice message element. Used when there is no message element in the DOM.
 	* @returns {HTMLElement} Returns the new notice type message element
 	*/
-	noticeMessage: (opts) => {
+	noticeMessage: (el) => {
 		const noticeMessage = document.createElement('div');
-		noticeMessage.classList.add(opts.messageClass, opts.typeClass, `${opts.messageClass}--closed`);
+		noticeMessage.classList.add(el.messageClass, el.opts.typeClass, `${el.messageClass}--closed`);
 
-		if (!opts.status) {
+		if (!el.opts.status) {
 			throwError("Notice messages require a status. The options are:\n- inform\n- warning\n- warning-light");
 		} else {
-			noticeMessage.classList.add(`${opts.statusClass}`);
+			noticeMessage.classList.add(`${el.opts.statusClass}`);
 		}
 
-		let actions = buildActions(opts);
+		let actions = buildActions(el);
 
 		const contentHTML = `
-			<div class="${opts.messageClass}__content">
-				<p class="${opts.messageClass}__content-main">
-					${opts.content.detail}
+			<div class="${el.messageClass}__content">
+				<p class="${el.messageClass}__content-main">
+					${el.opts.content.detail}
 				</p>
 				${actions}
 			</div>
 		`;
 
 		noticeMessage.innerHTML = `
-			<div class="${opts.messageClass}__container">
+			<div class="${el.messageClass}__container">
 				${contentHTML}
 			</div>
 		`;
@@ -92,29 +92,29 @@ export default {
 	* Build a full action message element.
 	* @returns {HTMLElement} Returns the new action type message element
 	*/
-	actionMessage: (opts) => {
+	actionMessage: (el) => {
 		const actionMessage = document.createElement('div');
-		actionMessage.classList.add(opts.messageClass, opts.typeClass);
+		actionMessage.classList.add(el.messageClass, el.opts.typeClass);
 
-		if (!opts.status) {
+		if (!el.opts.status) {
 			throwError("Action messages require a status. The options are:\n- inform\n- inform-inverse");
 		} else {
-			actionMessage.classList.add(`${opts.statusClass}`);
+			actionMessage.classList.add(`${el.opts.statusClass}`);
 		}
 
-		let actions = buildActions(opts);
+		let actions = buildActions(el);
 
 		const contentHTML = `
-			<div class="${opts.messageClass}__content">
-				<p class="${opts.messageClass}__content-main">
-					${opts.content.detail}
+			<div class="${el.messageClass}__content">
+				<p class="${el.messageClass}__content-main">
+					${el.opts.content.detail}
 				</p>
 				${actions}
 			</div>
 		`;
 
 		actionMessage.innerHTML = `
-			<div class="${opts.messageClass}__container">
+			<div class="${el.messageClass}__container">
 				${contentHTML}
 			</div>
 		`;
@@ -125,9 +125,9 @@ export default {
 	* Build a close button
 	* @returns {HTMLElement} Returns a new element to close the message
 	*/
-	closeButton: (opts) => {
+	closeButton: (el) => {
 		const closeButton = document.createElement('button');
-		closeButton.classList.add(`${opts.messageClass}__close`);
+		closeButton.classList.add(`${el.messageClass}__close`);
 		closeButton.setAttribute('aria-label', 'close');
 		closeButton.setAttribute('title', 'Close');
 

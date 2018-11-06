@@ -12,46 +12,48 @@ sinon.assert.expose(assert, {
 
 const flatten = string => string.replace(/\s/g, '');
 
-describe("constructElement", () => {
-	let options;
+describe("buildAction helper", () => {
+	let mockObj;
 	beforeEach(() => {
-		options = {
-			messageClass: 'my-message',
-			type: 'alert',
-			status: 'success',
-			content: {
-				highlight: 'Important'
-			},
-			actions: {
-				primary: {
-					text: 'a button',
-					url: '#',
-					openInNewWindow: false
+		mockObj = {
+			messageClass: 'o-message',
+			opts: {
+				type: 'alert',
+				status: 'success',
+				content: {
+					highlight: 'Important'
 				},
-				secondary: {
-					text: 'a link',
-					url: '#',
-					openInNewWindow: false
-				}
-			},
-			close: true
+				actions: {
+					primary: {
+						text: 'a button',
+						url: '#',
+						openInNewWindow: false
+					},
+					secondary: {
+						text: 'a link',
+						url: '#',
+						openInNewWindow: false
+					}
+				},
+				close: true
+			}
 		};
 	});
 
 	context('with `openInNewWindow` as false', () => {
 		it('builds an actions element', () => {
-			assert.strictEqual(flatten(buildActions(options)), flatten(fixtures.actions));
+			assert.strictEqual(flatten(buildActions(mockObj)), flatten(fixtures.actions));
 		});
 	});
 
 	context('with `openInNewWindow` as true', () => {
 		beforeEach(() => {
-			options.actions.primary.openInNewWindow = true;
-			options.actions.secondary.openInNewWindow = true;
+			mockObj.opts.actions.primary.openInNewWindow = true;
+			mockObj.opts.actions.secondary.openInNewWindow = true;
 		});
 
 		it('builds an actions element', () => {
-			assert.strictEqual(flatten(buildActions(options)), flatten(fixtures.actionsNewWindow));
+			assert.strictEqual(flatten(buildActions(mockObj)), flatten(fixtures.actionsNewWindow));
 		});
 	});
 });

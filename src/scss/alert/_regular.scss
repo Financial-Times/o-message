@@ -4,8 +4,6 @@
 /// @example
 /// @include oMessageAlert('my-class');
 ///
-/// @param {String} $class - base class name
-
 @mixin oMessageAlert() {
 	.o-message--alert,
 	.o-message--alert-bleed .o-message__container, {

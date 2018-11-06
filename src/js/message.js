@@ -9,9 +9,8 @@ class Message {
  */
 	constructor(messageElement, options) {
 		this.messageElement = messageElement;
-
+		this.messageClass = 'o-message';
 		//Default options
-		const messageClass = options && options.messageClass ? options.messageClass : 'o-message';
 		const type = options && options.type ? options.type : 'alert';
 		const status = options && options.status ? options.status : null;
 		let typeNucleus;
@@ -28,12 +27,11 @@ class Message {
 
 		this.opts = Object.assign({}, {
 			autoOpen: true,
-			messageClass,
 			type,
-			typeClass: `${messageClass}--${type}`,
+			typeClass: `${this.messageClass}--${type}`,
 			typeNucleus,
 			status,
-			statusClass: options && options.status ? `${messageClass}--${options.status}` : null,
+			statusClass: options && options.status ? `${this.messageClass}--${options.status}` : null,
 			parentElement: null,
 			content: {
 				highlight: null,
@@ -70,8 +68,7 @@ class Message {
 	render () {
 		// If the message element is not an HTML Element, or if a parent element has been specified, build a new message element
 		if (this.opts.parentElement || !(this.messageElement instanceof HTMLElement)) {
-			this.messageElement = this.constructMessageElement();
-
+			this.messageElement = this.constructMessageElement(this);
 			// attach oMessage to specified parentElement or default to document body
 			const element = this.opts.parentElement ? document.querySelector(this.opts.parentElement) : document.body;
 			element.appendChild(this.messageElement);
@@ -80,7 +77,7 @@ class Message {
 		const closeButtonExists = this.messageElement.querySelector("[class*='__close']");
 
 		if (this.opts.close && !closeButtonExists) {
-			this.closeButton = construct.closeButton(this.opts);
+			this.closeButton = construct.closeButton(this);
 
 			// Add event listeners
 			this.closeButton.addEventListener('click', event => {
@@ -96,15 +93,15 @@ class Message {
 	* Constructs a type of message based on provided options (alert for now)
 	* @returns {HTMLElement} Returns the type specific message element
 	*/
-	constructMessageElement () {
+	constructMessageElement (opts) {
 		if (this.opts.typeNucleus === 'alert') {
-			return construct.alertMessage(this.opts);
+			return construct.alertMessage(opts);
 		} else if (this.opts.typeNucleus === 'notice') {
-			return construct.noticeMessage(this.opts);
+			return construct.noticeMessage(opts);
 		} else if (this.opts.typeNucleus === 'action') {
-			return construct.actionMessage(this.opts);
+			return construct.actionMessage(opts);
 		} else {
-			throwError(`'${this.opts.type}' is not a supported message type. The available options are:\n- alert\n- alert-bleed\n- alert-inner\n- notice\n- notice-bleed\n- notice-inner\n- action\n- acton-bleed`);
+			throwError(`'${opts.type}' is not a supported message type. The available options are:\n- alert\n- alert-bleed\n- alert-inner\n- notice\n- notice-bleed\n- notice-inner\n- action\n- acton-bleed`);
 		}
 	}
 

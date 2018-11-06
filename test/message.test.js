@@ -55,7 +55,6 @@ describe("Message", () => {
 			assert.notStrictEqual(message.opts, options);
 			assert.deepEqual(message.opts, {
 				autoOpen: true,
-				messageClass: 'o-message',
 				type: 'alert',
 				typeClass: 'o-message--alert',
 				typeNucleus: 'alert',
@@ -144,7 +143,7 @@ describe("Message", () => {
 
 		});
 
-		describe('accepts a different base class string', () => {
+		describe('does not accept a different base class string', () => {
 			beforeEach(() => {
 				stubs.render = sinon.stub(Message.prototype, 'render');
 				stubs.open = sinon.stub(Message.prototype, 'open');
@@ -159,11 +158,11 @@ describe("Message", () => {
 			});
 
 			it('to apply to the element', () => {
-				assert.strictEqual(message.opts.messageClass, 'my-message');
+				assert.strictEqual(message.messageClass, 'o-message');
 			});
 
 			it('to apply to the type class', () => {
-				assert.strictEqual(message.opts.typeClass, 'my-message--alert');
+				assert.strictEqual(message.opts.typeClass, 'o-message--alert');
 			});
 		});
 
@@ -250,7 +249,7 @@ describe("Message", () => {
 			});
 
 			it('does not call `construct.closeButton` if there is already a', () => {
-				messageElement.innerHTML = `<a href='#' class='my-message__close'></a>`;
+				messageElement.innerHTML = `<a href='#' class='o-message__close'></a>`;
 				message = new Message(messageElement, options);
 				assert.notCalled(construct.closeButton);
 			});
