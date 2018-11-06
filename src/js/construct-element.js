@@ -7,7 +7,7 @@ export default {
 	*/
 	alertMessage: (el) => {
 		const alertMessageEl = document.createElement('div');
-		alertMessageEl.classList.add(el.messageClass, el.opts.typeClass, `${el.opts.messageClass}--closed`);
+		alertMessageEl.classList.add(el.messageClass, el.opts.typeClass, `${el.messageClass}--closed`);
 
 		if (!el.opts.status) {
 			throwError("Alert messages require a status. The options are:\n- success\n- error\n- neutral");

@@ -78,9 +78,9 @@ class Message {
 
 		if (this.opts.close && !closeButtonExists) {
 			this.closeButton = construct.closeButton(this);
-
 			// Add event listeners
 			this.closeButton.addEventListener('click', event => {
+				console.log(this.closeButton);
 				event.preventDefault();
 				this.close();
 			});
@@ -109,7 +109,7 @@ class Message {
 	 * Open the message.
 	 */
 	open () {
-		this.messageElement.classList.remove(`${this.opts.messageClass}--closed`);
+		this.messageElement.classList.remove(`${this.messageClass}--closed`);
 		this.messageElement.dispatchEvent(new CustomEvent('o.messageOpen'));
 	}
 
@@ -117,7 +117,7 @@ class Message {
 	 * Close the message.
 	 */
 	close () {
-		this.messageElement.classList.add(`${this.opts.messageClass}--closed`);
+		this.messageElement.classList.add(`${this.messageClass}--closed`);
 		this.messageElement.dispatchEvent(new CustomEvent('o.messageClosed'));
 	}
 
