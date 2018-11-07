@@ -153,26 +153,55 @@
 		{
 			"title": "Notice: Inform",
 			"name": "notice-inform",
-			"template": "demos/src/notice-inform.mustache",
-			"description": "Notice message to convey information"
+			"description": "Notice message to convey information",
+			"data": {
+				"type": "notice",
+				"status": "inform",
+				"content": "There are lazy dogs, maybe in a field, maybe not. It's important that you are informed of this fact.",
+				"actions": {
+					"button": true,
+					"link": true
+				}
+			}
 		},
 		{
 			"title": "Notice Bleed: Inform",
 			"name": "notice-bleed-inform",
-			"template": "demos/src/notice-bleed-inform.mustache",
-			"description": "Notice message to convey information, styled to bleed to the edge of a page"
+			"description": "Notice message to convey information, styled to bleed to the edge of a page",
+			"data": {
+				"type": "notice-bleed",
+				"status": "inform",
+				"content": "There are lazy dogs, maybe in a field, maybe not. It's important that you are informed of this fact.",
+				"actions": {
+					"button": true,
+					"link": true
+				}
+			}
 		},
 		{
 			"title": "Notice Inner: Inform",
 			"name": "notice-inner-inform",
-			"template": "demos/src/notice-inner-inform.mustache",
-			"description": "Notice message to convey information, styled to fit within another container"
+			"description": "Notice message to convey information, styled to fit within another container",
+			"data": {
+				"inner": true,
+				"type": "notice-inner",
+				"status": "inform",
+				"content": "There are lazy dogs, maybe in a field, maybe not. It's important that you are informed of this fact.",
+				"actions": {
+					"button": true,
+					"link": true
+				}
+			}
 		},
 		{
 			"title": "Notice: Warning Light",
 			"name": "notice-warning-light",
-			"template": "demos/src/notice-warning-light.mustache",
 			"description": "Notice message to emit a light warning",
+			"data": {
+				"type": "notice",
+				"status": "warning-light",
+				"content": "There are lazy dogs, maybe in a field, maybe not. It's important that you are informed of this fact."
+			},
 			"brands": [
 				"internal",
 				"whitelabel"
@@ -181,8 +210,12 @@
 		{
 			"title": "Notice Bleed: Warning Light",
 			"name": "notice-bleed-warning-light",
-			"template": "demos/src/notice-bleed-warning-light.mustache",
 			"description": "Notice message to emit a light warning, styled to bleed to the edge of a page",
+			"data": {
+				"type": "notice-bleed",
+				"status": "warning-light",
+				"content": "There are lazy dogs, maybe in a field, maybe not. It's important that you are informed of this fact. There may also be a fox. This is unconfirmed."
+			},
 			"brands": [
 				"internal",
 				"whitelabel"
@@ -191,8 +224,17 @@
 		{
 			"title": "Notice Inner: Warning Light",
 			"name": "notice-inner-warning-light",
-			"template": "demos/src/notice-inner-warning-light.mustache",
 			"description": "Notice message to emit a light warning, styled to fit within another container",
+			"data": {
+				"inner": true,
+				"type": "notice-inner",
+				"status": "warning-light",
+				"content": "There are lazy dogs, maybe in a field, maybe not. It's important that you are informed of this fact. There may also be a fox. This is unconfirmed.",
+				"actions": {
+					"button": true,
+					"link": true
+				}
+			},
 			"brands": [
 				"internal",
 				"whitelabel"
@@ -201,8 +243,12 @@
 		{
 			"title": "Notice: Warning",
 			"name": "notice-warning",
-			"template": "demos/src/notice-warning.mustache",
 			"description": "Notice message to emit a strong warning",
+			"data": {
+				"type": "notice",
+				"status": "warning",
+				"content": "There are lazy dogs, maybe in a field, maybe not. It's important that you are informed of this fact."
+			},
 			"brands": [
 				"internal",
 				"whitelabel"
@@ -211,8 +257,16 @@
 		{
 			"title": "Notice Bleed: Warning",
 			"name": "notice-bleed-warning",
-			"template": "demos/src/notice-bleed-warning.mustache",
 			"description": "Notice message to emit a strong warning, styled to bleed to the edge of a page",
+			"data": {
+				"type": "notice-bleed",
+				"status": "warning",
+				"content": "There are lazy dogs, maybe in a field, maybe not. It's important that you are informed of this fact.",
+				"actions": {
+					"button": true,
+					"link": true
+				}
+			},
 			"brands": [
 				"internal",
 				"whitelabel"
@@ -221,8 +275,13 @@
 		{
 			"title": "Notice Inner: Warning",
 			"name": "notice-inner-warning",
-			"template": "demos/src/notice-inner-warning.mustache",
 			"description": "Notice message to emit a strong warning, styled to fit within another container",
+			"data": {
+				"inner": true,
+				"type": "notice-inner",
+				"status": "warning",
+				"content": "There are lazy dogs, maybe in a field, maybe not. It's important that you are informed of this fact. There may also be a fox. This is unconfirmed."
+			},
 			"brands": [
 				"internal",
 				"whitelabel"
