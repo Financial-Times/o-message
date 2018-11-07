@@ -80,7 +80,6 @@ class Message {
 			this.closeButton = construct.closeButton(this);
 			// Add event listeners
 			this.closeButton.addEventListener('click', event => {
-				console.log(this.closeButton);
 				event.preventDefault();
 				this.close();
 			});
