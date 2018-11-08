@@ -1,10 +1,6 @@
 /// Notice Inner Message
-///
-/// Outputs styling for an alert-inner type message
-/// @example
-/// @include oMessageAlertInner('my-class');
-///
-@mixin oMessageNoticeInner() {
+/// @access private
+@mixin _oMessageNoticeInner() {
 	.o-message--notice-inner {
 		.o-message__container {
 			@extend %o-message-inner-alert-notice-container;

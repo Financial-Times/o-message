@@ -1,11 +1,7 @@
-/// Alert message status
-///
-/// Outputs status specific styles for an alert message
-/// @example
-/// @include oMessageStatus('success', 'my-class');
-///
-/// @param {String} $status - the name of the status for the message ('success', 'neutral', 'error', 'warning', 'warning-light', 'inform')
-@mixin oMessageStatusApply($status) {
+/// apply message status
+/// @param {List} $status [('success', 'neutral', 'error', 'warning', 'warning-light', 'inform')]
+/// @access private
+@mixin _oMessageStatusApply($status) {
 	@each $state in $status {
 		@if $state != 'all' and not index($o-message-states, $state) {
 			@include _oMessageError("o-message doesn't support #{$state}.");
@@ -13,19 +9,22 @@
 			@if not $o-message-all-states-output {
 				@each $state in $o-message-states {
 					@if _oMessageSupports($state) {
-						@include oMessageStatus($state);
+						@include _oMessageStatus($state);
 					}
 				}
 				$o-message-all-states-output: true !global;
 			}
 
 		} @else if index($o-message-states, $state) != null and _oMessageSupports($state) {
-			@include oMessageStatus($state);
+			@include _oMessageStatus($state);
 		}
 	}
 }
 
-@mixin oMessageStatus ($status) {
+/// message status styling
+/// @param {String} $status - the name of the status for the message ('success', 'neutral', 'error', 'warning', 'warning-light', 'inform')
+/// @access private
+@mixin _oMessageStatus ($status) {
 	.o-message--#{$status} {
 		color: oColorsGetPaletteColor(_oMessageGet('foreground-color', $from: $status));
 		background-color: oColorsGetPaletteColor(_oMessageGet('background-color', $from: $status));
@@ -41,14 +40,14 @@
 		}
 
 		.o-message__actions__primary {
-			@include oMessageAlertButtonState(
+			@include _oMessageAlertButtonState(
 				_oMessageGet('background-color', $from: $status),
 				_oMessageGet('foreground-color', $from: $status)
 			);
 		}
 
 		.o-message__actions__secondary {
-			@include oMessageAlertLink(
+			@include _oMessageAlertLink(
 				$custom-link-base: _oMessageGet('foreground-color', $from: $status),
 				$custom-link-hover: _oMessageGet('foreground-color', $from: $status),
 				$custom-link-background: _oMessageGet('background-color', $from: $status),
@@ -59,7 +58,7 @@
 
 		@if (_oMessageGet('icon', $from: $status)) {
 			.o-message__container:before {
-				@include oMessageAlertIcon(
+				@include _oMessageAlertIcon(
 					_oMessageGet('icon', $from: $status),
 					_oMessageGet('foreground-color', $from: $status),
 					$_o-message-alert-icon-size
@@ -70,7 +69,7 @@
 		}
 
 		.o-message__close {
-			@include oMessageCloseButton(_oMessageGet('foreground-color', $from: $status));
+			@include _oMessageCloseButton(_oMessageGet('foreground-color', $from: $status));
 			vertical-align: middle;
 			border: 0;
 		}
@@ -78,9 +77,9 @@
 }
 
 /// Message button
-///
 /// Outputs base styles for message buttons
-@mixin oMessageButtonBase () {
+/// @access private
+@mixin _oMessageButtonBase () {
 	@include oButtons();
 	@include oTypographySans($scale: -1);
 	margin-right: oTypographySpacingSize(6);
@@ -88,11 +87,10 @@
 
 
 /// Message button
-///
 /// Outputs base styles for message close buttons
-// @param {String} $icon-color - name of the icon color (accepts any color from o-colors)
-
-@mixin oMessageCloseButton ($icon-color) {
+/// @param {String} $icon-color - name of the icon color (accepts any color from o-colors)
+/// @access private
+@mixin _oMessageCloseButton ($icon-color) {
 	@include oIconsGetIcon('cross', oColorsGetPaletteColor($icon-color), $_o-message-close-icon-size);
 	position: absolute;
 	top: ($_o-message-close-icon-size / 2) * 1px;

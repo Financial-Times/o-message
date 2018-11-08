@@ -1,8 +1,3 @@
-////
-/// @group o-message
-/// @link http://registry.origami.ft.com/components/o-message
-////
-
 /// Set error status colors
 @include oColorsSetColor('black-crimson-12.5', oColorsMix('black', 'crimson', 12.5)); //text
 @include oColorsSetColor('paper-crimson-90', oColorsMix('crimson', $percentage: 10)); //background

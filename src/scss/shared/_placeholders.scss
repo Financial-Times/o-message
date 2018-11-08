@@ -1,3 +1,5 @@
+/// Placeholder helper
+/// @access private
 @mixin _oMessageDefinePlaceholder($label) {
 	@if not map-has-key($_o-message-placeholders, $label) {
 		@content;
@@ -42,7 +44,7 @@
 // Outputs content layout
 @include _oMessageDefinePlaceholder(inner-container) {
 	%o-message-inner-alert-notice-container {
-		@include oMessageContainer();
+		@include _oMessageContainer();
 		padding: oTypographySpacingSize(2) oTypographySpacingSize(5) oTypographySpacingSize(2) oTypographySpacingSize(4);
 	}
 }
@@ -71,6 +73,6 @@
 // Outputs emboldened text
 @include _oMessageDefinePlaceholder(content-highlight) {
 	%o-message-content-highlight {
-		@include oMessageContentHighlight();
+		@include oTypographyBold('sans');
 	}
 };

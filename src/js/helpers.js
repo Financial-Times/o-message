@@ -1,7 +1,15 @@
+/**
+* Error helper
+* @returns {Error} Returns the customised error message
+*/
 const throwError = (message) => {
 	throw new Error(`*** o-message error:\n${message}\n***`);
 };
 
+/**
+* Constructs action elements
+* @returns {HTMLElement} Returns the action elements based on options declared
+*/
 const buildActions = (el) => {
 	let primaryActionHTML;
 	if (el.opts.actions.primary && el.opts.actions.primary.text) {

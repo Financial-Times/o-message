@@ -1,6 +1,10 @@
-@mixin oMessageActions($types, $status) {
-	@include oMessageBase();
-	@include oMessageStatusApply($status);
+/// Outputs variations for action type messages
+/// @param {list} $types [('action', 'action-bleed')]
+/// @param {list} $status [('inform', 'inform-inverse')]
+/// @access private
+@mixin _oMessageActions($types, $status) {
+	@include _oMessageBase();
+	@include _oMessageStatusApply($status);
 
 	@each $type in $types {
 		@if $type != 'all' and not index($o-message-action-types, $type) {

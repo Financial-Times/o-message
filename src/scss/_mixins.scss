@@ -1,18 +1,20 @@
 /// Output All oMessage Features
+/// @param {list} $types [('all, ''action', 'alert', 'alert-bleed', 'alert-inner', 'notice', 'notice-bleed', 'notice-inner')]
+/// @param {list} $status [('all', 'error', 'success', 'inform', 'warning', 'warning-light')]
 @mixin oMessage($types: 'all', $status: 'all') {
 	@each $type in $types {
 		@if $type == 'all' {
-			@include oMessageAlerts($type, $status);
-			@include oMessageNotices($type, $status);
-			@include oMessageActions($type, $status);
+			@include _oMessageAlerts($type, $status);
+			@include _oMessageNotices($type, $status);
+			@include _oMessageActions($type, $status);
 
 		} @else if index($o-message-alert-types, $type) {
-			@include oMessageAlerts($type, $status);
+			@include _oMessageAlerts($type, $status);
 
 		} @else if index($o-message-notice-types, $type) {
-			@include oMessageNotices($type, $status);
+			@include _oMessageNotices($type, $status);
 		} @else if index($o-message-action-types, $type) {
-			@include oMessageActions($type, $status);
+			@include _oMessageActions($type, $status);
 
 		} @else {
 			@include _oMessageError("o-message types don't support #{$type}.
@@ -32,10 +34,11 @@
 /// Message base
 ///
 /// Outputs base styles for a Message
-@mixin oMessageBase() {
+/// @access private
+@mixin _oMessageBase() {
 	.o-message {
 		.o-message__container {
-			@include oMessageContainer;
+			@include _oMessageContainer;
 		}
 	}
 
@@ -47,7 +50,8 @@
 /// Message container
 ///
 /// Outputs base layout for a message container
-@mixin oMessageContainer () {
+/// @access private
+@mixin _oMessageContainer () {
 	@include oTypographySans($o-message-typography-scale);
 	position: relative;
 	// sass-lint:disable no-vendor-prefixes
@@ -58,6 +62,7 @@
 /// Provide a component specific error message
 ///
 /// @param {String} $message - The message to insert in the error.
+/// @access private
 @mixin _oMessageError($message) {
 	@error '*** oMessage SCSS error: #{$message} ***';
 };

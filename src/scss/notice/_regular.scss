@@ -1,10 +1,6 @@
 /// Notice Message
-///
-/// Outputs styling for an notice or notice-bleed type message
-/// @example
-/// @include oMessageNotice('my-class');
-///
-@mixin oMessageNotice () {
+/// @access private
+@mixin _oMessageNotice () {
 	.o-message--notice,
 	.o-message--notice-bleed .o-message__container, {
 		@extend %o-message-alert-notice-grid;

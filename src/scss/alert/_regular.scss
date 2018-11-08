@@ -1,10 +1,7 @@
 /// Alert Message
-///
 /// Outputs styling for an alert or alert-bleed type message
-/// @example
-/// @include oMessageAlert('my-class');
-///
-@mixin oMessageAlert() {
+/// @access private
+@mixin _oMessageAlert() {
 	.o-message--alert,
 	.o-message--alert-bleed .o-message__container, {
 		@extend %o-message-alert-notice-grid;
