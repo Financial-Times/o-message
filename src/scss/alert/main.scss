@@ -1,5 +1,3 @@
-@import 'regular';
-
 /// Alert Messages
 /// @param {String} $type - message type [('all', 'alert', 'alert-bleed' or 'alert-inner')]
 /// @param {String} $status - message status [('all', 'success', 'neutral', 'error')]
@@ -22,7 +20,7 @@
 		}
 
 		@if $type == 'alert' or $type == 'alert-bleed' or $type == 'all' {
-			@include _oMessageAlert();
+			@include _oMessageRegularBase('alert');
 		}
 	}
 }
