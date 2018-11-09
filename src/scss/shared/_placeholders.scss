@@ -44,8 +44,8 @@
 // Outputs content layout
 @include _oMessageDefinePlaceholder(inner-container) {
 	%o-message-inner-alert-notice-container {
-		@include _oMessageContainer();
-		padding: oTypographySpacingSize(2) oTypographySpacingSize(5) oTypographySpacingSize(2) oTypographySpacingSize(4);
+		// @include _oMessageContainer();
+		// padding: oTypographySpacingSize(2) oTypographySpacingSize(5) oTypographySpacingSize(2) oTypographySpacingSize(4);
 	}
 }
 
@@ -53,9 +53,9 @@
 // Outputs content layout
 @include _oMessageDefinePlaceholder(inner-content) {
 	%o-message-inner-alert-notice-content {
-		@include oTypographyMargin($top: 3, $bottom: 0);
-		padding-left: $_o-message-alert-icon-size * 1px;
-		max-width: oTypographyMaxLineWidth($o-message-typography-scale);
+		// @include oTypographyMargin($top: 3, $bottom: 0);
+		// padding-left: $_o-message-alert-icon-size * 1px;
+		// max-width: oTypographyMaxLineWidth($o-message-typography-scale);
 	}
 }
 
@@ -63,9 +63,9 @@
 // Outputs content layout
 @include _oMessageDefinePlaceholder(inner-alert-content-main) {
 	%o-message-inner-alert-notice-content-main {
-		@include oTypographyMargin($top: 0, $bottom: 3);
-		margin-right: oTypographySpacingSize(6);
-		display: inline-block;
+		// @include oTypographyMargin($top: 0, $bottom: 3);
+		// margin-right: oTypographySpacingSize(6);
+		// display: inline-block;
 	}
 };
 

@@ -3,19 +3,19 @@
 @mixin _oMessageNoticeInner() {
 	.o-message--notice-inner {
 		.o-message__container {
-			@extend %o-message-inner-alert-notice-container;
+			// @extend %o-message-inner-alert-notice-container;
 
 			.o-message__close {
-				right: oTypographySpacingSize(4);
+				// right: oTypographySpacingSize(4);
 			}
 		}
 
 		.o-message__content {
-			@extend %o-message-inner-alert-notice-content;
-			padding-left: 20px;
+			// @extend %o-message-inner-alert-notice-content;
+			// padding-left: 20px;
 
 			&-main {
-				@extend %o-message-inner-alert-notice-content-main;
+				// @extend %o-message-inner-alert-notice-content-main;
 			}
 
 			&-highlight {
@@ -24,7 +24,7 @@
 		}
 
 		.o-message__actions {
-			@include oTypographyPadding($bottom: 3);
+			// @include oTypographyPadding($bottom: 3);
 			// display: inline-block;
 		}
 
