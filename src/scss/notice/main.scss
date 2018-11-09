@@ -1,4 +1,3 @@
-@import 'inner';
 @import 'regular';
 
 /// Notice Messages
@@ -19,11 +18,14 @@
 		}
 
 		@if $type == 'notice-inner' or $type == 'all' {
-			@include _oMessageNoticeInner();
+			// @include _oMessageNoticeInner();
+			@include _oMessageInnerBase('notice');
 		}
 
 		@if $type == 'notice' or $type == 'notice-bleed' or $type == 'all' {
-				@include _oMessageNotice();
+			// @include _oMessageNotice();
+			@include _oMessageInnerBase('notice-inner');
+
 		}
 	}
 }

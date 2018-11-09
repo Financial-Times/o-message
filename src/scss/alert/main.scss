@@ -1,4 +1,3 @@
-@import 'inner';
 @import 'regular';
 
 /// Alert Messages
@@ -19,7 +18,7 @@
 		}
 
 		@if $type == 'alert-inner' or $type == 'all' {
-			@include _oMessageAlertInner();
+			@include _oMessageInnerBase('alert');
 		}
 
 		@if $type == 'alert' or $type == 'alert-bleed' or $type == 'all' {

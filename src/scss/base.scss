@@ -29,9 +29,8 @@
 ///
 /// Outputs base styles for an inner style message
 /// @access private
-// @mixin _oMessageInnerBase() {
-	.o-message--alert-inner,
-	.o-message--notice-inner {
+@mixin _oMessageInnerBase($type) {
+	.o-message--#{$type}-inner {
 		.o-message__container {
 			padding: oTypographySpacingSize(2) oTypographySpacingSize(5) oTypographySpacingSize(2) oTypographySpacingSize(4);
 
@@ -42,8 +41,8 @@
 
 		.o-message__content {
 			@include oTypographyMargin($top: 3, $bottom: 0);
-			padding-left: $_o-message-alert-icon-size * 1px;
 			max-width: oTypographyMaxLineWidth($o-message-typography-scale);
+			padding-left: if($type == 'alert', $_o-message-alert-icon-size  * 1px, $_o-message-alert-icon-size / 2 * 1px);
 
 			.o-message__content-main {
 				@include oTypographyMargin($top: 0, $bottom: 3);
@@ -60,10 +59,4 @@
 			@include oTypographyPadding($bottom: 3);
 		}
 	}
-
-	.o-message--notice-inner {
-		.o-message__content {
-			padding-left: 20px;
-		}
-	}
-// };
+};
