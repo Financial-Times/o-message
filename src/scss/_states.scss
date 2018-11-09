@@ -32,67 +32,56 @@
 		.o-message__content-main a,
 		.o-message__content-additional a {
 			@include oTypographyLinkCustom(
-				_oMessageGet('foreground-color', $from: $status),
-				_oMessageGet('foreground-color', $from: $status),
-				_oMessageGet('background-color', $from: $status)
+				$baseColor: _oMessageGet('foreground-color', $from: $status),
+				$hoverColor: _oMessageGet('foreground-color', $from: $status),
+				$backgroundColor: _oMessageGet('background-color', $from: $status)
 			);
 			border-width: 1px;
 		}
 
 		.o-message__actions__primary {
-			@include _oMessageAlertButtonState(
-				_oMessageGet('background-color', $from: $status),
-				_oMessageGet('foreground-color', $from: $status)
-			);
+			@include oButtons();
+			@include oTypographySans($scale: -1);
+			@include oButtonsTheme($theme: (
+				background: _oMessageGet('background-color', $from: $status),
+				accent: _oMessageGet('foreground-color', $from: $status)
+			));
+			margin-right: oTypographySpacingSize(6);
 		}
 
 		.o-message__actions__secondary {
-			@include _oMessageAlertLink(
-				$custom-link-base: _oMessageGet('foreground-color', $from: $status),
-				$custom-link-hover: _oMessageGet('foreground-color', $from: $status),
-				$custom-link-background: _oMessageGet('background-color', $from: $status),
-				$link-hover: _oMessageGet('foreground-color', $from: $status),
-				$link-focus: _oMessageGet('foreground-color', $from: $status)
+			@include oTypographyLinkCustom(
+				$baseColor: _oMessageGet('foreground-color', $from: $status),
+				$hoverColor: _oMessageGet('foreground-color', $from: $status),
+				$backgroundColor: _oMessageGet('background-color', $from: $status)
 			);
+			white-space: nowrap;
+
+			&:hover {
+				border-bottom-color: oColorsGetPaletteColor(_oMessageGet('foreground-color', $from: $status)); // is different to custom link hover by design.
+			}
+
+			&:focus {
+				outline: 3px solid oColorsGetPaletteColor(_oMessageGet('foreground-color', $from: $status));
+				border-bottom-color: transparent;
+			}
 		}
 
 		@if (_oMessageGet('icon', $from: $status)) {
 			.o-message__container:before {
-				@include _oMessageAlertIcon(
-					_oMessageGet('icon', $from: $status),
-					_oMessageGet('foreground-color', $from: $status),
-					$_o-message-alert-icon-size
-				);
+				@include _oMessageIcon(_oMessageGet('icon', $from: $status), _oMessageGet('foreground-color', $from: $status), $_o-message-alert-icon-size);
 				min-width: $_o-message-alert-icon-size * 1px;
 				position: absolute;
 			}
 		}
 
 		.o-message__close {
-			@include _oMessageCloseButton(_oMessageGet('foreground-color', $from: $status));
+			@include _oMessageIcon('cross', _oMessageGet('foreground-color', $from: $status), $_o-message-close-icon-size);
+			position: absolute;
+			top: ($_o-message-close-icon-size / 2) * 1px;
+			right: oTypographySpacingSize(2);
 			vertical-align: middle;
 			border: 0;
 		}
 	}
-}
-
-/// Message button
-/// Outputs base styles for message buttons
-/// @access private
-@mixin _oMessageButtonBase () {
-	@include oButtons();
-	@include oTypographySans($scale: -1);
-	margin-right: oTypographySpacingSize(6);
-}
-
-
-/// Message button
-/// Outputs base styles for message close buttons
-/// @param {String} $icon-color - name of the icon color (accepts any color from o-colors)
-/// @access private
-@mixin _oMessageCloseButton ($icon-color) {
-	@include oIconsGetIcon('cross', oColorsGetPaletteColor($icon-color), $_o-message-close-icon-size);
-	position: absolute;
-	top: ($_o-message-close-icon-size / 2) * 1px;
-	right: oTypographySpacingSize(2);
 }

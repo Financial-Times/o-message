@@ -1,36 +1,3 @@
-/// Output All oMessage Features
-/// @param {list} $types [('all, ''action', 'alert', 'alert-bleed', 'alert-inner', 'notice', 'notice-bleed', 'notice-inner')]
-/// @param {list} $status [('all', 'error', 'success', 'inform', 'warning', 'warning-light')]
-@mixin oMessage($types: 'all', $status: 'all') {
-	@each $type in $types {
-		@if $type == 'all' {
-			@include _oMessageAlerts($type, $status);
-			@include _oMessageNotices($type, $status);
-			@include _oMessageActions($type, $status);
-
-		} @else if index($o-message-alert-types, $type) {
-			@include _oMessageAlerts($type, $status);
-
-		} @else if index($o-message-notice-types, $type) {
-			@include _oMessageNotices($type, $status);
-		} @else if index($o-message-action-types, $type) {
-			@include _oMessageActions($type, $status);
-
-		} @else {
-			@include _oMessageError("o-message types don't support #{$type}.
-			The available types are:
-			- action
-			- alert
-			- alert-bleed
-			- alert-inner
-			- notice
-			- notice-bleed
-			- notice-inner");
-		}
-	}
-}
-
-
 /// Message container
 ///
 /// Outputs base layout for a message container
@@ -41,6 +8,20 @@
 	// sass-lint:disable no-vendor-prefixes
 	-webkit-font-smoothing: antialiased;
 	// sass-lint:enable no-vendor-prefixes
+}
+
+/// Customised Icon for Alert messages
+/// @param {String} $icon-name - name of the icon (accepts any icon name from fticons)
+/// @param {String} $icon-color - name of the icon color (accepts any color from o-colors)
+/// @param {String} $icon-size - size of the icon
+/// @access private
+@mixin _oMessageIcon ($icon-name, $icon-color, $icon-size) {
+	@include oIconsGetIcon(
+		$icon-name,
+		oColorsGetPaletteColor($icon-color),
+		$icon-size
+	);
+	content: '';
 }
 
 /// Provide a component specific error message
