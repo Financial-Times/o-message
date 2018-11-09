@@ -37,12 +37,12 @@
 				}
 
 				&-highlight {
-					@extend %o-message-content-highlight;
+					// @extend %o-message-content-highlight;
 				}
 			}
 
 			.o-message__actions {
-				display: inline-block;
+				// display: inline-block;
 				margin-top: oTypographySpacingSize(2);
 				margin-bottom: oTypographySpacingSize(2);
 			}

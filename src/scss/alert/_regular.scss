@@ -24,13 +24,13 @@
 			}
 
 			&-highlight {
-				@extend %o-message-content-highlight;
+				// @extend %o-message-content-highlight;
 			}
 		}
 
 		.o-message__actions {
 			padding-bottom: $_o-message-text-spacing;
-			display: inline-block;
+			// display: inline-block;
 		}
 	}
 }

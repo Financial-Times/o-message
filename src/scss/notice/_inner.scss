@@ -19,13 +19,13 @@
 			}
 
 			&-highlight {
-				@extend %o-message-content-highlight;
+				// @extend %o-message-content-highlight;
 			}
 		}
 
 		.o-message__actions {
 			@include oTypographyPadding($bottom: 3);
-			display: inline-block;
+			// display: inline-block;
 		}
 
 	}

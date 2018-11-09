@@ -1,0 +1,26 @@
+/// Message base
+///
+/// Outputs base styles for a Message
+/// @access private
+// @mixin _oMessageBase() {
+	.o-message {
+		.o-message__container {
+			@include _oMessageContainer;
+		}
+
+		.o-message__content {
+
+			.o-message__content-highlight {
+				@include oTypographyBold('sans');
+			}
+		}
+
+		.o-message__actions {
+			display: inline-block;
+		}
+	}
+
+	.o-message--closed {
+		display: none;
+	}
+// };
