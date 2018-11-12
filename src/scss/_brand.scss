@@ -22,18 +22,6 @@ $_shared-brand-variables: (
         'foreground-color': 'black-crimson-12.5',
         'background-color': 'paper-crimson-90',
         'icon': 'warning-alt'
-    ),
-    'inform-inverse': (
-        'foreground-color': 'white',
-        'background-color': 'slate'
-    ),
-    'warning': (
-        'foreground-color': 'black',
-        'background-color': 'lemon'
-    ),
-    'warning-light': (
-        'foreground-color': 'black',
-        'background-color': 'lemon-white-60'
     )
 );
 
@@ -50,13 +38,12 @@ $_shared-brand-variables: (
         ),
     )),
     'supports-variants': (
+        'alert', 
+        'notice',
         'success',
         'neutral',
         'error',
-        'inform',
-        'inform-inverse',
-        'warning',
-        'warning-light'
+        'inform'
     )
 ));
 
@@ -71,8 +58,23 @@ $_shared-brand-variables: (
             'foreground-color': 'black',
             'background-color': 'slate-white-15',
         ),
+        'inform-inverse': (
+            'foreground-color': 'white',
+            'background-color': 'slate'
+        ),
+        'warning': (
+            'foreground-color': 'black',
+            'background-color': 'lemon'
+        ),
+        'warning-light': (
+            'foreground-color': 'black',
+            'background-color': 'lemon-white-60'
+        )
     )),
     'supports-variants': (
+        'action', 
+        'alert', 
+        'notice',
         'success',
         'neutral',
         'error',

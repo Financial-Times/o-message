@@ -11,9 +11,9 @@
 @import './src/scss/base';
 @import './src/scss/states';
 
-/// Output All oMessage Features
+/// Output all oMessage features
 /// @param {list} $types [('alert', 'notice', 'action', 'inner'))]
-/// @param {list} $status [('all', 'error', 'success', 'inform', 'warning', 'warning-light')]
+/// @param {list} $status [('all', 'error', 'success', 'inform', 'inform-inverse', 'warning', 'warning-light')]
 
 @mixin oMessage (
 	$opts: ('action', 'alert', 'notice', 'inner'),
@@ -26,13 +26,13 @@
 	$inner: index($opts, 'inner');
 	
 	@include _oMessageBase();
-	@include _oMessageStatusApply($states);
+	@include _oMessageApply($states);
 	
 	@if $inner {
 		@include _oMessageInner();
 	}
 
-	@if $action {
+	@if $action and _oMessageSupports($action) {
 		@include _oMessageType('action');
 	}
 	
