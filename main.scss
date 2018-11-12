@@ -11,59 +11,39 @@
 @import './src/scss/base';
 @import './src/scss/states';
 
-@import './src/scss/inner';
-
-@import './src/scss/alert';
-@import './src/scss/notice';
 @import './src/scss/action';
 
-
-@mixin oMezzage(
-	$types: ('action', 'alert', 'notice'),
-	$states: ('error', 'success', 'inform', 'inform-inverse','warning', 'warning-light'),
-	$layouts: ('inner', 'bleed')) {
-
-	@each $layout in $layouts {
-		@if $layout == 'inner' {
-			@include _oMessageInner($types);
-		} @elseif $layout == 'bleed' {
-			//bloooood
-		} @else {
-			//shrug
-		}
-	}
-}
-
 /// Output All oMessage Features
-/// @param {list} $types [('all, ''action', 'alert', 'alert-bleed', 'alert-inner', 'notice', 'notice-bleed', 'notice-inner')]
+/// @param {list} $types [('alert', 'notice', 'action', 'inner'))]
 /// @param {list} $status [('all', 'error', 'success', 'inform', 'warning', 'warning-light')]
-@mixin oMessage($types: 'all', $status: 'all') {
-	@each $type in $types {
-		@if $type == 'all' {
-			@include _oMessageAlerts($type, $status);
-			@include _oMessageNotices($type, $status);
-			@include _oMessageActions($type, $status);
 
-		} @else if index($o-message-alert-types, $type) {
-			@include _oMessageAlerts($type, $status);
+@mixin oMessage (
+	$opts: ('action', 'alert', 'notice', 'inner'),
+	$states: ('error', 'success', 'inform', 'inform-inverse', 'warning', 'warning-light')
+) {
+	
+	$action: index($opts, 'action');
+	$alert: index($opts, 'alert');
+	$notice: index($opts, 'notice');
+	$inner: index($opts, 'inner');
+	
+	@include _oMessageBase();
+	@include _oMessageStatusApply($states);
+	
+	@if $inner {
+		@include _oMessageInner();
+	}
 
-		} @else if index($o-message-notice-types, $type) {
-			@include _oMessageNotices($type, $status);
+	@if $alert {
+		@include _oMessageType('alert');
+	}
+	
+	@if $action {
+		@include _oMessageType('action');
+	}
 
-		} @else if index($o-message-action-types, $type) {
-			@include _oMessageActions($type, $status);
-
-		} @else {
-			@include _oMessageError("o-message types don't support #{$type}.
-			The available types are:
-			- action
-			- alert
-			- alert-bleed
-			- alert-inner
-			- notice
-			- notice-bleed
-			- notice-inner");
-		}
+	@if $notice {
+		@include _oMessageType('notice');
 	}
 }
 

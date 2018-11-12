@@ -1,13 +1,54 @@
-/// Message container
+/// Inner Message base
 ///
-/// Outputs base layout for a message container
+/// Outputs base styles for an inner variant of a message
 /// @access private
-@mixin _oMessageContainer () {
-	@include oTypographySans($o-message-typography-scale);
-	position: relative;
-	// sass-lint:disable no-vendor-prefixes
-	-webkit-font-smoothing: antialiased;
-	// sass-lint:enable no-vendor-prefixes
+@mixin _oMessageInner() {
+	.o-message.o-message--inner {
+		.o-message__container {
+			padding: oTypographySpacingSize(2) oTypographySpacingSize(5) oTypographySpacingSize(2) oTypographySpacingSize(4);
+
+			&:before {
+				top: unset;
+			}
+			
+			.o-message__close {
+				right: oTypographySpacingSize(4);
+			}
+		}
+
+		.o-message__content {
+			@include oTypographyMargin($top: 3, $bottom: 0);
+			// max-width: oTypographyMaxLineWidth($o-message-typography-scale);
+
+			.o-message__content-main {
+				@include oTypographyMargin($top: 0, $bottom: 3);
+				// margin-right: oTypographySpacingSize(6);
+			}
+		}
+
+		.o-message__actions {
+			@include oTypographyPadding($bottom: 3);
+		}
+	}
+}
+
+/// Type styling
+///
+/// Outputs base styles for an type of message
+/// @access private
+@mixin _oMessageType($type) {
+	.o-message--#{$type} {
+		@if $type == 'alert' {
+			.o-message__content {
+				padding-left: $_o-message-alert-icon-size * 1px;
+			}
+			
+		} @elseif $type == 'notice' {
+			.o-message__content {
+				padding-left: $_o-message-alert-icon-size / 2 * 1px;
+			}
+		}
+	}
 }
 
 /// Customised Icon for Alert messages
