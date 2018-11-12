@@ -11,8 +11,6 @@
 @import './src/scss/base';
 @import './src/scss/states';
 
-@import './src/scss/action';
-
 /// Output All oMessage Features
 /// @param {list} $types [('alert', 'notice', 'action', 'inner'))]
 /// @param {list} $status [('all', 'error', 'success', 'inform', 'warning', 'warning-light')]
@@ -34,12 +32,12 @@
 		@include _oMessageInner();
 	}
 
-	@if $alert {
-		@include _oMessageType('alert');
-	}
-	
 	@if $action {
 		@include _oMessageType('action');
+	}
+	
+	@if $alert {
+		@include _oMessageType('alert');
 	}
 
 	@if $notice {

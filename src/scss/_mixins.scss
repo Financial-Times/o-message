@@ -47,6 +47,21 @@
 			.o-message__content {
 				padding-left: $_o-message-alert-icon-size / 2 * 1px;
 			}
+			
+		} @elseif $type == 'action' {
+			.o-message__content {
+				padding:oTypographySpacingSize(10) 0;
+				text-align: center;
+				
+				.o-message__content-main {
+					margin: oTypographySpacingSize(2) oTypographySpacingSize(6) oTypographySpacingSize(2) 0;
+				}
+				
+				.o-message__actions {
+					margin: oTypographySpacingSize(2) 0;
+					padding: 0
+				}
+			}
 		}
 	}
 }
