@@ -27,4 +27,4 @@ $_o-message-placeholders: () !default;
 /// List of states that can be applied to alert type messages
 ///
 /// @type List
-$o-message-states: (error, neutral, success, inform, inform-inverse, warning, warning-light);
+$o-message-states: ('error', 'inform', 'inform-inverse', 'neutral', 'success', 'warning', 'warning-light');

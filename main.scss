@@ -13,13 +13,12 @@
 
 /// Output all oMessage features
 /// @param {list} $types [('alert', 'notice', 'action', 'inner'))]
-/// @param {list} $status [('all', 'error', 'success', 'inform', 'inform-inverse', 'warning', 'warning-light')]
+/// @param {list} $status [('error', 'success', 'inform', 'neutral', 'inform-inverse', 'warning', 'warning-light')]
 
 @mixin oMessage (
 	$opts: ('action', 'alert', 'notice', 'inner'),
-	$states: ('error', 'success', 'inform', 'inform-inverse', 'warning', 'warning-light')
+	$states: ('error', 'success', 'neutral', 'inform', 'inform-inverse', 'warning', 'warning-light')
 ) {
-	
 	$action: index($opts, 'action');
 	$alert: index($opts, 'alert');
 	$notice: index($opts, 'notice');
@@ -32,7 +31,7 @@
 		@include _oMessageInner();
 	}
 
-	@if $action and _oMessageSupports($action) {
+	@if $action and _oMessageSupports('action') {
 		@include _oMessageType('action');
 	}
 	

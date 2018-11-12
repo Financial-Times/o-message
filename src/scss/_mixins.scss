@@ -48,7 +48,7 @@
 			
 		} @elseif $type == 'action' {
 			.o-message__content {
-				padding:oTypographySpacingSize(10) 0;
+				padding: oTypographySpacingSize(10) 0;
 				margin: 0 auto;
 				text-align: center;
 				
@@ -58,7 +58,7 @@
 				
 				.o-message__actions {
 					margin: oTypographySpacingSize(2) 0;
-					padding: 0
+					padding: 0;
 				}
 			}
 		}
