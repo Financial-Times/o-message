@@ -145,7 +145,8 @@
 				"actions": {
 					"button": true,
 					"link": true
-				}
+				},
+				"noCloseButton": true
 			}
 		},
 		{
@@ -174,7 +175,8 @@
 				"actions": {
 					"button": true,
 					"link": true
-				}
+				},
+				"noCloseButton": true
 			},
 			"brands": [
 				"internal",
@@ -220,24 +222,8 @@
 				"content": "The quick brown fox did <span class='o-message__content-highlight'>not</span> jump over the lazy dogs.",
 				"actions": {
 					"button": true
-				}
-			},
-			"brands": [
-				"internal",
-				"whitelabel"
-			]
-		},
-		{
-			"title": "Action Bleed: Inform Inverse",
-			"name": "action-bleed-inform-inverse",
-			"description": "Action message, displaying a call to action, styled to fit within another container",
-			"data": {
-				"type": "action-bleed",
-				"status": "inform-inverse",
-				"content": "The quick brown fox did <span class='o-message__content-highlight'>not</span> jump over the lazy dogs.",
-				"actions": {
-					"button": true
-				}
+				},
+				"noCloseButton": true
 			},
 			"brands": [
 				"internal",

@@ -18,11 +18,9 @@
 
 		.o-message__content {
 			@include oTypographyMargin($top: 3, $bottom: 0);
-			// max-width: oTypographyMaxLineWidth($o-message-typography-scale);
 
 			.o-message__content-main {
 				@include oTypographyMargin($top: 0, $bottom: 3);
-				// margin-right: oTypographySpacingSize(6);
 			}
 		}
 
@@ -51,6 +49,7 @@
 		} @elseif $type == 'action' {
 			.o-message__content {
 				padding:oTypographySpacingSize(10) 0;
+				margin: 0 auto;
 				text-align: center;
 				
 				.o-message__content-main {

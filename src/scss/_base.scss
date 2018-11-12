@@ -25,8 +25,8 @@
 
 		.o-message__content {
 			@include oTypographyMargin($top: 0, $bottom: 0);
-			position: relative;
 			max-width: oTypographyMaxLineWidth($o-message-typography-scale);
+			position: relative;
 
 			.o-message__content-main {
 				@include oTypographyMargin($top: 4, $bottom: 4);
