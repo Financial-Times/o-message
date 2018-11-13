@@ -1,5 +1,5 @@
 /// Output All oMessage Features
-/// @param {list} $types [('all, ''action', 'alert', 'alert-bleed', 'alert-inner', 'notice', 'notice-bleed', 'notice-inner')]
+/// @param {list} $types [('all', 'action', 'alert', 'alert-bleed', 'alert-inner', 'notice', 'notice-bleed', 'notice-inner')]
 /// @param {list} $status [('all', 'error', 'success', 'inform', 'warning', 'warning-light')]
 @mixin oMessage($types: 'all', $status: 'all') {
 	@each $type in $types {
