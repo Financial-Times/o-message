@@ -23,7 +23,7 @@
 		"js": "demos/src/demo.js",
 		"template": "demos/src/message-template.mustache",
 		"documentClasses": "",
-		"dependencies": "o-fonts"
+		"dependencies": ["o-fonts","o-normalise"]
 	},
 	"demos": [
 		{

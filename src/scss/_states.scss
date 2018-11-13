@@ -40,9 +40,7 @@
 		}
 
 		.o-message__actions__primary {
-			@include oButtons();
-			@include oTypographySans($scale: -1);
-			@include oButtonsTheme($theme: (
+			@include oButtons($theme: (
 				background: _oMessageGet('background-color', $from: $status),
 				accent: _oMessageGet('foreground-color', $from: $status)
 			));
@@ -59,11 +57,6 @@
 
 			&:hover {
 				border-bottom-color: oColorsGetPaletteColor(_oMessageGet('foreground-color', $from: $status)); // is different to custom link hover by design.
-			}
-
-			&:focus {
-				outline: 3px solid oColorsGetPaletteColor(_oMessageGet('foreground-color', $from: $status));
-				border-bottom-color: transparent;
 			}
 		}
 
