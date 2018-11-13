@@ -1,16 +1,71 @@
-/// Message container
+/// Inner Message base
 ///
-/// Outputs base layout for a message container
+/// Outputs base styles for an inner variant of a message
 /// @access private
-@mixin _oMessageContainer () {
-	@include oTypographySans($o-message-typography-scale);
-	position: relative;
-	// sass-lint:disable no-vendor-prefixes
-	-webkit-font-smoothing: antialiased;
-	// sass-lint:enable no-vendor-prefixes
+@mixin _oMessageInner() {
+	.o-message.o-message--inner {
+		.o-message__container {
+			padding: oTypographySpacingSize(2) oTypographySpacingSize(5) oTypographySpacingSize(2) oTypographySpacingSize(4);
+
+			&:before {
+				top: unset;
+			}
+			
+			.o-message__close {
+				right: oTypographySpacingSize(4);
+			}
+		}
+
+		.o-message__content {
+			@include oTypographyMargin($top: 3, $bottom: 0);
+
+			.o-message__content-main {
+				@include oTypographyMargin($top: 0, $bottom: 3);
+			}
+		}
+
+		.o-message__actions {
+			@include oTypographyPadding($bottom: 3);
+		}
+	}
 }
 
-/// Customised Icon for Alert messages
+/// Type styling
+///
+/// Outputs base styles for an type of message
+/// @access private
+@mixin _oMessageType($type) {
+	.o-message--#{$type} {
+		@if $type == 'alert' {
+			.o-message__content {
+				padding-left: $_o-message-alert-icon-size * 1px;
+			}
+			
+		} @elseif $type == 'notice' {
+			.o-message__content {
+				padding-left: $_o-message-alert-icon-size / 2 * 1px;
+			}
+			
+		} @elseif $type == 'action' {
+			.o-message__content {
+				padding: oTypographySpacingSize(10) 0;
+				margin: 0 auto;
+				text-align: center;
+				
+				.o-message__content-main {
+					margin: oTypographySpacingSize(2) oTypographySpacingSize(6) oTypographySpacingSize(2) 0;
+				}
+				
+				.o-message__actions {
+					margin: oTypographySpacingSize(2) 0;
+					padding: 0;
+				}
+			}
+		}
+	}
+}
+
+/// Customised icon for messages
 /// @param {String} $icon-name - name of the icon (accepts any icon name from fticons)
 /// @param {String} $icon-color - name of the icon color (accepts any color from o-colors)
 /// @param {String} $icon-size - size of the icon
@@ -23,11 +78,3 @@
 	);
 	content: '';
 }
-
-/// Provide a component specific error message
-///
-/// @param {String} $message - The message to insert in the error.
-/// @access private
-@mixin _oMessageError($message) {
-	@error '*** oMessage SCSS error: #{$message} ***';
-};

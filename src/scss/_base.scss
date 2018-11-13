@@ -4,13 +4,34 @@
 /// @access private
 @mixin _oMessageBase() {
 	.o-message {
+		@include oTypographySans($o-message-typography-scale);
+		// sass-lint:disable no-vendor-prefixes
+		-webkit-font-smoothing: antialiased;
+		// sass-lint:enable no-vendor-prefixes
+		
 		.o-message__container {
-			@include _oMessageContainer;
+			//TODO: rm magic #s
+			max-width: 1220px;
+			min-width: 240px;
+			margin: 0 auto;
+			padding: 0 10px;
+			position: relative;
+			box-sizing: border-box;
+			
+			&:before {
+				top: $_o-message-text-spacing / 2;
+			}
 		}
 
 		.o-message__content {
+			@include oTypographyMargin($top: 0, $bottom: 0);
+			max-width: oTypographyMaxLineWidth($o-message-typography-scale);
+			position: relative;
+
 			.o-message__content-main {
+				@include oTypographyMargin($top: 4, $bottom: 4);
 				display: inline-block;
+				margin-right: oTypographySpacingSize(6);
 			}
 
 			.o-message__content-highlight {
@@ -20,6 +41,7 @@
 
 		.o-message__actions {
 			display: inline-block;
+			padding-bottom: $_o-message-text-spacing;
 		}
 	}
 
@@ -27,79 +49,3 @@
 		display: none;
 	}
 };
-
-
-/// Inner Message base
-///
-/// Outputs base styles for an inner style message
-/// @access private
-@mixin _oMessageInnerBase($type) {
-	.o-message--#{$type}-inner {
-		.o-message__container {
-			padding: oTypographySpacingSize(2) oTypographySpacingSize(5) oTypographySpacingSize(2) oTypographySpacingSize(4);
-
-			.o-message__close {
-				right: oTypographySpacingSize(4);
-			}
-		}
-
-		.o-message__content {
-			@include oTypographyMargin($top: 3, $bottom: 0);
-			max-width: oTypographyMaxLineWidth($o-message-typography-scale);
-			padding-left: if($type == 'alert', $_o-message-alert-icon-size  * 1px, $_o-message-alert-icon-size / 2 * 1px);
-
-			.o-message__content-main {
-				@include oTypographyMargin($top: 0, $bottom: 3);
-				margin-right: oTypographySpacingSize(6);
-			}
-
-			.o-message__content-highlight {
-				@include oTypographyBold('sans');
-			}
-		}
-
-		.o-message__actions {
-			@include oTypographyPadding($bottom: 3);
-		}
-	}
-};
-
-/// Regular Message base
-///
-/// Outputs base styles for a regular style message
-/// @access private
-@mixin _oMessageRegularBase($type) {
-	.o-message--#{$type},
-	.o-message--#{$type}-bleed .o-message__container {
-		@include oGridContainer();
-		@include oGridRespondTo($from: S) {
-			padding: 0 oGridGutter();
-		}
-	}
-
-	.o-message--#{$type},
-	.o-message--#{$type}-bleed {
-		@if $type == 'alert' {
-			height: 100%;
-
-			.o-message__container:before {
-				top: $_o-message-text-spacing / 2;
-			}
-		};
-
-		.o-message__content {
-			@include oTypographyMargin($top: 0, $bottom: 0);
-			position: relative;
-			padding: 0 if($type == 'alert', oTypographySpacingSize(10), oTypographySpacingSize(5));
-
-			.o-message__content-main {
-				@include oTypographyMargin($top: 4, $bottom: 4);
-				margin-right: oTypographySpacingSize(6);
-			}
-		}
-
-		.o-message__actions {
-			padding-bottom: $_o-message-text-spacing;
-		}
-	}
-}
