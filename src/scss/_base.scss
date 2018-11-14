@@ -8,7 +8,7 @@
 		// sass-lint:disable no-vendor-prefixes
 		-webkit-font-smoothing: antialiased;
 		// sass-lint:enable no-vendor-prefixes
-		
+
 		.o-message__container {
 			//TODO: rm magic #s
 			max-width: 1220px;
@@ -17,7 +17,7 @@
 			padding: 0 10px;
 			position: relative;
 			box-sizing: border-box;
-			
+
 			&:before {
 				top: $_o-message-text-spacing / 2;
 			}
@@ -25,7 +25,6 @@
 
 		.o-message__content {
 			@include oTypographyMargin($top: 0, $bottom: 0);
-			max-width: oTypographyMaxLineWidth($o-message-typography-scale);
 			position: relative;
 
 			.o-message__content-main {

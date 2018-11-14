@@ -12,14 +12,13 @@ sinon.assert.expose(assert, {
 
 const flatten = string => string.replace(/\s/g, '');
 
-describe("buildAction helper", () => {
+describe("helpers", () => {
 	let mockObj;
 	beforeEach(() => {
 		mockObj = {
-			messageClass: 'o-message',
 			opts: {
 				type: 'alert',
-				status: 'success',
+				state: 'success',
 				content: {
 					highlight: 'Important'
 				},
@@ -40,20 +39,32 @@ describe("buildAction helper", () => {
 		};
 	});
 
-	context('with `openInNewWindow` as false', () => {
-		it('builds an actions element', () => {
-			assert.strictEqual(flatten(buildActions(mockObj)), flatten(fixtures.actions));
-		});
-	});
-
-	context('with `openInNewWindow` as true', () => {
-		beforeEach(() => {
-			mockObj.opts.actions.primary.openInNewWindow = true;
-			mockObj.opts.actions.secondary.openInNewWindow = true;
+	describe('buildAction', () => {
+		context('with `openInNewWindow` as false', () => {
+			it('builds an actions element', () => {
+				assert.strictEqual(flatten(buildActions(mockObj.opts.actions)), flatten(fixtures.actions));
+			});
 		});
 
-		it('builds an actions element', () => {
-			assert.strictEqual(flatten(buildActions(mockObj)), flatten(fixtures.actionsNewWindow));
+		context('with `openInNewWindow` as true', () => {
+			beforeEach(() => {
+				mockObj.opts.actions.primary.openInNewWindow = true;
+				mockObj.opts.actions.secondary.openInNewWindow = true;
+			});
+
+			it('builds an actions element', () => {
+				assert.strictEqual(flatten(buildActions(mockObj.opts.actions)), flatten(fixtures.actionsNewWindow));
+			});
+		});
+
+		it('returns an empty string if no actions declared', () => {
+			beforeEach(() => {
+				mockObj.opts.actions = null;
+			});
+
+			it('builds an actions element', () => {
+				assert.strictEqual(flatten(buildActions(mockObj.opts)), '');
+			});
 		});
 	});
 });

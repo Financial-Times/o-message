@@ -10,24 +10,40 @@ const throwError = (message) => {
 * Constructs action elements
 * @returns {HTMLElement} Returns the action elements based on options declared
 */
-const buildActions = (el) => {
+const buildActions = (actions) => {
+	if (!actions) {
+		return '';
+	}
+
 	let primaryActionHTML;
-	if (el.opts.actions.primary && el.opts.actions.primary.text) {
-		primaryActionHTML = `<a href="${el.opts.actions.primary.url}" class="${el.messageClass}__actions__primary" ${el.opts.actions.primary.openInNewWindow ? `target="_blank" aria-label="${el.opts.actions.primary.text} (opens in new window)"` : ''}>${el.opts.actions.primary.text}</a>`;
+	if (actions.primary && actions.primary.text) {
+		primaryActionHTML = `<a href="${actions.primary.url}" class="o-message__actions__primary" ${actions.primary.openInNewWindow ? `target="_blank" aria-label="${actions.primary.text} (opens in new window)"` : ''}>${actions.primary.text}</a>`;
 	}
 
 	let secondaryActionHTML;
-	if (el.opts.actions.secondary && el.opts.actions.secondary.text) {
-		secondaryActionHTML = `<a href="${el.opts.actions.secondary.url}" class="${el.messageClass}__actions__secondary" ${el.opts.actions.secondary.openInNewWindow ? `target="_blank" aria-label="${el.opts.actions.secondary.text} (opens in new window)"` : ''}>${el.opts.actions.secondary.text}</a>`;
+	if (actions.secondary && actions.secondary.text) {
+		secondaryActionHTML = `<a href="${actions.secondary.url}" class="o-message__actions__secondary" ${actions.secondary.openInNewWindow ? `target="_blank" aria-label="${actions.secondary.text} (opens in new window)"` : ''}>${actions.secondary.text}</a>`;
 	}
 
-	let actions = `<div class="${el.messageClass}__actions">
-		${primaryActionHTML || ''}
-		${secondaryActionHTML || ''}
+	let actionElements = `
+		<div class="o-message__actions">
+			${primaryActionHTML || ''}
+			${secondaryActionHTML || ''}
 		</div>
 	`;
 
-	return actions;
+	return actionElements;
 };
 
-export { buildActions, throwError };
+const buildContent = (content) => {
+	if (content.highlight) {
+		return `
+			<span class="o-message__content-highlight">${content.highlight}</span>
+			<span class="o-message__content-detail">${content.detail}</span>
+		`;
+	} else {
+		return content.detail;
+	}
+};
+
+export { buildActions, buildContent, throwError };

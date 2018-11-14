@@ -1,6 +1,6 @@
 export default {
 	main: `
-		<div class="o-message o-message--alert o-message--alert-error" data-o-component="o-message">
+		<div class="o-message o-message--alert o-message--error" data-o-component="o-message">
 			<div class="o-message__container">
 				<div class="o-message__content">
 					<p class="o-message__content-main">
@@ -78,5 +78,5 @@ export default {
 	actionsNewWindow: `<div class="o-message__actions">
 			<a href="#" class="o-message__actions__primary" target="_blank" aria-label="a button (opens in new window)">a button</a>
 			<a href="#" class="o-message__actions__secondary" target="_blank" aria-label="a link (opens in new window)">a link</a>
-			</div>`
+		</div>`
 };

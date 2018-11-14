@@ -16,10 +16,9 @@ describe("constructElement", () => {
 	let mockObj;
 	beforeEach(() => {
 		mockObj = {
-			messageClass: 'o-message',
 			opts: {
 				type: 'alert',
-				status: 'success',
+				state: 'success',
 				content: {
 					highlight: 'Important'
 				},
@@ -37,46 +36,45 @@ describe("constructElement", () => {
 		};
 	});
 
-	describe('.alertMessage', () => {
+	describe('.message (inner + additional info)', () => {
 		it('returns an HTML element', () => {
-			assert.instanceOf(construct.alertMessage(mockObj), HTMLElement);
+			assert.instanceOf(construct.message(mockObj.opts), HTMLElement);
 		});
 
 		it('builds a message component based on the provided messageClass and theme', () => {
-			assert.strictEqual(flatten(construct.alertMessage(mockObj).innerHTML), flatten(fixtures.alert));
+			assert.strictEqual(flatten(construct.message(mockObj.opts).innerHTML), flatten(fixtures.alert));
 		});
 
 		it('throws an error if no status is defined', () => {
-			mockObj.opts.status = null;
+			mockObj.opts.state = null;
 
-			let error = "*** o-message error:\nAlert messages require a status. The options are:\n- success\n- error\n- neutral\n***";
-			assert.throws(() => construct.alertMessage(mockObj), error);
+			let error = "*** o-message error:\nMessages require a state.\n***";
+			assert.throws(() => construct.message(mockObj.opts), error);
 		});
 
-		describe('builds an inline version of component if an inline option is true', () => {
+		describe('builds an inner version of component if an inner option is true', () => {
 			beforeEach(() => {
-				mockObj.opts.type = 'alert-inner';
+				mockObj.opts.inner = true;
 			});
 
 			it('if additional info is provided', () => {
 				mockObj.opts.content.additionalInfo = 'Additional info';
-				assert.strictEqual(flatten(construct.alertMessage(mockObj).innerHTML), flatten(fixtures.innerAlert));
+				assert.strictEqual(flatten(construct.message(mockObj.opts).innerHTML), flatten(fixtures.innerAlert));
 			});
 
 			it('if additional info is not provided', () => {
 				mockObj.opts.content.additionalInfo = false;
-				assert.strictEqual(flatten(construct.alertMessage(mockObj).innerHTML), flatten(fixtures.innerAlertWithOutAdditionalInfo));
+				assert.strictEqual(flatten(construct.message(mockObj.opts).innerHTML), flatten(fixtures.innerAlertWithOutAdditionalInfo));
 			});
 		});
 	});
 
-	describe('.noticeMessage', () => {
+	describe('.message (notice)', () => {
 		beforeEach(() => {
 			mockObj = {
-				messageClass: 'o-message',
 				opts: {
 					type: 'notice',
-					status: 'inform',
+					state: 'inform',
 					content: {
 						detail: 'Many things are here to be said about this message'
 					},
@@ -95,28 +93,28 @@ describe("constructElement", () => {
 		});
 
 		it('returns an HTML element', () => {
-			assert.instanceOf(construct.noticeMessage(mockObj), HTMLElement);
+			assert.instanceOf(construct.message(mockObj.opts), HTMLElement);
 		});
 
 		it('builds a message component based on the provided messageClass and theme', () => {
-			assert.strictEqual(flatten(construct.noticeMessage(mockObj).innerHTML), flatten(fixtures.notice));
+			assert.strictEqual(flatten(construct.message(mockObj.opts).innerHTML), flatten(fixtures.notice));
 		});
 
 		it('throws an error if no status is defined', () => {
-			mockObj.opts.status = null;
+			mockObj.opts.state = null;
 
-			let error = "*** o-message error:\nNotice messages require a status. The options are:\n- inform\n- warning\n- warning-light\n***";
-			assert.throws(() => construct.noticeMessage(mockObj), error);
+			let error = "*** o-message error:\nMessages require a state.\n***";
+			assert.throws(() => construct.message(mockObj.opts), error);
 		});
 	});
 
 	describe('.closeButton', () => {
 		it('returns an HTML element', () => {
-			assert.instanceOf(construct.closeButton(mockObj), HTMLElement);
+			assert.instanceOf(construct.closeButton(), HTMLElement);
 		});
 
 		it('builds a close button component', () => {
-			assert.strictEqual(flatten(construct.closeButton(mockObj).outerHTML), flatten(fixtures.closeButton));
+			assert.strictEqual(flatten(construct.closeButton().outerHTML), flatten(fixtures.closeButton));
 		});
 	});
 });

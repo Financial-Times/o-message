@@ -28,7 +28,7 @@
 		}
 
 		.o-message__actions__primary {
-			@include oButtonsTheme($theme: (
+			@include oButtons($theme: (
 				background: _oMessageGet('background-color', $from: $state),
 				accent: _oMessageGet('foreground-color', $from: $state)
 			));
