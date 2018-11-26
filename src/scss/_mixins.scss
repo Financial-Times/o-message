@@ -49,7 +49,7 @@
 
 		} @elseif $type == 'action' {
 			.o-message__content {
-				padding: oTypographySpacingSize(10) 0;
+				padding: $_o-message-action-spacing 0;
 				margin: 0 auto;
 				text-align: center;
 

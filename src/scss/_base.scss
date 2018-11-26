@@ -10,11 +10,11 @@
 		// sass-lint:enable no-vendor-prefixes
 
 		.o-message__container {
-			//TODO: rm magic #s
-			max-width: 1220px;
-			min-width: 240px;
+			//TODO: rm magic #s, these currently reflect o-grid viewport widths
+			max-width: 1220px; // XL
+			min-width: 240px; // default
 			margin: 0 auto;
-			padding: 0 10px;
+			padding: 0 10px; // grid gutter
 			position: relative;
 			box-sizing: border-box;
 

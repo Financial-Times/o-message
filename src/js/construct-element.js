@@ -1,5 +1,3 @@
-import { buildActions, buildContent, throwError } from './helpers';
-
 export default {
 	/**
 	* Build a full message element. Used when there is no message element in the DOM.
@@ -11,27 +9,50 @@ export default {
 		if (opts.inner) { messageElement.classList.add('o-message--inner'); }
 
 		if (!opts.state) {
-			throwError("Messages require a state.");
+			throw new Error(`*** o-message error:\nMessages require a state.\n***`);
 		} else {
 			messageElement.classList.add(`o-message--${opts.state}`);
 		}
 
 		opts.content.detail = opts.content.detail ? opts.content.detail : '';
 
+		let content = '';
 		let additionalContent = '';
+		let actions = '';
+
+
+		if (opts.content.highlight) {
+			content = `
+				<span class="o-message__content-highlight">${opts.content.highlight}</span>
+				<span class="o-message__content-detail">${opts.content.detail}</span>
+			`;
+		} else {
+			content = opts.content.detail;
+		}
 
 		if (opts.inner && opts.content.additionalInfo) {
 			additionalContent = `<p class="o-message__content-additional">${opts.content.additionalInfo}</p>`;
 		}
 
+		const actionEl = (config) => `<a href="${config.url}" class="o-message__actions__primary" ${config.openInNewWindow ? `target="_blank" aria-label="${config.text} (opens in new window)"` : ''}>${config.text}</a>`;
+
+		if (opts.actions) {
+			actions = `
+				<div class="o-message__actions">
+					${actions.primary && actions.primary.text ? actionEl(actions.primary) : ''}
+					${actions.secondary && actions.secondary.text ? actionEl(actions.secondary) : ''}
+				</div>
+			`;
+		};
+
 		messageElement.innerHTML = `
 			<div class="o-message__container">
 				<div class="o-message__content">
 					<p class="o-message__content-main">
-						${buildContent(opts.content)}
+						${content}
 					</p>
 					${additionalContent}
-					${buildActions(opts.actions)}
+					${actions}
 				</div>
 			</div>
 		`;
