@@ -43,7 +43,7 @@ export default {
 					${actions.secondary && actions.secondary.text ? actionEl(actions.secondary) : ''}
 				</div>
 			`;
-		};
+		}
 
 		messageElement.innerHTML = `
 			<div class="o-message__container">

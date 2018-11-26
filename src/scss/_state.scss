@@ -1,14 +1,3 @@
-/// apply message status
-/// @param {List} $states [('success', 'neutral', 'error', 'warning', 'warning-light', 'inform', 'inform-inverse')]
-/// @access private
-@mixin _oMessageApply($states) {
-	@each $state in $states {
-		@if index($o-message-states, $state) and _oMessageSupports($state) {
-			@include _oMessageState($state);
-		}
-	}
-}
-
 /// message status styling
 /// @param {String} $state - the name of the status for the message ('success', 'neutral', 'error', 'warning', 'warning-light', 'inform', 'inform-inverse')
 /// @access private

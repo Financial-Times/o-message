@@ -25,7 +25,12 @@
 	$inner: index($opts, 'inner');
 
 	@include _oMessageBase();
-	@include _oMessageApply($states);
+
+	@each $state in $states {
+		@if index($o-message-states, $state) and _oMessageSupports($state) {
+			@include _oMessageState($state);
+		}
+	}
 
 	@if $inner {
 		@include _oMessageInner();
