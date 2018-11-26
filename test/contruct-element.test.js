@@ -41,7 +41,7 @@ describe("constructElement", () => {
 			assert.instanceOf(construct.message(mockObj.opts), HTMLElement);
 		});
 
-		it('builds a message component based on the provided messageClass and theme', () => {
+		it('builds a message component based on the provided theme', () => {
 			assert.strictEqual(flatten(construct.message(mockObj.opts).innerHTML), flatten(fixtures.alert));
 		});
 

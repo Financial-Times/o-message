@@ -254,10 +254,7 @@ describe("Message", () => {
 					assert.isObject(returnValue);
 					assert.deepEqual(returnValue, {});
 				});
-
 			});
-
 		});
-
 	});
 });

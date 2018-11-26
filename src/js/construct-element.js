@@ -34,13 +34,13 @@ export default {
 			additionalContent = `<p class="o-message__content-additional">${opts.content.additionalInfo}</p>`;
 		}
 
-		const actionEl = (config) => `<a href="${config.url}" class="o-message__actions__primary" ${config.openInNewWindow ? `target="_blank" aria-label="${config.text} (opens in new window)"` : ''}>${config.text}</a>`;
+		const actionEl = (config, type) => `<a href="${config.url}" class="o-message__actions__${type}" ${config.openInNewWindow ? `target="_blank" aria-label="${config.text} (opens in new window)"` : ''}>${config.text}</a>`;
 
 		if (opts.actions) {
 			actions = `
 				<div class="o-message__actions">
-					${actions.primary && actions.primary.text ? actionEl(actions.primary) : ''}
-					${actions.secondary && actions.secondary.text ? actionEl(actions.secondary) : ''}
+					${opts.actions.primary && opts.actions.primary.text ? actionEl(opts.actions.primary, 'primary') : ''}
+					${opts.actions.secondary && opts.actions.secondary.text ? actionEl(opts.actions.secondary, 'secondary') : ''}
 				</div>
 			`;
 		}

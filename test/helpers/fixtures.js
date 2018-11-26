@@ -69,14 +69,5 @@ export default {
 				</div>
 			</div>
 		`,
-	closeButton: `<button class="o-message__close" aria-label="close" title="Close"></button>`,
-	actions: `<div class="o-message__actions">
-			<a href="#" class="o-message__actions__primary">a button</a>
-			<a href="#" class="o-message__actions__secondary">a link</a>
-			</div>
-		`,
-	actionsNewWindow: `<div class="o-message__actions">
-			<a href="#" class="o-message__actions__primary" target="_blank" aria-label="a button (opens in new window)">a button</a>
-			<a href="#" class="o-message__actions__secondary" target="_blank" aria-label="a link (opens in new window)">a link</a>
-		</div>`
+	closeButton: `<button class="o-message__close" aria-label="close" title="Close"></button>`
 };
