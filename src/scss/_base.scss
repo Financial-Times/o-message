@@ -11,8 +11,8 @@
 
 		.o-message__container {
 			@include oGridContainer($bleed: true);
-			padding-left: 10px;
-			padding-right: 10px;
+			padding-left: $_o-message-spacing / 4;
+			padding-right: $_o-message-spacing / 4;
 
 			&:before {
 				top: $_o-message-text-spacing / 2;

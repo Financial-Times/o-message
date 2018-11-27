@@ -5,14 +5,18 @@
 @mixin _oMessageInner() {
 	.o-message.o-message--inner {
 		.o-message__container {
-			padding: oTypographySpacingSize(2) oTypographySpacingSize(5) oTypographySpacingSize(2) oTypographySpacingSize(4);
+			padding: oTypographySpacingSize(2) oTypographySpacingSize(5) oTypographySpacingSize(2) ($_o-message-spacing / 4);
 
 			&:before {
 				top: unset;
 			}
 
 			.o-message__close {
-				right: oTypographySpacingSize(4);
+				right: oTypographySpacingSize(2);
+
+				@include oGridRespondTo(S) {
+					right: oTypographySpacingSize(4);
+				};
 			}
 		}
 
