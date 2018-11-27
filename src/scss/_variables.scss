@@ -4,9 +4,6 @@
 /// @type Boolean
 $o-message-is-silent: true !default;
 
-//Typography
-$_o-message-typography-scale: 0 !default;
-
 // Alert message height
 $_o-message-spacing: 40px;
 
@@ -18,9 +15,6 @@ $_o-message-close-icon-size: 26;
 $_o-message-typography-scale: 0 !default;
 $_o-message-line-height: nth(oTypographyGetScale($_o-message-typography-scale), 2);
 $_o-message-text-spacing: ($_o-message-line-height / 2) * 1px;
-
-//Placeholder map
-$_o-message-placeholders: () !default;
 
 /// List of states that can be applied to alert type messages
 ///
