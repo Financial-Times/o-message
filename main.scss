@@ -12,17 +12,16 @@
 @import './src/scss/state';
 
 /// Output all oMessage features
-/// @param {list} $opts [('alert', 'notice', 'action', 'inner'))]
-/// @param {list} $status [('error', 'success', 'inform', 'neutral', 'inform-inverse', 'warning', 'warning-light')]
+/// @param {Map} $opts ['types': ('alert', 'notice', 'action), 'inner': true, 'states': ('error', 'success', 'inform', 'neutral', 'inform-inverse', 'warning', 'warning-light')]
 
-@mixin oMessage (
-	$opts: ('action', 'alert', 'notice', 'inner'),
-	$states: ('error', 'success', 'neutral', 'inform', 'inform-inverse', 'warning', 'warning-light')
-) {
-	$action: index($opts, 'action');
-	$alert: index($opts, 'alert');
-	$notice: index($opts, 'notice');
-	$inner: index($opts, 'inner');
+@mixin oMessage ($opts: (
+	'type': ('action', 'alert', 'notice'),
+	'inner': true,
+	'states': ('error', 'success', 'neutral', 'inform', 'inform-inverse', 'warning', 'warning-light')
+)) {
+	$types: map-get($opts, 'type');
+	$states: map-get($opts, 'states');
+	$inner: map-get($opts, 'inner');
 
 	@include _oMessageBase();
 
@@ -32,20 +31,14 @@
 		}
 	}
 
+	@each $type in $types {
+		@if _oMessageSupports($type) {
+			@include _oMessageType($type);
+		}
+	}
+
 	@if $inner {
 		@include _oMessageInner();
-	}
-
-	@if $action and _oMessageSupports('action') {
-		@include _oMessageType('action');
-	}
-
-	@if $alert {
-		@include _oMessageType('alert');
-	}
-
-	@if $notice {
-		@include _oMessageType('notice');
 	}
 }
 

@@ -10,8 +10,9 @@
 		// sass-lint:enable no-vendor-prefixes
 
 		.o-message__container {
-			@include oGridContainer();
-			padding: 0 10px;
+			@include oGridContainer($bleed: true);
+			padding-left: 10px;
+			padding-right: 10px;
 
 			&:before {
 				top: $_o-message-text-spacing / 2;
