@@ -39,19 +39,17 @@
 	.o-message--#{$type} {
 		@if $type == 'alert' {
 			.o-message__content {
-				padding-left: $_o-message-alert-icon-size * 1px;
+				padding-left: $_o-message-spacing;
 			}
 
 		} @elseif $type == 'notice' {
 			.o-message__content {
-				padding-left: $_o-message-alert-icon-size / 2 * 1px;
+				padding-left: $_o-message-spacing / 2;
 			}
 
 		} @elseif $type == 'action' {
 			.o-message__content {
-				padding: $_o-message-action-spacing 0;
-				margin: 0 auto;
-				text-align: center;
+				padding: $_o-message-spacing 0 $_o-message-spacing $_o-message-spacing;
 
 				.o-message__content-main {
 					margin: oTypographySpacingSize(2) oTypographySpacingSize(6) oTypographySpacingSize(2) 0;
@@ -60,6 +58,15 @@
 				.o-message__actions {
 					margin: oTypographySpacingSize(2) 0;
 					padding: 0;
+				}
+			}
+
+			.o-message__content--center-align {
+				margin: 0 auto;
+				padding-left: 0;
+
+				@include oGridRespondTo(S) {
+					text-align: center;
 				}
 			}
 		}

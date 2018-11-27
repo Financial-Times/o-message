@@ -219,6 +219,7 @@
 			"data":  {
 				"type": "action",
 				"status": "inform-inverse",
+				"centralised": true,
 				"content": "The quick brown fox did <span class='o-message__content-highlight'>not</span> jump over the lazy dogs.",
 				"actions": {
 					"button": true
