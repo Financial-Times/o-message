@@ -54,7 +54,7 @@ describe("Message", () => {
 			assert.notStrictEqual(message.opts, {});
 			assert.deepEqual(message.opts, {
 				autoOpen: true,
-				type: 'alert',
+				type: null,
 				state: null,
 				inner: false,
 				parentElement: null,
@@ -137,6 +137,7 @@ describe("Message", () => {
 						highlight: 'Good.'
 					}
 				};
+
 				const mockContainerElement = document.createElement('div');
 				mockMessageElement = document.createElement('div');
 				mockMessageElement.appendChild(mockContainerElement);

@@ -18,7 +18,7 @@
 
 		.o-message__content {
 			@include oTypographyMargin($top: 3, $bottom: 0);
-			max-width: oTypographyMaxLineWidth($o-message-typography-scale);
+			max-width: oTypographyMaxLineWidth($_o-message-typography-scale);
 
 			.o-message__content-main {
 				@include oTypographyMargin($top: 0, $bottom: 3);

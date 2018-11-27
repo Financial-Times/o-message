@@ -4,10 +4,8 @@
 /// @type Boolean
 $o-message-is-silent: true !default;
 
-/// Only output all message states once.
-///
-/// @type Boolean
-$o-message-all-states-output: false !default;
+//Typography
+$_o-message-typography-scale: 0 !default;
 
 // Alert message height
 $_o-message-spacing: 40px;
@@ -17,8 +15,8 @@ $_o-message-alert-icon-size: 40;
 $_o-message-close-icon-size: 26;
 
 //Typography
-$o-message-typography-scale: 0 !default;
-$_o-message-line-height: nth(oTypographyGetScale($o-message-typography-scale), 2);
+$_o-message-typography-scale: 0 !default;
+$_o-message-line-height: nth(oTypographyGetScale($_o-message-typography-scale), 2);
 $_o-message-text-spacing: ($_o-message-line-height / 2) * 1px;
 
 //Placeholder map

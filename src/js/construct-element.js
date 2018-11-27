@@ -5,6 +5,10 @@ export default {
 	*/
 	message: (opts) => {
 		const messageElement = document.createElement('div');
+		if (!opts.type) {
+			throw new Error(`*** o-message error:\nMessages require a type. Available types are:\n- action\n- alert\n- notice\n***`);
+		}
+
 		messageElement.classList.add('o-message', `o-message--${opts.type}`, 'o-message--closed');
 		if (opts.inner) { messageElement.classList.add('o-message--inner'); }
 
@@ -34,7 +38,7 @@ export default {
 			additionalContent = `<p class="o-message__content-additional">${opts.content.additionalInfo}</p>`;
 		}
 
-		const actionEl = (config, type) => `<a href="${config.url}" class="o-message__actions__${type}" ${config.openInNewWindow ? `target="_blank" aria-label="${config.text} (opens in new window)"` : ''}>${config.text}</a>`;
+		const actionEl = (config, type) => `<a href="${config.url ? config.url : ''}" class="o-message__actions__${type}" ${config.openInNewWindow ? `target="_blank" aria-label="${config.text} (opens in new window)"` : ''}>${config.text}</a>`;
 
 		if (opts.actions) {
 			actions = `

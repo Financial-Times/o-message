@@ -4,7 +4,7 @@
 /// @access private
 @mixin _oMessageBase() {
 	.o-message {
-		@include oTypographySans($o-message-typography-scale);
+		@include oTypographySans($_o-message-typography-scale);
 		// sass-lint:disable no-vendor-prefixes
 		-webkit-font-smoothing: antialiased;
 		// sass-lint:enable no-vendor-prefixes

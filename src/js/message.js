@@ -10,7 +10,7 @@ class Message {
 		this.messageElement = messageElement;
 
 		//Default options
-		const type = options && options.type ? options.type : 'alert';
+		const type = options && options.type ? options.type : null;
 		const inner = options && options.inner ? options.inner : false;
 		const state = options && options.state ? options.state : null;
 
