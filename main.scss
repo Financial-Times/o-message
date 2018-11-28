@@ -16,13 +16,13 @@
 /// @param {Map} $opts ['types': ('alert', 'notice', 'action), 'inner': true, 'states': ('error', 'success', 'inform', 'neutral', 'inform-inverse', 'warning', 'warning-light')]
 
 @mixin oMessage ($opts: (
-	'type': ('action', 'alert', 'notice'),
-	'inner': true,
+	'types': ('action', 'alert', 'notice'),
+	'layouts': ('inner'),
 	'states': ('error', 'success', 'neutral', 'inform', 'inform-inverse', 'warning', 'warning-light')
 )) {
-	$types: map-get($opts, 'type');
+	$types: map-get($opts, 'types');
 	$states: map-get($opts, 'states');
-	$inner: map-get($opts, 'inner');
+	$layouts: map-get($opts, 'layouts');
 
 	@include _oMessageBase();
 
@@ -38,7 +38,7 @@
 		}
 	}
 
-	@if $inner {
+	@if index($layouts, 'inner') {
 		@include _oMessageInner();
 	}
 }
