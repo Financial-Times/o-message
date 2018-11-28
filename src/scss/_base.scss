@@ -36,7 +36,7 @@
 
 		.o-message__actions {
 			display: inline-block;
-			padding-bottom: $_o-message-text-spacing;
+			padding: 0 ($_o-message-close-icon-size * 1px) $_o-message-text-spacing 0;
 		}
 	}
 
