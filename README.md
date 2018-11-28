@@ -12,7 +12,7 @@ o-message [![Circle CI](https://circleci.com/gh/Financial-Times/o-message/tree/m
 	- [Construction](#construction)
 	- [Options](#options)
 - [Sass](#sass)
-- [Migration Guide](#migration-guide)
+- [Migration](#migration)
 - [Contact](#contact)
 - [Licence](#licence)
 
@@ -32,7 +32,7 @@ It can be styled with the following states:
 - inform-inverse
 
 #### Alert Message
-This message type should be used as feedback to a users interaction with a product (e.g. Payment declined warning on click)  
+This message type should be used as feedback to a users interaction with a product (e.g. payment declined warning)  
 It's layout can be changed to `inner`.  
 It can be styled with the following states:
 - success
@@ -57,7 +57,7 @@ All messages have the same markup. What will style them differently are the foll
 - `state`: one of `o-message--success`, `o-message--neutral`, `o-message--error`, `o-message--warning`, `o-message--warning-light`, `o-message--inform`, `o-message--inform-inverse`  
 - `layout`: currently only `o-message--inner`
 
-_Note: as mentioned in the descripition of the [message types](#message-types), not all states will work for all message types. In addition to that, the layout modifier only applies to `alert` and `notice` type messages._
+_Note: as mentioned in the description of the [message types](#message-types), not all states will work for all message types. In addition to that, the layout modifier only applies to `alert` and `notice` type messages._
 
 This example illustrates the basic markup for a successful alert message:
 
@@ -144,7 +144,8 @@ For any message, you can embolden any text within a paragraph, and use the marku
 	<div class="o-message__container">
 		<div class="o-message__content">
 			<p class="o-message__content-main">
-				Oops, this is <span class="o-message__content-highlight">not</span> how its supposed to go.
+				The quick brown fox did <span class="o-message__content-highlight">not</span> jump over the lazy dogs.
+			</p>
 		</div>
 	</div>
 </div>

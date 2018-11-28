@@ -15,7 +15,7 @@ It removes layout modifiers. State modifiers stay the same.
 
 All oMessage mixins have been made private. The option to add custom classnames has been removed. And the main Sass mixin has been changed to accept only one argument, namely `$opts`:
 ```diff
--@include oMessage($class: 'my message', $types: ('alert'), $status: ('error'))
+-@include oMessage($class: 'my message', $types: ('alert-inner'), $status: ('error'))
 +@include oMessage($opts: (
 +	'types': ('alert'),
 +	'states': ('error'),
@@ -32,7 +32,7 @@ All colour use cases have been removed from the palette in favour of branding-sp
 -lemon-white-60
 ```
 
-The JS for `o-message` now requires the `type` and `state` to be supplied in the options object. 
+The JS for `o-message` now requires the `type` and `state` to be supplied in the options object.
 
 ### Migrating from v1 to v2
 
