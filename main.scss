@@ -13,12 +13,12 @@
 @import './src/scss/state';
 
 /// Output all oMessage features
-/// @param {Map} $opts ['types': ('alert', 'notice', 'action), 'inner': true, 'states': ('error', 'success', 'inform', 'neutral', 'inform-inverse', 'warning', 'warning-light')]
+/// @param {Map} $opts ['types': ('alert', 'notice', 'action), 'states': ('error', 'success', 'inform', 'neutral', 'inform-inverse', 'warning', 'warning-light'), 'layouts': ('inner')]
 
 @mixin oMessage ($opts: (
 	'types': ('action', 'alert', 'notice'),
-	'layouts': ('inner'),
-	'states': ('error', 'success', 'neutral', 'inform', 'inform-inverse', 'warning', 'warning-light')
+	'states': ('error', 'success', 'neutral', 'inform', 'inform-inverse', 'warning', 'warning-light'),
+	'layouts': ('inner')
 )) {
 	$types: map-get($opts, 'types');
 	$states: map-get($opts, 'states');
