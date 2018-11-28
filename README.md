@@ -150,6 +150,20 @@ For any message, you can embolden any text within a paragraph, and use the marku
 </div>
 ```
 
+For **action messages only**, you can centralise the text with a specific class:
+```diff
+<div class="o-message o-message--action o-message--inform" data-o-component="o-message">
+	<div class="o-message__container">
+-		<div class="o-message__content">
++		<div class="o-message__content o-message__content--center-align">
+			<p class="o-message__content-main">
+				This will be a call to action. Feedback, please.
+			</p>
+		</div>
+	</div>
+</div>
+```
+
 ### JavaScript
 No code will run automatically unless you are using the Build Service. You must either construct an `o-message` object or fire an o.DOMContentLoaded event, which `o-message` listens for.
 
@@ -221,11 +235,11 @@ You can also be more specific about which message styles and variations you woul
 
 ## Migration
 
-? | Major Version | Last Minor Release | Migration guide
-:---: | :---: | :---:
-✨ | 3 | N/A | [migrate to v3](../migration.md#1)
-⚠ | 2 | 2.4 | [migrate to v2](../migration.md#1)
-⚠ | 1 | 1.0 | N/A
+State | Major Version | Last Minor Release | Migration guide
+:---: | :---: | :---: | :---:
+✨ active | 3 | N/A | [migrate to v3](MIGRATION.md#migrating-from-v2-to-v3)
+⚠ maintained | 2 | 2.4 | [migrate to v2](MIGRATION.md#migrating-from-v1-to-v2)
+⚠ maintained | 1 | 1.0 | N/A
 
 ## Contact
 
