@@ -53,7 +53,11 @@
 
 		} @elseif $type == 'action' {
 			.o-message__content {
-				padding: $_o-message-spacing 0 $_o-message-spacing $_o-message-spacing;
+				padding: oTypographySpacingSize(4) 0;
+
+				@include oGridRespondTo(S) {
+					padding: $_o-message-spacing 0 $_o-message-spacing $_o-message-spacing;
+				}
 
 				.o-message__content-main {
 					margin: oTypographySpacingSize(2) oTypographySpacingSize(6) oTypographySpacingSize(2) 0;
