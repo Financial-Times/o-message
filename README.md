@@ -21,33 +21,28 @@ o-message [![Circle CI](https://circleci.com/gh/Financial-Times/o-message/tree/m
 It can be initialised declaratively if markup is provided on the page, or it can be initialised imperatively when using the [manual build process](http://origami.ft.com/docs/developer-guide/modules/building-modules/).
 
 ### Message Types
-`o-message` provides three types of messages: **action**, **alert**, and **notice**.
+`o-message` provides three types of messages: **action**, **alert**, and **notice**.  
 
-#### Action Message
+- An **action** message should be used as a static call to action, that is not necessarily a response to a user's interaction with a product (e.g. requesting feedback in general).
 
-This message type should be used as a static call to action, that is not necessarily a response to a user's interaction with a product (e.g. requesting feedback in general).  
-Currently, it does not accept any different layouts.  
-It can be styled with the following states:
-- inform
-- inform-inverse
+- An **alert** message should be used as feedback to a users interaction with a product (e.g. payment declined warning)
 
-#### Alert Message
-This message type should be used as feedback to a users interaction with a product (e.g. payment declined warning)  
-It's layout can be changed to `inner`.  
-It can be styled with the following states:
-- success
-- neutral
-- error
-
-#### Notice Message
-This message type should be used to provide information or warnings about a product. (e.g. beta version of a product).  
-It's layout can be changed to `inner`.  
-It can be styled with the following states:
-- inform
-- warning
-- warning-light
+- A **notice** message should be used to provide information or warnings about a product. (e.g. beta version of a product).
 
 You can find a demo for each of the messages above in the [Origami registry](https://registry.origami.ft.com/components/o-message).
+
+A default message is designed to span across a page in whatever container it is placed in.
+An 'inner' message is meant to sit within a smaller container, as it stacks information, instead.
+
+In addition to layout, messages can accept another variation: state.
+However, not every message accepts every state, or every layout, and not every message works for every brand. Please check the table below against the needs of your product. If you need a message that is not available to you, please [get in touch](#contact) with the Origami team.
+
+| state support | layout support | brand support
+---|:---|:---:|:---
+**action message** | `inform`, `inform-inverse` | default | internal, whitelabel
+**alert message** | `success`, `neutral`, `error` | default, inner | all
+**notice message** | `inform`, `warning`, `warning-light` | default, inner | master: `inform` state only <br> internal and whitelabel: all states
+
 
 ### Markup
 
@@ -112,7 +107,7 @@ And you can also add actions, such as a button and/or a link to your message:
 </div>
 ```
 
-If you have applied the `o-message-inner` modifier to your message, you can add additional, entirely optional, content:
+If you have applied the `o-message--inner` modifier to your message, you can add additional, entirely optional, content:
 
 ```diff
 -<div class="o-message o-message--alert o-message--error" data-o-component="o-message">
@@ -138,7 +133,7 @@ If you have applied the `o-message-inner` modifier to your message, you can add 
 </div>
 ```
 
-For any message, you can embolden any text within a paragraph, and use the markup like this:
+For any message, you can highlight any portion of copy within a paragraph by using the markup like this:
 ```html
 <div class="o-message o-message--alert o-message--success" data-o-component="o-message">
 	<div class="o-message__container">
@@ -151,7 +146,7 @@ For any message, you can embolden any text within a paragraph, and use the marku
 </div>
 ```
 
-For **action messages only**, you can centralise the text with a specific class:
+For **action messages only**, you can centralise the text with a specific class (`.o-message__content--center-align`):
 ```diff
 <div class="o-message o-message--action o-message--inform" data-o-component="o-message">
 	<div class="o-message__container">
@@ -239,14 +234,12 @@ You can also be more specific about which message styles and variations you woul
 State | Major Version | Last Minor Release | Migration guide |
 :---: | :---: | :---: | :---:
 ✨ active | 3 | N/A | [migrate to v3](MIGRATION.md#migrating-from-v2-to-v3) |
-⚠ maintained | 2 | 2.4 | [migrate to v2](MIGRATION.md#migrating-from-v1-to-v2) | 
+⚠ maintained | 2 | 2.4 | [migrate to v2](MIGRATION.md#migrating-from-v1-to-v2) |
 ╳ deprecated | 1 | 1.0 | N/A |
 
 ## Contact
 
 If you have any questions or comments about this component, or need help using it, please either [raise an issue](https://github.com/Financial-Times/o-message/issues), visit [#ft-origami](https://financialtimes.slack.com/messages/ft-origami/) or email [Origami Support](mailto:origami-support@ft.com).
-
-----
 
 ## Licence
 
