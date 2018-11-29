@@ -66,12 +66,12 @@ describe("Message", () => {
 				actions: {
 					primary: {
 						text: null,
-						url: '#',
+						url: null,
 						openInNewWindow: false
 					},
 					secondary: {
 						text: null,
-						url: '#',
+						url: null,
 						openInNewWindow: false
 					}
 				},
