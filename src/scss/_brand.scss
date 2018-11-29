@@ -101,12 +101,24 @@ $_o-message-shared-brand-variables: (
 				'foreground-color': 'black',
 				'background-color': 'white',
 			),
+			'warning': (
+				'foreground-color': 'black',
+				'background-color': 'lemon'
+			),
+			'warning-light': (
+				'foreground-color': 'black',
+				'background-color': oColorsMix('lemon', 'white', $percentage: 60)
+			)
 		)),
 		'supports-variants': (
+			'alert',
+			'notice',
 			'error',
 			'inform',
 			'neutral',
-			'success'
+			'success',
+			'warning',
+			'warning-light'
 		)
 	));
 }
