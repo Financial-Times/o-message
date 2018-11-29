@@ -34,7 +34,7 @@ An 'inner' message is meant to sit within a smaller container, as it stacks info
 In addition to layout, messages can accept another variation: state.
 However, not every message accepts every state, or every layout, and not every message works for every brand. Please check the table below against the needs of your product. If you need a message that is not available to you, please [get in touch](#contact) with the Origami team.
 
-| state support | layout support | brand support
+| | state support | layout support | brand support
 ---|:---|:---:|:---
 **action message** | `inform`, `inform-inverse` | default | internal, whitelabel
 **alert message** | `success`, `neutral`, `error` | default, inner | all
