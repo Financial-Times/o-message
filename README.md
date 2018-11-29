@@ -4,9 +4,6 @@ o-message [![Circle CI](https://circleci.com/gh/Financial-Times/o-message/tree/m
 `o-message` is a messaging component used for alerting, informing or making calls to action.
 
 - [Message Types](#message-types)
-	- [Action Message](#action-message)
-	- [Alert Message](#alert-message)
-	- [Notice Message](#notice-message)
 - [Markup](#markup)
 - [JavaScript](#javascript)
 	- [Construction](#construction)
