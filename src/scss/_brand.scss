@@ -100,14 +100,6 @@ $_o-message-shared-brand-variables: (
 			'inform': (
 				'foreground-color': 'black',
 				'background-color': 'white',
-			),
-			'warning': (
-				'foreground-color': 'black',
-				'background-color': 'lemon'
-			),
-			'warning-light': (
-				'foreground-color': 'black',
-				'background-color': oColorsMix('lemon', 'white', $percentage: 60)
 			)
 		)),
 		'supports-variants': (
@@ -116,9 +108,7 @@ $_o-message-shared-brand-variables: (
 			'error',
 			'inform',
 			'neutral',
-			'success',
-			'warning',
-			'warning-light'
+			'success'
 		)
 	));
 }
