@@ -1,10 +1,10 @@
 /* eslint-env mocha, sinon, proclaim */
 
-import Message from '../src/js/message';
-import construct from '../src/js/construct-element';
-import * as assert from 'proclaim';
-import sinon from 'sinon/pkg/sinon';
-import fixtures from './helpers/fixtures';
+const Message = require('../src/js/message');
+const construct = require('../src/js/construct-element');
+const assert = require('proclaim');
+const sinon = require('sinon/pkg/sinon');
+const fixtures = require('./helpers/fixtures');
 
 sinon.assert.expose(assert, {
 	includeFail: false,
