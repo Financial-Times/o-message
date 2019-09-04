@@ -8,7 +8,7 @@ class Message {
 	 * @param {HTMLElement} messageElement [undefined] - The `o-message` element (optional).
 	 * @param {Object} [options={}] - An options object for configuring the message (see the README for details).
 	 *
-	 * @example To construct all o-message's on the page which have the `data-o-component="o-message"` attribute.
+	 * @example To construct all elements on the page with the `data-o-component="o-message"` attribute.
  	 *      Message.init();
 	 *
 	 * @example To construct a specifc o-message on the page.
