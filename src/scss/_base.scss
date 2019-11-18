@@ -32,7 +32,7 @@
 			}
 
 			.o-message__content-highlight {
-				@include oTypographyBold('sans');
+				@include oTypographySans($weight: 'semibold', $include-font-family: false);
 			}
 		}
 
