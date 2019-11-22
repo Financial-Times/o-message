@@ -23,14 +23,16 @@
 				),
 				$include-base-styles: false
 			);
-			border-width: 1px;
 		}
 
 		.o-message__actions__primary {
-			@include oButtonsContent(('theme': (
-				'color': $foreground-color,
-				'context': $background-color
-			)));
+			@include oButtonsContent((
+				'type': 'secondary',
+				'theme': (
+					'color': $foreground-color,
+					'context': $background-color
+				)
+			), $include-base-styles: false);
 			margin-right: oSpacingByName('s6');
 		}
 
@@ -43,11 +45,6 @@
 				),
 				$include-base-styles: false
 			);
-			white-space: nowrap;
-
-			&:hover {
-				border-bottom-color: $foreground-color; // is different to custom link hover by design.
-			}
 		}
 
 		@if (_oMessageGet('icon', $from: $state)) {
