@@ -68,10 +68,6 @@
 	.o-message__content-highlight-color {
 		color: $highlight-color;
 	}
-	.o-message__content-highlight {
-		$highlight-transform: _oMessageGet('highlight-text-transform', $from: $opts);
-		text-transform: if($highlight-transform, unquote($highlight-transform), null);
-	}
 
 	// content links
 	.o-message__content-main a,

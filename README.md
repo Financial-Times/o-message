@@ -278,7 +278,6 @@ To create a new message with a unique look call `oMessageAddSate`. The mixin acc
 	- `icon`: The [o-icons](https://registry.origami.ft.com/components/o-icons) icon name to show in an alert message. Required only for your state to support an alert message type.
 	- `button-type` (optional): The type of [o-buttons](https://registry.origami.ft.com/components/o-buttons) button the message should have. One of `primary` or `secondary` (defaults to `secondary`).
 	- `highlight-color` (optional): The highlight colour is used for the message button. It can also be used to highlight message copy with the CSS class `o-message__content-highlight-color`.
-	- `highlight-text-transform` (optional): Use to set the `text-transform` property to of copy within the `o-message__content-highlight` element, e.g. to `uppercase` highlighted copy.
 - `types`: A list of [message types](#message-types) your state supports, one or more of (`alert`, `notice`, `action`).
 
 ```scss
@@ -290,8 +289,7 @@ To create a new message with a unique look call `oMessageAddSate`. The mixin acc
 	'background-color': 'slate', // slate message
 	'foreground-color': 'white', // white text
 	'highlight-color': 'lemon', // lemon highlights with `o-message__content-highlight-color` and a lemon button
-	'button-type': 'primary', // a primary o-buttons button
-	'highlight-text-transform': 'uppercase', // uppercase `o-message__content-highlight` highlight copy
+	'button-type': 'primary', // a primary o-buttons button`o-message__content-highlight` highlight copy
 	'icon': 'user', // show a 'user' o-icons icon if used as an alert
 ), $types: ('notice', 'alert')); // this state should work with notice and alert message types
 ```
