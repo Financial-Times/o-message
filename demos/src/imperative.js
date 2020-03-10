@@ -59,25 +59,20 @@ const initDemos = () => {
 	setUpDemo('alert-success', options, {state: 'success'});
 	setUpDemo('alert-neutral', options, {state: 'neutral'});
 	setUpDemo('alert-error', options, {state: 'error'});
-	setUpDemo('alert-pikachu', options, { state: 'pikachu'});
 
 	setUpDemo('notice-inform', options, {type: 'notice', state: 'inform'});
 	setUpDemo('notice-warning', options, {type: 'notice', state: 'warning'});
 	setUpDemo('notice-warning-light', options, {type: 'notice', state: 'warning-light'});
-	setUpDemo('notice-pikachu', options, {type: 'notice', state: 'pikachu'});
 
 	setUpDemo('inner-alert-success', innerOptions, {state: 'success'});
 	setUpDemo('inner-alert-neutral', innerOptions, {state: 'neutral'});
 	setUpDemo('inner-alert-error', innerOptions, {state: 'error', actions: null});
-	setUpDemo('inner-alert-pikachu', innerOptions, { state: 'pikachu', actions: null});
 
 	setUpDemo('inner-notice-inform', innerOptions, {type: 'notice', state: 'inform'});
 	setUpDemo('inner-notice-warning', innerOptions, {type: 'notice', state: 'warning'});
 	setUpDemo('inner-notice-warning-light', innerOptions, {type: 'notice', state: 'warning-light'});
-	setUpDemo('inner-notice-pikachu', innerOptions, { type: 'notice', state: 'pikachu'});
 
 	setUpDemo('action-inform-inverse', actionOptions, {type: 'action', state: 'inform-inverse'});
-	setUpDemo('action-inform-pikachu', actionOptions, { type: 'action', state: 'pikachu'});
 };
 
 document.addEventListener('DOMContentLoaded', () => {
