@@ -12,11 +12,11 @@
 			}
 
 			.o-message__close {
+				right: oSpacingByName('s2');
 
 				@include oGridRespondTo(S) {
 					right: oSpacingByName('s4');
 				}
-				right: oSpacingByName('s2');
 			}
 		}
 
@@ -59,11 +59,11 @@
 
 		@if $type == 'action' {
 			.o-message__content {
+				padding: oSpacingByName('s4') 0;
 
 				@include oGridRespondTo(S) {
 					padding: $_o-message-spacing 0 $_o-message-spacing $_o-message-spacing;
 				}
-				padding: oSpacingByName('s4') 0;
 
 				.o-message__content-main {
 					margin: oSpacingByName('s2') oSpacingByName('s6') oSpacingByName('s2') 0;
@@ -76,12 +76,12 @@
 			}
 
 			.o-message__content--center-align {
+				margin: 0 auto;
+				padding-left: 0;
 
 				@include oGridRespondTo(S) {
 					text-align: center;
 				}
-				margin: 0 auto;
-				padding-left: 0;
 			}
 		}
 	}
