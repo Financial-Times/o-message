@@ -182,7 +182,7 @@ No code will run automatically unless you are using the Build Service. You must 
 ### Construction
 If you have set up your message declaratively, use the following to initialise your message.
 ```js
-import Message from 'o-message';
+import Message from '@financial-times/o-message';
 Message.init();
 ```
 
@@ -191,7 +191,7 @@ Message.init();
 If you're setting up a message without existing DOM elements, `Message` will construct an element for you. As long as your markup contains an element with the data attribute `data-o-component=o-message`, you can initialise a message with specific [options](#options).
 
 ```js
-import Message from 'o-message';
+import Message from '@financial-times/o-message';
 const importantMessage = new Message(null, {
 	type: 'alert',
 	state: 'error',
@@ -231,7 +231,7 @@ The following options are not required, and all have a default value:
 For example, to configure the `close` icon to not display:
 
 ```diff
-import Message from 'o-message';
+import Message from '@financial-times/o-message';
 const importantMessage = new Message(null, {
 	type: 'alert',
 	state: 'error',
