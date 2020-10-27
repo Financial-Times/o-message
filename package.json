@@ -1,12 +1,14 @@
 {
     "name": "@financial-times/o-message",
+    "version": "100.0.0-7",
+    "description": "Provides message elements for alerting, informing or making calls to action.",
+    "browser": "main.js",
     "devDependencies": {
         "eslint": "^7.9.0",
         "eslint-config-origami-component": "^2.1.0",
         "origami-ci-tools": "^2.1.0",
         "stylelint-config-origami-component": "^1.0.4"
     },
-    "browser": "main.js",
     "peerDependencies": {
         "@financial-times/o-brand": "^100.0.0-7",
         "@financial-times/o-buttons": "^100.0.0-7",
@@ -16,9 +18,7 @@
         "@financial-times/o-spacing": "^100.0.0-7",
         "@financial-times/o-typography": "^100.0.0-7"
     },
-    "description": "Provides message elements for alerting, informing or making calls to action.",
     "publishConfig": {
         "registry": "http://localhost:4873"
-    },
-    "version": "100.0.0-7"
+    }
 }
