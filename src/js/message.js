@@ -147,8 +147,8 @@ class Message {
 		}
 		return Object.keys(messageElement.dataset).reduce((options, key) => {
 
-			// Ignore data-o-component
-			if (key === 'oComponent') {
+			// Ignore keys which are not in the component's namespace
+			if (!key.match(/^oMessage(\w)(\w+)$/)) {
 				return options;
 			}
 
