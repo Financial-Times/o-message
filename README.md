@@ -1,5 +1,11 @@
 # o-message [![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg)](#licence)
 
+***
+
+**This component has moved to the [Origami Component System](https://github.com/Financial-Times/origami).**
+
+***
+
 `o-message` is a messaging component used for alerting, informing or making calls to action.
 
 - [Usage](#usage)
